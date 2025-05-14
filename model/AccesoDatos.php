@@ -1,10 +1,10 @@
 <?php
 public class AccesoDatos{
     private $oConexion = null;
-    private $sDBname = "";
-    private $sHost = "";
-    private $sUser = "";
-    private $sPassword = "";
+    private $sDBname = "ongIto";
+    private $sHost = "localhost";
+    private $sUser = "administrador";
+    private $sPassword = "administrador";
 
 
     //METODO PARA ACCEDER A LA BD -> conectar()
