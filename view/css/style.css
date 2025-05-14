@@ -1,0 +1,14 @@
+/* Para que no se haga tan pesado, solamente en el style.css, importare lo de los componentes reutilizables al igual que 
+el reset del diseño, por lo tanto, el style.css sera por defecto y tambien se cargara en el head, pero al ser diferentes vistas,
+se cargaran con ayuda de variables en php, facilitanto la optimizacion al igual que la organizacion, cualquier duda me preguntan */
+
+@import url('base/reset.css');
+@import url('componentes/navbar.css');
+@import url('componentes/hero.css');
+@import url('componentes/footer.css');
+
+/*
+@import url('vistas/landingpage.css');
+@import url('vistas/campanas.css');
+@import url('vistas/areasapoyo.css');
+*/

@@ -1,0 +1,44 @@
+/* Hero Seccion */
+.hero {
+    background-color: #0B2054;
+    padding: 6rem 5%;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.hero-titulo {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.hero-boton {
+    display: inline-block;
+    background-color: #F8D400;
+    color: #0B2054 !important;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hero-boton:hover {
+    transform: translateY(-4px);
+    background-color: #ffdf33;
+}

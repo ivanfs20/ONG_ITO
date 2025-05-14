@@ -1,0 +1,164 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+
+/*HERO SECTION */
+.hero {
+    background-color: #F2F9FF;
+    padding: 6rem 5%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #0B2054;
+}
+
+.hero-titulo {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* FALTA EL DISEÑO RESPONSIVO*/
+
+
+/* SECCION LISTADO */
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #0B2054;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+p,
+li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+}
+
+
+/* stilos para la tabla de recoleccion */
+.contenedor-tabla {
+    overflow-x: auto;
+    margin: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.cabecera-tabla {
+    background-color: #0B2054;
+    color: white;
+}
+
+.cabecera-tabla th {
+    padding: 1.2rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.fila-datos:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.fila-datos td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tabla-datos {
+        display: block;
+    }
+
+    .cabecera-tabla {
+        display: none;
+    }
+
+    .fila-datos {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+    }
+
+    .fila-datos td {
+        display: block;
+        border-bottom: none;
+        padding: 0.8rem;
+    }
+
+    .fila-datos td:before {
+        content: attr(data-titulo);
+        display: block;
+        font-weight: 600;
+        color: #0B2054;
+        margin-bottom: 0.3rem;
+    }
+}
+
+/* Estilos específicos de columnas */
+.columna-canal {
+    width: 25%;
+}
+
+.columna-tipo {
+    width: 35%;
+}
+
+.columna-finalidad {
+    width: 40%;
+}
+
+.celda-canal {
+    color: #2d3748;
+}
+
+.celda-tipo {
+    color: #4a5568;
+}
+
+.celda-finalidad {
+    color: #718096;
+}

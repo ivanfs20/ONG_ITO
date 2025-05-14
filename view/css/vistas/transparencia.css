@@ -1,0 +1,250 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+
+/* Hero principal */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 5%;
+    background-color: #ffffff;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* Contenido de texto */
+.hero-contenido {
+    flex: 1 1 45%;
+    color: #0B2054;
+}
+
+.hero-titulo {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.resaltado {
+    color: #FDC600;
+    /* amarillo */
+    display: inline-block;
+}
+
+.hero-subtitulo {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-top: 1.5rem;
+}
+
+/* Imagen */
+.hero-imagen {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-contenido,
+    .hero-imagen {
+        flex: 1 1 100%;
+    }
+
+    .hero-titulo {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitulo {
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+/* DISEÑO/ESTILO DE LA SECCION ACLARACION */
+
+.aclaracion-seccion {
+    padding: 4rem 5%;
+    background: #f8f9fa;
+}
+
+.aclaracion-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.dos-columna-aclaracion {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.texto-columna-aclaracion {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.titulo-principal-aclaracion {
+    font-size: 2rem;
+    color: #0B2054;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.subtitulo-aclaracion {
+    color: #6c757d;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.columna-imagen {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 300px;
+    /* Altura fija */
+}
+
+
+.columna-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantiene proporciones */
+    object-position: center;
+    /* Enfoca el centro */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dos-columna-aclaracion {
+        flex-direction: column;
+    }
+
+    .columna-imagen {
+        height: 100px;
+        /* Altura móvil */
+        width: 100%;
+        order: -1;
+        /* Imagen arriba en móvil */
+    }
+
+    .texto-columna-aclaracion {
+        padding-right: 0;
+        text-align: center;
+    }
+}
+
+
+
+
+/* Tipo hero, diseño */
+.tipo-hero {
+    background-color: #2194F3;
+    padding: 6rem 5%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.tipo-hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #0B2054;
+}
+
+.tipo-hero-titulo {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.tipo-hero-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* Falta diseño responsivo */
+
+
+/** seccion preguntas para ir a contactos o terminos y condiciones */
+/*seccion desicion, para pulsar los dos ultimos botones*/
+.desicion-seccion {
+    padding: 6rem 5%;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.desicion-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.desicion-titulo {
+    color: #0B2054;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.desicion-subtitulo {
+    color: #0B2054;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+}
+
+.desicion-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #F8D400;
+    color: #0B2054;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.desicion-boton:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.desicion-boton::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.desicion-boton:hover::after {
+    transform: translateX(3px);
+}
+
+/*falta responsivo*/

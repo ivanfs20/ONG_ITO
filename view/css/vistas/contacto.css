@@ -1,0 +1,121 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+
+/*HERO SECTION */
+.hero {
+    background-color: #2194F3;
+    padding: 6rem 5%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #0B2054;
+}
+
+.hero-titulo {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* FALTA EL DISEÑO RESPONSIVO*/
+
+
+/* Sección de la oficina */
+.seccion-oficina {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+/* Título principal */
+.titulo-seccion {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #0B2054;
+}
+
+/* Contenedor del mapa */
+.contenedor-mapa {
+    margin-bottom: 1rem;
+    border: 2px solid #ccc;
+}
+
+/* Texto aclaratorio debajo del mapa */
+.texto-aclaracion {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+/* Tarjetas (cajas de información) */
+.tarjeta {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    text-align: left;
+    line-height: 2.2;
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+    color: #0B2054;
+}
+
+.tarjeta ul {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.tarjeta a {
+    color: #0B2054;
+    text-decoration: none;
+}
+
+.tarjeta a:hover {
+    text-decoration: underline;
+}
+
+/*responsivo*/
+@media screen and (max-width: 600px) {
+    .titulo-seccion {
+        font-size: 1.5rem;
+    }
+
+    .tarjeta {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .texto-aclaracion {
+        font-size: 0.85rem;
+    }
+
+    iframe {
+        height: 250px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .tarjeta {
+        padding: 1rem 1.5rem;
+    }
+}

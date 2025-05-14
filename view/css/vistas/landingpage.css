@@ -1,0 +1,391 @@
+
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/hero.css');
+@import url('../componentes/footer.css');
+
+/* landing page **/
+
+/* Sección de Problemáticas */
+.problematicas-section {
+    background-color: #f8f9fa;
+    padding: 4rem 5%;
+}
+
+.problemas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-main-title {
+    font-size: 2rem;
+    color: #0B2054;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.stats-duo-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.stat-item-alt {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 8px;
+}
+
+.stat-number-alt {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FF9800;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.stat-text-alt {
+    color: #2d3748;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.stat-separator {
+    border-bottom: 2px solid #e2e8f0;
+    margin: 3rem auto;
+    width: 80%;
+}
+
+.stat-full-width {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Sección de Propósito */
+.seccion-por-que{
+    background-color: #ece9e9;
+    padding: 2rem;
+}
+
+.por-que-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.por-que-grid {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.por-que-imagen {
+    flex: 1;
+}
+
+.por-que-imagen img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.por-que-content {
+    flex: 1;
+}
+
+.seccion-titulo {
+    color: #0B2054;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.por-que-texto {
+    color: #6c757d;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 500px;
+    text-align: justify;
+}
+
+/* Sección Áreas de Apoyo */
+.areas-section {
+    padding: 4rem 5%;
+    background-color: #f8f9fa;
+}
+
+.areas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #0B2054;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.area-card {
+    background: #0B2054;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+}
+
+.area-icon {
+    color: #2194F3;
+    margin-bottom: 1.5rem;
+}
+
+.area-title {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.area-description {
+    color: silver;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.area-button {
+    background-color: #F8D400;
+    color: #0B2054;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.area-button:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+}
+
+/* Estilos para la tabla */
+.tabla-seccion {
+    padding: 4rem 5%;
+    background-color: #ffffff;
+}
+
+.tabla-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tabla-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.evidencia-tabla {
+    display: grid;
+    gap: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabla-fila {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-fila:last-child {
+    border-bottom: none;
+}
+
+.celda-imagen {
+    height: 250px;
+    overflow: hidden;
+    border-right: 1px solid #e2e8f0;
+}
+
+.celda-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.celda-imagen:hover img {
+    transform: scale(1.03);
+}
+
+.descripcion-celda {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.descripcion-texto {
+    color: #2d3748;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tabla-fila {
+        grid-template-columns: 1fr;
+    }
+    
+    .celda-iamgen {
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+}
+
+/* Seccion de situacion de los alumnos*/
+
+.estadisticas-seccion {
+    padding: 4rem 5%;
+    background: #f8f9fa;
+}
+
+.estadisticas-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dos-columna-layout {
+    display: flex;
+    gap: 4rem;
+}
+
+.texto-columna {
+    flex: 1;
+    padding-right: 2rem;
+
+}
+
+.titulo-principal {
+    font-size: 2rem;
+    color: #0B2054;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.subtitulo {
+    color: #6c757d;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.columna-estadisticas {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.estadisticas-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.estadisticas-icono {
+    font-size: 2rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.estadisticas-numero {
+    display: block;
+    color: #0B2054;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.estadisticas-descripccion {
+    color: #2d3748;
+    line-height: 1.1;
+}
+
+
+/* Sección de Colaboración */
+.colaboracion-seccion {
+    padding: 6rem 5%;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.colaboracion-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.colaboracion-titulo {
+    color: #0B2054;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.colaboracion-subtitulo {
+    color: #0B2054;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+}
+
+.colaboracion-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #F8D400;
+    color: #0B2054;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.colaboracion-boton:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.colaboracion-boton::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.colaboracion-boton:hover::after {
+    transform: translateX(3px);
+}
