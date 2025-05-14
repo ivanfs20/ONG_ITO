@@ -5,6 +5,7 @@ public class Donacion{
     private $bStatus = false;
     private $aPhoto = [];
     private $nIdBenefactor = 0;
+    private $nIdUsuario = 0;
 
     private function setnIdDonacion($nIdDonacion){
         $this -> nIdDonacion = $nIdDonacion;
@@ -26,6 +27,10 @@ public class Donacion{
         $this -> nIdBenefactor = $nIdBenefactor;
     }
 
+    private function setnIdUsuario($nIdUsuario){
+        $this -> nIdUsuario = $nIdUsuario;
+    }
+
     private function getnIdDonacion(){
         return $this -> nIdDonacion;
     }
@@ -44,6 +49,10 @@ public class Donacion{
 
     private function getnIdBenefactor(){
         return $this -> nIdBenefactor;
+    }
+
+    private function getnIdUsuario(){
+        return $this -> nIdUsuario;
     }
 }
 ?>
