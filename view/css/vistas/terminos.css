@@ -1,0 +1,86 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+/*HERO SECTION */
+.hero {
+    background-color: #2194F3;
+    padding: 6rem 5%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #0B2054;
+}
+
+.hero-titulo {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* FALTA EL DISEÑO RESPONSIVO*/
+
+
+
+/* info de los terminos y condiciones */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #0B2054;
+}
+
+p,
+li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+ul {
+    padding-left: 1.5rem;
+}
+
+.contacto {
+    background-color: #e1effa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    p,
+    li {
+        font-size: 0.95rem;
+    }
+}

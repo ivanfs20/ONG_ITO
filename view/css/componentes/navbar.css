@@ -1,0 +1,67 @@
+/** Comienza estilo del navbar*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/** Comienza el estilo del logo **/
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-line1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.logo-line2 {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+/**Comienza el estilo de los links hacia las otras paginas*/
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    /**separacion entre cada link**/
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #0B2054;
+    font-weight: 545;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #2194F3;
+}
+
+.login-link {
+    background-color: #F8D400;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.login-link::after {
+    /**Esta accion, provoca que al pasar el mouse encima del boton la flecha se transforme y por consiguiente se translade*/
+    content: '→';
+    margin-left: 0.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.login-link:hover::after {
+    transform: translateX(3px);
+}
