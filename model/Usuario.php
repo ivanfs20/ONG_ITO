@@ -1,4 +1,7 @@
 <?php
+
+include("AccesoDatos.php");
+
 class Usuario{
     private $nIdUsuario = 0;
     private $sNombreC = "";
@@ -41,6 +44,29 @@ class Usuario{
 
     public function getsRol(){
         return $this -> sRol;
+    }
+
+
+    // B -LOGIN : Carlos Iván Flores Sánchez
+    public function login(){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $bRet = false;
+        $arrRS = null;
+
+        if($this->sNombreC=="" || $this->sPassword==""){throw new Exception("/m/Benefactor/login/sNombreC&&sPassword");}else{
+            if($oAccesoDatos->conectar()){
+                $sQuery = "SELECT nIdUsuario, sRol FROM Usuario WHERE sNombreC = '$this->sNombreC' AND sPassword = '$this->sPassword'";
+                $arrRS = $oAccesoDatos -> consulta($sQuery);
+                $oAccesoDatos -> desconectar();
+                if($arrRS != null){
+                    $this -> nIdUsuario = $arrRS[0][0];
+                    $this -> sRol = $arrRS[0][1];
+                    $bRet = true;
+                }
+            }
+        }
+        return $bRet;
     }
 
 }
