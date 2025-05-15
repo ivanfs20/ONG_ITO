@@ -54,5 +54,26 @@ class Benefactor{
         }
         return $oBenefactor;
     }
+
+
+    // B - BENEFACTOR -> DELETE BY NAME : Carlos Iván Flores Sánchez
+    public function deleteByName($id,$sName){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = 0;
+        $bRet = false;
+
+        if($id<=0 && empty($sName)){throw new Exception("m/Benefactor/deleteByName/$id&&$sName");}
+        else{
+            $sQuery = "DELETE FROM Benefactor b WHERE b.nIdBenefactor=".intval($id)." AND b.sName= '$sName'";
+            $arrRS = $oAccesoDatos -> comando($sQuery);
+            $oAccesoDatos -> desconectar();
+            if($arrRS>0){
+                $bRet = true;
+            }
+        }
+        return $bRet;
+    }
+
 }
 ?>
