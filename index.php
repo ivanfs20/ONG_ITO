@@ -7,7 +7,7 @@
  *************************************************************/
 $customStyles = '<link rel="stylesheet" href="view/css/vistas/landingpage.css">'; #cargamos el estilo en especifico de la landing page
 include_once("view/modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("view/modules/navbar.php");   # Navbar
+include_once("navbar2.php");   # Navbar
 include_once("view/modules/hero.php"); // Incluye la función
 
 // Define las variables para personalizar el hero
@@ -193,5 +193,5 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
 </section>
 
 <?php
-include_once("view/modules/footer.html"); # Footer y cierre de HTML
+include_once("footer2.html"); # Footer y cierre de HTML
 ?>
