@@ -129,8 +129,8 @@ include_once("modules/navbar.php");   # Navbar
             <h2 class="desicion-titulo">¿Quieres saber el destino de tu donativo?</h2>
             <p class="desicion-subtitulo">Nuestro equipo está disponible para resolver tus dudas y brindarte
                 tranquilidad.</p>
-            <a href="donar.html" class="desicion-boton">Terminos y condiciones</a>
-            <a href="donar.html" class="desicion-boton">Contactanos</a>
+            <a href="terminosycondiciones.php" class="desicion-boton">Terminos y condiciones</a>
+            <a href="iniciarsesion.html" class="desicion-boton">Contactanos</a>
         </div>
     </div>
 </section>

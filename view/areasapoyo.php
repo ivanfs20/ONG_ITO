@@ -95,7 +95,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                     Muchas aulas carecen de sillas adecuadas, ventilación o herramientas básicas para dar clases de
                     calidad.
                 </p>
-                <a href="#" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
 
@@ -113,7 +113,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                     Equipos obsoletos o en mal estado limitan las habilidades de los estudiantes para resolver problemas
                     reales.
                 </p>
-                <a href="#" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
 
@@ -131,7 +131,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                     Faltan proyectores, pizarrones, y recursos que permitan impartir clases modernas, interactivas y
                     efectivas.
                 </p>
-                <a href="#" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
 
@@ -148,7 +148,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 <p class="area-texto">
                     Filtraciones, instalaciones eléctricas deterioradas o baños sin servicio son parte del día a día.
                 </p>
-                <a href="#" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
 
@@ -165,7 +165,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 <p class="area-texto">
                     Materiales desactualizados y falta de recursos digitales afectan el acceso a información de calidad.
                 </p>
-                <a href="#" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
 
@@ -220,8 +220,8 @@ mostrarHero($tituloPagina, $subtituloPagina, );
         <div class="desicion-content">
             <h2 class="desicion-titulo">¿Ya sabes a que area quieres apoyar?</h2>
             <p class="desicion-subtitulo">Da clic y elige la campaña que te mueva. Ayudar nunca fue tan fácil.</p>
-            <a href="donar.html" class="desicion-boton">Dona directamente a un area</a>
-            <a href="donar.html" class="desicion-boton">Explora campañas activas</a>
+            <a href="iniciarsesion.php" class="desicion-boton">Dona directamente a un area</a>
+            <a href="campanas.php" class="desicion-boton">Explora campañas activas</a>
         </div>
     </div>
 </section>
