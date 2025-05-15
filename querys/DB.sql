@@ -73,3 +73,29 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionMaterial` TO 'administrador'@'l
 GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionDigital` TO 'administrador'@'localhost';
 
 FLUSH PRIVILEGES;
+-- le agregue esto para que se eliminen los id relacionados en cascada - Lima
+-- Si ya lo tienen el script anterior, solo ejecuten esta parte de script, pero si aun no hacen 
+--la base de datos, ejecuten todo el script junto 
+ALTER TABLE Proyecto 
+DROP FOREIGN KEY Proyecto_ibfk_1;
+ALTER TABLE Proyecto 
+ADD CONSTRAINT Proyecto_ibfk_1 FOREIGN KEY (nIdBenefactor) 
+REFERENCES Benefactor(nIdBenefactor) ON DELETE CASCADE;
+
+ALTER TABLE DonacionMaterial 
+DROP FOREIGN KEY DonacionMaterial_ibfk_1;
+ALTER TABLE DonacionMaterial 
+ADD CONSTRAINT DonacionMaterial_ibfk_1 FOREIGN KEY (nIdUsuario) 
+REFERENCES Usuario(nIdUsuario) ON DELETE CASCADE;
+
+ALTER TABLE DonacionMaterial 
+DROP FOREIGN KEY DonacionMaterial_ibfk_2;
+ALTER TABLE DonacionMaterial 
+ADD CONSTRAINT DonacionMaterial_ibfk_2 FOREIGN KEY (nIdBenefactor) 
+REFERENCES Benefactor(nIdBenefactor) ON DELETE CASCADE;
+
+ALTER TABLE DonacionDigital 
+DROP FOREIGN KEY DonacionDigital_ibfk_1;
+ALTER TABLE DonacionDigital 
+ADD CONSTRAINT DonacionDigital_ibfk_1 FOREIGN KEY (nIdUsuario) 
+REFERENCES Usuario(nIdUsuario) ON DELETE CASCADE;
