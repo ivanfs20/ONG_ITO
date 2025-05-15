@@ -1,11 +1,11 @@
 <?php
 class Donacion{
-    private $nIdDonacion = 0;
-    private $nAmount = 0;
-    private $bStatus = false;
-    private $aPhoto = [];
-    private $nIdBenefactor = 0;
-    private $nIdUsuario = 0;
+    protected $nIdDonacion = 0;
+    protected $nAmount = 0;
+    protected $bStatus = 0;
+    protected $aPhoto = [];
+    protected $nIdBenefactor = 0;
+    protected $nIdUsuario = 0;
 
     private function setnIdDonacion($nIdDonacion){
         $this -> nIdDonacion = $nIdDonacion;
