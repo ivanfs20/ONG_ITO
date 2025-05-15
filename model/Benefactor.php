@@ -1,4 +1,6 @@
 <?php
+include("AccesoDatos.php");
+
 class Benefactor{
     private $nIdBenefactor = 0;
     private $sName = "";
@@ -26,6 +28,31 @@ class Benefactor{
 
     public function getsDescription(){
         return $this -> sDescription;
+    }
+
+
+    //B - BENEFACTOR -> READ BY ID : Carlos Iván Flores Sánchez
+    public function readById($id){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $oBenefactor = null;
+        if($id==0){throw new Exception("/m/Benefactor/byId/id");}
+        else{
+            if($oAccesoDatos -> conectar()){
+                $sQuery = "SELECT * FROM Benefactor WHERE nIdBenefactor=".intval($id);
+                $arrRS = $oAccesoDatos -> consulta($sQuery);
+                $oAccesoDatos -> desconectar();
+                if($arrRS && count($arrRS)>0){
+                        $fila = $arrRS[0];
+                        $oBenefactor = new Benefactor();
+                        $oBenefactor -> nIdBenefactor = $fila[0];
+                        $oBenefactor -> sName = $fila[1];
+                        $oBenefactor -> sDescription = $fila[2];
+                };
+            }
+        }
+        return $oBenefactor;
     }
 }
 ?>
