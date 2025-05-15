@@ -1,4 +1,5 @@
 <?php
+require_once("AccesoDatos.php");
 class Proyecto{
     private $nIdProyecto = 0;
     private $sTitle = "";
@@ -53,6 +54,30 @@ class Proyecto{
 
     public function getnIdBenefactor(){
         return $this -> nIdBenefactor;
+    }
+    //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
+    function Create(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $bRet=false;
+        $arrRS=null;
+
+        if($this->nIdProyecto<=0 || empty($this->sTitle) || empty($this->sDescription)
+            || empty($this->aPhoto[0]) || $this->nIdUsuario<=0 || $this->nIdBenefactor<=0){
+                throw new Exception("message/Proyecto/Create/nIdProyecto,
+                sTitle,sDescription,aPhoto,nIdUsuario,nIdBenefactor");
+        }else{
+            $photoToBinary=addslashes($this->aPhoto[0]);
+            $sQuery="INSERT INTO Proyecto (sTitle,sDescription,aPhoto,nIdUsuario,nIdBenefactor)
+            VALUES ('".$this->sTitle."' , '".$this->sDescription."' , '".$photoToBinary."' ,"
+            .intval($this->nIdUsuario)." , ".intval($this->nIdBenefactor).")";
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        return $bRet;
     }
 }
 ?>
