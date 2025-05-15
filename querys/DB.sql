@@ -19,9 +19,11 @@ nIdProyecto SMALLINT NOT NULL AUTO_INCREMENT,
 sTitle VARCHAR (50) NOT NULL,
 sDescription VARCHAR (250) NOT NULL,
 aPhoto LONGBLOB NOT NULL,
+nIdUsuario SMALLINT NOT NULL,
 nIdBenefactor SMALLINT NOT NULL,
 PRIMARY KEY (nIdProyecto),
-FOREIGN KEY (nIdBenefactor) REFERENCES Benefactor(nIdBenefactor)
+FOREIGN KEY (nIdBenefactor) REFERENCES Benefactor(nIdBenefactor),
+FOREIGN KEY (nIdUsuario) REFERENCES Usuario (nIdUsuario)
 );
 
 CREATE TABLE DonacionMaterial(
@@ -81,6 +83,12 @@ DROP FOREIGN KEY Proyecto_ibfk_1;
 ALTER TABLE Proyecto 
 ADD CONSTRAINT Proyecto_ibfk_1 FOREIGN KEY (nIdBenefactor) 
 REFERENCES Benefactor(nIdBenefactor) ON DELETE CASCADE;
+
+ALTER TABLE Proyecto
+DROP FOREIGN KEY Proyecto_ibfk_2;
+ALTER TABLE Proyecto
+ADD CONSTRAINT Proyecto_ibfk_2 FOREIGN KEY (nIdUsuario)
+REFERENCES Usuario (nIdUsuario) ON DELETE CASCADE;
 
 ALTER TABLE DonacionMaterial 
 DROP FOREIGN KEY DonacionMaterial_ibfk_1;
