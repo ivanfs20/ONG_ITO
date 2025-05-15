@@ -1,5 +1,5 @@
 <?php
-public class Donacion{
+class Donacion{
     private $nIdDonacion = 0;
     private $nAmount = 0;
     private $bStatus = false;

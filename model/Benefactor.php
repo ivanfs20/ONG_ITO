@@ -1,5 +1,5 @@
 <?php
-public class Benefactor{
+class Benefactor{
     private $nIdBenefactor = 0;
     private $sName = "";
     private $sDescription = "";

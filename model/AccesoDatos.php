@@ -1,5 +1,5 @@
 <?php
-public class AccesoDatos{
+class AccesoDatos{
     private $oConexion = null;
     private $sDBname = "ongIto";
     private $sHost = "localhost";
@@ -11,8 +11,13 @@ public class AccesoDatos{
     function conectar(){
         $bRet = false;
         try{
-            $this -> oConexion = new PDO("mysql:host=".sHost.";dbname=".sDBname.",".sUser.",".sPassword,array(PDO::MYSQL_ATTR_INIT_COMMAND=> "SET NAMES 'UTF8'"));
-            $bRet = true;
+            $this->oConexion = new PDO(
+                "mysql:host=" . $this->sHost . ";dbname=" . $this->sDBname,
+                $this->sUser,
+                $this->sPassword,
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'")
+            );
+                        $bRet = true;
         }catch(Exception $e){
             throw $e;
         }
@@ -80,7 +85,7 @@ public class AccesoDatos{
     //METODO PARA DESCONECTAR DE LA BD -> desconectar()
     function desconectar(){
         $bRet = true;
-        if($this -> oConexion ! = null){
+        if($this -> oConexion != null){
             $this -> oConexion = null;
         }
 

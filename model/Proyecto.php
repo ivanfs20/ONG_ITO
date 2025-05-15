@@ -1,5 +1,5 @@
 <?php
-public class Proyecto{
+class Proyecto{
     private $nIdProyecto = 0;
     private $sTitle = "";
     private $sDescription = "";

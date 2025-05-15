@@ -1,6 +1,6 @@
 <?php
-include("Donacion")
-public class Material extends Donacion{
+include("Donacion");
+class Material extends Donacion{
     private $sName = "";
     private $sDescription = "";
 

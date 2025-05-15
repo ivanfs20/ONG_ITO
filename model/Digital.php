@@ -1,6 +1,6 @@
 <?php
-include("Donacion")
-public class Digital extends Donacion{
+include("Donacion.php");
+class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";
 

@@ -1,5 +1,5 @@
 <?php
-public class Usuario{
+class Usuario{
     private $nIdUsuario = 0;
     private $sNombreC = "";
     private $sEmail = "";
