@@ -56,7 +56,7 @@ class Proyecto{
         return $this -> nIdBenefactor;
     }
     //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
-    function Create(){
+    public function Create(){
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
         $bRet=false;
@@ -80,7 +80,7 @@ class Proyecto{
         return $bRet;
     }
     //B-PROYECTOS (CAMPAÑAS)->DELETE BY TITLE :Saul Lima Gonzalez
-    function deleteByTitle($id,$sTitle){
+    public function deleteByTitle($id,$sTitle){
             $oAccesoDatos=new AccesoDatos();
             $sQuery="";
             $bRet=false;
