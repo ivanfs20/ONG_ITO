@@ -7,6 +7,8 @@
     padding: 1rem 5%;
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* permite que los elementos se acomoden si no caben */
+    gap: 1rem; /* pequeño espacio cuando se reorganizan */
 }
 
 /** Comienza el estilo del logo **/
@@ -64,4 +66,43 @@
 
 .login-link:hover::after {
     transform: translateX(3px);
+}
+
+/* Navbar responsivp */
+/* En pantallas medianas, se ajusta el layout pero se mantiene en una línea si cabe */
+@media (max-width: 1024px) {
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+}
+
+/* En pantallas pequeñas, los elementos se apilan verticalmente si no caben */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 3%;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 0.5rem 1rem;
+    }
+
+    .nav-link,
+    .login-link {
+        font-size: 14px;
+    }
+
+    .logo-line1 {
+        font-size: 20px;
+    }
+
+    .logo-line2 {
+        font-size: 14px;
+    }
 }
