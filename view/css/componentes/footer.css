@@ -97,3 +97,57 @@
     font-size: 0.95rem;
     line-height: 1.4;
 }
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .principal-footer {
+        padding: 2rem 5% 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-titulo {
+        font-size: 1.5rem;
+        border-bottom: none;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .footer-lista {
+        margin-bottom: 1.5rem;
+    }
+
+    .mini-formulario button {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .footer-logo {
+        max-width: 200px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .footer-boton {
+        padding-top: 1.5rem;
+    }
+}
+
+/* Tablet Pequeña */
+@media (max-width: 480px) {
+    .footer-titulo {
+        font-size: 1.3rem;
+    }
+
+    .footer-lista li {
+        margin-bottom: 0.5rem;
+    }
+
+    .mini-formulario input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
