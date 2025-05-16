@@ -21,7 +21,7 @@ class Material extends Donacion{
         return $this -> sDescription;
     }
         //B - DONACIONES (MATERIAL) -> CREATE:Saul Lima Gonzalez
-        function Create(){
+        public function Create(){
             $oAccesoDatos=new AccesoDatos();
             $arrRS=null;
             $oBret=null;
@@ -34,7 +34,7 @@ class Material extends Donacion{
                 $photoToBinary=addslashes($this->aPhoto[0]);
                 $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBenefactor)
                 VALUES ('".$this->sName."' , '".$this->sDescription."', '".$photoToBinary."' ,".intval($this->nAmount)."
-                ,0,".intval($this->nIdUsuario).",".intval($this->nIdBenefactor);
+                ,0,".intval($this->nIdUsuario).",".intval($this->nIdBenefactor).")";
                 $arrRS=$oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
                 if ($arrRS>0){
