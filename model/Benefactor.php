@@ -75,5 +75,31 @@ class Benefactor{
         return $bRet;
     }
 
+    //B-BENEFACTOR->READ BY NAME: Saul Lima González
+    public function readByName($id,$sNombre){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;        
+        if($id<=0 || empty($sNombre)){
+            throw new Exception ("message/Benefactor/id o nombre nulos");
+        }else{
+            if($oAccesoDatos->conectar()){
+                $sQuery="SELECT * FROM Benefactor WHERE nIdBenefactor=".intval($id)."AND sName='".$sNombre."'";
+            $arrRS=$oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && count($arrRS)>0){
+                $fila=$arrRS[0];
+                $oBenefactor=new Benefactor();
+                $oBenefactor->nIdBenefactor=$fila[0];
+                $oBenefactor->sName=$fila[1];
+                $oBenefactor->sDescription=$fila[2];
+
+            };
+            }
+            
+            return $oBenefactor;
+        }
+    }
+
 }
 ?>
