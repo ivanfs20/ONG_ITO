@@ -79,5 +79,23 @@ class Proyecto{
         }
         return $bRet;
     }
+    //B-PROYECTOS (CAMPAÑAS)->DELETE BY TITLE :Saul Lima Gonzalez
+    function deleteByTitle($id,$sTitle){
+            $oAccesoDatos=new AccesoDatos();
+            $sQuery="";
+            $bRet=false;
+            $arrRS=null;
+            if($id<=0 || empty($sTitle)){
+                throw new  Exception("message/Proyecto/titulo o ids nulos o vacios");                
+            }else{
+                $sQuery="DELETE FROM Proyecto WHERE nIdProyecto=".intval($id)."AND sTitle='".$sTitle."'";
+                $arrRS=$oAccesoDatos->comando($sQuery);
+                $oAccesoDatos->desconectar();
+                if($arrRS>0){
+                    $bRet=true;
+                }
+            }
+            return $bRet;
+    }
 }
 ?>
