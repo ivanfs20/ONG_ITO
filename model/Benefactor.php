@@ -101,5 +101,25 @@ class Benefactor{
         }
     }
 
+    //B-BENEFACTOR->DELETE BY ID:Saul Lima Gonzalez
+    public function deleteById($id){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $bRet=false;
+        if($id<=0 || $id==null){
+            throw new Exception("message/Benefactor/deleteById/id nulo o menor que 0");
+        }else{
+            $sQuery="DELETE FROM Benefactor WHERE nIdBenefactor=".intval($id);
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        return $bRet;
+
+    }
+
 }
 ?>
