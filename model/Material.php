@@ -44,6 +44,38 @@ class Material extends Donacion{
             }
                 return $oBret;
 
-        }   
+        } 
+        
+        //B-DONACIONES(MATERIAL)>READ BY NAME :Saul Lima Gonzalez
+        public function readByName($id,$sName){
+           $oAccesoDatos=new AccesoDatos();
+            $sQuery="";
+            $arrRS=null;
+            $oMaterial=null;
+
+            if($id<=0 || $sName==""){
+                throw new Exception("message/Material/id nul||name null");
+            }else{
+                if($oAccesoDatos->conectar()){
+                    $sQuery="SELECT FROM DonacionMaterial WHERE nIdDonacion=".intval($id)." AND sName='".$sName."'";
+                    $arrRS=$oAccesoDatos->consulta($sQuery);
+                    $oAccesoDatos->desconectar();
+                    if($arrRS && count($arrRS)>0){
+                        $aLinea=$arrRS[0];
+                        $oMaterial=new Material();
+                        $oMaterial->nIdDonacion=$aLinea[0];
+                        $oMaterial->sName=$aLinea[1];
+                        $oMaterial->sDescription=$aLinea[2];
+                        $oMaterial->aPhoto=$aLinea[3];
+                        $oMaterial->nAmount=$aLinea[4];
+                        $oMaterial->bStatus=$aLinea[5];
+                        $oMaterial->nIdUsuario=$aLinea[6];
+                        $oMaterial->nIdBenefactor=$aLinea[7];
+                    };
+                }
+                return $oMaterial;
+            }        
+        }
+
 }
 ?>
