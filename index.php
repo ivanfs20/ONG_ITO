@@ -6,6 +6,7 @@
  * Autor: Edwin Ariel Ramos Alvarez
  *************************************************************/
 $customStyles = '<link rel="stylesheet" href="view/css/vistas/landingpage.css">'; #cargamos el estilo en especifico de la landing page
+$customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("view/modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("navbar2.php");   # Navbar
 include_once("view/modules/hero.php"); // Incluye la función
