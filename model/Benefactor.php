@@ -121,5 +121,26 @@ class Benefactor{
 
     }
 
+    //B-BENEFACTOR->UPDATE :Saul ima Gonzalez
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $nAfectados=-1;
+        if ($this->nIdBenefactor<0 || $this->nIdBenefactor==0 || empty($this->sName) || empty($this->sDescription)){
+            throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
+        }else{
+            if($oAccesoDatos->conectar()){
+               $sQuery = "UPDATE Benefactor SET 
+                nIdBenefactor = " . intval($this->nIdBenefactor) . ",
+                sName = '" . $this->sName . "',
+                sDescription = '" . $this->sDescription . "' 
+                 WHERE nIdBenefactor = " . intval($this->nIdBenefactor);
+                $nAfectados=$oAccesoDatos->comando($sQuery);
+                $oAccesoDatos->desconectar();
+            }
+        }
+        return $nAfectados;
+    }
+
 }
 ?>
