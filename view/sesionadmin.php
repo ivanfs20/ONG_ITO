@@ -4,7 +4,7 @@
  * Objetivo: Menu principal para el administrador
  * Autor: Uriel Vallejo Xicalhua
  *************************************************************/
-$customStyles = '<link rel="stylesheet" href="../view/css/vistas/landingpage.css">'; #cargamos el estilo en especifico de contacto.php
+$customStyles = '<link rel="stylesheet" href="../view/css/vistas/sesionadmin.css">'; #cargamos el estilo en especifico de contacto.php
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 
