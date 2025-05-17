@@ -56,7 +56,7 @@ class Proyecto{
         return $this -> nIdBenefactor;
     }
     //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
-    public function Create(){
+    public function create(){ //-> los métodos inician con letra minuscula (Carlos Iván Flores Sánchez)
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
         $bRet=false;
@@ -79,6 +79,36 @@ class Proyecto{
         }
         return $bRet;
     }
+
+
+    //B-PROYECTOS (CAMPAÑAS)-> UPDATE: Flores Sánchez Carlos Iván
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $bRet=false;
+        $arrRS=null;
+
+        if($this->nIdProyecto<=0 || empty($this->sTitle) || empty($this->sDescription || $this->nIdUsuario<=0 || $this->nIdBenefactor|| $this->aPhoto == [])
+            || empty($this->aPhoto[0]) || $this->nIdUsuario<=0 || $this->nIdBenefactor<=0){
+                throw new Exception("message/Proyecto/Create/nIdProyecto,
+                sTitle,sDescription,aPhoto,nIdUsuario,nIdBenefactor");
+        }else{
+            $photoToBinary=addslashes($this->aPhoto[0]);
+            $sQuery = "UPDATE Proyecto SET sTitle = '".$this->sTitle."',
+            sDescription = '".$this->sDescription."',
+            aPhoto = '".$photoToBinary."',
+            nIdUsuario = ".intval($this->nIdUsuario).",
+            nIdBenefactor = ".intval($this->nIdBenefactor)."
+            WHERE nIdProyecto = ".intval($this->nIdProyecto).";"; 
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        return $bRet;
+    }
+
     //B-PROYECTOS (CAMPAÑAS)->DELETE BY TITLE :Saul Lima Gonzalez
     public function deleteByTitle($id,$sTitle){
             $oAccesoDatos=new AccesoDatos();
