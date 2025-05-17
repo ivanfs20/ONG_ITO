@@ -69,5 +69,42 @@ class Usuario{
         return $bRet;
     }
 
+    //B-REGISTER: Saul Lima Gonzalez
+    public function exists($sName,$sPassword){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $bandera=false;
+        $arrRS=null;
+        if($oAccesoDatos->conectar()){
+            $sQuery="SELECT nIdUsuario,sNombreC,sPassword FROM Usuario WHERE sNombreC='".$sName."' AND sPassword='".$sPassword."'";
+            $arrRS=$oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && is_array($arrRS)){
+                $bandera=true;
+            }
+        }
+        return $bandera;
+    }
+    //B-REGISTER:Saul Lima Gonzalez
+    public function register(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $nAfectados=-1;
+        if($this->sNombreC=="" || $this->sPassword=="" || $this->sEmail=="" || $this->sRol==""){
+            throw new Exception("message/Usuario/datos vacios");
+        }else{
+         if($this->exists($this->sNombreC,$this->sPassword)){
+            throw new Exception("message/Usuario/usuario ya existente");
+        }else if($oAccesoDatos->conectar()){
+            $sQuery="INSERT INTO Usuario (sNombreC,sPassword,sEmail,sRol)
+            VALUES ('".$this->sNombreC."', '".$this->sPassword."', '"
+            .$this->sEmail."', '".$this->sRol."')";
+            $nAfectados=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+        }        
+    }
+    return $nAfectados;
+    }
+
 }
 ?>
