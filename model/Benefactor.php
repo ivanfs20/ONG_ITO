@@ -101,5 +101,46 @@ class Benefactor{
         }
     }
 
+    //B-BENEFACTOR->DELETE BY ID:Saul Lima Gonzalez
+    public function deleteById($id){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $bRet=false;
+        if($id<=0 || $id==null){
+            throw new Exception("message/Benefactor/deleteById/id nulo o menor que 0");
+        }else{
+            $sQuery="DELETE FROM Benefactor WHERE nIdBenefactor=".intval($id);
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        return $bRet;
+
+    }
+
+    //B-BENEFACTOR->UPDATE :Saul ima Gonzalez
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $nAfectados=-1;
+        if ($this->nIdBenefactor<0 || $this->nIdBenefactor==0 || empty($this->sName) || empty($this->sDescription)){
+            throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
+        }else{
+            if($oAccesoDatos->conectar()){
+               $sQuery = "UPDATE Benefactor SET 
+                nIdBenefactor = " . intval($this->nIdBenefactor) . ",
+                sName = '" . $this->sName . "',
+                sDescription = '" . $this->sDescription . "' 
+                 WHERE nIdBenefactor = " . intval($this->nIdBenefactor);
+                $nAfectados=$oAccesoDatos->comando($sQuery);
+                $oAccesoDatos->desconectar();
+            }
+        }
+        return $nAfectados;
+    }
+
 }
 ?>

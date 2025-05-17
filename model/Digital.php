@@ -44,5 +44,37 @@ class Digital extends Donacion{
         return $bRet;
     }
 
+    //B - DONACIONES (TARJETA) -> UPDATE : Saul Lima Gonzale
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $nAfectados=-1;
+        
+        if($this->bStatus==1 || empty($this->aPhoto[0])){
+            throw new Exception("message/Digital/update/la donacion ya fue validada||foto vacia");
+        }else{
+            if(intval($this->nFolio)<=0 || empty($this->sMethod) || $this->nAmount<=0
+               || $this->nIdUsuario<=0 || $this->nIdBenefactor<=0){
+                throw new  Exception("message/Digital/update/nFolio||sMethod||nAmount||nIdUsuario||nIdBenefactor");
+            }else{
+                if($oAccesoDatos->conectar()){
+                    $photoToBinary=addslashes($this->aPhoto[0]);
+                    $sQuery="UPDATE DonacionDigital SET
+                    nFolio =".intval($this->nFolio).",
+                    sMethod ='".$this->sMethod."',
+                    aPhoto='".$photoToBinary."',
+                    nAmount =".intval($this->nAmount)
+                    .", nIdUsuario =".intval($this->nIdUsuario).",
+                    nIdBenefactor =".intval($this->nIdBenefactor).
+                    "WHERE nIdDonacion = ".intval($this->nIdDonacion);
+                    $nAfectados=$oAccesoDatos->comando($sQuery);
+                    $oAccesoDatos->desconectar();
+                }
+            }
+        }
+        return $nAfectados;      
+
+    }
+
 }
 ?>
