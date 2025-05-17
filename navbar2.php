@@ -12,6 +12,6 @@
         <a href="view/areasapoyo.php" class="nav-link">Áreas de trabajo</a>
         <a href="view/transparencia.php" class="nav-link">Transparencia</a>
         <a href="view/donar.php" class="nav-link">Donar ahora</a>
-        <a href="view/login.php" class="nav-link login-link">Login</a>
+        <a href="view/iniciarsesion.php" class="nav-link login-link">Login</a>
     </div>
 </nav>
