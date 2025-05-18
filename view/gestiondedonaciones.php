@@ -21,12 +21,12 @@ include_once("modules/navbar.php");   # Navbar
             <div class="card">
                 <img src="https://via.placeholder.com/280x150?text=Donaciones" alt="Donaciones">
                 <p>Pagos con tarjeta</p>
-                <a href="#">Donacion Dinero →</a>
+                <a href="gestiondigital.php">Donacion Dinero →</a>
             </div>
             <div class="card">
                 <img src="https://via.placeholder.com/280x150?text=Proyectos" alt="Proyectos">
                 <p>Recursos resividos</p>
-                <a href="#">Donacion Recurso →</a>
+                <a href="gestionmaterial.php">Donacion Recurso →</a>
             </div>
         </div>
 
