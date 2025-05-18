@@ -44,7 +44,7 @@ include_once("modules/navbar.php");   # Navbar
             <div class="area-card">
                 <i class="fas fa-tools fa-3x area-icon"></i>
                 <h3 class="area-title">Listado de usuariosAsignar roles</h3>
-                <button class="area-button">Gestión de Usuarios</button>
+                <button onclick="window.location.href='gestiondeusuarios.php'" class="area-button">Gestión de Usuarios</button>
             </div>
 
         </div>
