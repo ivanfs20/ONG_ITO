@@ -34,8 +34,8 @@ include_once("modules/navbar.php");   # Navbar
                         at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet 
                         urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.</td>
                     <td>.png</td>
-                    <td><button class="btn-modificar">Modificar</button>
-                    <button class="btn-eliminar">Eliminar</button>
+                    <td><button onclick="window.location.href='proyectomodificar.php'" class="btn-modificar">Modificar</button>
+                    <button onclick="window.location.href='proyectoeliminar.php'" class="btn-eliminar">Eliminar</button>
                 </td>
            
                 </tr>
@@ -43,7 +43,7 @@ include_once("modules/navbar.php");   # Navbar
         </table>
 
       
-        <button class="btn-insertar">Insertar</button>
+        <button onclick="window.location.href='proyectoinsertar.php'" class="btn-insertar">Insertar</button>
     </div>
 
 

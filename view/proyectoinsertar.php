@@ -1,17 +1,17 @@
 <?php
 /*************************************************************/
-/* Archivo:  proyectoeliminar.php
- * Objetivo: Eliminar campo de un proyecto
+/* Archivo:  proyectoinsertar.php
+ * Objetivo: Insertar campo de un proyecto
  * Autor: Uriel Vallejo Xicalhua
  *************************************************************/
-$customStyles = '<link rel="stylesheet" href="../view/css/vistas/proyectoeliminar.css">'; #cargamos el estilo en especifico de proyectoeliminar.php
+$customStyles = '<link rel="stylesheet" href="../view/css/vistas/proyectoinsertar.css">'; #cargamos el estilo en especifico de proyectoinsertar.php
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 
 ?>
 
 
-<div class="header">Eliminar Proyecto</div>
+<div class="header">Insertar Proyecto</div>
 
 <div class="container">
     <table>
