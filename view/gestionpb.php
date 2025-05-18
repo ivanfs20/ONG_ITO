@@ -21,7 +21,7 @@ include_once("modules/navbar.php");   # Navbar
             <div class="card">
                 <img src="../view/media/pupitres.jpg" alt="Donaciones">
                 <p></p>
-                <a href="#">Proyectos →</a>
+                <a href="gestiondeproyecto.php">Proyectos →</a>
             </div>
             <div class="card">
                 <img src="../view/media/salon.jpg" alt="Proyectos">
