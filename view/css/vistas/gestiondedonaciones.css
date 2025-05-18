@@ -1,0 +1,67 @@
+
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/hero.css');
+@import url('../componentes/footer.css');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.banner {
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1.2em;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 15px;
+    text-align: left;
+}
+
+    .card img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        margin: 0 0 10px;
+    }
+
+    .card a {
+        color: #fbc02d;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #555;
+}

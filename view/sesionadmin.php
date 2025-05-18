@@ -29,7 +29,7 @@ include_once("modules/navbar.php");   # Navbar
                 <i class="fas fa-book-open fa-3x area-icon"></i>
                 <h3 class="area-title">Ver todas las donacionesEditar / Eliminar registros</h3>
               
-                <button class="area-button">Gestión de Donaciones</button>
+                <button onclick="window.location.href='gestiondedonaciones.php'" class="area-button">Gestión de Donaciones</button>
             </div>
 
             <!-- Tarjeta 2 - Proyectos -->
@@ -37,14 +37,14 @@ include_once("modules/navbar.php");   # Navbar
                 <i class="fas fa-tv fa-3x area-icon"></i>
                 <h3 class="area-title">Crear, editar, eliminar campañas</h3>
               
-                <button class="area-button">Gestión de Proyectos y Bnefactor</button>
+                <button onclick="window.location.href='gestionpb.php'" class="area-button">Gestión de Proyectos y Bnefactor</button>
             </div>
 
             <!-- Tarjeta 3 - Usuarios -->
             <div class="area-card">
                 <i class="fas fa-tools fa-3x area-icon"></i>
                 <h3 class="area-title">Listado de usuariosAsignar roles</h3>
-                <button class="area-button">Gestión de Usuarios</button>
+                <button onclick="window.location.href='gestiondeusuarios.php'" class="area-button">Gestión de Usuarios</button>
             </div>
 
         </div>
