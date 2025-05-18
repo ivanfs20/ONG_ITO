@@ -16,8 +16,8 @@ include_once("modules/navbar.php");   # Navbar
         <h1 class="hero-titulo">No importa si es grande o pequeño, cada aparte suma para lograr un impacto positivo.
         </h1>
         <p class="hero-subtitulo">
-            <span class="paso-activo">1</span>
-            <span class="paso-inactivo">2</span>
+            <span class="paso-inactivo">1</span>
+            <span class="paso-activo">2</span>
             <span class="paso-inactivo">3</span>
             <span class="paso-inactivo">4</span>
         </p>
@@ -47,7 +47,9 @@ include_once("modules/navbar.php");   # Navbar
         <div class="contenido-continuar">
             <p class="texto-guia">Selecciona el tipo de donacion para continuar.</p>
             <button class="boton-continuar2" disabled>
-                CONTINUAR
+                <a href="D31_TipoTarjeta.php" class="boton-continuar3">
+                    CONTINUAR
+                </a>
             </button>
         </div>
     </div>

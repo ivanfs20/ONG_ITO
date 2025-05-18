@@ -53,6 +53,8 @@
 
 
 
+
+
 /* Estilos para la sección de continuación */
 .seccion-continuar {
     padding: 3rem 1rem;
@@ -80,7 +82,7 @@
     font-weight: bold;
 }
 
-.boton-continuar2 {
+.boton-continuar3 {
     background: #F8D400;
     color: #0B2054;
     padding: 1rem 2.5rem;
@@ -93,13 +95,12 @@
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    opacity: 0.5;
-    cursor: not-allowed;
     text-decoration: none;
+    /* Elimina el subrayado del enlace */
 }
 
 
-.boton-continuar2:hover {
+.boton-continuar3:hover {
     background: #ffdf33;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(248, 212, 0, 0.3);
@@ -119,7 +120,7 @@
         font-size: 1.1rem;
     }
 
-    .boton-continuar2 {
+    .boton-continuar3 {
         width: 100%;
         justify-content: center;
         padding: 1rem;
@@ -141,63 +142,100 @@
     }
 }
 
-/* Estilos para el select personalizado */
-.contenedor-select {
-    max-width: 600px;
+
+
+/** Estilo para el formulario */
+.seccion-formulario {
+    padding: 3rem 1rem;
+    background: #fff;
+}
+
+.contenedor-formulario {
+    max-width: 800px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.grupo-formulario {
+    margin-bottom: 0.5rem;
+}
+
+.etiqueta {
+    display: block;
+    color: #1E3D59;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.input-formulario,
+.textarea-formulario,
+.select-formulario {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1E3D59;
+    transition: all 0.3s ease;
+    background-color: #B8DCFF;
+}
+
+.input-formulario:focus,
+.textarea-formulario:focus,
+.select-formulario:focus {
+    outline: none;
+    border-color: #FFE100;
+    box-shadow: 0 0 0 3px rgba(255, 225, 0, 0.2);
+}
+
+.textarea-formulario {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Estilos para el input de archivo */
+.contenedor-archivo {
     position: relative;
 }
 
-.select-estilizado {
-    width: 100%;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    border: 2px solid #E0E0E0;
-    border-radius: 10px;
-    background-color: #fff;
-    appearance: none;
-    cursor: pointer;
-    color: #1E3D59;
-    transition: all 0.3s ease;
-}
-
-.select-estilizado:focus {
-    outline: none;
-    border-color: #FFE100;
-    box-shadow: 0 0 0 3px rgba(255, 228, 0, 0.2);
-}
-
-/* Flecha personalizada */
-.contenedor-select::after {
-    content: "▼";
+.input-archivo {
     position: absolute;
-    top: 50%;
-    right: 1.2rem;
-    transform: translateY(-50%);
-    color: #1E3D59;
-    pointer-events: none;
-    font-size: 0.8rem;
+    left: -9999px;
 }
 
-/* Estilos para las opciones */
-.select-estilizado option {
-    padding: 1rem;
-    font-size: 1rem;
-}
-
-.select-estilizado option[value=""] {
-    color: #6C757D;
-}
-
-/* Efecto hover */
-.select-estilizado:hover {
-    border-color: #FFE100;
-}
-
-.titulo-seccion {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+.etiqueta-archivo {
+    display: inline-block;
+    background: #B8DCFF;
+    border: 2px dashed #E0E0E0;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
     text-align: center;
-    color: #0B2054;
-    font-weight: bold;
+    
+}
+
+.etiqueta-archivo:hover {
+    border-color: #FFE100;
+    background: #70a1d2;
+}
+
+.texto-archivo {
+    color: #6C757D;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .etiqueta {
+        font-size: 1rem;
+    }
+
+    .input-formulario,
+    .textarea-formulario,
+    .select-formulario {
+        font-size: 0.95rem;
+    }
 }
