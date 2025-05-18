@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarFormulario('form-registro');
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const tarjetas = document.querySelectorAll('.area-card');
     const botonContinuar = document.querySelector('.boton-continuar');
     let areaSeleccionada = null;
 
     // seleccionamos un area para poder avanzar
     tarjetas.forEach(tarjeta => {
-        tarjeta.addEventListener('click', function() {
-        
+        tarjeta.addEventListener('click', function () {
+
             tarjetas.forEach(t => {
                 t.classList.remove('seleccionada');
                 t.querySelector('.area-button').textContent = "Quiero apoyar esta area";
@@ -65,14 +65,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // se debe de confirmar para avanzar, es decir primero se debe de selecconar el area para que asi se deshabilite el boton
-    botonContinuar.addEventListener('click', function(e) {
+    botonContinuar.addEventListener('click', function (e) {
         if (!areaSeleccionada) {
             e.preventDefault();
             alert('Selecciona un area primero');
             return;
         }
-        
+
         // redireccionamos a la pagina para el siguiente paso y por las dudas y por si lo necesitan se envia el area seleccionada
         window.location.href = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}`;
+    });
+});
+
+
+//seleccionar el tipo de recurso a donar
+// script1.js
+document.addEventListener('DOMContentLoaded', function () {
+    const selectDonacion = document.getElementById('tipo-donacion');
+    const continueButton = document.querySelector('.boton-continuar2');
+
+    selectDonacion.addEventListener('change', function () {
+        if (this.value !== '') {
+            continueButton.removeAttribute('disabled');
+            continueButton.style.opacity = '1';
+            continueButton.style.cursor = 'pointer';
+        } else {
+            continueButton.setAttribute('disabled', true);
+            continueButton.style.opacity = '0.5';
+            continueButton.style.cursor = 'not-allowed';
+        }
     });
 });
