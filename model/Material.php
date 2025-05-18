@@ -57,7 +57,7 @@ class Material extends Donacion{
                 throw new Exception("message/Material/id nul||name null");
             }else{
                 if($oAccesoDatos->conectar()){
-                    $sQuery="SELECT FROM DonacionMaterial WHERE nIdDonacion=".intval($id)." AND sName='".$sName."'";
+                    $sQuery="SELECT * FROM DonacionMaterial WHERE nIdDonacion=".intval($id)." AND sName='".$sName."'";
                     $arrRS=$oAccesoDatos->consulta($sQuery);
                     $oAccesoDatos->desconectar();
                     if($arrRS && count($arrRS)>0){
