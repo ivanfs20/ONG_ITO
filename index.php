@@ -53,8 +53,8 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
             <div class="area-card">
                 <i class="fas fa-book-open fa-3x area-icon"></i>
                 <h3 class="area-title">Biblioteca</h3>
-                <p class="area-description">Nuestra biblioteca es el corazón académico. Tu donativo ayuda a renovar
-                    acervos, actualizar equipos de consulta y mejorar espacios para el estudio colaborativo.</p>
+                <p class="area-description">Nuestra biblioteca es el corazón académico. Tu donativo ayuda a renovar,
+                    actualizar equipos de consulta y mejorar espacios para el estudio colaborativo.</p>
                 <button class="area-button">Quiero apoyar esta área</button>
             </div>
 
@@ -117,7 +117,8 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                     <img src="view/media/pupitres.jpg" alt="Pupitres deteriorados">
                 </div>
                 <div class="descripcion-celda">
-                    <p class="descripcion-texto">Muchos estudiantes deben compartir pupitres deteriorados. Esta situación
+                    <p class="descripcion-texto">Muchos estudiantes deben compartir pupitres deteriorados. Esta
+                        situación
                         afecta su concentración y comodidad durante las clases.</p>
                 </div>
             </div>
@@ -174,7 +175,8 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                     <div class="estadisticas-icono">🎓</div>
                     <div class="stat-content">
                         <span class="estadisticas-numero">Casi el 40%</span>
-                        <p class="estadisticas-descripccion">de los estudiantes ha pensado en abandonar sus estudios.</p>
+                        <p class="estadisticas-descripccion">de los estudiantes ha pensado en abandonar sus estudios.
+                        </p>
                     </div>
                 </div>
             </div>
