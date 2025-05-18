@@ -26,7 +26,7 @@ include_once("modules/navbar.php");   # Navbar
             <div class="card">
                 <img src="../view/media/salon.jpg" alt="Proyectos">
                 <p></p>
-                <a href="#">Benefactor →</a>
+                <a href="gestiondebenefactor.php">Benefactor →</a>
             </div>
         </div>
 

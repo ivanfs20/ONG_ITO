@@ -1,17 +1,17 @@
 <?php
 /*************************************************************/
-/* Archivo:  gestiondigital.php
- * Objetivo: Tabla donaciones digitales
+/* Archivo:  gestiondebenefactor.php
+ * Objetivo: Tabla benefactor
  * Autor: Uriel Vallejo Xicalhua
  *************************************************************/
-$customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondeproyecto.css">'; #cargamos el estilo en especifico de gestiondigital.php
+$customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondebenefactor.css">'; #cargamos el estilo en especifico de gestiondebenefactor.php
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 
 ?>
 
 <div class="header">
-        Gestion de Proyecto
+        Gestion de Benefactor
     </div>
 
     <div class="table-container">
@@ -19,10 +19,9 @@ include_once("modules/navbar.php");   # Navbar
             <thead>
                 <tr>
                     <th>Id Proyecto</th>
-                    <th>Titulo</th>
+                    <th>Nombre</th>
                     <th>Descripcion</th>
-                    <th>Foto</th>
-                  
+
                    
                 </tr>
             </thead>
@@ -33,7 +32,6 @@ include_once("modules/navbar.php");   # Navbar
                     <td>Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat 
                         at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet 
                         urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.</td>
-                    <td>.png</td>
                     <td><button onclick="window.location.href='proyectomodificar.php'" class="btn-modificar">Modificar</button>
                     <button onclick="window.location.href='proyectoeliminar.php'" class="btn-eliminar">Eliminar</button>
                 </td>
