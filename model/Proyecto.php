@@ -127,5 +127,33 @@ class Proyecto{
             }
             return $bRet;
     }
+
+    //B-PROYECTOS(CAMPAÑAS)>READ BY TITLE : Saul Lima Gonzalez
+    public function readByTitle($id,$sTitle){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $oProyecto=null;
+        if($id<=0 || empty($sName)){
+            throw new  Exception("message/Proyecto(Campaña)/id null||title null");
+        }else{
+            if($oAccesoDatos->conectar()){
+                $sQuery="SELECT * FROM Proyecto WHERE nIdProyecto=".intval($id)." AND sTtitle='".$sTitle."'";
+                $arrRS=$oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                if($arrRS && count($arrRS)>0){
+                    $aLinea=$arrRS[0];
+                    $oProyecto=new Proyecto();
+                    $oProyecto->nIdProyecto=$aLinea[0];
+                    $oProyecto->sTitle=$aLinea[1];
+                    $oProyecto->sDescription=$aLinea[2];
+                    $oProyecto->aPhoto=$aLinea[3];
+                    $oProyecto->nIdUsuario=$aLinea[4];
+                    $oProyecto->nIdBenefactor=$aLinea[5];
+                };
+            }
+        }
+        return $oProyecto;
+    }
 }
 ?>
