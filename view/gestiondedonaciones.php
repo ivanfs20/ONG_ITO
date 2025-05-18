@@ -1,7 +1,7 @@
 <?php
 /*************************************************************/
-/* Archivo:  sesionadmin.php
- * Objetivo: Menu principal para el administrador
+/* Archivo:  gestiondedonaciones.php
+ * Objetivo: Menu de los tipos de donaciones
  * Autor: Uriel Vallejo Xicalhua
  *************************************************************/
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondedonaciones.css">'; #cargamos el estilo en especifico de contacto.php

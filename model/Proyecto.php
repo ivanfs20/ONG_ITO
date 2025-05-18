@@ -56,7 +56,7 @@ class Proyecto{
         return $this -> nIdBenefactor;
     }
     //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
-    public function Create(){
+    public function create(){ //-> los métodos inician con letra minuscula (Carlos Iván Flores Sánchez)
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
         $bRet=false;
@@ -79,6 +79,36 @@ class Proyecto{
         }
         return $bRet;
     }
+
+
+    //B-PROYECTOS (CAMPAÑAS)-> UPDATE: Flores Sánchez Carlos Iván
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $bRet=false;
+        $arrRS=null;
+
+        if($this->nIdProyecto<=0 || empty($this->sTitle) || empty($this->sDescription || $this->nIdUsuario<=0 || $this->nIdBenefactor|| $this->aPhoto == [])
+            || empty($this->aPhoto[0]) || $this->nIdUsuario<=0 || $this->nIdBenefactor<=0){
+                throw new Exception("message/Proyecto/Create/nIdProyecto,
+                sTitle,sDescription,aPhoto,nIdUsuario,nIdBenefactor");
+        }else{
+            $photoToBinary=addslashes($this->aPhoto[0]);
+            $sQuery = "UPDATE Proyecto SET sTitle = '".$this->sTitle."',
+            sDescription = '".$this->sDescription."',
+            aPhoto = '".$photoToBinary."',
+            nIdUsuario = ".intval($this->nIdUsuario).",
+            nIdBenefactor = ".intval($this->nIdBenefactor)."
+            WHERE nIdProyecto = ".intval($this->nIdProyecto).";"; 
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        return $bRet;
+    }
+
     //B-PROYECTOS (CAMPAÑAS)->DELETE BY TITLE :Saul Lima Gonzalez
     public function deleteByTitle($id,$sTitle){
             $oAccesoDatos=new AccesoDatos();
@@ -97,5 +127,60 @@ class Proyecto{
             }
             return $bRet;
     }
+
+    //B-PROYECTOS(CAMPAÑAS)>READ BY TITLE : Saul Lima Gonzalez
+    public function readByTitle($id,$sTitle){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $oProyecto=null;
+        if($id<=0 || empty($sName)){
+            throw new  Exception("message/Proyecto(Campaña)/id null||title null");
+        }else{
+            if($oAccesoDatos->conectar()){
+                $sQuery="SELECT * FROM Proyecto WHERE nIdProyecto=".intval($id)." AND sTtitle='".$sTitle."'";
+                $arrRS=$oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                if($arrRS && count($arrRS)>0){
+                    $aLinea=$arrRS[0];
+                    $oProyecto=new Proyecto();
+                    $oProyecto->nIdProyecto=$aLinea[0];
+                    $oProyecto->sTitle=$aLinea[1];
+                    $oProyecto->sDescription=$aLinea[2];
+                    $oProyecto->aPhoto=$aLinea[3];
+                    $oProyecto->nIdUsuario=$aLinea[4];
+                    $oProyecto->nIdBenefactor=$aLinea[5];
+                };
+            }
+        }
+        return $oProyecto;
+    }
+
+    //B-PROYECTOS(CAMPAÑAS)->READ ALL : Saul Lima Gonzalez
+    public function readAll(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $oProyecto=null;
+        if($oAccesoDatos->conectar()){
+            $sQuery="SELECT * FROM Proyecto";
+            $arrRS=$oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && count($arrRS)>0){
+                $aLinea=$arrRS[0];
+                $oProyecto=new Proyecto();
+                $oProyecto->nIdProyecto=$aLinea[0];
+                $oProyecto->sTitle=$aLinea[1];
+                $oProyecto->sDescription=$aLinea[2];
+                $oProyecto->aPhoto=$aLinea[3];
+                $oProyecto->nIdUsuario=$aLinea[4];
+                $oProyecto->nIdBenefactor=$aLinea[5];
+            };
+        }
+        return $oProyecto;
+    }
+
+       
 }
+
 ?>

@@ -142,5 +142,71 @@ class Benefactor{
         return $nAfectados;
     }
 
+    // B - BENEFACTOR -> SELECT BY NAME : Morales de Jesus Jesus Antonio
+
+    public static function getAll() {
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $arrBenefactores = array();
+        
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT * FROM Benefactor ORDER BY sName ASC";
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                
+                if ($arrRS && count($arrRS) > 0) {
+                    foreach ($arrRS as $fila) {
+                        $oBenefactor = new Benefactor();
+                        $oBenefactor->setnIdBenefactor($fila[0]);
+                        $oBenefactor->setsName($fila[1]);
+                        $oBenefactor->setsDescription($fila[2]);
+                        
+                        $arrBenefactores[] = $oBenefactor;
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+        
+        return count($arrBenefactores) > 0 ? $arrBenefactores : null;
+    }
+
+    // B - BENEFACTOR -> INSERT : Morales de Jesus Jesus Antonio
+
+    public function insert() {
+        if (empty($this->sName)) {
+            throw new Exception("m/Benefactor/insert/sName");
+        }
+        
+        if (empty($this->sDescription)) {
+            throw new Exception("m/Benefactor/insert/sDescription");
+        }
+
+        $oAccesoDatos = new AccesoDatos();
+        $bRet = false;
+
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $conexion = $oAccesoDatos->getConexion();
+                $stmt = $conexion->prepare("INSERT INTO Benefactor(sName, sDescription) VALUES (?, ?)");
+                
+                if ($stmt->execute([$this->sName, $this->sDescription])) {
+                    $this->nIdBenefactor = $conexion->lastInsertId();
+                    $bRet = true;
+                }
+            }
+        } catch (Exception $e) {
+            throw new Exception("m/Benefactor/insert/Error: " . $e->getMessage());
+        } finally {
+            $oAccesoDatos->desconectar();
+        }
+        return $bRet;
+    }
+
+    
+
 }
 ?>
