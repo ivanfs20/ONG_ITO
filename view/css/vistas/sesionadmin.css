@@ -5,151 +5,64 @@
 @import url('../componentes/footer.css');
 
 
-/* Sección de Problemáticas */
-.problematicas-section {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
     background-color: #f8f9fa;
-    padding: 4rem 5%;
+    color: #333;
 }
 
-.problemas-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-main-title {
-    font-size: 2rem;
-    color: #0B2054;
-    margin-bottom: 3rem;
-    text-align: center;
-}
-
-.stats-duo-column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-}
-
-.stat-item-alt {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(255, 152, 0, 0.1);
-    border-radius: 8px;
-}
-
-.stat-number-alt {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #FF9800;
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-
-.stat-text-alt {
-    color: #2d3748;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.stat-separator {
-    border-bottom: 2px solid #e2e8f0;
-    margin: 3rem auto;
-    width: 80%;
-}
-
-.stat-full-width {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(255, 152, 0, 0.1);
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-
-/* Sección Áreas de Apoyo */
-.areas-section {
-    padding: 4rem 5%;
-    background-color: #f8f9fa;
-}
-
-.areas-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    color: #0B2054;
-    margin-bottom: 3rem;
-    font-size: 2rem;
-}
-
-.areas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.area-card {
-    background: #0B2054;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.area-card:hover {
-    transform: translateY(-5px);
-}
-
-.area-icon {
-    color: #2194F3;
-    margin-bottom: 1.5rem;
-}
-
-.area-title {
+.banner {
+    background-color: #2196f3;
     color: white;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1.2em;
 }
 
-.area-description {
-    color: silver;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
+.container {
+    padding: 20px;
+    text-align: center;
 }
 
-.area-button {
-    background-color: #F8D400;
-    color: #0B2054;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+h2 {
+    margin-bottom: 30px;
 }
 
-.area-button:hover {
-    background-color: #ffdf33;
-    transform: translateY(-2px);
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 15px;
+    text-align: left;
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-    .tabla-fila {
-        grid-template-columns: 1fr;
+    .card img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
     }
-    
-    .celda-iamgen {
-        height: 200px;
-        border-right: none;
-        border-bottom: 1px solid #e2e8f0;
-    }
-}
 
+    .card p {
+        margin: 0 0 10px;
+    }
+
+    .card a {
+        color: #fbc02d;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #555;
+}
