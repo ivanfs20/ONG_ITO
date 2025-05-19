@@ -53,6 +53,8 @@
 
 
 
+
+
 /* Estilos para la sección de continuación */
 .seccion-continuar {
     padding: 3rem 1rem;
@@ -80,7 +82,7 @@
     font-weight: bold;
 }
 
-.boton-continuar2 {
+.boton-continuar3 {
     background: #F8D400;
     color: #0B2054;
     padding: 1rem 2.5rem;
@@ -93,13 +95,12 @@
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    opacity: 0.5;
-    cursor: not-allowed;
     text-decoration: none;
+    /* Elimina el subrayado del enlace */
 }
 
 
-.boton-continuar2:hover {
+.boton-continuar3:hover {
     background: #ffdf33;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(248, 212, 0, 0.3);
@@ -119,7 +120,7 @@
         font-size: 1.1rem;
     }
 
-    .boton-continuar2 {
+    .boton-continuar3 {
         width: 100%;
         justify-content: center;
         padding: 1rem;
@@ -141,63 +142,48 @@
     }
 }
 
-/* Estilos para el select personalizado */
-.contenedor-select {
-    max-width: 600px;
+
+/** diseño del monto a donar, es decir del contenerdor */
+.Seccion-operacion {
+    padding: 4rem 1rem;
+}
+
+.contenedor-operacion {
+    max-width: 500px;
     margin: 0 auto;
-    position: relative;
-}
-
-.select-estilizado {
-    width: 100%;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    border: 2px solid #E0E0E0;
+    background: #115491;
+    padding: 2rem;
     border-radius: 10px;
-    background-color: #fff;
-    appearance: none;
-    cursor: pointer;
-    color: #1E3D59;
-    transition: all 0.3s ease;
-}
-
-.select-estilizado:focus {
-    outline: none;
-    border-color: #FFE100;
-    box-shadow: 0 0 0 3px rgba(255, 228, 0, 0.2);
-}
-
-/* Flecha personalizada */
-.contenedor-select::after {
-    content: "▼";
-    position: absolute;
-    top: 50%;
-    right: 1.2rem;
-    transform: translateY(-50%);
-    color: #1E3D59;
-    pointer-events: none;
-    font-size: 0.8rem;
-}
-
-/* Estilos para las opciones */
-.select-estilizado option {
-    padding: 1rem;
-    font-size: 1rem;
-}
-
-.select-estilizado option[value=""] {
-    color: #6C757D;
-}
-
-/* Efecto hover */
-.select-estilizado:hover {
-    border-color: #FFE100;
-}
-
-.titulo-seccion {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
     text-align: center;
-    color: #0B2054;
-    font-weight: bold;
+}
+
+.titulo-operacion {
+    color: #ABBED1;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.input-simple {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #FFE100;
+    border-radius: 8px;
+    color: #1E3D59;
+    text-align: center;
+    background-color: #B8DCFF;
+}
+
+.input-simple:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 225, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .contenedor-operacion {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
 }
