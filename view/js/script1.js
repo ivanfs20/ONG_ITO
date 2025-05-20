@@ -96,3 +96,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Hola si carga")
+    const selector = document.getElementById('tipo-donacion');
+    const formularioDinero = document.getElementById('formulario-dinero');
+    const formularioRecurso = document.getElementById('formulario-recurso');
+
+    // Función para mostrar el formulario correcto
+    function mostrarFormulario() {
+        if (!selector || !formularioDinero || !formularioRecurso) return;
+        
+        const valor = selector.value;
+        formularioDinero.style.display = 'none';
+        formularioRecurso.style.display = 'none';
+
+        if (valor === 'dinero') {
+            formularioDinero.style.display = 'block';
+        } else if (valor === 'recurso') {
+            formularioRecurso.style.display = 'block';
+        }
+    }
+
+    // Event listeners
+    if (selector) {
+        selector.addEventListener('change', mostrarFormulario);
+        mostrarFormulario(); // Mostrar formulario inicial si hay selección
+    }
+});
+

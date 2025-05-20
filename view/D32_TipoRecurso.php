@@ -55,7 +55,7 @@ include_once("modules/navbar.php");   # Navbar
             <div class="grupo-formulario">
                 <label class="etiqueta">Imagen del recurso (opcional)</label>
                 <div class="contenedor-archivo">
-                    <input type="file" id="imagen-recurso" class="input-archivo" accept="image/*">
+                    <input name="imagen-r" type="file" id="imagen-recurso" class="input-archivo" accept="image/*">
                     <label for="imagen-recurso" class="etiqueta-archivo">
                         <span class="texto-archivo">Subir imagen</span>
                     </label>

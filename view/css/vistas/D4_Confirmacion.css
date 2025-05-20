@@ -49,5 +49,196 @@
 
 /* FALTA EL DISEÑO RESPONSIVO*/
 
+/* Diseño para formularios */
+
+/* Contenedor principal de formularios */
+.contenedor-formularios {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+/* Estilos comunes para ambos formularios */
+.formulario-donacion {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.formulario-donacion.activo {
+    display: block;
+}
+
+.grupo-formulario {
+    margin-bottom: 1.5rem;
+}
+
+.grupo-formulario label {
+    display: block;
+    color: #1E3D59;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.grupo-formulario input,
+.grupo-formulario select,
+.grupo-formulario textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #1E3D59;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #B8DCFF;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.2);
+}
+
+/* Estilos específicos para el formulario de recurso */
+#formulario-recurso .grupo-formulario textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.subida-archivo {
+    border: 2px dashed #1E3D59;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.subida-archivo input[type="file"] {
+    display: none;
+}
 
 
+
+/* Menu despegable para las opciones del tipo de donacion  */
+.contenedor-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+/* Select centrado */
+.select-estilizado {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid #1E3D59;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.select-estilizado:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.2);
+    border-color: #1E3D59;
+}
+
+/* Estilos para las opciones */
+.select-estilizado option {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.select-estilizado option:checked {
+    background-color: #f5f5f5;
+}
+
+.select-estilizado option[disabled]:first-child {
+    color: #999;
+    font-style: italic;
+}
+
+/* Sección de confirmación */
+.confirmacion-donacion {
+    margin: 3rem auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem 20px;
+    text-align: center;
+}
+
+.contenedor-confirmacion {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 2rem;
+    
+}
+
+.tarjeta-confirmacion {
+    text-align: center;
+}
+
+.texto-confirmacion {
+    color: #1E3D59;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+/* Botones */
+.controles-confirmacion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.boton-accion {
+    padding: 14px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-size: 1rem;
+    border: 2px solid transparent;
+}
+
+.boton-accion.confirmar {
+    background: #F8D400;
+    color: #1E3D59;
+    border-color: #F8D400;
+}
+
+.boton-accion.cancelar {
+    background: transparent;
+    color: #1E3D59;
+    border-color: #F8D400;
+}
+
+/* Efectos hover suaves */
+.boton-accion.confirmar:hover {
+    background: #f8f9fa;
+}
+
+.boton-accion.cancelar:hover {
+    background: #F8D400;
+}
