@@ -128,6 +128,62 @@ class Proyecto{
             return $bRet;
     }
 
+    //B - PROYECTOS (CAMPAÑAS) -> DELETE BY ID : Morales de Jesus Jesus Antonio
+    public function deleteById($id){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $bRet = false;
+        $arrRS = null;
+
+        if ($id <= 0) {
+            throw new Exception("message/Proyecto/ID nulo o inválido");
+        } else {
+            $sQuery = "DELETE FROM Proyecto WHERE nIdProyecto = " . intval($id);
+            $arrRS = $oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if ($arrRS > 0) {
+                $bRet = true;
+            }
+        }
+        return $bRet;
+    }
+
+    //B - PROYECTOS (CAMPAÑAS) -> READ BY ID : Morales de Jesus Jesus Antonio
+    
+    
+    public static function getById($nIdProyecto) {
+        if (!is_numeric($nIdProyecto) || $nIdProyecto <= 0) {
+            throw new Exception("m/Proyecto/getById/ID inválido");
+        }
+
+        $oAccesoDatos = new AccesoDatos();
+        $oProyecto = null;
+
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT * FROM Proyecto WHERE nIdProyecto = ".intval($nIdProyecto);
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                
+                if ($arrRS && count($arrRS) > 0) {
+                    $fila = $arrRS[0];
+                    $oProyecto = new Proyecto();
+                    
+                    $oProyecto->setnIdProyecto($fila[0] ?? 0);
+                    $oProyecto->setsTitle($fila[1] ?? '');
+                    $oProyecto->setsDescription($fila[2] ?? '');
+                    $oProyecto->setaPhoto($fila[3] ?? []);
+                    $oProyecto->setnIdUsuario($fila[4] ?? 0);
+                    $oProyecto->setnIdBenefactor($fila[5] ?? 0);
+                }
+            }
+        } catch (Exception $e) {
+            throw new Exception("m/Proyecto/getById/Error: ".$e->getMessage());
+        } finally {
+            $oAccesoDatos->desconectar();
+        }
+
+        return $oProyecto;
+    }
     //B-PROYECTOS(CAMPAÑAS)>READ BY TITLE : Saul Lima Gonzalez
     public function readByTitle($id,$sTitle){
         $oAccesoDatos=new AccesoDatos();
