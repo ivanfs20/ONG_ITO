@@ -24,14 +24,16 @@ include_once("modules/navbar.php");   # Navbar
     </table>
 
     <form>
-        <label for="id_proyecto">Id Proyecto:</label>
-        <input type="text" id="id_proyecto" name="id_proyecto">
+        
+        <label for="id_benefactor">Id Benefactor:</label>
+        <input name="id_pro" type="text" id="id_proyecto" >
 
         <label for="id_titulo">Titulo:</label>
-        <input type="text"  id=" id_titulo " name="id_titulo">
+        <input name="titulo" type="text"  id=" id_titulo ">
 
         <label for="id_dscripcion">Descripcion:</label>
-        <input type="text"  id=" id_titulo " name="id_descripcion">
+        <input name="descripcion" type="text"  id=" id_dscripcion">
+
    <div>
         <button class="button">Confirmar</button>
 

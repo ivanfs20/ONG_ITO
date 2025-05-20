@@ -26,19 +26,19 @@ include_once("modules/navbar.php");   # Navbar
 
     <form>
         <label for="id_proyecto">Id Proyecto:</label>
-        <input type="text" id="id_proyecto" name="id_proyecto">
+        <input name="id_proyecto" type="text" id="id_proyecto" >
 
         <label for="id_titulo">Titulo:</label>
-        <input type="text"  id=" id_titulo " name="id_titulo">
+        <input name="titulo" type="text"  id=" id_titulo " >
 
         <label for="id_dscripcion">Descripcion:</label>
-        <input type="text"  id=" id_titulo " name="id_descripcion">
+        <input name="descripcion" type="text"  id=" id_titulo ">
 
         <label for="id_foto">Foto:</label>
-        <input type="text"  id=" id_titulo " name="id_foto">
+        <input name="foto" type="text"  id=" id_titulo ">
 
         <div>
-        <button class="button">Insertar</button>
+        <button class="button">Confirmar</button>
 
 </div>
        
