@@ -32,7 +32,7 @@ include_once("modules/navbar.php");   # Navbar
         <form class="formulario-donacion">
             <div class="grupo-formulario">
                 <label for="nombre-recurso" class="etiqueta">Nombre del recurso</label>
-                <input type="text" id="nombre-recurso" class="input-formulario"
+                <input name="recurso" type="text" id="nombre-recurso" class="input-formulario"
                     placeholder="Ejemplo: Silla ergonómica, Multímetro digital" required>
             </div>
 
