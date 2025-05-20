@@ -147,5 +147,41 @@ class Proyecto{
         }
         return $bRet;
     }
+
+    //B - PROYECTOS (CAMPAÑAS) -> READ BY ID : Morales de Jesus Jesus Antonio
+    
+    public static function getById($nIdProyecto) {
+        if (!is_numeric($nIdProyecto) || $nIdProyecto <= 0) {
+            throw new Exception("m/Proyecto/getById/ID inválido");
+        }
+
+        $oAccesoDatos = new AccesoDatos();
+        $oProyecto = null;
+
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT * FROM Proyecto WHERE nIdProyecto = ".intval($nIdProyecto);
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                
+                if ($arrRS && count($arrRS) > 0) {
+                    $fila = $arrRS[0];
+                    $oProyecto = new Proyecto();
+                    
+                    $oProyecto->setnIdProyecto($fila[0] ?? 0);
+                    $oProyecto->setsTitle($fila[1] ?? '');
+                    $oProyecto->setsDescription($fila[2] ?? '');
+                    $oProyecto->setaPhoto($fila[3] ?? []);
+                    $oProyecto->setnIdUsuario($fila[4] ?? 0);
+                    $oProyecto->setnIdBenefactor($fila[5] ?? 0);
+                }
+            }
+        } catch (Exception $e) {
+            throw new Exception("m/Proyecto/getById/Error: ".$e->getMessage());
+        } finally {
+            $oAccesoDatos->desconectar();
+        }
+
+        return $oProyecto;
+    }
 }
 ?>
