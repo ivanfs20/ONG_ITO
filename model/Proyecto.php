@@ -150,6 +150,7 @@ class Proyecto{
 
     //B - PROYECTOS (CAMPAÑAS) -> READ BY ID : Morales de Jesus Jesus Antonio
     
+    
     public static function getById($nIdProyecto) {
         if (!is_numeric($nIdProyecto) || $nIdProyecto <= 0) {
             throw new Exception("m/Proyecto/getById/ID inválido");
