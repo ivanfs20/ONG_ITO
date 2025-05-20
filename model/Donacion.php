@@ -82,7 +82,97 @@ class Donacion{
         }
         return $oDonacion;
     }
+
+
+    // B - DONACIONES (material) -> UPDATE : Morales de Jesus Jesus Antonio
     
+    public function update($sName, $sDescription, $aPhoto, $nAmount) {
+        if (empty(trim($sName))) {
+            throw new Exception("Donacion->update: El nombre del material es requerido");
+        }
+
+        if (empty(trim($sDescription))) {
+            throw new Exception("Donacion->update: La descripción es requerida");
+        }
+
+        if (empty($aPhoto)) {
+            throw new Exception("Donacion->update: La foto es requerida");
+        }
+
+        if (!is_numeric($nAmount) || $nAmount <= 0) {
+            throw new Exception("Donacion->update: El monto/cantidad debe ser un número positivo");
+        }
+
+        $oAccesoDatos = new AccesoDatos();
+        $bRet = false;
+
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "UPDATE Donacion SET 
+                        nAmount = ".intval($nAmount).",
+                        aPhoto = '".addslashes($aPhoto[0])."'
+                        WHERE nIdDonacion = ".intval($this->nIdDonacion);
+                
+                $nAfectados = $oAccesoDatos->comando($sQuery);
+                
+                if ($nAfectados > 0) {
+                    $sQueryMaterial = "UPDATE DonacionMaterial SET
+                                    sName = '".addslashes($sName)."',
+                                    sDescription = '".addslashes($sDescription)."'
+                                    WHERE nIdDonacion = ".intval($this->nIdDonacion);
+                    
+                    $nAfectadosMaterial = $oAccesoDatos->comando($sQueryMaterial);
+                    $bRet = ($nAfectadosMaterial > 0);
+                }
+            }
+        } catch (Exception $e) {
+            throw new Exception("Donacion->update: Error en la actualización - ".$e->getMessage());
+        } finally {
+            $oAccesoDatos->desconectar();
+        }
+
+        if ($bRet) {
+            $this->nAmount = $nAmount;
+            $this->aPhoto = $aPhoto;
+        }
+
+        return $bRet;
+    }
+
+
+    // B - DONACIONES (ALL) -> READALL : Morales de Jesus Jesus Antonio
+
+    public static function readAll() {
+        $oAccesoDatos = new AccesoDatos();
+        $aDonaciones = [];
+        
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT * FROM Donacion ORDER BY nIdDonacion DESC";
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                
+                if ($arrRS && count($arrRS) > 0) {
+                    foreach ($arrRS as $fila) {
+                        $oDonacion = new Donacion();
+                        $oDonacion->setnIdDonacion($fila[0] ?? 0);
+                        $oDonacion->setnAmount($fila[1] ?? 0);
+                        $oDonacion->setbStatus($fila[2] ?? false);
+                        $oDonacion->setaPhoto([]); // O json_decode($fila[3]) si manejas fotos
+                        $oDonacion->setnIdBenefactor($fila[4] ?? 0);
+                        $oDonacion->setnIdUsuario($fila[5] ?? 0);
+                        
+                        $aDonaciones[] = $oDonacion;
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            throw new Exception("m/Donacion/readAll/Error: ".$e->getMessage());
+        } finally {
+            $oAccesoDatos->desconectar();
+        }
+        
+        return $aDonaciones;
+    }
 
 }
 ?>
