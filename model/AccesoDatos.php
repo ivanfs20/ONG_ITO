@@ -1,7 +1,7 @@
 <?php
 class AccesoDatos{
     private $oConexion = null;
-    private $sDBname = "ongIto";
+    private $sDBname = "ong_ito";
     private $sHost = "localhost";
     private $sUser = "administrador";
     private $sPassword = "administrador";

@@ -54,7 +54,7 @@ include_once("modules/navbar.php");   # Navbar
         </form>
 
         <!-- Formulario de Login -->
-        <form id="form-login" class="formulario">
+        <form id="form-login" class="formulario" action="../controller/login.php" method="POST">
             <div class="grupo-input">
                 <label for="email-login">Correo electrónico</label>
                 <input name="email-registrado" type="email" id="email-login" required>

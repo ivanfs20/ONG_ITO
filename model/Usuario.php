@@ -47,16 +47,16 @@ class Usuario{
     }
 
 
-    // B -LOGIN : Carlos Iván Flores Sánchez
+    // B -LOGIN : Carlos Iván Flores Sánchez -> CAMBIE DE sNombreC a sEmail
     public function login(){
         $oAccesoDatos = new AccesoDatos();
         $sQuery = "";
         $bRet = false;
         $arrRS = null;
 
-        if($this->sNombreC=="" || $this->sPassword==""){throw new Exception("/m/Benefactor/login/sNombreC&&sPassword");}else{
+        if($this->sEmail=="" || $this->sPassword==""){throw new Exception("/m/Benefactor/login/sEmail&&sPassword");}else{
             if($oAccesoDatos->conectar()){
-                $sQuery = "SELECT nIdUsuario, sRol FROM Usuario WHERE sNombreC = '$this->sNombreC' AND sPassword = '$this->sPassword'";
+                $sQuery = "SELECT nIdUsuario, sRol FROM Usuario WHERE sEmail = '$this->sEmail' AND sPassword = '$this->sPassword'";
                 $arrRS = $oAccesoDatos -> consulta($sQuery);
                 $oAccesoDatos -> desconectar();
                 if($arrRS != null){

@@ -1,4 +1,5 @@
 <?php
+include("../controller/config.php");
 /*************************************************************/
 /* Archivo:  sesionadmin.php
  * Objetivo: Menu principal para el administrador
@@ -35,7 +36,7 @@ include_once("modules/navbar.php");   # Navbar
                 <a href="gestiondeusuarios.php">Gestión de Usuarios →</a>
             </div>
         </div>
-
+        
         <div class="footer">
             Solo el administrador puede acceder a estas páginas, protegido por sesiones y roles.
         </div>
