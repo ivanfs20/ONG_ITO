@@ -31,7 +31,7 @@ include_once("modules/navbar.php");   # Navbar
     <div class="contenedor-operacion">
         <div class="contenido-operacion">
             <h2 class="titulo-operacion">Monto a donar</h2>
-            <input type="number" id="monto-donacion" class="input-simple" placeholder="Ingresa el monto" min="1"
+            <input name="monto-total" type="number" id="monto-donacion" class="input-simple" placeholder="Ingresa el monto" min="1"
                 required>
         </div>
     </div>
