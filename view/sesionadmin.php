@@ -1,5 +1,4 @@
 <?php
-include("../controller/config.php");
 /*************************************************************/
 /* Archivo:  sesionadmin.php
  * Objetivo: Menu principal para el administrador
