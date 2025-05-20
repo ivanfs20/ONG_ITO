@@ -127,5 +127,25 @@ class Proyecto{
             }
             return $bRet;
     }
+
+    //B - PROYECTOS (CAMPAÑAS) -> DELETE BY ID : Morales de Jesus Jesus Antonio
+    public function deleteById($id){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $bRet = false;
+        $arrRS = null;
+
+        if ($id <= 0) {
+            throw new Exception("message/Proyecto/ID nulo o inválido");
+        } else {
+            $sQuery = "DELETE FROM Proyecto WHERE nIdProyecto = " . intval($id);
+            $arrRS = $oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if ($arrRS > 0) {
+                $bRet = true;
+            }
+        }
+        return $bRet;
+    }
 }
 ?>
