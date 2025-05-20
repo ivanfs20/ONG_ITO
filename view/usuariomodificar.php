@@ -27,19 +27,19 @@ include_once("modules/navbar.php");   # Navbar
 
     <form>
         <label for="id_usuario">Id Usuario:</label>
-        <input type="text" id="id_usuario" name="id_usuario">
+        <input name="id_usuario" type="text" id="id_usuario" >
 
         <label for="id_nombre">Nombre:</label>
-        <input type="text"  id=" id_nombre " name="id_nombre">
+        <input name="nombre_usuario" type="text"  id=" id_nombre " >
 
         <label for="id_correo">Correo:</label>
-        <input type="text"  id=" id_dscripcion " name="id_descripcion">
+        <input name="correo" type="text"  id=" id_dscripcion " >
 
         <label for="id_contraseña">Contraseña:</label>
-        <input type="text"  id=" id_contraseña " name="id_contraseña">
+        <input name="contraseña" type="text"  id=" id_contraseña " >
 
         <label for="id_rol">Rol:</label>
-        <input type="text"  id=" id_rol " name="id_rol">
+        <input name="rol" type="text"  id=" id_rol " >
 
         <div>
         <button class="button">Confirmar</button>

@@ -29,6 +29,11 @@ include_once("modules/navbar.php");   # Navbar
                 <p></p>
                 <a href="gestiondebenefactor.php">Benefactor →</a>
             </div>
+            <div class="card">
+                <img src="../view/media/salon.jpg" alt="Mensajes">
+                <p></p>
+                <a href="gestiondeindicios.php">Indicios →</a>
+            </div>
         </div>
 
     </div>
