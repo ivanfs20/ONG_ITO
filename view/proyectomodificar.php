@@ -1,0 +1,49 @@
+<?php
+/*************************************************************/
+/* Archivo:  proyectomodificar.php
+ * Objetivo: Modificar campo de un proyecto
+ * Autor: Uriel Vallejo Xicalhua
+ *************************************************************/
+$customStyles = '<link rel="stylesheet" href="../view/css/vistas/proyectomodificar.css">'; #cargamos el estilo en especifico de proyectomodificar.php
+$customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
+include_once("modules/header.html");  # Incluye <head> y apertura de <body>
+include_once("modules/navbar.php");   # Navbar
+
+?>
+
+
+<div class="header">Modificar Proyecto</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Id Proyecto</th>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Foto</th>
+        </tr>
+    </table>
+
+    <form>
+        <label for="id_proyecto">Id Proyecto:</label>
+        <input type="text" id="id_proyecto" name="id_proyecto">
+
+        <label for="id_titulo">Titulo:</label>
+        <input type="text"  id=" id_titulo " name="id_titulo">
+
+        <label for="id_dscripcion">Descripcion:</label>
+        <input type="text"  id=" id_titulo " name="id_descripcion">
+
+        <label for="id_foto">Foto:</label>
+        <input type="text"  id=" id_titulo " name="id_foto">
+
+        <div>
+        <button class="button">Insertar</button>
+
+</div>
+       
+
+
+<?php
+include_once("modules/footer.html"); # Footer y cierre de HTML
+?>

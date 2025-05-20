@@ -35,33 +35,33 @@ include_once("modules/navbar.php");   # Navbar
             <p> Si ya tienes una cuenta, inicia sesión con tu correo electrónico y contraseña.</p>
             <div class="grupo-input">
                 <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" required>
+                <input name="full-name" type="text" id="nombre" required>
             </div>
             <div class="grupo-input">
                 <label for="email">Correo electrónico</label>
-                <input type="email" id="email" required>
+                <input name="e-mail" type="email" id="email" required>
             </div>
             <div class="grupo-input">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" required>
+                <input name="contraseña" type="password" id="password" required>
             </div>
             <div class="grupo-input">
                 <label for="confirmar-password">Confirmar contraseña</label>
-                <input type="password" id="confirmar-password" required>
+                <input name="confirmar-contraseña" type="password" id="confirmar-password" required>
                 <p> Una vez registrado podras realizar tu donacion </p>
             </div>
             <button type="submit" class="boton-primario">Crear cuenta</button>
         </form>
 
         <!-- Formulario de Login -->
-        <form id="form-login" class="formulario">
+        <form id="form-login" class="formulario" action="../controller/login.php" method="POST">
             <div class="grupo-input">
                 <label for="email-login">Correo electrónico</label>
-                <input type="email" id="email-login" required>
+                <input name="email-registrado" type="email" id="email-login" required>
             </div>
             <div class="grupo-input">
                 <label for="password-login">Contraseña</label>
-                <input type="password" id="password-login" required>
+                <input name="contraseña-registrada" type="password" id="password-login" required>
             </div>
             <button type="submit" class="boton-primario">Ingresar</button>
             <p class="enlace-alternativo">¿No tienes cuenta? <a href="#" class="cambiar-formulario"

@@ -37,3 +37,92 @@ document.addEventListener('DOMContentLoaded', function () {
     // 5. Inicializar con formulario de registro
     mostrarFormulario('form-registro');
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tarjetas = document.querySelectorAll('.area-card');
+    const botonContinuar = document.querySelector('.boton-continuar');
+    let areaSeleccionada = null;
+
+    // seleccionamos un area para poder avanzar
+    tarjetas.forEach(tarjeta => {
+        tarjeta.addEventListener('click', function () {
+
+            tarjetas.forEach(t => {
+                t.classList.remove('seleccionada');
+                t.querySelector('.area-button').textContent = "Quiero apoyar esta area";
+            });
+
+            //metemos dentro del boton, es decir cambiamos el texto para que se note que fue selccionada el area 
+            this.classList.add('seleccionada');
+            const boton = this.querySelector('.area-button');
+            boton.textContent = "✓ Área Seleccionada";
+            areaSeleccionada = this.querySelector('.area-title').textContent;
+
+            // despues de haber seleccionado el area, el boton para continuar se habilita para poder seguir con el siguiente paso
+            botonContinuar.disabled = false;
+            botonContinuar.classList.add('activo');
+        });
+    });
+
+    // se debe de confirmar para avanzar, es decir primero se debe de selecconar el area para que asi se deshabilite el boton
+    botonContinuar.addEventListener('click', function (e) {
+        if (!areaSeleccionada) {
+            e.preventDefault();
+            alert('Selecciona un area primero');
+            return;
+        }
+
+        // redireccionamos a la pagina para el siguiente paso y por las dudas y por si lo necesitan se envia el area seleccionada
+        window.location.href = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}`;
+    });
+});
+
+
+//seleccionar el tipo de recurso a donar
+// script1.js
+document.addEventListener('DOMContentLoaded', function () {
+    const selectDonacion = document.getElementById('tipo-donacion');
+    const continueButton = document.querySelector('.boton-continuar2');
+
+    selectDonacion.addEventListener('change', function () {
+        if (this.value !== '') {
+            continueButton.removeAttribute('disabled');
+            continueButton.style.opacity = '1';
+            continueButton.style.cursor = 'pointer';
+        } else {
+            continueButton.setAttribute('disabled', true);
+            continueButton.style.opacity = '0.5';
+            continueButton.style.cursor = 'not-allowed';
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Hola si carga")
+    const selector = document.getElementById('tipo-donacion');
+    const formularioDinero = document.getElementById('formulario-dinero');
+    const formularioRecurso = document.getElementById('formulario-recurso');
+
+    // Función para mostrar el formulario correcto
+    function mostrarFormulario() {
+        if (!selector || !formularioDinero || !formularioRecurso) return;
+        
+        const valor = selector.value;
+        formularioDinero.style.display = 'none';
+        formularioRecurso.style.display = 'none';
+
+        if (valor === 'dinero') {
+            formularioDinero.style.display = 'block';
+        } else if (valor === 'recurso') {
+            formularioRecurso.style.display = 'block';
+        }
+    }
+
+    // Event listeners
+    if (selector) {
+        selector.addEventListener('change', mostrarFormulario);
+        mostrarFormulario(); // Mostrar formulario inicial si hay selección
+    }
+});
+

@@ -5,6 +5,7 @@
  * Autor: Edwin Ariel Ramos Alvarez
  *************************************************************/
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/privacidad.css">'; #cargamos el estilo en especifico de contacto.php
+$customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 ?>
