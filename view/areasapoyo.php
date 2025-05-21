@@ -81,95 +81,9 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 <section class="seccion-areas-apoyo">
     <div class="areas-contenedor">
 
-
-        <!-- Aulas -->
-        <div class="areas-grid">
-            <!-- Columna de Imagen -->
-            <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="area-content">
-                <h2 class="area-titulo">Espacios donde se forma el futuro</h2>
-                <p class="area-texto">
-                    Muchas aulas carecen de sillas adecuadas, ventilación o herramientas básicas para dar clases de
-                    calidad.
-                </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
-            </div>
-        </div>
-
-        <!-- Laboratorio -->
-        <div class="areas-grid">
-            <!-- Columna de Imagen -->
-            <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="area-content">
-                <h2 class="area-titulo">El conocimiento necesita practica</h2>
-                <p class="area-texto">
-                    Equipos obsoletos o en mal estado limitan las habilidades de los estudiantes para resolver problemas
-                    reales.
-                </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
-            </div>
-        </div>
-
-        <!-- Material didactico -->
-        <div class="areas-grid">
-            <!-- Columna de Imagen -->
-            <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="area-content">
-                <h2 class="area-titulo">Herramientas para enseñar mejor</h2>
-                <p class="area-texto">
-                    Faltan proyectores, pizarrones, y recursos que permitan impartir clases modernas, interactivas y
-                    efectivas.
-                </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
-            </div>
-        </div>
-
-        <!-- Mantenimiento -->
-        <div class="areas-grid">
-            <!-- Columna de Imagen -->
-            <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="area-content">
-                <h2 class="area-titulo">Conserva el espacio en dignas condiciones</h2>
-                <p class="area-texto">
-                    Filtraciones, instalaciones eléctricas deterioradas o baños sin servicio son parte del día a día.
-                </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
-            </div>
-        </div>
-
-        <!-- Biblioteca -->
-        <div class="areas-grid">
-            <!-- Columna de Imagen -->
-            <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="area-content">
-                <h2 class="area-titulo">El centro de conocimiento necesita actualizarse</h2>
-                <p class="area-texto">
-                    Materiales desactualizados y falta de recursos digitales afectan el acceso a información de calidad.
-                </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
-            </div>
-        </div>
-
+    <?php
+    include("../controller/benefactoresController.php");
+    ?>
     </div>
 </section>
 
