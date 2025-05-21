@@ -144,26 +144,28 @@ class Benefactor{
 
     // B - BENEFACTOR -> SELECT BY NAME : Morales de Jesus Jesus Antonio
 
-    public static function getAll() {
+    public function getAll() {
         $oAccesoDatos = new AccesoDatos();
         $sQuery = "";
         $arrRS = null;
-        $arrBenefactores = array();
-        
+        $oBenefactor = null;
+        $arrBenefactores = [];
+        $nCount = 0;
         try {
             if ($oAccesoDatos->conectar()) {
-                $sQuery = "SELECT * FROM Benefactor ORDER BY sName ASC";
+                $sQuery = "SELECT * FROM Benefactor";
                 $arrRS = $oAccesoDatos->consulta($sQuery);
                 $oAccesoDatos->desconectar();
                 
-                if ($arrRS && count($arrRS) > 0) {
+                if ($arrRS) {
                     foreach ($arrRS as $fila) {
                         $oBenefactor = new Benefactor();
                         $oBenefactor->setnIdBenefactor($fila[0]);
                         $oBenefactor->setsName($fila[1]);
                         $oBenefactor->setsDescription($fila[2]);
                         
-                        $arrBenefactores[] = $oBenefactor;
+                        $arrBenefactores[$nCount] = $oBenefactor;
+                        $nCount++;
                     }
                 }
             }
@@ -171,7 +173,7 @@ class Benefactor{
             throw $e;
         }
         
-        return count($arrBenefactores) > 0 ? $arrBenefactores : null;
+        return $arrBenefactores;
     }
 
     // B - BENEFACTOR -> INSERT : Morales de Jesus Jesus Antonio

@@ -26,41 +26,41 @@ class AccesoDatos{
 
     //METODO PARA EJECUTAR UNA CONSULTA -> consulta()
     function consulta($psConsulta){
-        $arrRS = null;
+        $arrRS = [];
         $rst = null;
         $oLinea = null;
-        $sValCol = "";
-        $i = 0;
-        $j = 0;
-
-        if($psConsulta == ""){
+    
+        if ($psConsulta == "") {
             throw new Exception("AccesoDatos->consulta: falta indicar la consulta");
         }
-
-        if($this -> oConexion == null){
+    
+        if ($this->oConexion == null) {
             throw new Exception("AccesoDatos->consulta: falta conectar a la base");
         }
-
-        try{
-            $rst = $this -> oConexion -> query($psConsulta);
-        }catch(Exception $e){
+    
+        try {
+            $rst = $this->oConexion->query($psConsulta);
+        } catch (Exception $e) {
             throw $e;
         }
-
-        if($rst){
-            foreach($rst as $oLinea){
-                foreach($oLinea as $llave=>$sValCol){
-                    if(is_string($llave)){
+    
+        if ($rst) {
+            $i = 0;
+            foreach ($rst as $oLinea) {
+                $j = 0;
+                foreach ($oLinea as $llave => $sValCol) {
+                    if (is_string($llave)) {
                         $arrRS[$i][$j] = $sValCol;
                         $j++;
                     }
                 }
-                $sj=0;
-                $si=0;
+                $i++;
             }
         }
+    
         return $arrRS;
     }
+    
 
     //METODO PARA EJECUTAR UN COMANDO -> comando()
     function comando($psComando){
