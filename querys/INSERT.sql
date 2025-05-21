@@ -1,6 +1,8 @@
 --INSERT INTO usuario (sNombreC, sPassword, sEmail, sRol) 
 --VALUES ("","","","");
 
+--USUARIO
+
 INSERT INTO usuario (sNombreC, sPassword, sEmail, sRol) 
 VALUES ("Carlos Martínez", "admin123", "carlos.admin@email.com", "administrador");
 
@@ -30,3 +32,50 @@ VALUES ("Jorge Castillo", "donador369", "jorge.castillo@email.com", "donador");
 
 INSERT INTO usuario (sNombreC, sPassword, sEmail, sRol) 
 VALUES ("Elena Cruz", "donador159", "elena.cruz@email.com", "donador");
+
+--BENEFACTOR
+
+INSERT INTO Benefactor (sName, sDescription) 
+VALUES ("Fundación Vida", "Organización dedicada al apoyo de comunidades rurales.");
+
+INSERT INTO Benefactor (sName, sDescription) 
+VALUES ("Manos Unidas", "Asociación que brinda asistencia médica y educativa.");
+
+INSERT INTO Benefactor (sName, sDescription) 
+VALUES ("EcoFuturo", "Proyecto enfocado en sostenibilidad y medio ambiente.");
+
+--PROYECTO
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor) 
+VALUES ("Huertos Urbanos", "Creación de huertos en zonas urbanas.", 0x00, 1, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor) 
+VALUES ("Educación para Todos", "Campaña de educación primaria en zonas rurales.", 0x00, 2, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor) 
+VALUES ("Reciclaje Comunitario", "Instalación de puntos de reciclaje en barrios.", 0x00, 1, 3);
+
+
+--DONACIÓN MATERIAL
+
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES ("Libros Escolares", "Donación de libros de texto usados.", 0x00, 120, TRUE, 3, 1);
+
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES ("Ropa de Invierno", "Abrigos y suéteres para comunidades frías.", 0x00, 85, TRUE, 4, 2);
+
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES ("Herramientas Agrícolas", "Kit de herramientas básicas para agricultores.", 0x00, 40, FALSE, 5, 1);
+
+--DONACION DIGITAL
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES (10001, "Transferencia", 0x00, 1500, TRUE, 6, 3);
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES (10002, "PayPal", 0x00, 750, FALSE, 7, 2);
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE, 8, 1);
+
+
