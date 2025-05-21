@@ -16,7 +16,7 @@ $tituloPagina = "Ayuda a transformar el futuro de cientos de estudiantes del ITO
 $subtituloPagina = "Cada peso cuenta. Dona hoy y forma parte del cambio.";
 $botonHero = [
     'texto' => "¡Quiero donar ahora!",
-    'url' => "donar.php"
+    'url' => "view/D1_Area.php"
 ];
 
 // Muestra el hero con los parámetros
@@ -91,47 +91,62 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
 <!-- Sección Tabla de evidencias -->
 <section class="tabla-seccion">
     <div class="tabla-contenedor">
-        <div class="tabla-header">
-            <h2 class="seccion-titulo">Tabla de evidencias</h2>
-            <p class="tabla-descripcion">Conoce de primera mano los espacios que más necesitan tu ayuda. Esta
-                sección muestra imágenes reales del estado actual de aulas, laboratorios y áreas comunes del
-                Instituto Tecnológico de Orizaba que requieren apoyo urgente.</p>
+        <!-- Tabla de Evidencias de Material -->
+        <div class="tabla-material">
+            <div class="tabla-header">
+                <h2 class="seccion-titulo">Evidencias de Material</h2>
+                <p class="tabla-descripcion">Estado actual de los recursos materiales en nuestras instalaciones.</p>
+            </div>
+
+            <div class="evidencia-tabla material">
+                <!-- Fila 1 -->
+                <div class="tabla-fila">
+                    <div class="celda-imagen">
+                        <img src="view/media/salon.jpg" alt="Salón sin proyector">
+                    </div>
+                    <div class="descripcion-celda">
+                        <p class="descripcion-texto">Este salón carece de proyector y pizarrón adecuados.</p>
+                    </div>
+                </div>
+
+                <!-- Fila 2 -->
+                <div class="tabla-fila">
+                    <div class="celda-imagen">
+                        <img src="view/media/pupitres.jpg" alt="Pupitres deteriorados">
+                    </div>
+                    <div class="descripcion-celda">
+                        <p class="descripcion-texto">Pupitres deteriorados que afectan la comodidad estudiantil.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="evidencia-tabla">
-            <!-- Fila 1 -->
-            <div class="tabla-fila">
-                <div class="celda-imagen">
-                    <img src="view/media/salon.jpg" alt="Salón sin proyector">
-                </div>
-                <div class="descripcion-celda">
-                    <p class="descripcion-texto">Este salón carece de proyector y pizarrón adecuados. Los docentes
-                        enfrentan
-                        dificultades para impartir clases dinámicas y efectivas.</p>
-                </div>
+        <!-- Tabla de Evidencias de Donación -->
+        <div class="tabla-donacion">
+            <div class="tabla-header">
+                <h2 class="seccion-titulo">Evidencias de Donación</h2>
+                <p class="tabla-descripcion">Registro de contribuciones y su impacto en nuestra institución.</p>
             </div>
 
-            <!-- Fila 2 -->
-            <div class="tabla-fila">
-                <div class="celda-imagen">
-                    <img src="view/media/pupitres.jpg" alt="Pupitres deteriorados">
+            <div class="evidencia-tabla donacion">
+                <!-- Fila 1 -->
+                <div class="tabla-fila">
+                    <div class="celda-imagen">
+                        <img src="view/media/salon.jpg" alt="Equipo nuevo">
+                    </div>
+                    <div class="descripcion-celda">
+                        <p class="descripcion-texto">Nuevos proyectores instalados gracias a sus contribuciones.</p>
+                    </div>
                 </div>
-                <div class="descripcion-celda">
-                    <p class="descripcion-texto">Muchos estudiantes deben compartir pupitres deteriorados. Esta
-                        situación
-                        afecta su concentración y comodidad durante las clases.</p>
-                </div>
-            </div>
 
-            <!-- Fila 3 -->
-            <div class="tabla-fila">
-                <div class="celda-imagen">
-                    <img src="view/media/computadoras.jpg" alt="Computadoras dañadas">
-                </div>
-                <div class="descripcion-celda">
-                    <p class="descripcion-texto">Más de la mitad de las computadoras no funcionan. Los alumnos deben
-                        esperar
-                        turnos para realizar prácticas esenciales.</p>
+                <!-- Fila 2 -->
+                <div class="tabla-fila">
+                    <div class="celda-imagen">
+                        <img src="view/media/salon.jpg" alt="Mobiliario renovado">
+                    </div>
+                    <div class="descripcion-celda">
+                        <p class="descripcion-texto">Pupitres nuevos instalados en el aula principal.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,7 +205,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
         <div class="collab-content">
             <h2 class="colaboracion-titulo">Colabora con donativos</h2>
             <p class="colaboracion-subtitulo">ITOrizaba, ayudar es crecer<br>y crecer es vivir.</p>
-            <a href="donar.html" class="colaboracion-boton">Quiero colaborar</a>
+            <a href="view/D1_Area.php" class="colaboracion-boton">Quiero colaborar</a>
         </div>
     </div>
 </section>

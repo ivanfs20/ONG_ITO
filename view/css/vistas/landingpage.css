@@ -188,28 +188,47 @@
     transform: translateY(-2px);
 }
 
-/* Estilos para la tabla */
+
+/* Estilos generales */
 .tabla-seccion {
     padding: 4rem 5%;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
 }
 
 .tabla-contenedor {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    gap: 3rem;
 }
 
 .tabla-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
+.seccion-titulo {
+    color: #0B2054;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos compartidos para tablas */
 .evidencia-tabla {
     display: grid;
     gap: 1.5rem;
-    border: 1px solid #e2e8f0;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Diferenciación entre tablas */
+.evidencia-tabla.material {
+    border: 2px solid #0B2054; /* Verde para materiales */
+}
+
+.evidencia-tabla.donacion {
+    border: 2px solid #0B2054; /* Azul para donaciones */
 }
 
 .tabla-fila {
@@ -220,14 +239,11 @@
     border-bottom: 1px solid #e2e8f0;
 }
 
-.tabla-fila:last-child {
-    border-bottom: none;
-}
-
+/* Estilos de celda */
 .celda-imagen {
     height: 250px;
     overflow: hidden;
-    border-right: 1px solid #e2e8f0;
+    position: relative;
 }
 
 .celda-imagen img {
@@ -238,19 +254,37 @@
 }
 
 .celda-imagen:hover img {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .descripcion-celda {
     padding: 1.5rem;
     display: flex;
     align-items: center;
+    background: #fff;
 }
 
 .descripcion-texto {
     color: #2d3748;
     line-height: 1.6;
-    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Badge diferenciador */
+.tabla-header::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    margin: 1rem auto;
+}
+
+.material .tabla-header::after {
+    background: #F8D400;
+}
+
+.donacion .tabla-header::after {
+    background: #F8D400;
 }
 
 /* Responsive */
@@ -259,10 +293,13 @@
         grid-template-columns: 1fr;
     }
     
-    .celda-iamgen {
+    .celda-imagen {
         height: 200px;
-        border-right: none;
         border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .tabla-contenedor {
+        gap: 2rem;
     }
 }
 
