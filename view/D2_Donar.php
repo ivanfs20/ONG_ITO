@@ -45,15 +45,14 @@ include_once("modules/navbar.php");   # Navbar
 <section class="seccion-continuar">
     <div class="contenedor-continuar">
         <div class="contenido-continuar">
-            <p class="texto-guia">Selecciona el tipo de donacion para continuar.</p>
-            <button class="boton-continuar2" disabled>
-                <a href="D31_TipoTarjeta.php" class="boton-continuar3">
-                    CONTINUAR
-                </a>
+            <p class="texto-guia">Selecciona el tipo de donación para continuar.</p>
+            <button id="boton-continuar" class="boton-continuar2" disabled>
+                CONTINUAR
             </button>
         </div>
     </div>
 </section>
+
 
 <?php
 include_once("modules/footer.html"); # Footer y cierre de HTML

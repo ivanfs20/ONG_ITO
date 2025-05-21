@@ -43,7 +43,7 @@ include_once("modules/navbar.php");   # Navbar
     <div class="contenedor-continuar">
         <div class="contenido-continuar">
             <button class="boton-continuar3">
-                <a href="D32_TipoRecurso.php" class="boton-continuar3">
+                <a href="D41_ConfirmarTarjeta.php" class="boton-continuar3">
                     CONTINUAR
                 </a>
             </button>

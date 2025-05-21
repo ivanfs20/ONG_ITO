@@ -93,8 +93,6 @@
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    opacity: 0.5;
-    cursor: not-allowed;
     text-decoration: none;
 }
 

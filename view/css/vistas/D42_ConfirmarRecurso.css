@@ -60,7 +60,7 @@
 
 /* Estilos comunes para ambos formularios */
 .formulario-donacion {
-    display: none;
+    display: block;
     background: white;
     padding: 2rem;
     border-radius: 12px;
