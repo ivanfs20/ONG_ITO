@@ -24,7 +24,8 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 <!-- Sección de campañas activas -->
 <section class="seccion-camapañas-activas">
     <div class="campañas-contenedor">
-        <!-- Primer campaña activa -->
+
+        <!-- Primer campaña activa y de ejemplo para los back-ends-->
         <div class="campañas-grid">
             <!-- Columna de Imagen -->
             <div class="camapñas-imagen">
@@ -46,27 +47,6 @@ mostrarHero($tituloPagina, $subtituloPagina, );
             </div>
         </div>
 
-        <!-- Otra campaña activa -->
-        <div class="campañas-grid">
-            <!-- Columna de Imagen -->
-            <div class="camapñas-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
-
-            <!-- Columna de Texto -->
-            <div class="campañas-content">
-                <h2 class="campañas-titulo">Aula B-204 sin mobiliario adecuado</h2>
-                <p class="campañas-texto">
-                    Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie,
-                    massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat at libero ultrices mollis.
-                    In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In
-                    euismod augue vitae nisi ultricies, non aliquet urna tincidunt. Integer in nisi eget nulla commodo
-                    faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero.
-                    Donec consectetur faucibus ipsum id gravida
-                </p>
-                <a href="#" class="campañas-boton">Quiero colaborar</a>
-            </div>
-        </div>
     </div>
 </section>
 
