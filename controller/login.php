@@ -1,6 +1,5 @@
 <?php 
     include("../model/Usuario.php");
-    include("config.php");
     $sError = "";
     $sEmail = "";
     $sPassword = "";
