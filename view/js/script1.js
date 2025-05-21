@@ -80,49 +80,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //seleccionar el tipo de recurso a donar
 // script1.js
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const selectDonacion = document.getElementById('tipo-donacion');
-    const continueButton = document.querySelector('.boton-continuar2');
-
-    selectDonacion.addEventListener('change', function () {
-        if (this.value !== '') {
-            continueButton.removeAttribute('disabled');
-            continueButton.style.opacity = '1';
-            continueButton.style.cursor = 'pointer';
+    const botonContinuar = document.getElementById('boton-continuar');
+    
+    // Habilitar botón cuando se seleccione una opción válida
+    selectDonacion.addEventListener('change', function() {
+        if(this.value !== '') {
+            botonContinuar.disabled = false;
         } else {
-            continueButton.setAttribute('disabled', true);
-            continueButton.style.opacity = '0.5';
-            continueButton.style.cursor = 'not-allowed';
+            botonContinuar.disabled = true;
         }
     });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("Hola si carga")
-    const selector = document.getElementById('tipo-donacion');
-    const formularioDinero = document.getElementById('formulario-dinero');
-    const formularioRecurso = document.getElementById('formulario-recurso');
-
-    // Función para mostrar el formulario correcto
-    function mostrarFormulario() {
-        if (!selector || !formularioDinero || !formularioRecurso) return;
+    
+    // Manejar el clic del botón
+    botonContinuar.addEventListener('click', function() {
+        const valor = selectDonacion.value;
+        let url = '';
         
-        const valor = selector.value;
-        formularioDinero.style.display = 'none';
-        formularioRecurso.style.display = 'none';
-
-        if (valor === 'dinero') {
-            formularioDinero.style.display = 'block';
-        } else if (valor === 'recurso') {
-            formularioRecurso.style.display = 'block';
+        if(valor === 'dinero') {
+            url = 'D31_TipoTarjeta.php';
+        } else if(valor === 'recurso') {
+            url = 'D32_TipoRecurso.php';
         }
-    }
-
-    // Event listeners
-    if (selector) {
-        selector.addEventListener('change', mostrarFormulario);
-        mostrarFormulario(); // Mostrar formulario inicial si hay selección
-    }
+        
+        if(url) window.location.href = url;
+    });
 });
-

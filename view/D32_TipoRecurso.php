@@ -70,7 +70,7 @@ include_once("modules/navbar.php");   # Navbar
     <div class="contenedor-continuar">
         <div class="contenido-continuar">
             <button class="boton-continuar3">
-                <a href="D4_Confirmacion.php" class="boton-continuar3">
+                <a href="D42_ConfirmarRecurso.php" class="boton-continuar3">
                     CONTINUAR
                 </a>
             </button>
