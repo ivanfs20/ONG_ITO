@@ -13,7 +13,11 @@ $oUser = new Usuario();
 
 if (empty($sName) || empty($sEmail) || empty($sPassword) || empty($sConfirm)) {
     $sError = "Llena todos los campos, no deben estar vacios";
-} else if (validatePassword($sPassword, $sConfirm)) {
+}
+else if($oUser->exists($sEmail)){
+    echo "El email que ingresaste ya esta dado de alta";
+}
+ else if (validatePassword($sPassword, $sConfirm)) {
     if (securityPassword($sPassword)) {
         if (validateUpperCase($sPassword)) {
             $oUser->setsNombreC($sName);
