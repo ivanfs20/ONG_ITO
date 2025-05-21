@@ -1,0 +1,40 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+.contenedor-principal-error {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 150px; /* 50px*/
+    gap: 40px;
+    flex-wrap: wrap; /* Para hacerlo responsive en pantallas pequeñas */
+}
+
+.contenedor-error {
+    flex: 1;
+    text-align: left;
+}
+
+.contenedor-error h1 {
+    font-size: 4rem;
+    color: #1E3D59;
+    margin-bottom: 10px;
+}
+
+.contenedor-error h2 {
+    font-size: 2rem;
+    color: #FFE100;
+}
+
+.contenedor-imagen-error {
+    flex: 1;
+    text-align: center;
+}
+
+.contenedor-imagen-error img {
+    max-width: 100%;
+    max-width: 500px;    /* se puede comentar en dado caso que se regrese a la imagen del buho */
+    /*height: auto;*/
+
+}
