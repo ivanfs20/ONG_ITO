@@ -4,6 +4,7 @@
     $oBenefactor = new Benefactor();
     $arrBenefactores = $oBenefactor -> getAll();
 
+    if($arrBenefactores!=null){
     foreach($arrBenefactores as $benefactor){
 ?>
     <div class="areas-grid">
@@ -21,7 +22,7 @@
                 <a href="campanas.php" class="area-boton">Ver campañas similares</a>
             </div>
         </div>
-        <br>
 <?php
     }
+}
 ?>
