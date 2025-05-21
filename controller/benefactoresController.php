@@ -10,7 +10,7 @@
     <div class="areas-grid">
             <!-- Columna de Imagen -->
             <div class="area-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/buho.png" alt="Estudiantes en laboratorio">
             </div>
 
             <!-- Columna de Texto -->
