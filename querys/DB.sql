@@ -54,6 +54,13 @@ FOREIGN KEY (nIdUsuario) REFERENCES Usuario(nIdUsuario),
 FOREIGN KEY (nIdBenefactor) REFERENCES Benefactor(nIdBenefactor)
 );
 
+CREATE TABLE Indicios(
+    nIdIndicio SMALLINT NOT NULL AUTO_INCREMENT,
+    sDescription VARCHAR (300) NOT NULL,
+    sPorcentaje VARCHAR (3) NOT NULL,
+    PRIMARY KEY (nIdIndicio)
+);
+
 CREATE  INDEX usuario_srolx ON Usuario (sRol ASC);
 CREATE  INDEX benefactor_snamex ON Benefactor (sName ASC);
 CREATE  INDEX proyecto_nidbenefactorx ON Proyecto (nIdBenefactor ASC);
