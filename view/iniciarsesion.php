@@ -30,7 +30,7 @@ include_once("modules/navbar.php");   # Navbar
 
     <div class="formularios">
         <!-- Formulario de Registro -->
-        <form id="form-registro" class="formulario formulario-activo">
+        <form id="form-registro" class="formulario formulario-activo" action="../controller/register.php" method="POST">
             <p>¡Bienvenido!</p>
             <p> Si ya tienes una cuenta, inicia sesión con tu correo electrónico y contraseña.</p>
             <div class="grupo-input">
