@@ -70,13 +70,13 @@ class Usuario{
     }
 
     //B-REGISTER: Saul Lima Gonzalez
-    public function exists($sName,$sPassword){
+    public function exists($sEmail){
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
         $bandera=false;
         $arrRS=null;
         if($oAccesoDatos->conectar()){
-            $sQuery="SELECT nIdUsuario,sNombreC,sPassword FROM Usuario WHERE sNombreC='".$sName."' AND sPassword='".$sPassword."'";
+            $sQuery="SELECT nIdUsuario,sNombreC,sPassword FROM Usuario WHERE sEmail='".$sEmail."'";
             $arrRS=$oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS && is_array($arrRS)){
@@ -93,9 +93,10 @@ class Usuario{
         if($this->sNombreC=="" || $this->sPassword=="" || $this->sEmail=="" || $this->sRol==""){
             throw new Exception("message/Usuario/datos vacios");
         }else{
-         if($this->exists($this->sNombreC,$this->sPassword)){
+         /*if($this->exists($this->sEmail)){
             throw new Exception("message/Usuario/usuario ya existente");
-        }else if($oAccesoDatos->conectar()){
+            echo "este correo ya esta dado de alta";
+        }*/if($oAccesoDatos->conectar()){
             $sQuery="INSERT INTO Usuario (sNombreC,sPassword,sEmail,sRol)
             VALUES ('".$this->sNombreC."', '".$this->sPassword."', '"
             .$this->sEmail."', '".$this->sRol."')";
