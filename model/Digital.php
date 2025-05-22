@@ -1,5 +1,6 @@
 <?php
-include("Donacion.php");
+require_once 'Donacion.php';
+require_once 'AccesoDatos.php';
 class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";
@@ -39,10 +40,10 @@ class Digital extends Donacion{
         if($this -> nAmount <= 0 || empty($this->aPhoto[0])  || $this -> nIdBenefactor <=0 || $this -> nIdUsuario <= 0 || empty($this -> sMethod) || empty($this -> nFolio)){throw new Exception("m/Donacion/create/nIdDonacion&&nAmount&&aPhoto&&nIdBenefactor&&nIdUsuario&&sMethod&&nFolio");}
         else{
             $fotoBinaria = addslashes($this->aPhoto[0]);
-
-            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor) 
+            $this->dFechaCreacion=date('Y-m-d');
+            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor) 
             VALUES (".intval($this->nFolio).", "."'".$this->sMethod."', "."'".$fotoBinaria."', ".
-            intval($this->nAmount).", "."0, ".intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
+            intval($this->nAmount).", "."0, '".$this->dFechaCreacion."' ,".$this.intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
             $arrRS = $oAccesoDatos -> comando($sQuery);
             $oAccesoDatos -> desconectar();
             if($arrRS > 0){
@@ -89,26 +90,65 @@ class Digital extends Donacion{
 
     //B- DONACIONES (TARJETAS)-> READ WITH INNER JOIN:Saul Lima Gonzalez
     public function readByJoin()
-    {       
-        $oAccesoDatos = new AccesoDatos();
-        $sQuery = "";
-        $arrRS = 0;
-        $oDigital = null;
-        
-            if ($oAccesoDatos->conectar()) {
-                $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio FROM DonacionDigital d
-                INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario";
-                $arrRS = $oAccesoDatos->consulta($sQuery);
-                $oAccesoDatos->desconectar();
-                if ($arrRS && count($arrRS)) {
-                    $aFila = $arrRS[0];
-                    $oDigital = new Digital();
-                    $oDigital->sNombreUser = $aFila[0];
-                    $oDigital->nAmount=$aFila[1];
-                    $oDigital->nFolio=$aFila[2];
-                };
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrDigital = [];
+    
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion FROM DonacionDigital d
+                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario ORDER BY d.dateCreacion";
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+        if ($arrRS && count($arrRS) > 0) {
+            foreach ($arrRS as $aFila) {
+                $oDigital = new Digital();
+                $oDigital->setsNombreUser($aFila[0]);
+                $oDigital->setnAmount($aFila[1]);
+                $oDigital->setnFolio($aFila[2]);
+                $oDigital->setdFechaCreacion($aFila[3]);
+                $arrDigital[] = $oDigital;
             }
-            return $oDigital;        
+        }
     }
+    return $arrDigital;        
+}
+
+//B->DONACIONES (TARJETA) PLUS DONATIONS :Saul Lima Gonzalez
+public function plusDonations() {
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $suma = 0;
+
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT SUM(nAmount) AS total FROM DonacionDigital";
+        $resultado = $oAccesoDatos->consulta($sQuery);        
+        if ($resultado && count($resultado) > 0) {
+            $suma = $resultado[0][0];
+        }
+
+        $oAccesoDatos->desconectar();
+    }
+
+    return $suma;
+}
+
+//B-> DONACIONES (TARJETA) COUNT FOLIOS :Saul Lima Gonzalez
+public function countDonations(){
+    $oAccesoDatos=new AccesoDatos();
+    $sQuery="";
+    $contador=0;
+    if($oAccesoDatos->conectar()){
+        $sQuery="SELECT COUNT(*) FROM DonacionDigital";
+        $resultado=$oAccesoDatos->consulta($sQuery);
+        if($resultado && count($resultado)>0){
+            $contador=$resultado[0][0];
+        }
+        $oAccesoDatos->desconectar();
+        
+    }
+    return $contador;
+}
 }
 ?>
