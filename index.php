@@ -151,7 +151,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                         <tr>
                             <td>Jesus Morales</td>
                             <td>$35,200.00</td>
-                            <td>PLÑA1</td>
+                            <td>F12347</td>
                         </tr>
                     </tbody>
                 </table>
