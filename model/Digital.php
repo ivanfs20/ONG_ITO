@@ -3,6 +3,7 @@ include("Donacion.php");
 class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";
+    private $sNombreUser="";
 
     public function setsMethod($sMethod){
         $this -> sMethod = $sMethod;
@@ -20,6 +21,13 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
+    public function setsNombreUser($sNombreUser){
+        $this->sNombreUser=$sNombreUser;
+    }
+
+    public function getsNombreUser(){
+        return $this->sNombreUser;
+    }
 
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
@@ -76,5 +84,31 @@ class Digital extends Donacion{
 
     }
 
+
+
+
+    //B- DONACIONES (TARJETAS)-> READ WITH INNER JOIN:Saul Lima Gonzalez
+    public function readByJoin()
+    {       
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = 0;
+        $oDigital = null;
+        
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio FROM DonacionDigital d
+                INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario";
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                if ($arrRS && count($arrRS)) {
+                    $aFila = $arrRS[0];
+                    $oDigital = new Digital();
+                    $oDigital->sNombreUser = $aFila[0];
+                    $oDigital->nAmount=$aFila[1];
+                    $oDigital->nFolio=$aFila[2];
+                };
+            }
+            return $oDigital;        
+    }
 }
 ?>
