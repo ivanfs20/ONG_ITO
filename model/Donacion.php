@@ -7,51 +7,51 @@ class Donacion{
     protected $nIdBenefactor = 0;
     protected $nIdUsuario = 0;
 
-    protected function setnIdDonacion($nIdDonacion){
+    public function setnIdDonacion($nIdDonacion){
         $this -> nIdDonacion = $nIdDonacion;
     }
 
-    protected function setnAmount($nAmount){
+    public function setnAmount($nAmount){
         $this -> nAmount = $nAmount;
     }
 
-    protected function setbStatus($bStatus){
+    public function setbStatus($bStatus){
         $this -> bStatus = $bStatus;
     }
 
-    protected function setaPhoto($aPhoto){
+    public function setaPhoto($aPhoto){
         $this -> aPhoto = $aPhoto;
     }
 
-    protected function setnIdBenefactor($nIdBenefactor){
+    public function setnIdBenefactor($nIdBenefactor){
         $this -> nIdBenefactor = $nIdBenefactor;
     }
 
-    protected function setnIdUsuario($nIdUsuario){
+    public function setnIdUsuario($nIdUsuario){
         $this -> nIdUsuario = $nIdUsuario;
     }
 
-    protected function getnIdDonacion(){
+    public function getnIdDonacion(){
         return $this -> nIdDonacion;
     }
 
-    protected function getnAmount(){
+    public function getnAmount(){
         return $this -> nAmount;
     }
 
-    protected function getbStatus(){
+    public function getbStatus(){
         return $this -> bStatus;
     }
 
-    protected function getaPhoto(){
+    public function getaPhoto(){
         return $this -> aPhoto;
     }
 
-    protected function getnIdBenefactor(){
+    public function getnIdBenefactor(){
         return $this -> nIdBenefactor;
     }
 
-    protected function getnIdUsuario(){
+    public function getnIdUsuario(){
         return $this -> nIdUsuario;
     }
 
