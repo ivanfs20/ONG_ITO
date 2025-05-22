@@ -138,21 +138,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Carlos Flores</td>
-                            <td>$5,000.00</td>
-                            <td>HG678</td>
-                        </tr>
-                        <tr>
-                            <td>Uriel Vallejo</td>
-                            <td>$1,500.00</td>
-                            <td>KOPL1</td>
-                        </tr>
-                        <tr>
-                            <td>Jesus Morales</td>
-                            <td>$35,200.00</td>
-                            <td>F12347</td>
-                        </tr>
+                      <?php require_once 'controller/digitalIndexController.php'; ?>
                     </tbody>
                 </table>
             </div>
