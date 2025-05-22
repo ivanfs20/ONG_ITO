@@ -33,6 +33,7 @@ sDescription VARCHAR (250) NOT NULL,
 aPhoto LONGBLOB NOT NULL,
 nAmount MEDIUMINT NOT NULL,
 bStatus BOOLEAN NOT NULL,
+dateCreacion DATE NOT NULL,
 nIdUsuario SMALLINT NOT NULL,
 nIdBenefactor SMALLINT NOT NULL,
 PRIMARY KEY (nIdDonacion),
@@ -47,6 +48,7 @@ sMethod VARCHAR (25) NOT NULL,
 aPhoto LONGBLOB NOT NULL,
 nAmount MEDIUMINT NOT NULL,
 bStatus BOOLEAN NOT NULL,
+dateCreacion DATE NOT NULL,
 nIdUsuario SMALLINT NOT NULL,
 nIdBenefactor SMALLINT NOT NULL,
 PRIMARY KEY (nIdDonacion),
@@ -114,3 +116,9 @@ DROP FOREIGN KEY DonacionDigital_ibfk_1;
 ALTER TABLE DonacionDigital 
 ADD CONSTRAINT DonacionDigital_ibfk_1 FOREIGN KEY (nIdUsuario) 
 REFERENCES Usuario(nIdUsuario) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE DonacionDigital 
+DROP FOREIGN KEY DonacionDigital_ibfk_2;
+ALTER TABLE DonacionDigital 
+ADD CONSTRAINT DonacionDigital_ibfk_2 FOREIGN KEY (nIdBenefactor) 
+REFERENCES Benefactor(nIdBenefactor) ON DELETE CASCADE ON UPDATE CASCADE;
