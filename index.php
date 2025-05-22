@@ -129,27 +129,36 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
             </div>
 
             <div class="evidencia-tabla donacion">
-                <!-- Fila 1 -->
-                <div class="tabla-fila">
-                    <div class="celda-imagen">
-                        <img src="view/media/salon.jpg" alt="Equipo nuevo">
-                    </div>
-                    <div class="descripcion-celda">
-                        <p class="descripcion-texto">Nuevos proyectores instalados gracias a sus contribuciones.</p>
-                    </div>
-                </div>
-
-                <!-- Fila 2 -->
-                <div class="tabla-fila">
-                    <div class="celda-imagen">
-                        <img src="view/media/salon.jpg" alt="Mobiliario renovado">
-                    </div>
-                    <div class="descripcion-celda">
-                        <p class="descripcion-texto">Pupitres nuevos instalados en el aula principal.</p>
-                    </div>
-                </div>
+                <table class="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Monto</th>
+                            <th>Folio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Carlos Flores</td>
+                            <td>$5,000.00</td>
+                            <td>HG678</td>
+                        </tr>
+                        <tr>
+                            <td>Uriel Vallejo</td>
+                            <td>$1,500.00</td>
+                            <td>KOPL1</td>
+                        </tr>
+                        <tr>
+                            <td>Jesus Morales</td>
+                            <td>$35,200.00</td>
+                            <td>PLÑA1</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
     </div>
 </section>
 
