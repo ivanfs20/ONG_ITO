@@ -58,24 +58,33 @@ VALUES ("Reciclaje Comunitario", "Instalación de puntos de reciclaje en barrios
 
 --DONACIÓN MATERIAL
 
-INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES ("Libros Escolares", "Donación de libros de texto usados.", 0x00, 120, TRUE, 3, 1);
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES ("Libros Escolares", "Donación de libros de texto usados.", 0x00, 120, TRUE,'2025-04-22', 3, 1);
 
-INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES ("Ropa de Invierno", "Abrigos y suéteres para comunidades frías.", 0x00, 85, TRUE, 4, 2);
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES ("Ropa de Invierno", "Abrigos y suéteres para comunidades frías.", 0x00, 85, TRUE,'2025-03-22', 4, 2);
 
-INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES ("Herramientas Agrícolas", "Kit de herramientas básicas para agricultores.", 0x00, 40, FALSE, 5, 1);
+INSERT INTO DonacionMaterial (sName, sDescription, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES ("Herramientas Agrícolas", "Kit de herramientas básicas para agricultores.", 0x00, 40, FALSE,'2025-05-22', 5, 1);
 
 --DONACION DIGITAL
 
-INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES (10001, "Transferencia", 0x00, 1500, TRUE, 6, 3);
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10001, "Transferencia", 0x00, 1500, TRUE,'2025-02-22', 6, 3);
 
-INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES (10002, "PayPal", 0x00, 750, FALSE, 7, 2);
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10002, "PayPal", 0x00, 750, FALSE,'2025-01-22', 7, 2);
 
-INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus, nIdUsuario, nIdBenefactor)
-VALUES (10003, "Tarjeta", 0x00, 300, TRUE, 8, 1);
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-04-22', 8, 1);
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-09-22', 5, 1);
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-08-22', 4, 1);
+
+INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-10-22', 3, 1);
 
 
