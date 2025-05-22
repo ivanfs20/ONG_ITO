@@ -6,6 +6,7 @@ class Donacion{
     protected $aPhoto = [];
     protected $nIdBenefactor = 0;
     protected $nIdUsuario = 0;
+    protected $dFechaCreacion=null;
 
     public function setnIdDonacion($nIdDonacion){
         $this -> nIdDonacion = $nIdDonacion;
@@ -53,6 +54,14 @@ class Donacion{
 
     public function getnIdUsuario(){
         return $this -> nIdUsuario;
+    }
+
+    public function setdFechaCreacion($dFechaCreacion){
+        $this->dFechaCreacion=$dFechaCreacion;
+    }
+
+    public function getdFechaCreacion(){
+        return $this->dFechaCreacion;
     }
 
     // B - DONACION -> READ BY ID : Morales de Jesus Jesus Antonio
