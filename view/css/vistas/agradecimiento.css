@@ -1,0 +1,199 @@
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/footer.css');
+
+
+.hero {
+    background-color: #2194F3;
+    padding: 6rem 5%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #F5F7FA;
+    gap: 1rem;
+    /* este gap ayuda para el espacio entre el texto y el boton */
+}
+
+.hero-titulo {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitulo {
+    font-size: 2rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.boton-hero {
+    margin-top: 1.5rem;
+}
+
+.boton-descargar-folio {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background-color: #F8D400;
+    color: #0B2054;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-descargar-folio:hover {
+    background-color: #F8D400;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* FALTA EL DISEÑO RESPONSIVO*/
+
+
+
+/* Estilos para sección de agradecimiento*/
+
+.seccion-agradecimiento {
+    padding: 4rem 1.5rem;
+    background-color: #f8f9fa;
+}
+
+.agradecimiento-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.agradecimiento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.agradecimiento-grid:hover {
+    transform: translateY(-3px);
+}
+
+.agradecimiento-imagen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px 0 0 12px;
+}
+
+.agradecimiento-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 350px;
+}
+
+.agradecimiento-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.agradecimiento-titulo {
+    color: #0B2054;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.agradecimiento-texto {
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* Botón Quiero Colaborar */
+.agradecimiento-boton {
+    align-self: flex-start;
+    background-color: #F8D400;
+    color: #0B2054;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agradecimiento-boton:hover {
+    background-color: #F8D400;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.agradecimiento-boton::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.agradecimiento-boton:hover::after {
+    transform: translateX(3px);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .agradecimiento-grid {
+        gap: 2rem;
+    }
+
+    .agradecimiento-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .agradecimiento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .agradecimiento-imagen {
+        border-radius: 12px 12px 0 0;
+        height: 300px;
+    }
+
+    .agradecimiento-content {
+        padding: 2rem;
+    }
+
+    .agradecimiento-titulo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .seccion-agradecimiento {
+        padding: 2rem 1rem;
+    }
+
+    .agradecimiento-boton {
+        width: 100%;
+        justify-content: center;
+    }
+}
