@@ -91,5 +91,24 @@ class AccesoDatos{
 
         return $bRet;
     }
+
+    //METODO PARA EJECUTAR UNA CONSULTA (SE AGREGO PARA FUNCIONAMIENTO CORRECTO CON INNER JOIN) ->consultaJoin()
+
+    function consultaJoin($psConsulta){
+        if ($psConsulta == "") {
+        throw new Exception("AccesoDatos->consulta: falta indicar la consulta");
+    }
+
+    if ($this->oConexion == null) {
+        throw new Exception("AccesoDatos->consulta: falta conectar a la base");
+    }
+
+    try {
+        $stmt = $this->oConexion->query($psConsulta);
+        return $stmt->fetchAll(PDO::FETCH_NUM); // <-- ¡Esta línea es clave!
+    } catch (Exception $e) {
+        throw $e;
+    }
+    }
 }
 ?>
