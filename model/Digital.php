@@ -4,8 +4,7 @@ require_once 'AccesoDatos.php';
 class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";
-    private $sNombreUser="";
-
+    
     public function setsMethod($sMethod){
         $this -> sMethod = $sMethod;
     }
@@ -22,14 +21,7 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
-    public function setsNombreUser($sNombreUser){
-        $this->sNombreUser=$sNombreUser;
-    }
-
-    public function getsNombreUser(){
-        return $this->sNombreUser;
-    }
-
+    
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
         $oAccesoDatos = new AccesoDatos();
@@ -98,7 +90,8 @@ class Digital extends Donacion{
     
     if ($oAccesoDatos->conectar()) {
         $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion FROM DonacionDigital d
-                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario ORDER BY d.dateCreacion";
+                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.dateCreacion BETWEEN 
+                    DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE() ORDER BY d.dateCreacion DESC";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
@@ -115,40 +108,5 @@ class Digital extends Donacion{
     return $arrDigital;        
 }
 
-//B->DONACIONES (TARJETA) PLUS DONATIONS :Saul Lima Gonzalez
-public function plusDonations() {
-    $oAccesoDatos = new AccesoDatos();
-    $sQuery = "";
-    $suma = 0;
-
-    if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT SUM(nAmount) AS total FROM DonacionDigital";
-        $resultado = $oAccesoDatos->consulta($sQuery);        
-        if ($resultado && count($resultado) > 0) {
-            $suma = $resultado[0][0];
-        }
-
-        $oAccesoDatos->desconectar();
-    }
-
-    return $suma;
-}
-
-//B-> DONACIONES (TARJETA) COUNT FOLIOS :Saul Lima Gonzalez
-public function countDonations(){
-    $oAccesoDatos=new AccesoDatos();
-    $sQuery="";
-    $contador=0;
-    if($oAccesoDatos->conectar()){
-        $sQuery="SELECT COUNT(*) FROM DonacionDigital";
-        $resultado=$oAccesoDatos->consulta($sQuery);
-        if($resultado && count($resultado)>0){
-            $contador=$resultado[0][0];
-        }
-        $oAccesoDatos->desconectar();
-        
-    }
-    return $contador;
-}
 }
 ?>
