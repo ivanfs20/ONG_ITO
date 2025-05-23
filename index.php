@@ -99,25 +99,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
             </div>
 
             <div class="evidencia-tabla material">
-                <!-- Fila 1 -->
-                <div class="tabla-fila">
-                    <div class="celda-imagen">
-                        <img src="view/media/salon.jpg" alt="Salón sin proyector">
-                    </div>
-                    <div class="descripcion-celda">
-                        <p class="descripcion-texto">Este salón carece de proyector y pizarrón adecuados.</p>
-                    </div>
-                </div>
-
-                <!-- Fila 2 -->
-                <div class="tabla-fila">
-                    <div class="celda-imagen">
-                        <img src="view/media/pupitres.jpg" alt="Pupitres deteriorados">
-                    </div>
-                    <div class="descripcion-celda">
-                        <p class="descripcion-texto">Pupitres deteriorados que afectan la comodidad estudiantil.</p>
-                    </div>
-                </div>
+                <?php require_once 'controller/materialIndexController.php'; ?>
             </div>
         </div>
 
@@ -135,6 +117,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                             <th>Nombre</th>
                             <th>Monto</th>
                             <th>Folio</th>
+                            <th>Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
