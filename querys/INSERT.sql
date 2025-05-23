@@ -76,7 +76,7 @@ INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreac
 VALUES (10002, "PayPal", 0x00, 750, FALSE,'2025-01-22', 7, 2);
 
 INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
-VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-04-22', 8, 1);
+VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-04-22', 3, 1);
 
 INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor)
 VALUES (10003, "Tarjeta", 0x00, 300, TRUE,'2025-09-22', 5, 1);
