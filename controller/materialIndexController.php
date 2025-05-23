@@ -1,0 +1,60 @@
+<?php 
+require_once 'model/Material.php';
+$oMaterial=new Material(); 
+//$arrMaterial=$oMaterial->readForTable();
+$arrMaterial=$oMaterial->readByJoin();
+foreach ($arrMaterial as $material){
+
+?>
+
+                <div class="tabla-fila">
+                    <div class="celda-imagen">
+                        <img src="view/media/salon.jpg" alt="Salón sin proyector">
+                        
+                    </div>
+                    <div class="descripcion-celda">
+                         
+                        <table class="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Material donado</th>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>Fecha de donacion</th>
+                            <th>Usuario donador</th>                         
+                         </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <?php  echo $material->getsNameBenefactor();   ?>
+                        </td>
+                        <td>
+                            <?php  echo $material->getsName();   ?>
+                        </td>
+
+                        <td>
+                            <?php  echo $material->getsDescription();   ?>
+                        </td>
+
+                        <td>
+                            <?php  echo $material->getnAmount();   ?>
+                        </td>
+
+                        <td>
+                            <?php  echo $material->getdFechaCreacion();   ?>
+                        </td>
+
+                        <td>
+                            <?php  echo $material->getsNombreUser();   ?>
+                        </td>
+                    </tr>
+                    
+                </table>
+                       
+                    </div>
+                </div>
+                
+<?php 
+}
+?>
