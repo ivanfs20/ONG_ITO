@@ -8,6 +8,17 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/D1_Area.css">';
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
+
+
+if($oUsuario!=null){
 ?>
 
 
@@ -85,4 +96,5 @@ include_once("modules/navbar.php");   # Navbar
 
 <?php
 include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

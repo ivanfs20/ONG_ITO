@@ -1,5 +1,5 @@
 <?php 
-    include("../model/Usuario.php");
+    require_once '../model/Usuario.php';
     $sError = "";
     $sEmail = "";
     $sPassword = "";

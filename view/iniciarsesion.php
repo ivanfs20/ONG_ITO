@@ -8,9 +8,14 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/iniciarsesion.c
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+
+//Destruimos la sessión si es que el usuario en la barra del navegador quiere ir al login (estaria saliendo automaticamente)
+//de la sessión
+session_start();
+session_unset();
+session_destroy();
 ?>
-
-
 
 <!-- Hero con letras amarillas atractivas -->
 <section class="hero">
