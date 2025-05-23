@@ -1,9 +1,11 @@
 <?php
-include("Donacion.php");
+require_once 'Donacion.php';
 require_once("AccesoDatos.php");
 class Material extends Donacion{
     private $sName = "";
     private $sDescription = "";
+    private $sNameBenefactor="";
+    
 
     public function setsName($sName){
         $this -> sName = $sName;
@@ -19,6 +21,14 @@ class Material extends Donacion{
 
     public function getsDescription(){
         return $this -> sDescription;
+    }
+
+    public function setsNameBenefactor($sNameBenefactor){
+        return $this->sNameBenefactor=$sNameBenefactor;
+    }
+
+    public function getsNameBenefactor(){
+        return $this->sNameBenefactor;
     }
         //B - DONACIONES (MATERIAL) -> CREATE:Saul Lima Gonzalez
         public function Create(){
@@ -77,5 +87,74 @@ class Material extends Donacion{
             }        
         }
 
+        //B- DONACIONES (MATERIAL) READ MATERIAL:Saul Lima Gonzalez
+        public function readMaterial()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionMaterial";
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+        if ($arrRS && count($arrRS) > 0) {
+            foreach ($arrRS as $aFila) {
+                $oMaterial = new Material();                
+                $oMaterial->setnIdDonacion($aFila[0]);                
+                $oMaterial->setsName($aFila[1]);
+                $oMaterial->setsDescription($aFila[2]);
+                $oMaterial->setaPhoto($aFila[3]);
+                $oMaterial->setnAmount($aFila[4]);
+                $oMaterial->setbStatus($aFila[5]);
+                $oMaterial->setdFechaCreacion($aFila[6]);
+                $oMaterial->setnIdUsuario($aFila[7]);
+                $oMaterial->setnIdBenefactor($aFila[8]);
+                $arrMaterial[] = $oMaterial;
+            }
+        }
+    }
+    return $arrMaterial;        
+}
+
+    //B- DONACIONES (MATERIAL)-> READ WITH INNER JOIN:Saul Lima Gonzalez
+    public function readByJoin()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {       
+                                               
+                $sQuery="SELECT b.sName,d.sName,d.sDescription,d.nAmount,d.dateCreacion,u.sNombreC,d.aPhoto
+                FROM Usuario u INNER JOIN DonacionMaterial d ON u.nIdUsuario=d.nIdUsuario
+                INNER JOIN Benefactor b ON d.nIdBenefactor=b.nIdBenefactor WHERE d.dateCreacion BETWEEN 
+                DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()" ;
+                $arrRS=$oAccesoDatos->consultaJoin($sQuery);
+                $oAccesoDatos->desconectar();
+                if ($arrRS && count($arrRS) > 0) {
+                foreach($arrRS as $aFila){                
+                $oMaterial = new Material();
+                
+                //$oMaterial->setaPhoto($aFila[0]);      
+                $oMaterial->setsNameBenefactor($aFila[0]);
+                $oMaterial->setsName($aFila[1]);
+                $oMaterial->setsDescription($aFila[2]);
+                $oMaterial->setnAmount($aFila[3]);
+                $oMaterial->setdFechaCreacion($aFila[4]);
+                $oMaterial->setsNombreUser($aFila[5]);
+                $oMaterial->setaPhoto($aFila[6]);
+                        
+                              
+                $arrMaterial[] = $oMaterial;
+                }
+                
+                }         
+        
+    }
+    return $arrMaterial;        
+}
 }
 ?>
