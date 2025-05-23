@@ -108,5 +108,37 @@ class Digital extends Donacion{
     return $arrDigital;        
 }
 
+//B - DONACIONES (TARJETA) -> READ BY ID : Jesus Antonio Morales de Jesus
+public function readById(){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+    $arrDigital = null;
+
+    if($this->nIdDonacion <= 0){
+        throw new Exception("m/Digital/readById/nIdDonacion");
+    }else{
+        if($oAccesoDatos->conectar()){
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor FROM DonacionDigital WHERE nIdDonacion = ".intval($this->nIdDonacion);
+            $arrRS = $oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && count($arrRS) > 0){
+                foreach ($arrRS as $aFila) {
+                    $oDigital = new Digital();
+                    $oDigital->setnFolio($aFila[0]);
+                    $oDigital->setsMethod($aFila[1]);
+                    $oDigital->setaPhoto($aFila[2]);
+                    $oDigital->setnAmount($aFila[3]);
+                    $oDigital->setbStatus($aFila[4]);
+                    $oDigital->setdFechaCreacion($aFila[5]);
+                    $oDigital->setnIdUsuario($aFila[6]);
+                    $oDigital->setnIdBenefactor($aFila[7]);
+                    $arrDigital[] = $oDigital;
+                }
+            }
+        }
+    }
+    return $arrDigital;
+
 }
 ?>
