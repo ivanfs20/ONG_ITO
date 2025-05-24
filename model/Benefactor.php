@@ -179,33 +179,21 @@ class Benefactor{
     // B - BENEFACTOR -> INSERT : Morales de Jesus Jesus Antonio
 
     public function insert() {
-        if (empty($this->sName)) {
-            throw new Exception("m/Benefactor/insert/sName");
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $nAfectados = -1;
+        
+        if (empty($this->sName) || empty($this->sDescription)) {
+            throw new Exception("message/Benefactor/datos vacios");
+        } else {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "INSERT INTO Benefactor (sName, sDescription) VALUES ('".$this->sName."', '".$this->sDescription."')";
+                $nAfectados = $oAccesoDatos->comando($sQuery);
+                $oAccesoDatos->desconectar();
+            }
         }
         
-        if (empty($this->sDescription)) {
-            throw new Exception("m/Benefactor/insert/sDescription");
-        }
-
-        $oAccesoDatos = new AccesoDatos();
-        $bRet = false;
-
-        try {
-            if ($oAccesoDatos->conectar()) {
-                $conexion = $oAccesoDatos->getConexion();
-                $stmt = $conexion->prepare("INSERT INTO Benefactor(sName, sDescription) VALUES (?, ?)");
-                
-                if ($stmt->execute([$this->sName, $this->sDescription])) {
-                    $this->nIdBenefactor = $conexion->lastInsertId();
-                    $bRet = true;
-                }
-            }
-        } catch (Exception $e) {
-            throw new Exception("m/Benefactor/insert/Error: " . $e->getMessage());
-        } finally {
-            $oAccesoDatos->desconectar();
-        }
-        return $bRet;
+        return $nAfectados;
     }
 
     
