@@ -89,7 +89,7 @@ class Digital extends Donacion{
     $arrDigital = [];
     
     if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion FROM DonacionDigital d
+        $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion, d.bStatus FROM DonacionDigital d
                    INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.dateCreacion BETWEEN 
                     DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE() ORDER BY d.dateCreacion DESC";
         $arrRS = $oAccesoDatos->consulta($sQuery);
@@ -101,6 +101,7 @@ class Digital extends Donacion{
                 $oDigital->setnAmount($aFila[1]);
                 $oDigital->setnFolio($aFila[2]);
                 $oDigital->setdFechaCreacion($aFila[3]);
+                $oDigital->setbStatus($aFila[4]);
                 $arrDigital[] = $oDigital;
             }
         }
