@@ -4,7 +4,7 @@ $oMaterial=new Material();
 //$arrMaterial=$oMaterial->readForTable();
 $arrMaterial=$oMaterial->readByJoin();
 foreach ($arrMaterial as $material){
-
+if($material->getbStatus()==1){
 ?>
 
                 <div class="tabla-fila">
@@ -56,5 +56,6 @@ foreach ($arrMaterial as $material){
                 </div>
                 
 <?php 
+}
 }
 ?>
