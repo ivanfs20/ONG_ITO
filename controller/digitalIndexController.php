@@ -6,6 +6,7 @@ $fechaFin = new DateTime();
 $fechaInicio = (clone $fechaFin)->modify('-1 month');
 $arrDigital=$oDigital->readByJoin();
 $acumulador=0;
+$countFolio = 0;
 foreach ($arrDigital as $digital){
     if($digital->getbStatus() == 1){
 ?>
@@ -16,6 +17,7 @@ foreach ($arrDigital as $digital){
              <td><?php  echo $digital->getdFechaCreacion(); ?></td>           
     </tr>
 <?php 
+    $countFolio++;
     $acumulador+=$digital->getnAmount();
     }
 }
@@ -29,11 +31,9 @@ foreach ($arrDigital as $digital){
     </th>
     <th>
         <?php 
-         if(count($arrDigital)==1){
-            echo count($arrDigital).' folio';
-         }else{
-            echo count($arrDigital).' folios totales';
-         }
+
+            echo $countFolio.' folios totales';
+
         ?>
     </th>
     <th>
