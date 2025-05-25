@@ -6,8 +6,7 @@ $fechaFin = new DateTime();
 $fechaInicio = (clone $fechaFin)->modify('-1 month');
 $arrDigital=$oDigital->readByJoin();
 $acumulador=0;
-foreach ($arrDigital as $digital){
-    if($digital->getbStatus() == 1){
+foreach ($arrDigital as $digital){    
 ?>
    <tr>
              <td><?php echo $digital->getsNombreUser();?></td>  
@@ -16,8 +15,7 @@ foreach ($arrDigital as $digital){
              <td><?php  echo $digital->getdFechaCreacion(); ?></td>           
     </tr>
 <?php 
-    $acumulador+=$digital->getnAmount();
-    }
+    $acumulador+=$digital->getnAmount();    
 }
 ?>
 <tr>
