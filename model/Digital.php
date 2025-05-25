@@ -108,8 +108,8 @@ class Digital extends Donacion{
     return $arrDigital;        
 }
 
-//B - DONACIONES (TARJETA) -> READ BY ID : Jesus Antonio Morales de Jesus
-public function readById(){
+//B - DONACIONES (TARJETA) -> READ BY ID : Jesus Antonio Morales de Jesus   -> falto pasar parametro id (Saul Lima Gonzalez)
+public function readById($id){
     $oAccesoDatos = new AccesoDatos();
     $sQuery = "";
     $arrRS = null;
@@ -119,7 +119,7 @@ public function readById(){
         throw new Exception("m/Digital/readById/nIdDonacion");
     }else{
         if($oAccesoDatos->conectar()){
-            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor FROM DonacionDigital WHERE nIdDonacion = ".intval($this->nIdDonacion);
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor FROM DonacionDigital WHERE nIdDonacion = ".intval($id);
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS && count($arrRS) > 0){
@@ -139,6 +139,6 @@ public function readById(){
         }
     }
     return $arrDigital;
-
+}
 }
 ?>
