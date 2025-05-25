@@ -1,6 +1,6 @@
 <?php
 require_once 'Donacion.php';
-require_once("AccesoDatos.php");
+include_once("AccesoDatos.php");
 class Material extends Donacion{
     private $sName = "";
     private $sDescription = "";

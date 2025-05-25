@@ -9,6 +9,17 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
+
+require_once '../model/Proyecto.php';
+
+
+
+$idProyecto = $_GET["idProyecto"];
+
+            $oProyecto = new Proyecto();
+            $oProyecto = $oProyecto -> getById($idProyecto);
+
+
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
@@ -32,18 +43,26 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         </tr>
     </table>
 
-    <form>
-        <label for="id_proyecto">Id Proyecto:</label>
-        <input name="id_proyecto" type="text" id="id_proyecto">
+    <form action="../controller/proyectoEliminado.php" method="POST">
+
+    <label for="id_proyecto">Id Proyecto:</label>
+        <input name="id_proyecto" type="text" id="id_proyecto" value=<?php echo $oProyecto->getnIdProyecto();?> readonly>
 
         <label for="id_titulo">Titulo:</label>
-        <input name="titulo" type="text"  id=" id_titulo " ">
+        <input name="titulo" type="text"  id=" id_titulo " value="<?php echo htmlspecialchars($oProyecto->getsTitle()); ?>" readonly> 
 
         <label for="id_dscripcion">Descripcion:</label>
-        <input name="descripcion" type="text"  id=" id_titulo " >
+        <input name="descripcion" type="text"  id=" id_titulo " value="<?php echo htmlspecialchars($oProyecto->getsDescription());?>" readonly>
 
         <label for="id_foto">Foto:</label>
-        <input name="foto" type="text"  id=" id_titulo ">
+        <input name="foto" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getaPhoto();?> readonly>
+
+        <label for="id_foto">Id Usuario:</label>
+        <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>
+
+        <label for="id_foto">ID Benefactor:</label>
+        <input name="id_benefactor" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdBenefactor();?> readonly>
+
 
         <div>
         <button class="button">Confirmar</button>

@@ -1,6 +1,6 @@
 <?php
 require_once 'Donacion.php';
-require_once 'AccesoDatos.php';
+include_once 'AccesoDatos.php';
 class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";

@@ -1,6 +1,6 @@
 <?php
 
-include("AccesoDatos.php");
+include_once("AccesoDatos.php");
 
 class Usuario{
     private $nIdUsuario = 0;

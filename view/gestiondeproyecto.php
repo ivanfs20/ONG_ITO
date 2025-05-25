@@ -32,7 +32,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Titulo</th>
                     <th>Descripcion</th>
                     <th>Foto</th>
-                  
+                    <th>Id Usuario</th>
+                    <th>Id Benefactor</th>
+
                    
                 </tr>
             </thead>
@@ -50,9 +52,13 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <td><?php echo $oProyect -> getsTitle();?></td>
                     <td><?php echo $oProyect -> getsDescription();?></td>
                     <td><?php echo $oProyect -> getaPhoto();?></td>
-                    <td><button onclick="window.location.href='proyectomodificar.php'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='proyectoeliminar.php'" class="btn-eliminar">Eliminar</button>
-                </td>
+                    <td><?php echo $oProyect -> getnIdUsuario();?></td>
+                    <td><?php echo $oProyect -> getnIdBenefactor();?></td>
+                    <td>
+    <button onclick="window.location.href='proyectomodificar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'" class="btn-modificar">Modificar</button>
+    <button onclick="window.location.href='proyectoeliminar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'" class="btn-eliminar">Eliminar</button>
+</td>
+
            
                 </tr>
 

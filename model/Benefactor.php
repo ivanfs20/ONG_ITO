@@ -1,5 +1,5 @@
 <?php
-include("AccesoDatos.php");
+include_once("AccesoDatos.php");
 
 class Benefactor{
     private $nIdBenefactor = 0;
