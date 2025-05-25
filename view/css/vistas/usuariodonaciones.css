@@ -1,0 +1,168 @@
+
+
+@import url('../base/reset.css');
+@import url('../componentes/navbar.css');
+@import url('../componentes/hero.css');
+@import url('../componentes/footer.css');
+@import url('../componentes/aside.css');
+
+
+/* Reset y base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background: #fff;
+    color: #222;
+  }
+  
+  /* Hero y banner */
+  .hero {
+    background: #07a0ff;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .hero .username {
+    font-weight: bold;
+  }
+  
+  .banner {
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1.2em;
+  }
+  
+  /* Botón de donar */
+  .donate-btn {
+    background: #ffc107;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Contenedor principal */
+  .main-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Secciones internas */
+  .contenido-principal {
+    flex: 3;
+  }
+  
+  .sidebar {
+    flex: 1;
+    background-color: white;
+    border-left: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  /* Tarjetas */
+  .recommendations {
+    padding: 0 20px;
+  }
+  
+  .card {
+    display: flex;
+    gap: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    align-items: center;
+  }
+  
+  .card img {
+    width: 120px;
+    height: auto;
+  }
+  
+  .card button {
+    margin-top: 10px;
+    background: #ffc107;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f5f5f5;
+    margin-top: 30px;
+  }
+  
+  .footer .donate-btn {
+    margin-top: 20px;
+    background: #ffc107;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #e0f7fa;
+  }
+  
+  /* Botón subir */
+  .subir-btn {
+    background-color: yellow;
+    color: black;
+    border: 1px solid #999;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
