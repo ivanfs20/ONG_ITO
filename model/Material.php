@@ -136,8 +136,7 @@ class Material extends Donacion{
                 $oAccesoDatos->desconectar();
                 if ($arrRS && count($arrRS) > 0) {
                 foreach($arrRS as $aFila){                
-                $oMaterial = new Material();
-                
+                $oMaterial = new Material();                
                 //$oMaterial->setaPhoto($aFila[0]);      
                 $oMaterial->setsNameBenefactor($aFila[0]);
                 $oMaterial->setsName($aFila[1]);
@@ -147,9 +146,13 @@ class Material extends Donacion{
                 $oMaterial->setsNombreUser($aFila[5]);
                 $oMaterial->setaPhoto($aFila[6]);
                 $oMaterial->setbStatus($aFila[7]);
+                if($oMaterial->getbStatus()==1){                
+                $arrMaterial[] = $oMaterial;
+                }
+                
                         
                               
-                $arrMaterial[] = $oMaterial;
+                
                 }
                 
                 }         
