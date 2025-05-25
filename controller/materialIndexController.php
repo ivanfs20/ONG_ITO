@@ -3,8 +3,8 @@ require_once 'model/Material.php';
 $oMaterial=new Material(); 
 //$arrMaterial=$oMaterial->readForTable();
 $arrMaterial=$oMaterial->readByJoin();
+if(count($arrMaterial)>0){
 foreach ($arrMaterial as $material){
-if($material->getbStatus()==1){
 ?>
 
                 <div class="tabla-fila">
@@ -57,5 +57,9 @@ if($material->getbStatus()==1){
                 
 <?php 
 }
+}else{
+?>
+<h3 class="seccion-titulo">No hay donacion en este periodo :(</h3>
+<?php 
 }
 ?>
