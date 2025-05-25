@@ -95,14 +95,19 @@ class Digital extends Donacion{
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
-            foreach ($arrRS as $aFila) {
-                $oDigital = new Digital();
+            foreach ($arrRS as $aFila) {                
+                $oDigital = new Digital();                
                 $oDigital->setsNombreUser($aFila[0]);
                 $oDigital->setnAmount($aFila[1]);
                 $oDigital->setnFolio($aFila[2]);
                 $oDigital->setdFechaCreacion($aFila[3]);
                 $oDigital->setbStatus($aFila[4]);
-                $arrDigital[] = $oDigital;
+                if($oDigital->getbStatus()==1){
+                    $arrDigital[] = $oDigital;
+                }
+                
+                
+                
             }
         }
     }
