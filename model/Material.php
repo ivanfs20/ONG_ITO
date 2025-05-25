@@ -160,5 +160,73 @@ class Material extends Donacion{
     }
     return $arrMaterial;        
 }
+
+//B - DONACIONES (MATERIAL) -> UPDATE : Jesus Antonio Morales de Jesus
+public function updateMaterial($sName, $sDescription, $aPhoto, $nAmount){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+
+    // Validar parámetros recibidos
+    if (empty($sName) || empty($sDescription) || empty($aPhoto[0]) || $nAmount <= 0) {
+        throw new Exception("Material/updateMaterial: Campos vacíos o nulos");
+    }
+
+    // Asignar los valores a las propiedades
+    $this->setsName($sName);
+    $this->setsDescription($sDescription);
+    $this->setaPhoto($aPhoto);
+    $this->setnAmount($nAmount);
+
+    if ($oAccesoDatos->conectar()) {
+        $photoToBinary = addslashes($aPhoto[0]);
+        $sQuery = "UPDATE DonacionMaterial 
+                   SET sName = '".$this->getsName()."', 
+                       sDescription = '".$this->getsDescription()."', 
+                       aPhoto = '".$photoToBinary."', 
+                       nAmount = ".intval($this->getnAmount())." 
+                   WHERE nIdDonacion = ".intval($this->getnIdDonacion());
+        
+        $arrRS = $oAccesoDatos->comando($sQuery);
+        $oAccesoDatos->desconectar();
+    }
+
+    return $arrRS > 0;
+}
+
+// B - DONACIONES (MATERIAL) -> READ BY ID : Jesus Antonio Morales de Jesus
+public function readById($id){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+    $oMaterial = null;
+
+    if ($id <= 0) {
+        throw new Exception("message/model/Material/ID no puede ser 0 o menor");
+    }
+
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionMaterial WHERE nIdDonacion = " . intval($id);
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+
+        if ($arrRS && count($arrRS) > 0) {
+            $aLinea = $arrRS[0];
+            $oMaterial = new Material();
+            $oMaterial->setnIdDonacion($aLinea[0]);
+            $oMaterial->setsName($aLinea[1]);
+            $oMaterial->setsDescription($aLinea[2]);
+            $oMaterial->setaPhoto($aLinea[3]);
+            $oMaterial->setnAmount($aLinea[4]);
+            $oMaterial->setbStatus($aLinea[5]);
+            $oMaterial->setdFechaCreacion($aLinea[6]);
+            $oMaterial->setnIdUsuario($aLinea[7]);
+            $oMaterial->setnIdBenefactor($aLinea[8]);
+        }
+    }
+
+    return $oMaterial;
+}
+
 }
 ?>

@@ -142,7 +142,7 @@ class Benefactor{
         return $nAfectados;
     }
 
-    // B - BENEFACTOR -> SELECT BY NAME : Morales de Jesus Jesus Antonio
+    // B - BENEFACTOR -> READALL : Morales de Jesus Jesus Antonio
 
     public function getAll() {
         $oAccesoDatos = new AccesoDatos();
