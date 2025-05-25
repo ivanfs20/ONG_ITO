@@ -35,17 +35,25 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                 </tr>
             </thead>
             <tbody>
+
+            <?php 
+                $arrUsuarios = $oUsuario -> getAll();
+                foreach($arrUsuarios as $oUser){
+            ?>
                 <tr>
-                    <td>1</td>
-                    <td>Carlos</td>
-                    <td>carlos@gamail.com</td>
-                    <td>123carlos</td>
-                    <td>Adminitrador</td>
+                    <td><?php echo $oUser-> getnIdUsuario();?></td>
+                    <td><?php echo $oUser-> getsNombreC();?></td>
+                    <td><?php echo $oUser-> getsEmail();?></td>
+                    <td><?php echo $oUser-> getsPassword();?></td>
+                    <td><?php echo $oUser-> getsRol();?></td>
                     <td>
                     <button onclick="window.location.href='usuariomodificar.php'" class="btn-modificar">Modificar</button>
                     <button onclick="window.location.href='usuarioeliminar.php'" class="btn-eliminar">Eliminar</button>
                     </td>
                 </tr>
+            <?php
+                }
+            ?>
             </tbody>
         </table>
 

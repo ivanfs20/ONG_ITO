@@ -60,4 +60,7 @@ if (isset($_SESSION['usuario'])) {
 }
 
 if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
+
+}
+}
 ?>

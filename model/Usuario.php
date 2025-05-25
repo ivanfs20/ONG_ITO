@@ -26,6 +26,10 @@ class Usuario{
         $this -> sPassword = $sPassword;
     }
 
+    public function getsPassword(){
+        return $this -> sPassword;
+    }
+
     public function setsRol($sRol){
         $this -> sRol = $sRol;
     }
@@ -107,5 +111,39 @@ class Usuario{
     return $nAfectados;
     }
 
+
+       //B- USUARUOS -> READ ALL : Flores Sánchez Carlos Iván
+       public function getAll() {
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $oUsuario = null;
+        $arrUsuarios = [];
+        $nCount = 0;
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT * FROM Usuario";
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                
+                if ($arrRS) {
+                    foreach ($arrRS as $fila) {
+                        $oUsuario = new Usuario();
+                        $oUsuario->setnIdUsuario($fila[0]);
+                        $oUsuario->setsNombreC($fila[1]);
+                        $oUsuario->setsEmail($fila[2]);
+                        $oUsuario->setsPassword($fila[3]);
+                        $oUsuario->setsRol($fila[4]);
+                        
+                        $arrUsuarios[$nCount] = $oUsuario;
+                        $nCount++;
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $arrUsuarios;
+    }
 }
 ?>
