@@ -9,6 +9,7 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
+require_once '../model/Proyecto.php';
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
@@ -36,18 +37,28 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                 </tr>
             </thead>
             <tbody>
+
+                <?php
+                    $oProyecto = new Proyecto();
+                    $arrProyectos = $oProyecto -> readAll();
+
+                    foreach($arrProyectos as $oProyect){
+                ?>
+
                 <tr>
-                    <td>10203</td>
-                    <td>Aula B-204 sin mobiliario adecuado</td>
-                    <td>Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat 
-                        at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet 
-                        urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.</td>
-                    <td>.png</td>
+                    <td><?php echo $oProyect -> getnIdProyecto();?></td>
+                    <td><?php echo $oProyect -> getsTitle();?></td>
+                    <td><?php echo $oProyect -> getsDescription();?></td>
+                    <td><?php echo $oProyect -> getaPhoto();?></td>
                     <td><button onclick="window.location.href='proyectomodificar.php'" class="btn-modificar">Modificar</button>
                     <button onclick="window.location.href='proyectoeliminar.php'" class="btn-eliminar">Eliminar</button>
                 </td>
            
                 </tr>
+
+                <?php
+                }
+                ?>
             </tbody>
         </table>
 

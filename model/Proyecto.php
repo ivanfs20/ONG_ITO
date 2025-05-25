@@ -214,26 +214,30 @@ class Proyecto{
 
     //B-PROYECTOS(CAMPAÑAS)->READ ALL : Saul Lima Gonzalez
     public function readAll(){
-        $oAccesoDatos=new AccesoDatos();
-        $sQuery="";
-        $arrRS=0;
-        $oProyecto=null;
-        if($oAccesoDatos->conectar()){
-            $sQuery="SELECT * FROM Proyecto";
-            $arrRS=$oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = 0;
+        $arrProyectos = [];
+    
+        if ($oAccesoDatos->conectar()) {
+            $sQuery = "SELECT p.nIdProyecto, p.sTitle, p.sDescription, p.aPhoto FROM Proyecto p";
+            $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
-            if($arrRS && count($arrRS)>0){
-                $aLinea=$arrRS[0];
-                $oProyecto=new Proyecto();
-                $oProyecto->nIdProyecto=$aLinea[0];
-                $oProyecto->sTitle=$aLinea[1];
-                $oProyecto->sDescription=$aLinea[2];
-                $oProyecto->aPhoto=$aLinea[3];
-                $oProyecto->nIdUsuario=$aLinea[4];
-                $oProyecto->nIdBenefactor=$aLinea[5];
-            };
+    
+            if ($arrRS && count($arrRS) > 0) {
+                foreach ($arrRS as $aLinea) {
+                    $oProyecto = new Proyecto();
+                    $oProyecto->setnIdProyecto($aLinea[0]);
+                    $oProyecto->setsTitle($aLinea[1]);
+                    $oProyecto->setsDescription($aLinea[2]);
+                    $oProyecto->setaPhoto($aLinea[3]);
+    
+                    $arrProyectos[] = $oProyecto;
+                }
+            }
         }
-        return $oProyecto;
+    
+        return $arrProyectos;
     }
 
        
