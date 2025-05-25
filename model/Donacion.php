@@ -73,33 +73,7 @@ class Donacion{
         return $this->sNameUser;
     }
 
-    // B - DONACION -> READ BY ID : Morales de Jesus Jesus Antonio
-    public function readById($id){
-        $oAccesoDatos = new AccesoDatos();
-        $sQuery = "";
-        $arrRS = null;
-        $oDonacion = null;
-
-        if($id==0){throw new Exception("/m/Donacion/byId/id");}
-        else{
-            if($oAccesoDatos -> conectar()){
-                $sQuery = "SELECT * FROM Donacion WHERE nIdDonacion=".intval($id);
-                $arrRS = $oAccesoDatos -> consulta($sQuery);
-                $oAccesoDatos -> desconectar();
-                if($arrRS && count($arrRS)>0){
-                        $fila = $arrRS[0];
-                        $oDonacion = new Donacion();
-                        $oDonacion -> nIdDonacion = $fila[0];
-                        $oDonacion -> nAmount = $fila[1];
-                        $oDonacion -> bStatus = $fila[2];
-                        $oDonacion -> aPhoto = null;//json_decode($fila[3]);
-                        $oDonacion -> nIdBenefactor = $fila[4];
-                        $oDonacion -> nIdUsuario = $fila[5];
-                };
-            }
-        }
-        return $oDonacion;
-    }
+    
 
     // B - DONACIONES (ALL) -> READALL : Morales de Jesus Jesus Antonio
 
