@@ -167,12 +167,10 @@ public function updateMaterial($sName, $sDescription, $aPhoto, $nAmount){
     $sQuery = "";
     $arrRS = null;
 
-    // Validar parámetros recibidos
     if (empty($sName) || empty($sDescription) || empty($aPhoto[0]) || $nAmount <= 0) {
         throw new Exception("Material/updateMaterial: Campos vacíos o nulos");
     }
 
-    // Asignar los valores a las propiedades
     $this->setsName($sName);
     $this->setsDescription($sDescription);
     $this->setaPhoto($aPhoto);
