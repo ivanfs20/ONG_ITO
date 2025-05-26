@@ -42,7 +42,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
     <input name="descripcion" type="text" id="id_descripcion" required>
 
     <label for="id_foto">Foto:</label>
-    <input name="foto" type="text" id="id_foto" required>
+    <input name="foto" type="file" id="id_foto" required>
 
     <label for="id_benefactor">Id Benefactor:</label>
     <input name="id_benefactor" type="text" id="id_benefactor" required>
