@@ -8,6 +8,8 @@ class Usuario{
     private $sEmail = "";
     private $sPassword = "";
     private $sRol = "";
+    private $sRfc="";
+    private $sDomicilio="";
 
 
     public function setnIdUsuario($nIdUsuario){
@@ -32,6 +34,22 @@ class Usuario{
 
     public function setsRol($sRol){
         $this -> sRol = $sRol;
+    }
+
+    public function setsRfc($sRfc){
+        $this->sRfc=$sRfc;
+    }
+
+    public function setsDomicilio($sDomicilio){
+        $this -> sDomicilio=$sDomicilio;
+    }
+
+    public function getsDomiclio(){
+        return $this->sDomicilio;
+    }
+
+    public function getsRfc(){
+        return $this->sRfc;
     }
 
     public function getnIdUsuario(){
@@ -89,7 +107,7 @@ class Usuario{
         }
         return $bandera;
     }
-    //B-REGISTER:Saul Lima Gonzalez
+    //B-REGISTER:Saul Lima Gonzalez  -> Se modifico para que tambien reciba el rfc y el domicilio de tipo VARCHAR 
     public function register(){
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
@@ -101,9 +119,9 @@ class Usuario{
             throw new Exception("message/Usuario/usuario ya existente");
             echo "este correo ya esta dado de alta";
         }*/if($oAccesoDatos->conectar()){
-            $sQuery="INSERT INTO Usuario (sNombreC,sPassword,sEmail,sRol)
+            $sQuery="INSERT INTO Usuario (sNombreC,sPassword,sEmail,sRol,sRfc,sDomicilio)
             VALUES ('".$this->sNombreC."', '".$this->sPassword."', '"
-            .$this->sEmail."', '".$this->sRol."')";
+            .$this->sEmail."', '".$this->sRol."', '".$this->sRfc."', '".$this->sDomicilio."')";
             $nAfectados=$oAccesoDatos->comando($sQuery);
             $oAccesoDatos->desconectar();
         }        
