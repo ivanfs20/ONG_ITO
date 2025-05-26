@@ -47,6 +47,14 @@ session_destroy();
                 <input name="e-mail" type="email" id="email" required>
             </div>
             <div class="grupo-input">
+                <label for="rfc">Ingrese su RFC</label>
+                <input name="RFC" type="text" id="rfc" required>
+            </div>
+            <div class="grupo-input">
+                <label for="domicilio-usuario">Domicilio</label>
+                <input name="domicilio" type="text" id="domicilio" required>
+            </div>
+            <div class="grupo-input">
                 <label for="password">Contraseña</label>
                 <input name="contraseña" type="password" id="password" required>
             </div>
