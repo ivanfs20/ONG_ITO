@@ -58,11 +58,13 @@ FOREIGN KEY (nIdUsuario) REFERENCES Usuario(nIdUsuario),
 FOREIGN KEY (nIdBenefactor) REFERENCES Benefactor(nIdBenefactor)
 );
 
-CREATE TABLE Indicios(
-    nIdIndicio SMALLINT NOT NULL AUTO_INCREMENT,
-    sDescription VARCHAR (300) NOT NULL,
-    sPorcentaje VARCHAR (3) NOT NULL,
-    PRIMARY KEY (nIdIndicio)
+CREATE TABLE Comentarios(
+    nIdComentario SMALLINT NOT NULL AUTO_INCREMENT,
+    sComentario VARCHAR (300) NOT NULL,
+    bStatus BOOLEAN NOT NULL,
+    nIdUsuario VARCHAR (3) NOT NULL
+    PRIMARY KEY (nIdIndicio),    
+    FOREIGN KEY (nIdUsuario) REFERENCES Usuario(nIdUsuario);
 );
 
 CREATE  INDEX usuario_srolx ON Usuario (sRol ASC);
