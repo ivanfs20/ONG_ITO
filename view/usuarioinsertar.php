@@ -25,7 +25,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="container">
     <table>
         <tr>
-            <th>Id Usuario</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Contraseña</th>
@@ -33,9 +32,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         </tr>
     </table>
 
-    <form>
-        <label for="id_usuario">Id Usuario:</label>
-        <input name="id_usuario" type="text" id="id_usuario">
+    <form action="../controller/usuarioinsertado.php" method="POST">
 
         <label for="id_nombre">Nombre:</label>
         <input name="nombre_usuario" type="text"  id=" id_nombre">
@@ -54,8 +51,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 </div>
        
-
-
 <?php
 include_once("modules/footer.html"); # Footer y cierre de HTML
 }

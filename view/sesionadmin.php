@@ -10,10 +10,13 @@ include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
+$bSession = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
+    $bSession = true;
 } else {
     $oUsuario = null;
+    $bSession = false;
 }
 
 if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
