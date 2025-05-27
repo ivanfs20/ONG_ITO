@@ -9,7 +9,7 @@ sDomicilio VARCHAR (50) NOT NULL,
 PRIMARY KEY (nIdUsuario)
 );
 
-CREATE TABLE Benefactor(
+CREATE TABLE Beneficiario(
 nIdBenefactor SMALLINT NOT NULL AUTO_INCREMENT,
 sName VARCHAR (50) NOT NULL,
 sDescription VARCHAR (250) NOT NULL,

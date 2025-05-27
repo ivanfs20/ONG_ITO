@@ -9,7 +9,7 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
-require_once ('../model/Benefactor.php');
+require_once ('../model/Beneficiario.php');
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];

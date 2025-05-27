@@ -35,7 +35,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 
             <?php
                 include_once("../model/Proyecto.php");
-                include_once("../model/Benefactor.php");
+                include_once("../model/Beneficiario.php");
                 $oProyecto = new Proyecto();
                 $oBenefactor = new Benefactor();
 
