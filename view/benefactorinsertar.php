@@ -23,13 +23,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Insertar Benefactor</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/benefactorInsertarController.php" method="post">   
         <label for="id_titulo">Nombre:</label>

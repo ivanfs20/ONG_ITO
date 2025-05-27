@@ -25,15 +25,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Modificar Usuario</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Usuario</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/usuarioModificado.php"  method="post">
         <label for="id_usuario">Id Usuario:</label>

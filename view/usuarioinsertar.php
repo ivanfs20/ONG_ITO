@@ -23,14 +23,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Insertar Usuario</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/usuarioinsertado.php" method="POST">
 

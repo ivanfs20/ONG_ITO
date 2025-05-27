@@ -26,18 +26,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Eliminar Usuario</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Usuario</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-        </tr>
-    </table>
-    
+   
 
-        <form action="../controller/usuarioEliminado.php"  method="post">
+    <form>
         <label for="id_usuario">Id Usuario:</label>
         <input name="id_usuario" type="text" id="id_usuario" value="<?php  echo $oUse->getnIdUsuario(); ?>" readonly>
 

@@ -27,13 +27,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Eliminar Benefactor</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/benefactorEliminarController.php"  method="post">
     <label for="id_benefactor">Id Benefactor:</label>
