@@ -54,17 +54,34 @@ input[type="text"], textarea {
     border-radius: 4px;
 }
 
-input[type="file"]{
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+
+
+.input-archivo {
+    position: absolute;
+    left: -9999px;
+}
+
+.etiqueta-archivo {
     display: inline-block;
-    background: #cce6ff;
-    border: 1px dashed #E0E0E0;
-    border-radius: 4px;
+    background: #B8DCFF;
+    border: 2px dashed #E0E0E0;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
     text-align: center;
+    
+}
+
+.etiqueta-archivo:hover {
+    border-color: #1f1e13;
+    background: #70a1d2;
+}
+
+.texto-archivo {
+    color: #6C757D;
+    font-weight: 500;
 }
 
 textarea {

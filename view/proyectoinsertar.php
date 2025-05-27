@@ -16,38 +16,40 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
-<div class="header">Insertar Proyecto</div>
+    <div class="header">Insertar Proyecto</div>
 
-<div class="container">
-   
-
-    <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
-
-    <label for="id_titulo">Titulo:</label>
-    <input name="titulo" type="text" id="id_titulo" required>
-
-    <label for="id_descripcion">Descripcion:</label>
-    <input name="descripcion" type="text" id="id_descripcion" required>
-
-    <label for="id_foto">Foto:</label>
-    <input name="foto" type="file" id="id_foto" required>
-
-    <label for="id_benefactor">Id Beneficiario:</label>
-    <input name="id_benefactor" type="text" id="id_benefactor" required>
-
-    <button type="submit" class="button">Confirmar</button>
-</form>
-
-</div>
-       
+    <div class="container">
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+        <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
+
+            <label for="id_titulo">Titulo:</label>
+            <input name="titulo" type="text" id="id_titulo" required>
+
+            <label for="id_descripcion">Descripcion:</label>
+            <input name="descripcion" type="text" id="id_descripcion" required>
+
+            <input name="foto" type="file" id="id_foto" class="input-archivo" required>
+            <label for="id_foto" class="etiqueta-archivo">
+                <span class="texto-archivo">Subir imagen</span>
+            </label>
+
+            <label for="id_benefactor">Id Beneficiario:</label>
+            <input name="id_benefactor" type="text" id="id_benefactor" required>
+
+            <button type="submit" class="button">Confirmar</button>
+        </form>
+
+    </div>
+
+
+
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>
