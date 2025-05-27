@@ -37,7 +37,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 include_once("../model/Proyecto.php");
                 include_once("../model/Beneficiario.php");
                 $oProyecto = new Proyecto();
-                $oBenefactor = new Benefactor();
+                $oBenefactor = new Beneficiario();
 
                 $nAmountProyectos = count($oProyecto->readAll());
                 $nAmountBenefactores = count($oBenefactor->getAll());

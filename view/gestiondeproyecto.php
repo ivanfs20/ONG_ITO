@@ -33,7 +33,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Descripcion</th>
                     <th>Foto</th>
                     <th>Id Usuario</th>
-                    <th>Id Benefactor</th>
+                    <th>Id Beneficiario</th>
 
                    
                 </tr>
