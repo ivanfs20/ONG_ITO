@@ -43,6 +43,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_contraseña">Contraseña:</label>
         <input name="contraseña" type="text"  id=" id_contraseña " >
 
+        <label for="id_rol">RFC:</label>
+        <input name="rfc" type="text"  id=" id_rol " >
+
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " >
 
