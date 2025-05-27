@@ -78,7 +78,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                     <div class="apoyo-icono">🎓</div>
                     <div class="stat-content">
                         <span class="apoyo-numero"><?php echo $nAmountBenefactores;?></span>
-                        <p class="apoyo-descripcion">benefactores.
+                        <p class="apoyo-descripcion">beneficiarios.
                         </p>
                     </div>
                 </div>
