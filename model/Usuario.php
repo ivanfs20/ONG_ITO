@@ -61,7 +61,7 @@ class Usuario{
     }
 
     public function getsEmail(){
-        return $this -> sPassword;
+        return $this -> sEmail;
     }
 
     public function getsRol(){
@@ -149,8 +149,8 @@ class Usuario{
                         $oUsuario = new Usuario();
                         $oUsuario->setnIdUsuario($fila[0]);
                         $oUsuario->setsNombreC($fila[1]);
-                        $oUsuario->setsEmail($fila[2]);
-                        $oUsuario->setsPassword($fila[3]);
+                        $oUsuario->setsPassword($fila[2]);
+                        $oUsuario->setsEmail($fila[3]);                        
                         $oUsuario->setsRol($fila[4]);
                         
                         $arrUsuarios[$nCount] = $oUsuario;
@@ -198,5 +198,82 @@ class Usuario{
             }
             return $arrUsuarios;
         }
+
+        //B-USUARIOS->readById -Saul Lima Gonzalez 
+        public function readById($id){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $oUsuario = null;
+        if($id==0){throw new Exception("/m/Usuario/byId/id");}
+        else{
+            if($oAccesoDatos -> conectar()){
+                $sQuery = "SELECT nIdUsuario,sNombreC,sPassword,sEmail,sRol,sRfc,sDomicilio FROM usuario WHERE nIdUsuario=".intval($id);
+                $arrRS = $oAccesoDatos -> consulta($sQuery);
+                $oAccesoDatos -> desconectar();
+                if($arrRS && count($arrRS)>0){
+                        $fila = $arrRS[0];
+                        $oUsuario = new Usuario();
+                        $oUsuario->nIdUsuario=$fila[0];
+                        $oUsuario->sNombreC=$fila[1];
+                       $oUsuario->sPassword=$fila[2];
+                        $oUsuario->sEmail=$fila[3];
+                        $oUsuario->sRol=$fila[4];
+                        $oUsuario->sRfc=$fila[5];
+                        $oUsuario->sDomicilio=$fila[6];
+                        
+                };
+            }
+        }
+        return $oUsuario;
+    }
+
+        //B-> USUARIO -> update :Saul Lima Gonzalez
+    public function update(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $nAfectados=-1;
+        if ($this->nIdUsuario<0 || $this->nIdUsuario==0 || empty($this->sNombreC) || empty($this->sEmail) || empty($this->sRfc)
+        || empty($this->sRol) || empty($this->sDomicilio)){
+            throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
+        }else{
+            if($oAccesoDatos->conectar()){
+               $sQuery = "UPDATE usuario SET                 
+                sNombreC = '" . $this->sNombreC . "',
+                sEmail='".$this->sEmail."',
+                sRol='".$this->sRol."',
+                sDomicilio='".$this->sDomicilio."',
+                sRfc='".$this->sRfc."',
+                sPassword = '" . $this->sPassword . "'               
+                 WHERE nIdBeneficiario= " . intval($this->nIdUsuario);
+                $nAfectados=$oAccesoDatos->comando($sQuery);
+                $oAccesoDatos->desconectar();
+            }
+        }
+        return $nAfectados;
+    }
+
+        //B-> deleteById : Saul Lima Gonzalez
+    public function deleteById($id){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=0;
+        $bRet=false;
+        if($id<=0 || $id==null){
+            throw new Exception("message/Usuario/deleteById/id nulo o menor que 0");
+        }else{
+            if($oAccesoDatos->conectar()){
+            $sQuery="DELETE FROM usuario WHERE nIdUsuario=".intval($id);
+            $arrRS=$oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS>0){
+                $bRet=true;
+            }
+        }
+        }
+        return $bRet;
+
+    }
+
 }
 ?>
