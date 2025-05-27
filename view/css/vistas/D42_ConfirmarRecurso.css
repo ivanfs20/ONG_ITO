@@ -235,10 +235,10 @@
 }
 
 .boton-accion.regresar {
-    background: #999;
+    background: #696969;
     color:#f3f4f4;
     font-weight: bold;
-    border-color: #333;
+    border-color: #434141;
 }
 
 /* Efectos hover suaves */
