@@ -36,15 +36,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             </thead>
             <tbody>
                 <tr>
-                    <td>10203</td>
-                    <td>Aula B-204 sin mobiliario adecuado</td>
-                    <td>Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat 
-                        at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet 
-                        urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.</td>
-                    <td><button onclick="window.location.href='benefactormodificar.php'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='benefactoreliminar.php'" class="btn-eliminar">Eliminar</button>
-                </td>
-           
+                    <?php require_once '../controller/benefactorMostrarController.php'; ?>                
                 </tr>
             </tbody>
         </table>
