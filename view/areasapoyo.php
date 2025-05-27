@@ -35,9 +35,9 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 
             <?php
                 include_once("../model/Proyecto.php");
-                include_once("../model/Benefactor.php");
+                include_once("../model/Beneficiario.php");
                 $oProyecto = new Proyecto();
-                $oBenefactor = new Benefactor();
+                $oBenefactor = new Beneficiario();
 
                 $nAmountProyectos = count($oProyecto->readAll());
                 $nAmountBenefactores = count($oBenefactor->getAll());
@@ -78,7 +78,7 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                     <div class="apoyo-icono">🎓</div>
                     <div class="stat-content">
                         <span class="apoyo-numero"><?php echo $nAmountBenefactores;?></span>
-                        <p class="apoyo-descripcion">benefactores.
+                        <p class="apoyo-descripcion">beneficiarios.
                         </p>
                     </div>
                 </div>

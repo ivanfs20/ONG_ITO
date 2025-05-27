@@ -23,14 +23,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Insertar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
@@ -44,7 +37,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
     <label for="id_foto">Foto:</label>
     <input name="foto" type="file" id="id_foto" required>
 
-    <label for="id_benefactor">Id Benefactor:</label>
+    <label for="id_benefactor">Id Beneficiario:</label>
     <input name="id_benefactor" type="text" id="id_benefactor" required>
 
     <button type="submit" class="button">Confirmar</button>

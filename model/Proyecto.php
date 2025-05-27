@@ -71,7 +71,7 @@ class Proyecto{
         } else {
             $photoToBinary = addslashes($this->aPhoto);
             if ($oAccesoDatos->conectar()) {  // <-- conectar primero
-                $sQuery = "INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor)
+                $sQuery = "INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario)
                            VALUES ('".$this->sTitle."', '".$this->sDescription."', '".$photoToBinary."', "
                            .intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
     
@@ -104,7 +104,7 @@ class Proyecto{
             $this->nIdBenefactor <= 0 ||
             empty($this->aPhoto)
         ) {
-            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor");
+            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario");
         }
     
         $photoToBinary = addslashes($this->aPhoto);
@@ -115,7 +115,7 @@ class Proyecto{
                         sDescription = '" . addslashes($this->sDescription) . "',
                         aPhoto = '" . $photoToBinary . "',
                         nIdUsuario = " . intval($this->nIdUsuario) . ",
-                        nIdBenefactor = " . intval($this->nIdBenefactor) . "
+                        nIdBeneficiario = " . intval($this->nIdBenefactor) . "
                        WHERE nIdProyecto = " . intval($this->nIdProyecto) . ";";
     
             $arrRS = $oAccesoDatos->comando($sQuery);

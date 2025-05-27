@@ -1,7 +1,7 @@
 <?php
 include_once("AccesoDatos.php");
 
-class Benefactor{
+class Beneficiario{
     private $nIdBenefactor = 0;
     private $sName = "";
     private $sDescription = "";
@@ -40,12 +40,12 @@ class Benefactor{
         if($id==0){throw new Exception("/m/Benefactor/byId/id");}
         else{
             if($oAccesoDatos -> conectar()){
-                $sQuery = "SELECT * FROM Benefactor WHERE nIdBenefactor=".intval($id);
+                $sQuery = "SELECT * FROM beneficiario WHERE nIdBeneficiario=".intval($id);
                 $arrRS = $oAccesoDatos -> consulta($sQuery);
                 $oAccesoDatos -> desconectar();
                 if($arrRS && count($arrRS)>0){
                         $fila = $arrRS[0];
-                        $oBenefactor = new Benefactor();
+                        $oBenefactor = new Beneficiario();
                         $oBenefactor -> nIdBenefactor = $fila[0];
                         $oBenefactor -> sName = $fila[1];
                         $oBenefactor -> sDescription = $fila[2];
@@ -65,7 +65,7 @@ class Benefactor{
 
         if($id<=0 && empty($sName)){throw new Exception("m/Benefactor/deleteByName/$id&&$sName");}
         else{
-            $sQuery = "DELETE FROM Benefactor b WHERE b.nIdBenefactor=".intval($id)." AND b.sName= '$sName'";
+            $sQuery = "DELETE FROM beneficiario b WHERE b.nIdBeneficiario=".intval($id)." AND b.sName= '$sName'";
             $arrRS = $oAccesoDatos -> comando($sQuery);
             $oAccesoDatos -> desconectar();
             if($arrRS>0){
@@ -84,12 +84,12 @@ class Benefactor{
             throw new Exception ("message/Benefactor/id o nombre nulos");
         }else{
             if($oAccesoDatos->conectar()){
-                $sQuery="SELECT * FROM Benefactor WHERE nIdBenefactor=".intval($id)."AND sName='".$sNombre."'";
+                $sQuery="SELECT * FROM beneficiario WHERE nIdBeneficiario=".intval($id)."AND sName='".$sNombre."'";
             $arrRS=$oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS && count($arrRS)>0){
                 $fila=$arrRS[0];
-                $oBenefactor=new Benefactor();
+                $oBenefactor=new Beneficiario();
                 $oBenefactor->nIdBenefactor=$fila[0];
                 $oBenefactor->sName=$fila[1];
                 $oBenefactor->sDescription=$fila[2];
@@ -110,12 +110,14 @@ class Benefactor{
         if($id<=0 || $id==null){
             throw new Exception("message/Benefactor/deleteById/id nulo o menor que 0");
         }else{
-            $sQuery="DELETE FROM Benefactor WHERE nIdBenefactor=".intval($id);
+            if($oAccesoDatos->conectar()){
+            $sQuery="DELETE FROM beneficiario WHERE nIdBeneficiario=".intval($id);
             $arrRS=$oAccesoDatos->comando($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS>0){
                 $bRet=true;
             }
+        }
         }
         return $bRet;
 
@@ -130,11 +132,10 @@ class Benefactor{
             throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
         }else{
             if($oAccesoDatos->conectar()){
-               $sQuery = "UPDATE Benefactor SET 
-                nIdBenefactor = " . intval($this->nIdBenefactor) . ",
+               $sQuery = "UPDATE beneficiario SET                 
                 sName = '" . $this->sName . "',
                 sDescription = '" . $this->sDescription . "' 
-                 WHERE nIdBenefactor = " . intval($this->nIdBenefactor);
+                 WHERE nIdBeneficiario= " . intval($this->nIdBenefactor);
                 $nAfectados=$oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
             }
@@ -153,13 +154,13 @@ class Benefactor{
         $nCount = 0;
         try {
             if ($oAccesoDatos->conectar()) {
-                $sQuery = "SELECT * FROM Benefactor";
+                $sQuery = "SELECT * FROM beneficiario";
                 $arrRS = $oAccesoDatos->consulta($sQuery);
                 $oAccesoDatos->desconectar();
                 
                 if ($arrRS) {
                     foreach ($arrRS as $fila) {
-                        $oBenefactor = new Benefactor();
+                        $oBenefactor = new Beneficiario();
                         $oBenefactor->setnIdBenefactor($fila[0]);
                         $oBenefactor->setsName($fila[1]);
                         $oBenefactor->setsDescription($fila[2]);
@@ -187,7 +188,7 @@ class Benefactor{
             throw new Exception("message/Benefactor/datos vacios");
         } else {
             if ($oAccesoDatos->conectar()) {
-                $sQuery = "INSERT INTO Benefactor (sName, sDescription) VALUES ('".$this->sName."', '".$this->sDescription."')";
+                $sQuery = "INSERT INTO beneficiario (sName, sDescription) VALUES ('".$this->sName."', '".$this->sDescription."')";
                 $nAfectados = $oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
             }

@@ -38,7 +38,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             <div class="card">
                 <img src="https://via.placeholder.com/280x150?text=Proyectos" alt="Proyectos">
                 <p>Crear, editar, eliminar campañas</p>
-                <a href="gestionpb.php">Gestión de Proyectos y Benefactor →</a>
+                <a href="gestionpb.php">Gestión de Proyectos y Beneficiario →</a>
             </div>
             <div class="card">
                 <img src="https://via.placeholder.com/280x150?text=Usuarios" alt="Usuarios">

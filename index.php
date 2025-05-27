@@ -55,7 +55,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 <h3 class="area-title">Biblioteca</h3>
                 <p class="area-description">Nuestra biblioteca es el corazón académico. Tu donativo ayuda a renovar,
                     actualizar equipos de consulta y mejorar espacios para el estudio colaborativo.</p>
-                <button class="area-button">Quiero apoyar esta área</button>
+                <button onclick="window.location.href='view/D1_Area.php'" class="area-button">Quiero apoyar esta área</button>
             </div>
 
             <!-- Tarjeta 2 - Aulas inteligentes -->
@@ -64,7 +64,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 <h3 class="area-title">Aulas inteligentes</h3>
                 <p class="area-description">Transformación de aulas en espacios tecnológicos con pantallas
                     digitales, proyectores y conectividad, brindando mejores herramientas educativas.</p>
-                <button class="area-button">Quiero apoyar esta área</button>
+                <button onclick="window.location.href='view/D1_Area.php'" class="area-button">Quiero apoyar esta área</button>
             </div>
 
             <!-- Tarjeta 3 - Mantenimiento -->
@@ -73,7 +73,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 <h3 class="area-title">Mantenimiento</h3>
                 <p class="area-description">Mantén un campus limpio, seguro y funcional. Tu apoyo ayuda a conservar
                     las instalaciones y servicios básicos en óptimas condiciones.</p>
-                <button class="area-button">Quiero apoyar esta área</button>
+                <button onclick="window.location.href='view/D1_Area.php'" class="area-button">Quiero apoyar esta área</button>
             </div>
 
             <!-- Tarjeta 4 - Laboratorios -->
@@ -82,7 +82,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 <h3 class="area-title">Laboratorios</h3>
                 <p class="area-description">Equipamos laboratorios con herramientas modernas que impulsan la
                     investigación, creatividad e innovación de nuestros estudiantes en la institucion.</p>
-                <button class="area-button">Quiero apoyar esta área</button>
+                <button onclick="window.location.href='view/D1_Area.php'" class="area-button">Quiero apoyar esta área</button>
             </div>
         </div>
     </div>

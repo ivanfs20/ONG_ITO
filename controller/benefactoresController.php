@@ -1,7 +1,7 @@
 <?php
-    include_once("../model/Benefactor.php");
+    include_once("../model/Beneficiario.php");
 
-    $oBenefactor = new Benefactor();
+    $oBenefactor = new Beneficiario();
     $arrBenefactores = $oBenefactor -> getAll();
 
     if($arrBenefactores!=null){

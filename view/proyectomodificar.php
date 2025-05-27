@@ -33,14 +33,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Modificar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+   
 
     <form  action="../controller/proyectoModificado.php" method="POST" enctype="multipart/form-data">
 
@@ -72,7 +65,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_foto">Id Usuario:</label>
         <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>
 
-        <label for="id_foto">ID Benefactor:</label>
+        <label for="id_foto">ID Beneficiario:</label>
         <input name="id_benefactor" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdBenefactor();?>>
 
         <div>

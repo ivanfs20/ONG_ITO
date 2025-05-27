@@ -21,7 +21,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 
     <div class="banner">
-        Gestion de Proyectos y Benefactor
+        Gestion de Proyectos y Beneficiario
     </div>
 
     <div class="container">
@@ -35,7 +35,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             <div class="card">
                 <img src="../view/media/salon.jpg" alt="Proyectos">
                 <p></p>
-                <a href="gestiondebenefactor.php">Benefactor →</a>
+                <a href="gestiondebenefactor.php">Beneficiario →</a>
             </div>
             <div class="card">
                 <img src="../view/media/salon.jpg" alt="Mensajes">
