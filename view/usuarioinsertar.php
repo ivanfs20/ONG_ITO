@@ -39,6 +39,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_rol">RFC:</label>
         <input name="rfc" type="text"  id=" id_rol " >
 
+        <label for="id_domicilio">Domicilio:</label>
+        <input name="domicilio" type="text"  id=" id_domicilio" > 
+
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " >
 
