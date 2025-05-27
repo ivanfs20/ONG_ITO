@@ -17,7 +17,7 @@ try {
     $mail->Port       = 587;
 
     $mail->setFrom('donativositorizaba@gmail.com', 'ADMINISTRADOR'); //Correo de ONG
-    $mail->addAddress('urielvx@gmail.com', 'Uriel'); //Correo del usuario a quien vamos a enviar un email
+    $mail->addAddress('saullima811@gmail.com', 'Saul Lima'); //Correo del usuario a quien vamos a enviar un email
 
     $mail->addAttachment('C:\Users\carlo\Downloads\reciboDonativo.pdf', 'recibo.pdf');
 

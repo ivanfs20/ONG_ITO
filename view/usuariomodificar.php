@@ -47,7 +47,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <input name="domicilio" type="text"  id=" id_domicilio" value="<?php  echo $oUse->getsDomiclio(); ?>" >
 
         <label for="id_rol">Rol:</label>
-        <input name="rol" type="text"  id=" id_rol " value="<?php  echo $oUse->getsRol(); ?>"  >
+        <input name="rol" type="text"  id=" id_rol " value="<?php  echo $oUse->getsRol(); ?>" readonly >
 
         <div>
         <button class="button">Confirmar</button>
