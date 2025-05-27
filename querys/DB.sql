@@ -84,7 +84,7 @@ FLUSH PRIVILEGES;
 CREATE USER 'administrador'@'localhost' IDENTIFIED BY 'administrador';
 
 GRANT SELECT, INSERT, DELETE, UPDATE ON `Usuario` TO 'administrador'@'localhost';
-GRANT SELECT, INSERT, DELETE, UPDATE ON `Benefactor` TO 'administrador'@'localhost';
+GRANT SELECT, INSERT, DELETE, UPDATE ON `Beneficiario` TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, DELETE, UPDATE ON `Proyecto` TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionMaterial` TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionDigital` TO 'administrador'@'localhost';
