@@ -9,13 +9,16 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
+require_once ('../model/Benefactor.php');
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
 } else {
     $oUsuario = null;
 }
-
+$id_p= $_GET["idBenefactor"];
+$oBenefactor=new Benefactor();
+$oBenefac=$oBenefactor->readById($id_p);
 if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 ?>
 
@@ -31,22 +34,22 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         </tr>
     </table>
 
-    <form>
+    <form action="../controller/benefactorModificarController.php" method="post">
         
         <label for="id_benefactor">Id Benefactor:</label>
-        <input name="id_pro" type="text" id="id_proyecto" >
+        <input name="id_pro" type="text" id="id_proyecto" value="<?php echo $oBenefac->getnIdBenefactor(); ?>" readonly>
 
         <label for="id_titulo">Titulo:</label>
-        <input name="titulo" type="text"  id=" id_titulo ">
+        <input name="titulo" type="text"  id=" id_titulo" value="<?php echo $oBenefac->getsName(); ?>">
 
         <label for="id_dscripcion">Descripcion:</label>
-        <input name="descripcion" type="text"  id=" id_dscripcion">
+        <input name="descripcion" type="text"  id=" id_dscripcion" value="<?php echo $oBenefac->getsDescription(); ?>">
 
    <div>
         <button class="button">Confirmar</button>
 
 </div>
-       
+</form> 
 
 
 <?php
