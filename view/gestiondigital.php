@@ -16,10 +16,10 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
-<div class="header">
+    <div class="header">
         Recursos Donados
     </div>
 
@@ -34,7 +34,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Folio</th>
                     <th>Estado</th>
                     <th>Comprobante</th>
-                   
+
                 </tr>
             </thead>
             <tbody>
@@ -51,11 +51,16 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             </tbody>
         </table>
 
-      
+
+        <div>
+            <a href="gestiondedonaciones.php" class="boton-regresar">Regresar</a>
+        </div>
+
+
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>

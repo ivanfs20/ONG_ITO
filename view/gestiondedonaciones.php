@@ -40,7 +40,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
         </div>
 
         <div>
-            <a href="view/asesionadmin.php" class="boton-regresar">Regresar</a>
+            <a href="sesionadmin.php" class="boton-regresar">Regresar</a>
         </div>
 
     </div>
