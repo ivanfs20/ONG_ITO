@@ -28,7 +28,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="container">
    
 
-    <form>
+    <form action="../controller/usuarioEliminado.php"  method="post">
         <label for="id_usuario">Id Usuario:</label>
         <input name="id_usuario" type="text" id="id_usuario" value="<?php  echo $oUse->getnIdUsuario(); ?>" readonly>
 
