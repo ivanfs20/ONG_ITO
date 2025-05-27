@@ -234,8 +234,8 @@ class Usuario{
         $sQuery="";
         $nAfectados=-1;
         if ($this->nIdUsuario<0 || $this->nIdUsuario==0 || empty($this->sNombreC) || empty($this->sEmail) || empty($this->sRfc)
-        || empty($this->sRol) || empty($this->sDomicilio)){
-            throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
+        || empty($this->sRol) || empty($this->sDomicilio) || empty($this->sPassword)){
+            throw new Exception("message/Usuario/Update/campos nulos,vacios o invalidos");
         }else{
             if($oAccesoDatos->conectar()){
                $sQuery = "UPDATE usuario SET                 
@@ -245,7 +245,7 @@ class Usuario{
                 sDomicilio='".$this->sDomicilio."',
                 sRfc='".$this->sRfc."',
                 sPassword = '" . $this->sPassword . "'               
-                 WHERE nIdBeneficiario= " . intval($this->nIdUsuario);
+                 WHERE nIdUsuario= " . intval($this->nIdUsuario);
                 $nAfectados=$oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
             }
