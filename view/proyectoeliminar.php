@@ -34,14 +34,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Eliminar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+
 
     <form action="../controller/proyectoEliminado.php" method="POST">
 

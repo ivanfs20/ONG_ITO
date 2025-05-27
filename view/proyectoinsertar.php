@@ -23,14 +23,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Insertar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
