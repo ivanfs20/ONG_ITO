@@ -34,14 +34,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Eliminar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+
 
     <form action="../controller/proyectoEliminado.php" method="POST">
 
@@ -54,8 +47,19 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_dscripcion">Descripcion:</label>
         <input name="descripcion" type="text"  id=" id_titulo " value="<?php echo htmlspecialchars($oProyecto->getsDescription());?>" readonly>
 
-        <label for="id_foto">Foto:</label>
-        <input name="foto" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getaPhoto();?> readonly>
+        <?php
+                                $imagenBinaria = $oProyecto->getaPhoto();
+                                $base64Image = base64_encode($imagenBinaria);
+                                $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+        ?>
+
+<label for="id_foto">Foto:</label>
+
+        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
+
+        <?php
+        
+        ?>
 
         <label for="id_foto">Id Usuario:</label>
         <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>

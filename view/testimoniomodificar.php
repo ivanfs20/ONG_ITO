@@ -15,14 +15,7 @@ include_once("modules/navbar.php");   # Navbar
 <div class="header">Modificar Testimonio</div>
 
 <div class="container">
-    <table>
-        <tr>
-        <th>Id testimonio</th>
-                    <th>Testimonio</th>
-                    <th>Nombre</th>
-                    <th>Carrera</th>
-        </tr>
-    </table>
+   
 
     <form>
              

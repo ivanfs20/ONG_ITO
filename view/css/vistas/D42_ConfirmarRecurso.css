@@ -234,6 +234,13 @@
     border-color: #F8D400;
 }
 
+.boton-accion.regresar {
+    background: #999;
+    color:#f3f4f4;
+    font-weight: bold;
+    border-color: #333;
+}
+
 /* Efectos hover suaves */
 .boton-accion.confirmar:hover {
     background: #f8f9fa;

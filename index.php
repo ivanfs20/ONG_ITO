@@ -143,35 +143,56 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 <p class="subtitulo">Más allá de la matrícula, hay historias que necesitan tu apoyo.</p>
             </div>
 
+
+            <?php
+                include_once("model/Digital.php");
+                include_once("model/Material.php");
+                include_once("model/Usuario.php");
+                $oDonacionMaterial = new Material();
+                $oDonacionDigital = new Digital();
+                $oUsuariosActivosDonadores = new Usuario();
+                $nUsuariosAct = $oUsuariosActivosDonadores -> getActivos();
+                $nDigital = count($oDonacionDigital->readDigital());
+                $nMaterial = count($oDonacionMaterial->readMaterial()); 
+                $nSuma = $nDigital + $nMaterial;
+                $pDigital = floor((100*$nDigital)/$nSuma);
+                $pMaterial = floor((100*$nMaterial)/$nSuma);
+
+
+            ?>
+
             <!-- Columna Derecha -->
             <div class="columna-estadisticas">
                 <!-- Item 1 -->
                 <div class="estadisticas-item">
-                    <div class="estadisticas-icono">📚</div>
+                    <div class="estadisticas-icono">🎓</div>
                     <div class="stat-content">
-                        <span class="estadisticas-numero">1 de cada 3</span>
-                        <p class="estadisticas-descripccion">aulas no cuenta con mobiliario adecuado.</p>
+                        <span class="estadisticas-numero"><?php echo count($nUsuariosAct);?></span>
+                        <p class="estadisticas-descripccion">usuarios registrados.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="estadisticas-item">
-                    <div class="estadisticas-icono">💻</div>
+                    <div class="estadisticas-icono">🏦</div>
                     <div class="stat-content">
-                        <span class="estadisticas-numero">El 60%</span>
-                        <p class="estadisticas-descripccion">de los equipos en laboratorios ya no funcionan.</p>
+                        <span class="estadisticas-numero">El <?php echo $pDigital;?>%</span>
+                        <p class="estadisticas-descripccion">de las donaciónes son de tipo Digital.</p>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="estadisticas-item">
-                    <div class="estadisticas-icono">🎓</div>
+                    <div class="estadisticas-icono">📦</div>
                     <div class="stat-content">
-                        <span class="estadisticas-numero">Casi el 40%</span>
-                        <p class="estadisticas-descripccion">de los estudiantes ha pensado en abandonar sus estudios.
+                        <span class="estadisticas-numero">El <?php echo $pMaterial;?>%</span>
+                        <p class="estadisticas-descripccion">de las donaciónes son de tipo Material.
                         </p>
                     </div>
                 </div>
+                <?php
+            
+            ?>
             </div>
         </div>
     </div>

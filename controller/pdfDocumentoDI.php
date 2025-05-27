@@ -64,14 +64,16 @@ $pdf->Ln(10);
     //Folio
     $pdf->Cell(40,10,utf8_decode('Folio: '));
     $pdf->Ln(7);
+    date_default_timezone_set('America/Mexico_City');
+    $fecha = date('Y-m-d');
     //Fecha de emision
-    $pdf->Cell(40,10,utf8_decode('Fecha de emisión: '));
+    $pdf->Cell(40,10,utf8_decode('Fecha de emisión: '.$fecha));
     $pdf->Ln(7);
     //Importe recibido
     $pdf->Cell(40,10,utf8_decode('Importe recibido: $'));
     $pdf->Ln(7);
     //Forma de pago
-    $pdf->Cell(40,10,utf8_decode('Método de pago: '));
+    $pdf->Cell(40,10,utf8_decode('Método de pago: Pago en banco'));
     $pdf->Ln(7);
     //Numero de operación o referencia bancaria
     $pdf->Cell(40,10,utf8_decode('Numero de operación o referencia bancaria: 1-4468005'));

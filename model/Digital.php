@@ -21,7 +21,7 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
-    
+
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
         $oAccesoDatos = new AccesoDatos();
@@ -181,6 +181,38 @@ public function readByTitle($sTitle){
     }
     return $arrDigital;
 }
+
+        //B- DONACIONES (MATERIAL) READ MATERIAL:Saul Lima Gonzalez
+        public function readDigital()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionDigital where bStatus=1";
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+        if ($arrRS && count($arrRS) > 0) {
+            foreach ($arrRS as $aFila) {
+                $oMaterial = new Material();                
+                $oMaterial->setnIdDonacion($aFila[0]);                
+                $oMaterial->setsName($aFila[1]);
+                $oMaterial->setsDescription($aFila[2]);
+                $oMaterial->setaPhoto($aFila[3]);
+                $oMaterial->setnAmount($aFila[4]);
+                $oMaterial->setbStatus($aFila[5]);
+                $oMaterial->setdFechaCreacion($aFila[6]);
+                $oMaterial->setnIdUsuario($aFila[7]);
+                $oMaterial->setnIdBenefactor($aFila[8]);
+                $arrMaterial[] = $oMaterial;
+            }
+        }
+    }
+    return $arrMaterial;        
+}
+
 
 }
 ?>

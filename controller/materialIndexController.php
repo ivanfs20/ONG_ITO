@@ -5,11 +5,17 @@ $oMaterial=new Material();
 $arrMaterial=$oMaterial->readByJoin();
 if(count($arrMaterial)>0){
 foreach ($arrMaterial as $material){
+
+
+    $imagenBinaria = $material->getaPhoto();
+    $base64Image = base64_encode($imagenBinaria);
+    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+
 ?>
 
                 <div class="tabla-fila">
                     <div class="celda-imagen">
-                        <img src="view/media/salon.jpg" alt="Salón sin proyector">
+                    <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
                         
                     </div>
                     <div class="descripcion-celda">

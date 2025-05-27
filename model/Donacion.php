@@ -73,5 +73,26 @@ class Donacion{
         return $this->sNameUser;
     }
 
+            // B - DONACIONES (contar) : Carlos Iván Flores Sánchez
+            public function countDonacion($tipo){
+                $oAccesoDatos = new AccesoDatos();
+                $bRet = false;
+                $arrRS = null;
+                $sQuery = "";
+                try{
+                    if($oAccesoDatos->conectar()){
+                        if($tipo=="digital"){
+                            $sQuery = "SELECT count(nIdDonacion) FROM donaciondigital WHERE bStatus=1";
+                        }else{
+                            $sQuery = "SELECT count(nIdDonacion) FROM donacionmaterial WHERE bStatus=1";
+                        }
+                        $valor = $oAccesoDatos->consulta($sQuery);
+                        $oAccesoDatos->desconectar();
+                    }
+                }catch(Exception $e){
+                }
+                return $valor;
+            }
+
 }
 ?>

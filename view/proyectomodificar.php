@@ -33,16 +33,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Modificar Proyecto</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
+   
 
-    <form  action="../controller/proyectoModificado.php" method="POST">
+    <form  action="../controller/proyectoModificado.php" method="POST" enctype="multipart/form-data">
 
 
         <label for="id_proyecto">Id Proyecto:</label>
@@ -54,8 +47,20 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_dscripcion">Descripcion:</label>
         <input name="descripcion" type="text"  id=" id_titulo " value="<?php echo htmlspecialchars($oProyecto->getsDescription());?>">
 
+        <?php
+                                $imagenBinaria = $oProyecto->getaPhoto();
+                                $base64Image = base64_encode($imagenBinaria);
+                                $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+        ?>
+
         <label for="id_foto">Foto:</label>
-        <input name="foto" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getaPhoto();?>>
+        <input name="foto" type="file" id="id_foto" required value=<?php echo $imgSrc;?>>
+        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
+
+
+        <?php
+        
+        ?>
 
         <label for="id_foto">Id Usuario:</label>
         <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>

@@ -23,14 +23,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 <div class="header">Insertar Usuario</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-        </tr>
-    </table>
+   
 
     <form action="../controller/usuarioinsertado.php" method="POST">
 
@@ -42,6 +35,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
         <label for="id_contraseña">Contraseña:</label>
         <input name="contraseña" type="text"  id=" id_contraseña " >
+
+        <label for="id_rol">RFC:</label>
+        <input name="rfc" type="text"  id=" id_rol " >
 
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " >

@@ -96,7 +96,7 @@ class Material extends Donacion{
     $arrMaterial = [];
     
     if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT * FROM DonacionMaterial";
+        $sQuery = "SELECT * FROM DonacionMaterial where bStatus=1";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
@@ -130,7 +130,7 @@ class Material extends Donacion{
                                                
                 $sQuery="SELECT b.sName,d.sName,d.sDescription,d.nAmount,d.dateCreacion,u.sNombreC,d.aPhoto, d.bStatus
                 FROM Usuario u INNER JOIN DonacionMaterial d ON u.nIdUsuario=d.nIdUsuario
-                INNER JOIN Benefactor b ON d.nIdBenefactor=b.nIdBenefactor WHERE d.dateCreacion BETWEEN 
+                INNER JOIN Beneficiario b ON d.nIdBenefactor=b.nIdBenefactor WHERE d.dateCreacion BETWEEN 
                 DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()" ;
                 $arrRS=$oAccesoDatos->consultaJoin($sQuery);
                 $oAccesoDatos->desconectar();
