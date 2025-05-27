@@ -47,8 +47,8 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <td><?php echo $oUser-> getsPassword();?></td>
                     <td><?php echo $oUser-> getsRol();?></td>
                     <td>
-                    <button onclick="window.location.href='usuariomodificar.php'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='usuarioeliminar.php'" class="btn-eliminar">Eliminar</button>
+                    <button onclick="window.location.href='usuariomodificar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'" class="btn-modificar">Modificar</button>
+                    <button onclick="window.location.href='usuarioeliminar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'" class="btn-eliminar">Eliminar</button>
                     </td>
                 </tr>
             <?php
