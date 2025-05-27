@@ -1,6 +1,6 @@
 <?php 
 require_once '../model/Beneficiario.php';
-$oBenefactor=new Benefactor();
+$oBenefactor=new Beneficiario();
 $name=$_POST['titulo'];
 $descripcion=$_POST['descripcion'];
 
