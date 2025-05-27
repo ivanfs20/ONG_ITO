@@ -1,5 +1,5 @@
 <?php
-    include("../model/Benefactor.php");
+    include_once("../model/Benefactor.php");
 
     $oBenefactor = new Benefactor();
     $arrBenefactores = $oBenefactor -> getAll();

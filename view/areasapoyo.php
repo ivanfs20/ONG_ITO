@@ -33,13 +33,23 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 <p class="subtitulo-apoyo">Esperemos que esto te inspire a tomar una desicion.</p>
             </div>
 
+            <?php
+                include_once("../model/Proyecto.php");
+                include_once("../model/Benefactor.php");
+                $oProyecto = new Proyecto();
+                $oBenefactor = new Benefactor();
+
+                $nAmountProyectos = count($oProyecto->readAll());
+                $nAmountBenefactores = count($oBenefactor->getAll());
+            ?>
+
             <!-- Columna Derecha -->
             <div class="columna-apoyos">
                 <!-- Ítems corregidos -->
                 <div class="apoyo-item">
                     <div class="apoyo-icono">📚</div>
                     <div class="stat-content">
-                        <span class="apoyo-numero">5341</span>
+                        <span class="apoyo-numero">+ 5341</span>
                         <p class="apoyo-descripcion">estudiantes.</p>
                     </div>
                 </div>
@@ -57,8 +67,8 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 <div class="apoyo-item">
                     <div class="apoyo-icono">🎓</div>
                     <div class="stat-content">
-                        <span class="apoyo-numero">28</span>
-                        <p class="apoyo-descripcion">laboratorios.
+                        <span class="apoyo-numero"><?php echo $nAmountProyectos;?></span>
+                        <p class="apoyo-descripcion">proyectos.
                         </p>
                     </div>
                 </div>
@@ -67,11 +77,15 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 <div class="apoyo-item">
                     <div class="apoyo-icono">🎓</div>
                     <div class="stat-content">
-                        <span class="apoyo-numero">443</span>
-                        <p class="apoyo-descripcion">estudiantes sin recursos.
+                        <span class="apoyo-numero"><?php echo $nAmountBenefactores;?></span>
+                        <p class="apoyo-descripcion">benefactores.
                         </p>
                     </div>
                 </div>
+
+                            <?php
+            
+            ?>
             </div>
         </div>
     </div>

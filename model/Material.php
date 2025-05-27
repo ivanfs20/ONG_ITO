@@ -96,7 +96,7 @@ class Material extends Donacion{
     $arrMaterial = [];
     
     if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT * FROM DonacionMaterial";
+        $sQuery = "SELECT * FROM DonacionMaterial where bStatus=1";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
