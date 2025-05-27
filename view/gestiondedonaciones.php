@@ -16,8 +16,8 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
     <div class="banner">
@@ -33,16 +33,20 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                 <a href="gestiondigital.php">Donacion Dinero →</a>
             </div>
             <div class="card">
-                <img src="../view/media/pupitres.jpg"  alt="Proyectos">
+                <img src="../view/media/pupitres.jpg" alt="Proyectos">
                 <p>Recursos resividos</p>
                 <a href="gestionmaterial.php">Donacion Recurso →</a>
             </div>
         </div>
 
+        <div>
+            <a href="view/asesionadmin.php" class="boton-regresar">Regresar</a>
+        </div>
+
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>

@@ -20,14 +20,14 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 ?>
 
 <div class="header">
-        Gestion de Benefactor
+        Gestion de Beneficiario
     </div>
 
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Id Proyecto</th>
+                    <th>Id Beneficiario</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
 
