@@ -33,7 +33,7 @@ class Digital extends Donacion{
         else{
             $fotoBinaria = addslashes($this->aPhoto[0]);
             $this->dFechaCreacion=date('Y-m-d');
-            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor) 
+            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBeneficiario)
             VALUES (".intval($this->nFolio).", "."'".$this->sMethod."', "."'".$fotoBinaria."', ".
             intval($this->nAmount).", "."0, '".$this->dFechaCreacion."' ,".$this.intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
             $arrRS = $oAccesoDatos -> comando($sQuery);
@@ -66,7 +66,7 @@ class Digital extends Donacion{
                     aPhoto='".$photoToBinary."',
                     nAmount =".intval($this->nAmount)
                     .", nIdUsuario =".intval($this->nIdUsuario).",
-                    nIdBenefactor =".intval($this->nIdBenefactor).
+                    nIdBeneficiario =".intval($this->nIdBenefactor).
                     "WHERE nIdDonacion = ".intval($this->nIdDonacion);
                     $nAfectados=$oAccesoDatos->comando($sQuery);
                     $oAccesoDatos->desconectar();
@@ -125,7 +125,7 @@ public function readById($id){
         throw new Exception("m/Digital/readById/nIdDonacion");
     }else{
         if($oAccesoDatos->conectar()){
-            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor FROM DonacionDigital WHERE nIdDonacion = ".intval($id);
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBeneficiario FROM DonacionDigital WHERE nIdDonacion = ".intval($id);
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS && count($arrRS) > 0){
@@ -158,7 +158,7 @@ public function readByTitle($sTitle){
         throw new Exception("m/Digital/readByTitle/sTitle");
     } else {
         if ($oAccesoDatos->conectar()) {
-            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor 
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBeneficiario 
                        FROM DonacionDigital 
                        WHERE sTitle = '" . addslashes($sTitle) . "'";
             $arrRS = $oAccesoDatos->consulta($sQuery);

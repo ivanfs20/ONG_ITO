@@ -42,7 +42,7 @@ class Material extends Donacion{
 
             }else{
                 $photoToBinary=addslashes($this->aPhoto[0]);
-                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBenefactor)
+                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBeneficiario)
                 VALUES ('".$this->sName."' , '".$this->sDescription."', '".$photoToBinary."' ,".intval($this->nAmount)."
                 ,0,".intval($this->nIdUsuario).",".intval($this->nIdBenefactor).")";
                 $arrRS=$oAccesoDatos->comando($sQuery);
@@ -130,7 +130,7 @@ class Material extends Donacion{
                                                
                 $sQuery="SELECT b.sName,d.sName,d.sDescription,d.nAmount,d.dateCreacion,u.sNombreC,d.aPhoto, d.bStatus
                 FROM Usuario u INNER JOIN DonacionMaterial d ON u.nIdUsuario=d.nIdUsuario
-                INNER JOIN Beneficiario b ON d.nIdBenefactor=b.nIdBenefactor WHERE d.dateCreacion BETWEEN 
+                INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.dateCreacion BETWEEN 
                 DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()" ;
                 $arrRS=$oAccesoDatos->consultaJoin($sQuery);
                 $oAccesoDatos->desconectar();

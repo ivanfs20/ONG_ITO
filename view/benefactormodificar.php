@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 $id_p= $_GET["idBenefactor"];
-$oBenefactor=new Benefactor();
+$oBenefactor=new Beneficiario();
 $oBenefac=$oBenefactor->readById($id_p);
 if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 ?>

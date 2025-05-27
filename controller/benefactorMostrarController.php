@@ -1,6 +1,6 @@
 <?php
 require_once '../model/Beneficiario.php';
-$oBenefactor = new Benefactor();
+$oBenefactor = new Beneficiario();
 $arrBenefactor = $oBenefactor->getAll();
 
 foreach ($arrBenefactor as $benefactor) {
