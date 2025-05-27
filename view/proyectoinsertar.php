@@ -32,7 +32,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         </tr>
     </table>
 
-    <form action="../controller/proyectoInsertado.php" method="POST">
+    <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
 
     <label for="id_titulo">Titulo:</label>

@@ -45,13 +45,19 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     $arrProyectos = $oProyecto -> readAll();
 
                     foreach($arrProyectos as $oProyect){
+                
+                        $imagenBinaria = $oProyect->getaPhoto();
+                        $base64Image = base64_encode($imagenBinaria);
+                        $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+
+
                 ?>
 
                 <tr>
                     <td><?php echo $oProyect -> getnIdProyecto();?></td>
                     <td><?php echo $oProyect -> getsTitle();?></td>
                     <td><?php echo $oProyect -> getsDescription();?></td>
-                    <td><?php echo $oProyect -> getaPhoto();?></td>
+                    <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" /></td>
                     <td><?php echo $oProyect -> getnIdUsuario();?></td>
                     <td><?php echo $oProyect -> getnIdBenefactor();?></td>
                     <td>

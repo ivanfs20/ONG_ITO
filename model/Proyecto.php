@@ -102,13 +102,12 @@ class Proyecto{
             empty($this->sDescription) ||
             $this->nIdUsuario <= 0 ||
             $this->nIdBenefactor <= 0 ||
-            !isset($this->aPhoto[0]) ||
-            empty($this->aPhoto[0])
+            empty($this->aPhoto)
         ) {
-            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto[0], nIdUsuario, nIdBenefactor");
+            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto, nIdUsuario, nIdBenefactor");
         }
     
-        $photoToBinary = addslashes($this->aPhoto[0]);
+        $photoToBinary = addslashes($this->aPhoto);
     
         if ($oAccesoDatos->conectar()) {
             $sQuery = "UPDATE Proyecto SET 
@@ -129,6 +128,7 @@ class Proyecto{
     
         return $bRet;
     }
+    
     
 
     //B-PROYECTOS (CAMPAÑAS)->DELETE BY TITLE :Saul Lima Gonzalez
@@ -242,6 +242,7 @@ class Proyecto{
         $sQuery = "";
         $arrRS = 0;
         $arrProyectos = [];
+        $nCount = 0;
     
         if ($oAccesoDatos->conectar()) {
             $sQuery = "SELECT * FROM Proyecto p";
@@ -258,7 +259,8 @@ class Proyecto{
                     $oProyecto->setnIdUsuario($aLinea[4]);
                     $oProyecto->setnIdBenefactor($aLinea[5]);
     
-                    $arrProyectos[] = $oProyecto;
+                    $arrProyectos[$nCount] = $oProyecto;
+                    $nCount++;
                 }
             }
         }
