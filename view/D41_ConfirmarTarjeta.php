@@ -65,10 +65,6 @@ if($oUsuario!=null){
             <input name="fecha-donacion" type="date" id="fecha" required>
         </div>
 
-        <div class="grupo-formulario">
-            <label for="estado">Estado donacion</label>
-            <input name="estado-donacion" type="text" id="estado" required>
-        </div>
     </form>
 </div>
 
