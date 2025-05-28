@@ -213,6 +213,47 @@ public function readByTitle($sTitle){
     return $arrMaterial;        
 }
 
+//B - DONACIONES (TARJETA) -> READ ALL : Jesus Antonio Morales de Jesus
+public function getAll (){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arraRs = null;
+    $oDigital = null;
+    $arrDigital = [];
+    $nCount = 0;
+
+    try{
+        if($oAccesoDatos->conectar()){
+            $sQuery = "SELECT * FROM DonacionDigital";
+            $arraRs = $oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+
+            if($arraRs){
+                foreach ($arraRs as $aFila) {
+                    $oDigital = new Digital();
+                    $oDigital->setnIdDonacion($aFila[0]);
+                    $oDigital->setnFolio($aFila[1]);
+                    $oDigital->setsMethod($aFila[2]);
+                    $oDigital->setaPhoto($aFila[3]);
+                    $oDigital->setnAmount($aFila[4]);
+                    $oDigital->setbStatus($aFila[5]);
+                    $oDigital->setdFechaCreacion($aFila[6]);
+                    $oDigital->setnIdUsuario($aFila[7]);
+                    $oDigital->setnIdBenefactor($aFila[8]);
+                    $arrDigital[$nCount] = $oDigital;
+                    $nCount++;
+                }
+            }
+        }
+        return $arrDigital;
+    }catch(Exception $e){
+        throw new Exception("m/Digital/getAll/Error: ".$e->getMessage());
+    
+}
+
+return $arrDigital;
+}
+
 
 }
 ?>
