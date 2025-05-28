@@ -37,18 +37,31 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                     <th>Acciones</th>
                 </tr>
             </thead>
+             <?php
+require_once '../model/Material.php';
+$oMaterial=new Material();
+$arrMaterial=$oMaterial->readMaterialFalse();
+foreach ($arrMaterial as $material){
+    $imagenBinaria = $material->getaPhoto();
+    $base64Image = base64_encode($imagenBinaria);
+    $imgSrc = 'data:image/jpeg;base64,' . $base64Image
+?>
+<form action="../controller/materialConfirmarController.php" method="POST">
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Banca</td>
-                    <td>Color Blanco</td>
-                    <td>Seminueva</td>
-                    <td>.jpg</td>
-                    <td>3</td>
-                    <td><button class="btn-eliminar">Eliminar</button></td>
+                    <td> <input name="idDonacion" type="text" id="id_donacion" value="<?php echo $material->getnIdDonacion();  ?>" readonly> </td>    
+                    <td><?php echo $material->getnAmount();   ?></td>
+                    <td><?php echo $material->getsName();?></td>
+                    <td><?php echo  $material->getsDescription(); ?></td>
+                    <td>Pendiente de confirmacion</td>
+                    <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del material" width="100" /></td>
+                    <td><?php echo $material->getnIdUsuario(); ?></td>
+                    <td><button class="btn-eliminar">Confirmar</button></td>
                 </tr>
             </tbody>
+</form>
+<?php } ?>
+
         </table>
 
         <div>
