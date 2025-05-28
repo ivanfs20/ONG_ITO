@@ -226,5 +226,58 @@ public function readById($id){
     return $oMaterial;
 }
 
+//B- DONACIONES (MATERIAL) READ MATERIAL:Saul Lima Gonzalez
+        public function readMaterialFalse()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionMaterial where bStatus=0";
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+        if ($arrRS && count($arrRS) > 0) {
+            foreach ($arrRS as $aFila) {
+                $oMaterial = new Material();                
+                $oMaterial->setnIdDonacion($aFila[0]);                
+                $oMaterial->setsName($aFila[1]);
+                $oMaterial->setsDescription($aFila[2]);
+                $oMaterial->setaPhoto($aFila[3]);
+                $oMaterial->setnAmount($aFila[4]);
+                $oMaterial->setbStatus($aFila[5]);
+                $oMaterial->setdFechaCreacion($aFila[6]);
+                $oMaterial->setnIdUsuario($aFila[7]);
+                $oMaterial->setnIdBenefactor($aFila[8]);              
+                $arrMaterial[] = $oMaterial;
+            }
+        }
+    }
+    return $arrMaterial;        
+}
+
+//B - DONACIONES (MATERIAL) -> UPDATETOTRUE-> Saul Lima Gonzalez
+public function updateToTrue(){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    //$arrRS = null;
+    $nAfectados=-1;
+    if ($this->nIdDonacion<0 || $this->nIdDonacion==0 || $this->bStatus==null) {
+        throw new Exception("Material/updateMaterial: Campos vacíos o nulos");
+    }    
+
+    if ($oAccesoDatos->conectar()) {        
+        $sQuery = "UPDATE DonacionMaterial 
+                   SET bStatus =1                       
+                   WHERE nIdDonacion = ".intval($this->nIdDonacion);
+        
+        $nAfectados = $oAccesoDatos->comando($sQuery);
+        $oAccesoDatos->desconectar();
+    }
+
+    return $nAfectados;
+}
+
 }
 ?>
