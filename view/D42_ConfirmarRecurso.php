@@ -87,8 +87,11 @@ if($oUsuario!=null){
                 <a href="agradecimiento.php" class="boton-accion confirmar">
                     Confirmar Donación
                 </a>
-                <a href="cancelacion.php" class="boton-accion cancelar">
+                <a href="D1_Area.php" class="boton-accion cancelar">
                     Cancelar
+                </a>
+                <a href="D32_TipoRecurso.php" class="boton-accion regresar">
+                    Regresar
                 </a>
             </div>
         </div>

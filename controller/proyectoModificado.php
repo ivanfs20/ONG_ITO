@@ -1,0 +1,30 @@
+<?php
+        require_once '../model/Proyecto.php';
+        $sError = "";
+
+        $oProyecto = new Proyecto();
+
+        $id = $_POST["id_proyecto"];
+        $title = $_POST["titulo"];
+        $description = $_POST["descripcion"];
+        $idUsuario = $_POST["id_usuario"];
+        $idBenefactor = $_POST["id_benefactor"];
+
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
+                $photoContent = file_get_contents($_FILES['foto']['tmp_name']);
+            } else {
+                $photoContent = null; // o lanzar error si es obligatorio
+            }
+
+        $oProyecto -> setnIdProyecto($id);
+        $oProyecto -> setsTitle($title);
+        $oProyecto -> setsDescription($description);
+        $oProyecto -> setaPhoto($photoContent);
+        $oProyecto -> setnIdUsuario($idUsuario);
+        $oProyecto -> setnIdBenefactor($idBenefactor);
+        
+
+        $oProyecto -> update();
+
+        header("Location: ../view/gestiondeproyecto.php");
+        ?>

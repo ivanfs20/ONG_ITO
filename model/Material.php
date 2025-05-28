@@ -1,6 +1,6 @@
 <?php
 require_once 'Donacion.php';
-require_once("AccesoDatos.php");
+include_once("AccesoDatos.php");
 class Material extends Donacion{
     private $sName = "";
     private $sDescription = "";
@@ -42,7 +42,7 @@ class Material extends Donacion{
 
             }else{
                 $photoToBinary=addslashes($this->aPhoto[0]);
-                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBenefactor)
+                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBeneficiario)
                 VALUES ('".$this->sName."' , '".$this->sDescription."', '".$photoToBinary."' ,".intval($this->nAmount)."
                 ,0,".intval($this->nIdUsuario).",".intval($this->nIdBenefactor).")";
                 $arrRS=$oAccesoDatos->comando($sQuery);
@@ -96,7 +96,7 @@ class Material extends Donacion{
     $arrMaterial = [];
     
     if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT * FROM DonacionMaterial";
+        $sQuery = "SELECT * FROM DonacionMaterial where bStatus=1";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
@@ -130,14 +130,13 @@ class Material extends Donacion{
                                                
                 $sQuery="SELECT b.sName,d.sName,d.sDescription,d.nAmount,d.dateCreacion,u.sNombreC,d.aPhoto, d.bStatus
                 FROM Usuario u INNER JOIN DonacionMaterial d ON u.nIdUsuario=d.nIdUsuario
-                INNER JOIN Benefactor b ON d.nIdBenefactor=b.nIdBenefactor WHERE d.dateCreacion BETWEEN 
+                INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.dateCreacion BETWEEN 
                 DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()" ;
                 $arrRS=$oAccesoDatos->consultaJoin($sQuery);
                 $oAccesoDatos->desconectar();
                 if ($arrRS && count($arrRS) > 0) {
                 foreach($arrRS as $aFila){                
-                $oMaterial = new Material();
-                
+                $oMaterial = new Material();                
                 //$oMaterial->setaPhoto($aFila[0]);      
                 $oMaterial->setsNameBenefactor($aFila[0]);
                 $oMaterial->setsName($aFila[1]);
@@ -147,9 +146,13 @@ class Material extends Donacion{
                 $oMaterial->setsNombreUser($aFila[5]);
                 $oMaterial->setaPhoto($aFila[6]);
                 $oMaterial->setbStatus($aFila[7]);
+                if($oMaterial->getbStatus()==1){                
+                $arrMaterial[] = $oMaterial;
+                }
+                
                         
                               
-                $arrMaterial[] = $oMaterial;
+                
                 }
                 
                 }         
@@ -157,5 +160,71 @@ class Material extends Donacion{
     }
     return $arrMaterial;        
 }
+
+//B - DONACIONES (MATERIAL) -> UPDATE : Jesus Antonio Morales de Jesus
+public function updateMaterial($sName, $sDescription, $aPhoto, $nAmount){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+
+    if (empty($sName) || empty($sDescription) || empty($aPhoto[0]) || $nAmount <= 0) {
+        throw new Exception("Material/updateMaterial: Campos vacíos o nulos");
+    }
+
+    $this->setsName($sName);
+    $this->setsDescription($sDescription);
+    $this->setaPhoto($aPhoto);
+    $this->setnAmount($nAmount);
+
+    if ($oAccesoDatos->conectar()) {
+        $photoToBinary = addslashes($aPhoto[0]);
+        $sQuery = "UPDATE DonacionMaterial 
+                   SET sName = '".$this->getsName()."', 
+                       sDescription = '".$this->getsDescription()."', 
+                       aPhoto = '".$photoToBinary."', 
+                       nAmount = ".intval($this->getnAmount())." 
+                   WHERE nIdDonacion = ".intval($this->getnIdDonacion());
+        
+        $arrRS = $oAccesoDatos->comando($sQuery);
+        $oAccesoDatos->desconectar();
+    }
+
+    return $arrRS > 0;
+}
+
+// B - DONACIONES (MATERIAL) -> READ BY ID : Jesus Antonio Morales de Jesus
+public function readById($id){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+    $oMaterial = null;
+
+    if ($id <= 0) {
+        throw new Exception("message/model/Material/ID no puede ser 0 o menor");
+    }
+
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionMaterial WHERE nIdDonacion = " . intval($id);
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+
+        if ($arrRS && count($arrRS) > 0) {
+            $aLinea = $arrRS[0];
+            $oMaterial = new Material();
+            $oMaterial->setnIdDonacion($aLinea[0]);
+            $oMaterial->setsName($aLinea[1]);
+            $oMaterial->setsDescription($aLinea[2]);
+            $oMaterial->setaPhoto($aLinea[3]);
+            $oMaterial->setnAmount($aLinea[4]);
+            $oMaterial->setbStatus($aLinea[5]);
+            $oMaterial->setdFechaCreacion($aLinea[6]);
+            $oMaterial->setnIdUsuario($aLinea[7]);
+            $oMaterial->setnIdBenefactor($aLinea[8]);
+        }
+    }
+
+    return $oMaterial;
+}
+
 }
 ?>

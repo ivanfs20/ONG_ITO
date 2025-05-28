@@ -8,26 +8,24 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/usuarioinsertar
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
 
+if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 ?>
 
 
 <div class="header">Insertar Usuario</div>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>Id Usuario</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-        </tr>
-    </table>
+   
 
-    <form>
-        <label for="id_usuario">Id Usuario:</label>
-        <input name="id_usuario" type="text" id="id_usuario">
+    <form action="../controller/usuarioinsertado.php" method="POST">
 
         <label for="id_nombre">Nombre:</label>
         <input name="nombre_usuario" type="text"  id=" id_nombre">
@@ -38,6 +36,12 @@ include_once("modules/navbar.php");   # Navbar
         <label for="id_contraseña">Contraseña:</label>
         <input name="contraseña" type="text"  id=" id_contraseña " >
 
+        <label for="id_rol">RFC:</label>
+        <input name="rfc" type="text"  id=" id_rol " >
+
+        <label for="id_domicilio">Domicilio:</label>
+        <input name="domicilio" type="text"  id=" id_domicilio" > 
+
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " >
 
@@ -46,8 +50,7 @@ include_once("modules/navbar.php");   # Navbar
 
 </div>
        
-
-
 <?php
 include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

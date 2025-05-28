@@ -8,42 +8,48 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/proyectoinserta
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+include_once '../model/Usuario.php';
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
 
-?>
-
-
-<div class="header">Insertar Proyecto</div>
-
-<div class="container">
-    <table>
-        <tr>
-            <th>Id Proyecto</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Foto</th>
-        </tr>
-    </table>
-
-    <form>
-        <label for="id_proyecto">Id Proyecto:</label>
-        <input name="id_proyecto" type="text" id="id_proyecto" >
-
-        <label for="id_titulo">Titulo:</label>
-        <input name="titulo" type="text"  id=" id_titulo " >
-
-        <label for="id_dscripcion">Descripcion:</label>
-        <input name="descripcion" type="text"  id=" id_titulo ">
-
-        <label for="id_foto">Foto:</label>
-        <input name="foto" type="text"  id=" id_titulo ">
-
-        <div>
-        <button class="button">Confirmar</button>
-
-</div>
-       
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <div class="header">Insertar Proyecto</div>
+
+    <div class="container">
+
+
+        <form action="../controller/proyectoInsertado.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
+
+            <label for="id_titulo">Titulo:</label>
+            <input name="titulo" type="text" id="id_titulo" required>
+
+            <label for="id_descripcion">Descripcion:</label>
+            <input name="descripcion" type="text" id="id_descripcion" required>
+
+            <input name="foto" type="file" id="id_foto" class="input-archivo" required>
+            <label for="id_foto" class="etiqueta-archivo">
+                <span class="texto-archivo">Subir imagen</span>
+            </label>
+
+            <label for="id_benefactor">Id Beneficiario:</label>
+            <input name="id_benefactor" type="text" id="id_benefactor" required>
+
+            <button type="submit" class="button">Confirmar</button>
+        </form>
+
+    </div>
+
+
+
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

@@ -1,0 +1,22 @@
+
+.sidebar {
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    border-right: 2px solid #eee;
+  }
+  
+  .sidebar-icon {
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .sidebar-icon span {
+    display: block;
+    margin-top: 5px;
+  }
+  

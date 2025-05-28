@@ -1,6 +1,6 @@
 <?php
 require_once 'Donacion.php';
-require_once 'AccesoDatos.php';
+include_once 'AccesoDatos.php';
 class Digital extends Donacion{
     private $sMethod = "";
     private $nFolio = "";
@@ -21,7 +21,7 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
-    
+
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
         $oAccesoDatos = new AccesoDatos();
@@ -33,7 +33,7 @@ class Digital extends Donacion{
         else{
             $fotoBinaria = addslashes($this->aPhoto[0]);
             $this->dFechaCreacion=date('Y-m-d');
-            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBenefactor) 
+            $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBeneficiario)
             VALUES (".intval($this->nFolio).", "."'".$this->sMethod."', "."'".$fotoBinaria."', ".
             intval($this->nAmount).", "."0, '".$this->dFechaCreacion."' ,".$this.intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
             $arrRS = $oAccesoDatos -> comando($sQuery);
@@ -66,7 +66,7 @@ class Digital extends Donacion{
                     aPhoto='".$photoToBinary."',
                     nAmount =".intval($this->nAmount)
                     .", nIdUsuario =".intval($this->nIdUsuario).",
-                    nIdBenefactor =".intval($this->nIdBenefactor).
+                    nIdBeneficiario =".intval($this->nIdBenefactor).
                     "WHERE nIdDonacion = ".intval($this->nIdDonacion);
                     $nAfectados=$oAccesoDatos->comando($sQuery);
                     $oAccesoDatos->desconectar();
@@ -95,14 +95,19 @@ class Digital extends Donacion{
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
-            foreach ($arrRS as $aFila) {
-                $oDigital = new Digital();
+            foreach ($arrRS as $aFila) {                
+                $oDigital = new Digital();                
                 $oDigital->setsNombreUser($aFila[0]);
                 $oDigital->setnAmount($aFila[1]);
                 $oDigital->setnFolio($aFila[2]);
                 $oDigital->setdFechaCreacion($aFila[3]);
                 $oDigital->setbStatus($aFila[4]);
-                $arrDigital[] = $oDigital;
+                if($oDigital->getbStatus()==1){
+                    $arrDigital[] = $oDigital;
+                }
+                
+                
+                
             }
         }
     }
@@ -120,7 +125,7 @@ public function readById($id){
         throw new Exception("m/Digital/readById/nIdDonacion");
     }else{
         if($oAccesoDatos->conectar()){
-            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBenefactor FROM DonacionDigital WHERE nIdDonacion = ".intval($id);
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBeneficiario FROM DonacionDigital WHERE nIdDonacion = ".intval($id);
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
             if($arrRS && count($arrRS) > 0){
@@ -141,5 +146,114 @@ public function readById($id){
     }
     return $arrDigital;
 }
+
+//B - DONACIONES (TARJETA) -> READ BY TITLE : Jesus Antonio Morales de Jesus
+public function readByTitle($sTitle){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = null;
+    $arrDigital = null;
+
+    if (empty($sTitle)) {
+        throw new Exception("m/Digital/readByTitle/sTitle");
+    } else {
+        if ($oAccesoDatos->conectar()) {
+            $sQuery = "SELECT nFolio, sMethod, aPhoto, nAmount, bStatus, dateCreacion, nIdUsuario, nIdBeneficiario 
+                       FROM DonacionDigital 
+                       WHERE sTitle = '" . addslashes($sTitle) . "'";
+            $arrRS = $oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if ($arrRS && count($arrRS) > 0) {
+                foreach ($arrRS as $aFila) {
+                    $oDigital = new Digital();
+                    $oDigital->setnFolio($aFila[0]);
+                    $oDigital->setsMethod($aFila[1]);
+                    $oDigital->setaPhoto($aFila[2]);
+                    $oDigital->setnAmount($aFila[3]);
+                    $oDigital->setbStatus($aFila[4]);
+                    $oDigital->setdFechaCreacion($aFila[5]);
+                    $oDigital->setnIdUsuario($aFila[6]);
+                    $oDigital->setnIdBenefactor($aFila[7]);
+                    $arrDigital[] = $oDigital;
+                }
+            }
+        }
+    }
+    return $arrDigital;
+}
+
+        //B- DONACIONES (MATERIAL) READ MATERIAL:Saul Lima Gonzalez
+        public function readDigital()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {
+        $sQuery = "SELECT * FROM DonacionDigital where bStatus=1";
+        $arrRS = $oAccesoDatos->consulta($sQuery);
+        $oAccesoDatos->desconectar();
+        if ($arrRS && count($arrRS) > 0) {
+            foreach ($arrRS as $aFila) {
+                $oMaterial = new Material();                
+                $oMaterial->setnIdDonacion($aFila[0]);                
+                $oMaterial->setsName($aFila[1]);
+                $oMaterial->setsDescription($aFila[2]);
+                $oMaterial->setaPhoto($aFila[3]);
+                $oMaterial->setnAmount($aFila[4]);
+                $oMaterial->setbStatus($aFila[5]);
+                $oMaterial->setdFechaCreacion($aFila[6]);
+                $oMaterial->setnIdUsuario($aFila[7]);
+                $oMaterial->setnIdBenefactor($aFila[8]);
+                $arrMaterial[] = $oMaterial;
+            }
+        }
+    }
+    return $arrMaterial;        
+}
+
+//B - DONACIONES (TARJETA) -> READ ALL : Jesus Antonio Morales de Jesus
+public function getAll (){
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arraRs = null;
+    $oDigital = null;
+    $arrDigital = [];
+    $nCount = 0;
+
+    try{
+        if($oAccesoDatos->conectar()){
+            $sQuery = "SELECT * FROM DonacionDigital";
+            $arraRs = $oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+
+            if($arraRs){
+                foreach ($arraRs as $aFila) {
+                    $oDigital = new Digital();
+                    $oDigital->setnIdDonacion($aFila[0]);
+                    $oDigital->setnFolio($aFila[1]);
+                    $oDigital->setsMethod($aFila[2]);
+                    $oDigital->setaPhoto($aFila[3]);
+                    $oDigital->setnAmount($aFila[4]);
+                    $oDigital->setbStatus($aFila[5]);
+                    $oDigital->setdFechaCreacion($aFila[6]);
+                    $oDigital->setnIdUsuario($aFila[7]);
+                    $oDigital->setnIdBenefactor($aFila[8]);
+                    $arrDigital[$nCount] = $oDigital;
+                    $nCount++;
+                }
+            }
+        }
+        return $arrDigital;
+    }catch(Exception $e){
+        throw new Exception("m/Digital/getAll/Error: ".$e->getMessage());
+    
+}
+
+return $arrDigital;
+}
+
+
 }
 ?>

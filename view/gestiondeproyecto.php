@@ -8,10 +8,19 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondeproyec
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+require_once '../model/Proyecto.php';
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
 
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
-<div class="header">
+    <div class="header">
         Gestion de Proyecto
     </div>
 
@@ -23,31 +32,58 @@ include_once("modules/navbar.php");   # Navbar
                     <th>Titulo</th>
                     <th>Descripcion</th>
                     <th>Foto</th>
-                  
-                   
+                    <th>Id Administrador</th>
+                    <th>Nombre beneficiario</th>
+
+
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>10203</td>
-                    <td>Aula B-204 sin mobiliario adecuado</td>
-                    <td>Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat 
-                        at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet 
-                        urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.</td>
-                    <td>.png</td>
-                    <td><button onclick="window.location.href='proyectomodificar.php'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='proyectoeliminar.php'" class="btn-eliminar">Eliminar</button>
-                </td>
-           
-                </tr>
+
+                <?php
+                $oProyecto = new Proyecto();
+                $arrProyectos = $oProyecto->readAll();
+
+                foreach ($arrProyectos as $oProyect) {
+
+                    $imagenBinaria = $oProyect->getaPhoto();
+                    $base64Image = base64_encode($imagenBinaria);
+                    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+
+
+                    ?>
+
+                    <tr>
+                        <td><?php echo $oProyect->getnIdProyecto(); ?></td>
+                        <td><?php echo $oProyect->getsTitle(); ?></td>
+                        <td><?php echo $oProyect->getsDescription(); ?></td>
+                        <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" /></td>
+                        <td><?php echo $oProyect->getnIdUsuario(); ?></td>
+                        <td><?php echo $oProyect->getnIdBenefactor(); ?></td>
+                        <td>
+                            <button
+                                onclick="window.location.href='proyectomodificar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'"
+                                class="btn-modificar">Modificar</button>
+                            <button
+                                onclick="window.location.href='proyectoeliminar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'"
+                                class="btn-eliminar">Eliminar</button>
+                        </td>
+
+
+                    </tr>
+
+                    <?php
+                }
+                ?>
             </tbody>
         </table>
 
-      
+
         <button onclick="window.location.href='proyectoinsertar.php'" class="btn-insertar">Insertar</button>
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

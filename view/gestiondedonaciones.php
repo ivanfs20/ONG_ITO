@@ -8,8 +8,16 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondedonaci
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
 
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
     <div class="banner">
@@ -25,15 +33,20 @@ include_once("modules/navbar.php");   # Navbar
                 <a href="gestiondigital.php">Donacion Dinero →</a>
             </div>
             <div class="card">
-                <img src="../view/media/pupitres.jpg"  alt="Proyectos">
+                <img src="../view/media/pupitres.jpg" alt="Proyectos">
                 <p>Recursos resividos</p>
                 <a href="gestionmaterial.php">Donacion Recurso →</a>
             </div>
         </div>
 
+        <div>
+            <a href="sesionadmin.php" class="boton-regresar">Regresar</a>
+        </div>
+
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

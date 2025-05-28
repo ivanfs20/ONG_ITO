@@ -27,24 +27,32 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 
         <!-- Primer campaña activa y de ejemplo para los back-ends-->
         <div class="campañas-grid">
-            <!-- Columna de Imagen -->
-            <div class="camapñas-imagen">
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
-            </div>
 
+            <?php
+                include_once("../model/Proyecto.php");
+                $oProyecto = new Proyecto();
+                $arrProyectos = $oProyecto->readAll();
+                foreach($arrProyectos as $arrP){
+
+                    $imagenBinaria = $arrP->getaPhoto();
+                    $base64Image = base64_encode($imagenBinaria);
+                    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+            ?>
+                        <!-- Columna de Imagen -->
+                        <div class="camapñas-imagen">
+                        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
+            </div>
             <!-- Columna de Texto -->
             <div class="campañas-content">
-                <h2 class="campañas-titulo">Aula B-204 sin mobiliario adecuado</h2>
-                <p class="campañas-texto">
-                    Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie,
-                    massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat at libero ultrices mollis.
-                    In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In
-                    euismod augue vitae nisi ultricies, non aliquet urna tincidunt. Integer in nisi eget nulla commodo
-                    faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero.
-                    Donec consectetur faucibus ipsum id gravida
-                </p>
+                <h2 class="campañas-titulo"><?php echo $arrP->getsTitle();?></h2>
+                <p class="campañas-texto"><?php echo $arrP -> getsDescription();?></p>
                 <a href="#" class="campañas-boton">Quiero colaborar</a>
             </div>
+
+            <?php
+                }
+            ?>
+
         </div>
 
     </div>

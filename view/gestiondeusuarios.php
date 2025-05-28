@@ -8,10 +8,18 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondeusuari
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+require_once '../model/Usuario.php';
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+} else {
+    $oUsuario = null;
+}
 
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
-<div class="header">
+    <div class="header">
         Gestion de Usuarios
     </div>
 
@@ -27,24 +35,41 @@ include_once("modules/navbar.php");   # Navbar
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Carlos</td>
-                    <td>carlos@gamail.com</td>
-                    <td>123carlos</td>
-                    <td>Adminitrador</td>
-                    <td>
-                    <button onclick="window.location.href='usuariomodificar.php'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='usuarioeliminar.php'" class="btn-eliminar">Eliminar</button>
-                    </td>
-                </tr>
+
+                <?php
+                $arrUsuarios = $oUsuario->getAll();
+                foreach ($arrUsuarios as $oUser) {
+                    ?>
+                    <tr>
+                        <td><?php echo $oUser->getnIdUsuario(); ?></td>
+                        <td><?php echo $oUser->getsNombreC(); ?></td>
+                        <td><?php echo $oUser->getsEmail(); ?></td>
+                        <td><?php echo $oUser->getsPassword(); ?></td>
+                        <td><?php echo $oUser->getsRol(); ?></td>
+                        <td>
+                            <button
+                                onclick="window.location.href='usuariomodificar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'"
+                                class="btn-modificar">Modificar</button>
+                            <button
+                                onclick="window.location.href='usuarioeliminar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'"
+                                class="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
             </tbody>
         </table>
 
         <button onclick="window.location.href='usuarioinsertar.php'" class="btn-insertar">Insertar</button>
+
+        <div>
+            <a href="sesionadmin.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
+}
 ?>

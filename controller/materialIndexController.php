@@ -3,13 +3,19 @@ require_once 'model/Material.php';
 $oMaterial=new Material(); 
 //$arrMaterial=$oMaterial->readForTable();
 $arrMaterial=$oMaterial->readByJoin();
+if(count($arrMaterial)>0){
 foreach ($arrMaterial as $material){
-if($material->getbStatus()==1){
+
+
+    $imagenBinaria = $material->getaPhoto();
+    $base64Image = base64_encode($imagenBinaria);
+    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+
 ?>
 
                 <div class="tabla-fila">
                     <div class="celda-imagen">
-                        <img src="view/media/salon.jpg" alt="Salón sin proyector">
+                    <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
                         
                     </div>
                     <div class="descripcion-celda">
@@ -57,5 +63,9 @@ if($material->getbStatus()==1){
                 
 <?php 
 }
+}else{
+?>
+<h3 class="seccion-titulo">No hay donacion en este periodo :(</h3>
+<?php 
 }
 ?>

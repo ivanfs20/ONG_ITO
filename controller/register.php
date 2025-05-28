@@ -6,6 +6,8 @@ $sName = trim($_POST['full-name']);
 $sEmail = trim($_POST['e-mail']);
 $sPassword = trim($_POST['contraseña']);
 $sConfirm = trim($_POST['confirmar-contraseña']);
+$sRfc=trim($_POST['RFC']);
+$sDomicilio=trim($_POST['domicilio']);
 $sRole = "donador";
 $sMessage = "";
 
@@ -24,6 +26,8 @@ else if($oUser->exists($sEmail)){
             $oUser->setsEmail($sEmail);
             $oUser->setsPassword($sPassword);
             $oUser->setsRol($sRole);
+            $oUser->setsRfc($sRfc);
+            $oUser->setsDomicilio($sDomicilio);
             try {
                 $nAfectados = $oUser->register();
                 if ($nAfectados > 0) {
