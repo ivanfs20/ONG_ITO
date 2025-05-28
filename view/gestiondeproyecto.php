@@ -17,10 +17,10 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
-<div class="header">
+    <div class="header">
         Gestion de Proyecto
     </div>
 
@@ -32,54 +32,58 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Titulo</th>
                     <th>Descripcion</th>
                     <th>Foto</th>
-                    <th>Id Usuario</th>
-                    <th>Id Beneficiario</th>
+                    <th>Id Administrador</th>
+                    <th>Nombre beneficiario</th>
 
-                   
+
                 </tr>
             </thead>
             <tbody>
 
                 <?php
-                    $oProyecto = new Proyecto();
-                    $arrProyectos = $oProyecto -> readAll();
+                $oProyecto = new Proyecto();
+                $arrProyectos = $oProyecto->readAll();
 
-                    foreach($arrProyectos as $oProyect){
-                
-                        $imagenBinaria = $oProyect->getaPhoto();
-                        $base64Image = base64_encode($imagenBinaria);
-                        $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+                foreach ($arrProyectos as $oProyect) {
+
+                    $imagenBinaria = $oProyect->getaPhoto();
+                    $base64Image = base64_encode($imagenBinaria);
+                    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
 
 
-                ?>
+                    ?>
 
-                <tr>
-                    <td><?php echo $oProyect -> getnIdProyecto();?></td>
-                    <td><?php echo $oProyect -> getsTitle();?></td>
-                    <td><?php echo $oProyect -> getsDescription();?></td>
-                    <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" /></td>
-                    <td><?php echo $oProyect -> getnIdUsuario();?></td>
-                    <td><?php echo $oProyect -> getnIdBenefactor();?></td>
-                    <td>
-    <button onclick="window.location.href='proyectomodificar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'" class="btn-modificar">Modificar</button>
-    <button onclick="window.location.href='proyectoeliminar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'" class="btn-eliminar">Eliminar</button>
-</td>
+                    <tr>
+                        <td><?php echo $oProyect->getnIdProyecto(); ?></td>
+                        <td><?php echo $oProyect->getsTitle(); ?></td>
+                        <td><?php echo $oProyect->getsDescription(); ?></td>
+                        <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" /></td>
+                        <td><?php echo $oProyect->getnIdUsuario(); ?></td>
+                        <td><?php echo $oProyect->getnIdBenefactor(); ?></td>
+                        <td>
+                            <button
+                                onclick="window.location.href='proyectomodificar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'"
+                                class="btn-modificar">Modificar</button>
+                            <button
+                                onclick="window.location.href='proyectoeliminar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'"
+                                class="btn-eliminar">Eliminar</button>
+                        </td>
 
-           
-                </tr>
 
-                <?php
+                    </tr>
+
+                    <?php
                 }
                 ?>
             </tbody>
         </table>
 
-      
+
         <button onclick="window.location.href='proyectoinsertar.php'" class="btn-insertar">Insertar</button>
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>

@@ -46,7 +46,7 @@ include_once("modules/navbar.php");   # Navbar
             <!-- Columna Derecha -->
             <div class="columna-imagen">
                 <!-- Imagen para enfatizar -->
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/donacion-rastreada.jpg" alt="Estudiantes en laboratorio">
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@ include_once("modules/navbar.php");   # Navbar
             <!-- Columna Derecha -->
             <div class="columna-imagen">
                 <!-- Imagen para enfatizar -->
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/documentamos-pasos.jpg" alt="Estudiantes en laboratorio">
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ include_once("modules/navbar.php");   # Navbar
             <!-- Columna Derecha -->
             <div class="columna-imagen">
                 <!-- Imagen para enfatizar -->
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/administradores.jpg" alt="Estudiantes en laboratorio">
             </div>
         </div>
     </div>
@@ -106,7 +106,7 @@ include_once("modules/navbar.php");   # Navbar
             <!-- Columna Derecha -->
             <div class="columna-imagen">
                 <!-- Imagen para enfatizar -->
-                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/objetivo.jpg" alt="Estudiantes en laboratorio">
             </div>
         </div>
     </div>
@@ -131,7 +131,7 @@ include_once("modules/navbar.php");   # Navbar
             <p class="desicion-subtitulo">Nuestro equipo está disponible para resolver tus dudas y brindarte
                 tranquilidad.</p>
             <a href="terminosycondiciones.php" class="desicion-boton">Terminos y condiciones</a>
-            <a href="iniciarsesion.html" class="desicion-boton">Contactanos</a>
+            <a href="contacto.php" class="desicion-boton">Contactanos</a>
         </div>
     </div>
 </section>

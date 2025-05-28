@@ -16,10 +16,10 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
-<div class="header">
+    <div class="header">
         Gestion de Usuarios
     </div>
 
@@ -36,32 +36,40 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             </thead>
             <tbody>
 
-            <?php 
-                $arrUsuarios = $oUsuario -> getAll();
-                foreach($arrUsuarios as $oUser){
-            ?>
-                <tr>
-                    <td><?php echo $oUser-> getnIdUsuario();?></td>
-                    <td><?php echo $oUser-> getsNombreC();?></td>
-                    <td><?php echo $oUser-> getsEmail();?></td>
-                    <td><?php echo $oUser-> getsPassword();?></td>
-                    <td><?php echo $oUser-> getsRol();?></td>
-                    <td>
-                    <button onclick="window.location.href='usuariomodificar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'" class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='usuarioeliminar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'" class="btn-eliminar">Eliminar</button>
-                    </td>
-                </tr>
-            <?php
+                <?php
+                $arrUsuarios = $oUsuario->getAll();
+                foreach ($arrUsuarios as $oUser) {
+                    ?>
+                    <tr>
+                        <td><?php echo $oUser->getnIdUsuario(); ?></td>
+                        <td><?php echo $oUser->getsNombreC(); ?></td>
+                        <td><?php echo $oUser->getsEmail(); ?></td>
+                        <td><?php echo $oUser->getsPassword(); ?></td>
+                        <td><?php echo $oUser->getsRol(); ?></td>
+                        <td>
+                            <button
+                                onclick="window.location.href='usuariomodificar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'"
+                                class="btn-modificar">Modificar</button>
+                            <button
+                                onclick="window.location.href='usuarioeliminar.php?idUser=<?php echo $oUser->getnIdUsuario(); ?>'"
+                                class="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <?php
                 }
-            ?>
+                ?>
             </tbody>
         </table>
 
         <button onclick="window.location.href='usuarioinsertar.php'" class="btn-insertar">Insertar</button>
+
+        <div>
+            <a href="sesionadmin.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>

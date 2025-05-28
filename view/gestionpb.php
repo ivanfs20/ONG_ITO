@@ -16,8 +16,8 @@ if (isset($_SESSION['usuario'])) {
     $oUsuario = null;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
     <div class="banner">
@@ -44,10 +44,14 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             </div>
         </div>
 
+        <div>
+            <a href="sesionadmin.php" class="boton-regresar">Regresar</a>
+        </div>
+
     </div>
 
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>
