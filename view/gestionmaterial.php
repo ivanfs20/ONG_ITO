@@ -49,7 +49,7 @@ foreach ($arrMaterial as $material){
 <form action="../controller/materialConfirmarController.php" method="POST">
             <tbody>
                 <tr>
-                    <td> <input name="idDonacion" type="text" id="id_donacion" value="<?php echo $material->getnIdDonacion();  ?>" readonly> </td>    
+                    <td> <input name="idDonacion" class="input-donacion" type="text" id="id_donacion" value="<?php echo $material->getnIdDonacion();  ?>" readonly> </td>    
                     <td><?php echo $material->getnAmount();   ?></td>
                     <td><?php echo $material->getsName();?></td>
                     <td><?php echo  $material->getsDescription(); ?></td>

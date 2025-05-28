@@ -19,40 +19,41 @@ if (isset($_SESSION['usuario'])) {
     $bSession = false;
 }
 
-if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
-?>
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+    ?>
 
 
-<div class="banner">
-        "Bienvenido al panel de gestión, [nombre]. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras ayuda a construir un impacto real."
+    <div class="banner">
+        "Bienvenido al panel de gestión, [nombre]. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras
+        ayuda a construir un impacto real."
     </div>
 
     <div class="container">
         <h2>Secciones CRUD principales:</h2>
         <div class="cards">
             <div class="card">
-                <img src="https://via.placeholder.com/280x150?text=Donaciones" alt="Donaciones">
-                <p>Ver todas las donaciones<br>Editar / Eliminar registros</p>
+                <img src="media/proyecto.jpg" alt="Donaciones">
+                <p>Ver todas las donaciones, editar / eliminar registros</p>
                 <a href="gestiondedonaciones.php">Gestión de Donaciones →</a>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/280x150?text=Proyectos" alt="Proyectos">
+                <img src="media/proyecto.jpg" alt="Proyectos">
                 <p>Crear, editar, eliminar campañas</p>
                 <a href="gestionpb.php">Gestión de Proyectos y Beneficiario →</a>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/280x150?text=Usuarios" alt="Usuarios">
-                <p>Listado de usuarios<br>Asignar roles</p>
+                <img src="media/proyecto.jpg" alt="Usuarios">
+                <p>Crear, editar, eliminar todos los usuarios</p>
                 <a href="gestiondeusuarios.php">Gestión de Usuarios →</a>
             </div>
         </div>
-        
+
         <div class="footer">
             Solo el administrador puede acceder a estas páginas, protegido por sesiones y roles.
         </div>
     </div>
 
-<?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+    <?php
+    include_once("modules/footer.html"); # Footer y cierre de HTML
 }
 ?>
