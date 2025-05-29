@@ -155,8 +155,15 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 $nDigital = count($oDonacionDigital->readByJoin());
                 $nMaterial = count($oDonacionMaterial->readByJoin()); 
                 $nSuma = $nDigital + $nMaterial;
-                $pDigital = floor((100*$nDigital)/$nSuma);
-                $pMaterial = floor((100*$nMaterial)/$nSuma);
+
+                if($nSuma<=0 and $nDigital>0){
+                    $pDigital = 100;
+                }else if($nSuma<=0 and $nMaterial>0){
+                    $pMaterial=100;
+                }else{
+                    $pDigital = floor((100*$nDigital)/$nSuma);
+                    $pMaterial = floor((100*$nMaterial)/$nSuma);
+                }
 
 
             ?>
