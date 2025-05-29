@@ -80,30 +80,105 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //seleccionar el tipo de recurso a donar
 // script1.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const selectDonacion = document.getElementById('tipo-donacion');
     const botonContinuar = document.getElementById('boton-continuar');
-    
+
     // Habilitar botón cuando se seleccione una opción válida
-    selectDonacion.addEventListener('change', function() {
-        if(this.value !== '') {
+    selectDonacion.addEventListener('change', function () {
+        if (this.value !== '') {
             botonContinuar.disabled = false;
         } else {
             botonContinuar.disabled = true;
         }
     });
-    
+
     // Manejar el clic del botón
-    botonContinuar.addEventListener('click', function() {
+    botonContinuar.addEventListener('click', function () {
         const valor = selectDonacion.value;
         let url = '';
-        
-        if(valor === 'dinero') {
+
+        if (valor === 'dinero') {
             url = 'D31_TipoTarjeta.php';
-        } else if(valor === 'recurso') {
+        } else if (valor === 'recurso') {
             url = 'D32_TipoRecurso.php';
         }
-        
-        if(url) window.location.href = url;
+
+        if (url) window.location.href = url;
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Elementos del DOM
+    const carruselPista = document.querySelector('.carrusel-pista');
+    const slides = document.querySelectorAll('.carrusel-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicadoresContainer = document.getElementById('indicadores');
+
+    // Variables de estado
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const slideWidth = slides[0].offsetWidth;
+
+    // Crear indicadores
+    slides.forEach((_, index) => {
+        const indicador = document.createElement('div');
+        indicador.classList.add('indicador');
+        if (index === 0) indicador.classList.add('activo');
+        indicador.addEventListener('click', () => goToSlide(index));
+        indicadoresContainer.appendChild(indicador);
+    });
+
+    // Función para actualizar la posición del carrusel
+    function updatePosition() {
+        carruselPista.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+        // Actualizar indicadores
+        document.querySelectorAll('.indicador').forEach((indicador, index) => {
+            if (index === currentIndex) {
+                indicador.classList.add('activo');
+            } else {
+                indicador.classList.remove('activo');
+            }
+        });
+
+        // Actualizar estado de los botones
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === totalSlides - 1;
+    }
+
+    // Navegación
+    function goToSlide(index) {
+        currentIndex = index;
+        updatePosition();
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+            updatePosition();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updatePosition();
+        }
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Responsive: actualizar en cambio de tamaño
+    window.addEventListener('resize', () => {
+        // Recalcular el ancho del slide
+        const newSlideWidth = slides[0].offsetWidth;
+        carruselPista.style.transform = `translateX(-${currentIndex * newSlideWidth}px)`;
+    });
+
+    // Inicializar estado de botones
+    updatePosition();
 });

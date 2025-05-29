@@ -99,7 +99,7 @@
     .campañas-grid {
         gap: 2rem;
     }
-    
+
     .campañas-content {
         padding: 1.5rem;
     }
@@ -109,16 +109,16 @@
     .campañas-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .camapñas-imagen {
         border-radius: 12px 12px 0 0;
         height: 300px;
     }
-    
+
     .campañas-content {
         padding: 2rem;
     }
-    
+
     .campañas-titulo {
         font-size: 1.5rem;
     }
@@ -128,7 +128,7 @@
     .seccion-camapañas-activas {
         padding: 2rem 1rem;
     }
-    
+
     .campañas-boton {
         width: 100%;
         justify-content: center;
@@ -154,7 +154,7 @@
     margin-bottom: 3rem;
     position: relative;
     display: inline-block;
-   
+
 }
 
 .testimonios-titulo::after {
@@ -194,12 +194,12 @@
     .testimonios-titulo {
         font-size: 1.8rem;
     }
-    
+
     .testimonio-frase {
         font-size: 1rem;
         padding: 0 1rem;
     }
-    
+
     .testimonio-persona {
         font-size: 1rem;
     }
@@ -209,11 +209,11 @@
     .testimonios-impacto {
         padding: 2rem 1rem;
     }
-    
+
     .testimonios-titulo {
         font-size: 1.5rem;
     }
-    
+
     .testimonios-titulo::after {
         width: 40%;
     }
@@ -239,14 +239,17 @@
 .razon-columna {
     flex: 1;
     padding-right: 2rem;
-  /*  position: sticky;
+    /*  position: sticky;
     top: 100px;*/
     display: flex;
-    flex-direction:inherit;
+    flex-direction: inherit;
     flex-direction: column;
-    align-items: center; /* Centrado horizontal */
-    text-align: center; /* Centrado del texto */
-    margin: 0 auto; /* Centrado del contenedor */
+    align-items: center;
+    /* Centrado horizontal */
+    text-align: center;
+    /* Centrado del texto */
+    margin: 0 auto;
+    /* Centrado del contenedor */
 }
 
 .razon-titulo {
@@ -307,7 +310,7 @@
     .dos-columna-layout {
         gap: 2rem;
     }
-    
+
     .razon-titulo {
         font-size: 1.8rem;
     }
@@ -317,19 +320,19 @@
     .dos-columna-layout {
         flex-direction: column;
     }
-    
+
     .razon-columna {
         position: static;
         text-align: center;
         padding-right: 0;
     }
-    
+
     .razon-subtitulo {
         text-align: center;
         max-width: 100%;
         margin: 0 auto;
     }
-    
+
     .razon-item {
         padding: 1.2rem;
     }
@@ -339,11 +342,11 @@
     .razon-seccion {
         padding: 2rem 1rem;
     }
-    
+
     .razon-titulo {
         font-size: 1.6rem;
     }
-    
+
     .razon-icono {
         font-size: 1.8rem;
         min-width: 50px;
@@ -402,4 +405,202 @@
 
 .iniciativa-boton:hover::after {
     transform: translateX(3px);
+}
+
+/* prueba de estilos de la pagina tomada como base */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title-campanas {
+    text-align: center;
+    margin: 30px 0 40px;
+    font-size: 2.2rem;
+    color: #0B2054;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.title-campanas::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: #F8D400;
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+/* Contenedor del carrusel */
+.carrusel-contenedor {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 20px 0;
+}
+
+/* Pista del carrusel */
+.carrusel-pista {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Slides individuales */
+.carrusel-slide {
+    min-width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Tarjetas de campañas */
+.c-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 360px;
+    width: 100%;
+    background: white;
+    margin: 10px;
+}
+
+.c-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.c-card__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.c-card__body {
+    padding: 20px;
+}
+
+.c-card__titulo {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.c-card__texto {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.c-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #F8D400;
+    color: #0B2054;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.c-btn:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.c-btn::after {
+    content: ' →';
+    transition: transform 0.3s ease;
+}
+
+.c-btn:hover::after {
+    transform: translateX(3px);
+}
+
+
+/* Controles del carrusel */
+.controls-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.carrusel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0B2054;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrusel-btn:hover {
+    background: #041748;
+    transform: scale(1.1);
+}
+
+
+.carrusel-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.c-card__link {
+    text-decoration: none;
+}
+
+/* Indicadores de posición */
+.indicadores {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.indicador.activo {
+    background: #0B2054;
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .carrusel-slide {
+        min-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .carrusel-slide {
+        min-width: 33.333%;
+    }
 }
