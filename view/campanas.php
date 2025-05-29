@@ -18,7 +18,7 @@ $subtituloPagina = "Explora las campañas activas para apoyar la educación de c
 ;
 
 // Muestra el hero con los parámetros
-mostrarHero($tituloPagina, $subtituloPagina, );
+mostrarHero($tituloPagina, $subtituloPagina );
 ?>
 <!-- Sección de campañas activas -->
 <section class="campanas-section">
@@ -39,21 +39,6 @@ mostrarHero($tituloPagina, $subtituloPagina, );
                 $base64Image = base64_encode($imagenBinaria);
                 $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
                 ?>
-                <!-- Columna de Imagen -->
-                <div class="camapñas-imagen">
-                    <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
-                </div>
-                <!-- Columna de Texto -->
-                <div class="campañas-content">
-                    <h2 class="campañas-titulo"><?php echo $arrP->getsTitle(); ?></h2>
-                    <p class="campañas-texto"><?php echo $arrP->getsDescription(); ?></p>
-                    <a href="#" class="campañas-boton">Quiero colaborar</a>
-                </div>
-
-                <?php
-            }
-            ?>
-
 
                 <!-- Slide 1 -->
                 <div class="carrusel-slide">
