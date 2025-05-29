@@ -27,28 +27,45 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 
         <div class="carrusel-contenedor">
             <div class="carrusel-pista">
+
+
+            <?php
+            include_once("../model/Proyecto.php");
+            $oProyecto = new Proyecto();
+            $arrProyectos = $oProyecto->readAll();
+            foreach ($arrProyectos as $arrP) {
+
+                $imagenBinaria = $arrP->getaPhoto();
+                $base64Image = base64_encode($imagenBinaria);
+                $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+                ?>
+
                 <!-- Slide 1 -->
                 <div class="carrusel-slide">
                     <div class="c-card c-card--solid c-card--highlight">
                         <a href="D1_Area.php" class="c-card__link causaitem" title="El Mejor Trato">
-                            <img class="c-card__img" src="media/tonio-pipi.jpeg" alt="El Mejor Trato">
-                        </a>
+                        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100%" />                        </a>
                         <div class="c-card__body">
                             <a href="D1_Area.php" class="c-card__link causaitem" title="El Mejor Trato">
-                                <h3 class="c-card__titulo">¿Qué pasa con los baños?</h3>
+                                <h3 class="c-card__titulo"><?php echo $arrP->getsTitle(); ?></h3>
                                 <p class="c-card__texto">
-                                    Es inaudito  los baños de los varones no tienen divisiones 
-                                        a la hora de ir a orinar, es un hecho que fastidia y entorpece el momento
-                                        perfecto
-                                        para orinar y liberarse de esa sobrecarga de liquidos. Buscamos
-                                    activistas que
-                                    compartan nuestra buena manera de ir a orinar para tener El Mejor Trato.
+                                <?php echo $arrP->getsDescription(); ?>
                                 </p>
                             </a>
                             <a href="D1_Area.php" class="c-btn">Donar</a>
                         </div>
                     </div>
                 </div>
+
+    <?php
+            }
+    ?>
+
+
+
+
+
+
 
             </div>
             <!-- Controles del carrusel -->
@@ -62,42 +79,6 @@ mostrarHero($tituloPagina, $subtituloPagina, );
         </div>
 </section>
 
-<!-- Sección de campañas activas -->
-<section class="seccion-camapañas-activas">
-    <div class="campañas-contenedor">
-
-        <!-- Primer campaña activa y de ejemplo para los back-ends-->
-        <div class="campañas-grid">
-
-            <?php
-            include_once("../model/Proyecto.php");
-            $oProyecto = new Proyecto();
-            $arrProyectos = $oProyecto->readAll();
-            foreach ($arrProyectos as $arrP) {
-
-                $imagenBinaria = $arrP->getaPhoto();
-                $base64Image = base64_encode($imagenBinaria);
-                $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
-                ?>
-                <!-- Columna de Imagen -->
-                <div class="camapñas-imagen">
-                    <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
-                </div>
-                <!-- Columna de Texto -->
-                <div class="campañas-content">
-                    <h2 class="campañas-titulo"><?php echo $arrP->getsTitle(); ?></h2>
-                    <p class="campañas-texto"><?php echo $arrP->getsDescription(); ?></p>
-                    <a href="#" class="campañas-boton">Quiero colaborar</a>
-                </div>
-
-                <?php
-            }
-            ?>
-
-        </div>
-
-    </div>
-</section>
 
 <!-- Sección testimonios de impacto -->
 <section class="testimonios-impacto">
@@ -181,5 +162,5 @@ mostrarHero($tituloPagina, $subtituloPagina, );
 </section>
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

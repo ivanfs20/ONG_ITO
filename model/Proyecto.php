@@ -55,6 +55,15 @@ class Proyecto{
     public function getnIdBenefactor(){
         return $this -> nIdBenefactor;
     }
+
+
+    public function setsNameBenefactor($sNameBenefactor){
+        return $this->sNameBenefactor=$sNameBenefactor;
+    }
+
+    public function getsNameBenefactor(){
+        return $this->sNameBenefactor;
+    }
     //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
     public function create(){
         $oAccesoDatos = new AccesoDatos();
@@ -245,7 +254,7 @@ class Proyecto{
         $nCount = 0;
     
         if ($oAccesoDatos->conectar()) {
-            $sQuery = "SELECT * FROM Proyecto p";
+            $sQuery = "SELECT p.nIdProyecto, p.sTitle, p.sDescription, p.aPhoto, p.nIdUsuario, b.sName FROM Proyecto p INNER JOIN Beneficiario b ON p.nIdBeneficiario=b.nIdBeneficiario";
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
     
@@ -257,7 +266,7 @@ class Proyecto{
                     $oProyecto->setsDescription($aLinea[2]);
                     $oProyecto->setaPhoto($aLinea[3]);
                     $oProyecto->setnIdUsuario($aLinea[4]);
-                    $oProyecto->setnIdBenefactor($aLinea[5]);
+                    $oProyecto->setsNameBenefactor($aLinea[5]);
     
                     $arrProyectos[$nCount] = $oProyecto;
                     $nCount++;

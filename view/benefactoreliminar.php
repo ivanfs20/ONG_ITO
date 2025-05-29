@@ -49,7 +49,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 require_once '../model/Usuario.php';
 session_start();
 if (isset($_SESSION['usuario'])) {

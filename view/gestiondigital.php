@@ -93,6 +93,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
     
     <?php
-    include_once("modules/footer.html");
+    include_once("modules/footer.php");
 }
 ?>

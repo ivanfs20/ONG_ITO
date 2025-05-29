@@ -166,7 +166,7 @@ class Usuario{
         return $arrUsuarios;
     }
 
-
+    
           //B- USUARUOS -> READ ALL : Flores Sánchez Carlos Iván
           public function getActivos() {
             $oAccesoDatos = new AccesoDatos();
