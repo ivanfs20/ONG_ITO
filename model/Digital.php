@@ -90,7 +90,7 @@ class Digital extends Donacion{
     
     if ($oAccesoDatos->conectar()) {
         $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion, d.bStatus FROM DonacionDigital d
-                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.dateCreacion BETWEEN 
+                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.bStatus=1 AND d.dateCreacion BETWEEN 
                     DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE() ORDER BY d.dateCreacion DESC";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
