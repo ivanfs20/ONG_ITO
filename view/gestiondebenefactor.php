@@ -30,6 +30,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Id Beneficiario</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Nombre Proyecto</th>
 
                    
                 </tr>
@@ -47,6 +48,11 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
             <a href="gestionpb.php" class="boton-regresar">Regresar</a>
         </div>
     </div>
+
+
+    <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
 
 
 <?php

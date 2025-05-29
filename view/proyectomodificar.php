@@ -65,8 +65,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_foto">Id Usuario:</label>
         <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>
 
-        <label for="id_foto">ID Beneficiario:</label>
-        <input name="id_benefactor" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdBenefactor();?>>
 
         <div>
         <button class="button">Confirmar</button>

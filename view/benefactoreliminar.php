@@ -38,6 +38,8 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
         <label for="id_dscripcion">Descripcion:</label>
         <input name="descripcion" type="text"  id=" id_dscripcion" value="<?php echo $oBenefac->getsDescription(); ?>" readonly>
+        <label for="id_benefactor">Id Proyecto:</label>
+        <input name="id_proyecto" type="text" id="id_proyecto" value="<?php echo $oBenefac->getnIdProyecto(); ?>" readonly>
 
    <div>
         <button class="button" onclick="">Confirmar</button>

@@ -8,7 +8,6 @@
         $title = $_POST["titulo"];
         $description = $_POST["descripcion"];
         $idUsuario = $_POST["id_usuario"];
-        $idBenefactor = $_POST["id_benefactor"];
 
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
                 $photoContent = file_get_contents($_FILES['foto']['tmp_name']);
@@ -21,10 +20,25 @@
         $oProyecto -> setsDescription($description);
         $oProyecto -> setaPhoto($photoContent);
         $oProyecto -> setnIdUsuario($idUsuario);
-        $oProyecto -> setnIdBenefactor($idBenefactor);
         
 
-        $oProyecto -> update();
+      //  $oProyecto -> update();
 
-        header("Location: ../view/gestiondeproyecto.php");
+      //  header("Location: ../view/gestiondeproyecto.php");
+
+
+      try {
+        $resultado = $oProyecto -> update(); // Este método debe devolver true si se insertó correctamente
+    
+        if ($resultado) {
+            header("Location: ../view/popproyecto.php?msg=modificado");
+        } else {
+            header("Location: ../view/popproyecto.php?msg=errorregistro");
+        }
+    } catch (Exception $e) {
+        error_log("Error al modificar proyecto: " . $e->getMessage());
+        header("Location: ../view/popproyecto.php?msg=errorregistro");
+    }
+    exit();
+
         ?>
