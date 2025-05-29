@@ -270,7 +270,10 @@ public function readById($id){
     $arrMaterial = [];
     
     if ($oAccesoDatos->conectar()) {
-        $sQuery = "SELECT * FROM DonacionMaterial where bStatus=0";
+        $sQuery = "SELECT d.nIdDonacion,d.sName,d.sDescription,d.aPhoto,d.nAmount,d.bStatus,d.dateCreacion,
+        d.nIdUsuario,d.nIdBeneficiario,u.sNombreC FROM DonacionMaterial d
+        INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario
+        where d.bStatus=0";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
         if ($arrRS && count($arrRS) > 0) {
@@ -284,7 +287,8 @@ public function readById($id){
                 $oMaterial->setbStatus($aFila[5]);
                 $oMaterial->setdFechaCreacion($aFila[6]);
                 $oMaterial->setnIdUsuario($aFila[7]);
-                $oMaterial->setnIdBenefactor($aFila[8]);              
+                $oMaterial->setnIdBenefactor($aFila[8]);
+                $oMaterial->setsNombreUser($aFila[9]);              
                 $arrMaterial[] = $oMaterial;
             }
         }
