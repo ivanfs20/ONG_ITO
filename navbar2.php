@@ -1,9 +1,13 @@
 <!--  Autor: Edwin Ariel Ramos Alvarez  -->
 
 <?php
-    include_once('model/Usuario.php');
+    include_once('model/Usuario.php');   
     session_start();
-    $oUsuario = $_SESSION['usuario'];
+    $oUsuario = isset($_SESSION['usuario'])?$_SESSION['usuario']:null;
+
+
+    
+     if($oUsuario!=null){
     $sRol = $oUsuario->getsRol();
     if($sRol=="administrador"){
 ?>
@@ -44,8 +48,17 @@
 </nav>
 
 <?php
-}
+} 
+    }
+    else{
+        require_once 'view/modules/navbar.php';
+    }
 ?>
+
+
+
+
+
 <!--  Autor: Edwin Ariel Ramos Alvarez  -->
   <!--  Navegador Admin  -->
   <!--
