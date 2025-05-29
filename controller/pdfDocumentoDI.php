@@ -1,6 +1,19 @@
 <?php
 require('../lib/fpdf/fpdf.php'); //ruta de la libreria externa para crear un pdf
 
+require_once '../model/Usuario.php';
+session_start();
+$bSession = false;
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+    $bSession = true;
+} else {
+    $oUsuario = null;
+    $bSession = false;
+}
+
+if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 25);
@@ -46,13 +59,13 @@ $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 10);
     //Nombre del Donante
-    $pdf->Cell(40,10,utf8_decode('Nombre del Donante: '));
+    $pdf->Cell(40,10,utf8_decode('Nombre del Donante: '.$_POST['nombre_donador']));
     $pdf->Ln(7);
     //RFC del donante
-    $pdf->Cell(40,10,utf8_decode('RFC del donante: '));
+    $pdf->Cell(40,10,utf8_decode('RFC del donante: '.$_POST['rfc_donador']));
     $pdf->Ln(7);
     //Domicilio del Donante
-    $pdf->Cell(40,10,utf8_decode('Domicilio: '));
+    $pdf->Cell(40,10,utf8_decode('Domicilio: '.$_POST['domicilio_donador']));
     $pdf->Ln(15);
 
 // --- DATOS DEL DONATIVO -> TITULO
@@ -62,7 +75,7 @@ $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 10);
     //Folio
-    $pdf->Cell(40,10,utf8_decode('Folio: '));
+    $pdf->Cell(40,10,utf8_decode('Folio: '.$_POST['folio']));
     $pdf->Ln(7);
     date_default_timezone_set('America/Mexico_City');
     $fecha = date('Y-m-d');
@@ -70,16 +83,16 @@ $pdf->Ln(10);
     $pdf->Cell(40,10,utf8_decode('Fecha de emisión: '.$fecha));
     $pdf->Ln(7);
     //Importe recibido
-    $pdf->Cell(40,10,utf8_decode('Importe recibido: $'));
+    $pdf->Cell(40,10,utf8_decode('Importe recibido: $'.$_POST['amount']));
     $pdf->Ln(7);
     //Forma de pago
-    $pdf->Cell(40,10,utf8_decode('Método de pago: Pago en banco'));
+    $pdf->Cell(40,10,utf8_decode('Método de pago: '.$_POST['metodo_pago']));
     $pdf->Ln(7);
     //Numero de operación o referencia bancaria
     $pdf->Cell(40,10,utf8_decode('Numero de operación o referencia bancaria: 1-4468005'));
     $pdf->Ln(7);
     //Concepto
-    $pdf->Cell(40,10,utf8_decode('Concepto: '));
+    $pdf->Cell(40,10,utf8_decode('Concepto: '.$_POST['beneficiario']));
     $pdf->Ln(16);
 
 
@@ -101,5 +114,5 @@ $pdf->Ln(10);
 // Descargar el archivo
 $pdf->Output('I', 'reciboDonativo.pdf'); //se muestra y el usuario lo debe de descargar
 //$pdf->Output('D', 'reciboDonativo.pdf'); se descarga automaticamente
-
+}
 ?>
