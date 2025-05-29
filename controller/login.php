@@ -21,12 +21,19 @@
             if($bResl == true){
                 session_start();
                 $_SESSION["usuario"] = $oUsuario;
+
+                $oNombreUsuario=$oUsuario->readNameByEmail($sEmail);
+                if ($oNombreUsuario !== null) {
+                     $_SESSION["nombre"] = $oNombreUsuario->getsNombreC();
+                 } else {
+                    $_SESSION["nombre"] = "Usuario sin nombre";
+                        }
                 
                 if($oUsuario -> getsRol() == "administrador"){
                     header("Location: ../view/sesionadmin.php");
                     exit();
                 }else{
-                    header("Location: ../index.php"); //Corregir y redireccionar a sesionUsuario.php
+                    header("Location: ../view/sesionusuario.php"); //Corregir y redireccionar a sesionUsuario.php
                     exit();
                 }
 

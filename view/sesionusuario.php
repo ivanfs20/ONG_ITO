@@ -8,12 +8,24 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/sesionusuario.c
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
-
+session_start();
+$bSession = false;
+if (isset($_SESSION['usuario'])) {
+    $oUsuario = $_SESSION["usuario"];
+    $bSession = true;
+    $nombre="Donador";
+    if(isset($_SESSION["nombre"])){
+        $nombre=$_SESSION["nombre"];
+    }
+} else {
+    $oUsuario = null;
+    $bSession = false;
+} 
 ?>
 
 
 <div class="banner">
-¡Bienvenido, [nombre del usuario]!    </div>
+¡Bienvenido, <?php echo htmlspecialchars($nombre);   ?>    </div>
 
     
   </header>

@@ -275,5 +275,28 @@ class Usuario{
 
     }
 
+    //B-> READ NAME BY EMAIL : Saul Lima Gonzalez 
+    public function readNameByEmail($email){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=null;
+        $oUsuario=null;
+        if(empty($email)){
+            throw new Exception ("message/Usuario->el email no es valido o esta vacio");
+        }else{
+            if($oAccesoDatos->conectar()){
+                $sQuery="SELECT sNombreC FROM Usuario WHERE sEmail='".$email."'";
+                $arrRS=$oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                if($arrRS && count($arrRS)>0){
+                    $oUsuario=new Usuario();
+                    $fila=$arrRS[0];
+                    $oUsuario->sNombreC=$fila[0];
+                };
+            }
+        }
+        return $oUsuario;
+    }
+
 }
 ?>
