@@ -50,6 +50,11 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
     </div>
 
 
+    <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
+
+
 <?php
 include_once("modules/footer.php"); # Footer y cierre de HTML
 }

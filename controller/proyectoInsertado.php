@@ -22,7 +22,22 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $oProyecto -> setnIdUsuario($oUsuario);
         
 
-        $oProyecto -> create();
+       // $oProyecto -> create();
 
-        header("Location: ../view/gestiondeproyecto.php");
+        //header("Location: ../view/gestiondeproyecto.php");
+
+    
+        try {
+            $resultado = $oProyecto -> create(); // Este método debe devolver true si se insertó correctamente
+        
+            if ($resultado) {
+                header("Location: ../view/popproyecto.php?msg=agregado");
+            } else {
+                header("Location: ../view/popproyecto.php?msg=errorregistro");
+            }
+        } catch (Exception $e) {
+            error_log("Error al registrar proyecto: " . $e->getMessage());
+            header("Location: ../view/popproyecto.php?msg=errorregistro");
+        }
+        exit();
         ?>
