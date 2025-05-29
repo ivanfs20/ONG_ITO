@@ -96,7 +96,7 @@ ALTER TABLE Beneficiario
 DROP FOREIGN KEY Beneficiario_ibfk_1;
 ALTER TABLE Beneficiario 
 ADD CONSTRAINT Beneficiario_ibfk_1 FOREIGN KEY (nIdProyecto) 
-REFERENCES Beneficiario(nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
+REFERENCES Proyecto (nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE Proyecto
 DROP FOREIGN KEY Proyecto_ibfk_2;
