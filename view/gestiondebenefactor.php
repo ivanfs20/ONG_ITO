@@ -30,6 +30,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Id Beneficiario</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Nombre Proyecto</th>
 
                    
                 </tr>
