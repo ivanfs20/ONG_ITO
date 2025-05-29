@@ -38,44 +38,71 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarFormulario('form-registro');
 });
 
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    const tarjetas = document.querySelectorAll('.area-card');
+    const select = document.getElementById('area-select');
+    const allProjects = document.querySelectorAll('.projects-container');
     const botonContinuar = document.querySelector('.boton-continuar');
-    let areaSeleccionada = null;
+    const botonesDonar = document.querySelectorAll('.project-button');
 
-    // seleccionamos un area para poder avanzar
-    tarjetas.forEach(tarjeta => {
-        tarjeta.addEventListener('click', function () {
+    let areaSeleccionada = '';
+    let proyectoSeleccionado = '';
 
-            tarjetas.forEach(t => {
-                t.classList.remove('seleccionada');
-                t.querySelector('.area-button').textContent = "Quiero apoyar esta area";
-            });
+    // Deshabilitamos el botón al inicio
+    botonContinuar.classList.remove('activo');
+    botonContinuar.setAttribute('disabled', 'true');
 
-            //metemos dentro del boton, es decir cambiamos el texto para que se note que fue selccionada el area 
-            this.classList.add('seleccionada');
-            const boton = this.querySelector('.area-button');
-            boton.textContent = "✓ Área Seleccionada";
-            areaSeleccionada = this.querySelector('.area-title').textContent;
+    // Mostrar proyectos por área
+    select.addEventListener('change', function () {
+        areaSeleccionada = this.value;
+        proyectoSeleccionado = ''; // reiniciamos el proyecto seleccionado
 
-            // despues de haber seleccionado el area, el boton para continuar se habilita para poder seguir con el siguiente paso
-            botonContinuar.disabled = false;
+        // Ocultar todos
+        allProjects.forEach(project => project.style.display = 'none');
+
+        // Mostrar el del área
+        const selectedContainer = document.getElementById(areaSeleccionada);
+        if (selectedContainer) {
+            selectedContainer.style.display = 'block';
+        }
+
+        // Desactivamos el botón "Continuar" (se activa solo si se da clic en "Donar")
+        botonContinuar.classList.remove('activo');
+        botonContinuar.setAttribute('disabled', 'true');
+    });
+
+    // Cuando se hace clic en un botón "Donar"
+    botonesDonar.forEach(boton => {
+        boton.addEventListener('click', function () {
+            proyectoSeleccionado = this.getAttribute('data-proyecto');
+
+            if (!areaSeleccionada || !proyectoSeleccionado) {
+                alert('Selecciona un área y un proyecto');
+                return;
+            }
+
+            // Activar botón continuar
             botonContinuar.classList.add('activo');
+            botonContinuar.removeAttribute('disabled');
         });
     });
 
-    // se debe de confirmar para avanzar, es decir primero se debe de selecconar el area para que asi se deshabilite el boton
+    // Clic en botón continuar
     botonContinuar.addEventListener('click', function (e) {
-        if (!areaSeleccionada) {
+        if (!areaSeleccionada || !proyectoSeleccionado) {
             e.preventDefault();
-            alert('Selecciona un area primero');
+            alert('Primero selecciona un proyecto dando clic en "Donar".');
             return;
         }
 
-        // redireccionamos a la pagina para el siguiente paso y por las dudas y por si lo necesitan se envia el area seleccionada
-        window.location.href = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}`;
+        // Redirección con parámetros
+        const url = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}&proyecto=${encodeURIComponent(proyectoSeleccionado)}`;
+        window.location.href = url;
     });
 });
+
 
 
 //seleccionar el tipo de recurso a donar
