@@ -5,25 +5,104 @@
 
 --BENEFICIARIO
 
-INSERT INTO Beneficiario (sName, sDescription) 
-VALUES ("Fundación Vida", "Organización dedicada al apoyo de comunidades rurales.");
+INSERT INTO Beneficiario (sName, sDescription,nIdProyecto) 
+VALUES ("Fundación Vida", "Organización dedicada al apoyo de comunidades rurales.",1);
 
-INSERT INTO Beneficiario (sName, sDescription) 
-VALUES ("Manos Unidas", "Asociación que brinda asistencia médica y educativa.");
+INSERT INTO Beneficiario (sName, sDescription,nIdProyecto) 
+VALUES ("Manos Unidas", "Asociación que brinda asistencia médica y educativa.",2);
 
-INSERT INTO Beneficiario (sName, sDescription) 
-VALUES ("EcoFuturo", "Proyecto enfocado en sostenibilidad y medio ambiente.");
+INSERT INTO Beneficiario (sName, sDescription,nIdProyecto) 
+VALUES ("EcoFuturo", "Proyecto enfocado en sostenibilidad y medio ambiente.",3);
+
+--Nuevas inserciones de beneficiarios
+INSERT INTO Beneficiario (sName, sDescription, nIdProyecto) VALUES 
+("Jóvenes con Futuro", "Apoyo educativo y vocacional para jóvenes de bajos recursos.", 1),
+("Tecnosalud", "Organización que promueve la salud preventiva en comunidades estudiantiles.", 2),
+("EcoVerde", "Promotora del reciclaje y actividades sustentables en zonas urbanas.", 3),
+("EduRed", "Plataforma que impulsa el acceso a la educación digital.", 4),
+("Cultura Viva", "Fomento del arte y la cultura en instituciones educativas.", 5),
+("Construyendo Caminos", "Rehabilitación de espacios públicos en entornos escolares.", 6),
+("Comunidad Inteligente", "Promoción de tecnología accesible en zonas marginadas.", 7),
+("Sonrisas del Mañana", "Campañas de salud bucal para estudiantes y familias.", 8),
+("Bibliotecarte", "Promoción de la lectura y donación de libros.", 9),
+("Círculo de Apoyo", "Red de apoyo psicológico para jóvenes universitarios.", 10),
+("Aliados Verdes", "Colectivo de estudiantes que impulsan la ecología en campus.", 11),
+("Salud Primero", "Asociación que ofrece brigadas médicas gratuitas.", 12),
+("Puentes de Conocimiento", "Voluntariado para impartir talleres y clases.", 13),
+("Educando con Ciencia", "Divulgación científica en escuelas públicas.", 14),
+("Red ProTech", "Fomento de habilidades tecnológicas en jóvenes.", 15),
+("Fuerza Escolar", "Entrega de mochilas y útiles escolares en comunidades rurales.", 1),
+("Esperanza Activa", "Voluntariado universitario para intervención comunitaria.", 2),
+("Corazones Unidos", "Alimentos y ropa para familias vulnerables.", 3),
+("Voces por la Igualdad", "Campañas de equidad de género en instituciones educativas.", 4),
+("Aprendo Jugando", "Talleres lúdicos para educación básica.", 5),
+("Manos Amigas", "Reparación de escuelas dañadas por desastres naturales.", 6),
+("Ciencia para Todos", "Laboratorios móviles de ciencia para escuelas rurales.", 7),
+("Red Solidaria", "Campañas de donación de sangre y salud comunitaria.", 8),
+("Crece Conmigo", "Programa de alfabetización para adultos jóvenes.", 9),
+("Conecta2", "Promoción del acceso a internet para estudiantes rurales.", 10),
+("Pies Descalzos", "Donación de calzado para niños en zonas vulnerables.", 11),
+("Un Libro Más", "Colecta de libros para bibliotecas comunitarias.", 12),
+("Talento Local", "Impulso a proyectos de emprendimiento juvenil.", 13),
+("Código Libre", "Capacitación gratuita en programación y software libre.", 14),
+("CompuAyuda", "Donación y reparación de computadoras para escuelas.", 15);
+
 
 --PROYECTO
 
-INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario) 
-VALUES ("Huertos Urbanos", "Creación de huertos en zonas urbanas.", 0x00, 1, 1);
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Huertos Urbanos", "Creación de huertos en zonas urbanas.", 0x00, 1);
 
-INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario) 
-VALUES ("Educación para Todos", "Campaña de educación primaria en zonas rurales.", 0x00, 2, 2);
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Educación para Todos", "Campaña de educación primaria en zonas rurales.", 0x00, 2);
 
-INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario) 
-VALUES ("Reciclaje Comunitario", "Instalación de puntos de reciclaje en barrios.", 0x00, 1, 3);
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Reciclaje Comunitario", "Instalación de puntos de reciclaje en barrios.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Laboratorio de Innovación", "Donación de equipos para el nuevo laboratorio de ingeniería.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Biblioteca Digital", "Creación de una biblioteca digital accesible para todos los estudiantes.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Becas Tecnológicas", "Fondo de becas para alumnos destacados en ingeniería y tecnología.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Internet para Todos", "Instalación de puntos WiFi en las instalaciones del instituto.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("EcoCampus", "Programa de reforestación y cuidado del medio ambiente en el campus.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Aulas Inteligentes", "Implementación de pizarras digitales y proyectores en las aulas.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Apoyo Psicológico", "Campaña de salud mental y atención psicológica para estudiantes.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Alimentación Saludable", "Donación de insumos para comedores estudiantiles saludables.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Inglés para Todos", "Cursos gratuitos de inglés para estudiantes de bajos recursos.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Mujeres en la Ciencia", "Apoyo a la participación de mujeres en carreras científicas.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Ciencia Itinerante", "Caravana de ciencia y tecnología en comunidades cercanas.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Robótica Escolar", "Talleres y kits de robótica para estudiantes del tecnológico.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Donación de Libros", "Campaña para donar libros a la biblioteca del instituto.", 0x00, 1);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Movilidad Sustentable", "Promoción del uso de bicicletas y transporte ecológico.", 0x00, 2);
+
+INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario) 
+VALUES ("Talleres de Programación", "Cursos intensivos de desarrollo de software para estudiantes.", 0x00, 1);
 
 
 --DONACIÓN MATERIAL
