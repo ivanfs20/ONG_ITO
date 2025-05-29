@@ -9,6 +9,30 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/usuariodonacion
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+include_once("../model/Usuario.php");
+include_once("../model/Digital.php");
+include_once("../model/Material.php");
+
+session_start();
+$bSession = false;
+if (isset($_SESSION['usuario'])) {
+  $oUsuario = $_SESSION["usuario"];
+  $bSession = true;
+  $nombre="Donador";
+
+} else {
+  $oUsuario = null;
+  $bSession = false;
+} 
+
+if ($oUsuario != null) {
+
+  $oMaterial = new Material();
+  $oDigital = new Digital();
+  $oMaterial -> setnIdUsuario($oUsuario->getnIdUsuario());
+  $arrDonacionesMateriales = $oMaterial -> getDonacionMaterial();
+  $oDigital -> setnIdUsuario($oUsuario->getnIdUsuario());
+  $arrDonacionesDigitales = $oDigital -> getDonacionDigital();
 
 ?>
 
@@ -28,41 +52,64 @@ include_once("modules/aside.html"); # Aside
     <table>
       <tr>
         <th>Nombre</th>
-        <th>Imagen</th>
-        <th>Benefactor</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Beneficiario</th>
         <th>Evidencia</th>
-        <th>Confirmada</th>
-        <th></th>
+        <th>Estado</th>
       </tr>
+      <?php
+        foreach($arrDonacionesMateriales as $oDonacionMat){
+
+          
+          $imagenBinaria = $oDonacionMat->getaPhoto();
+          $base64Image = base64_encode($imagenBinaria);
+          $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+      ?>
       <tr>
-        <td>Silla</td>
-        <td>png</td>
-        <td>bilbiote</td>
-        <td>PNG</td>
-        <td>Pendiente</td>
-        <td><button class="subir-btn">Subir evidencia</button></td>
+
+      
+        <td><?php echo $oDonacionMat->getsName();?></td>
+        <td><?php echo $oDonacionMat->getsDescription();?></td>
+        <td><?php echo $oDonacionMat->getnAmount();?></td>
+        <td><?php echo $oDonacionMat->getsNameBenefactor();?></td>
+        <td><img src="<?php echo $imgSrc; ?>" alt="Imagen de la donación" width="100" /></td>
+        <td><?php if($oDonacionMat->getbStatus()==0){echo "Pendiente";}?></td>
       </tr>
+
+      <?php
+      }
+      ?>
     </table>
 
 
     <h3>Donaciones de Depósito:</h3>
     <table>
       <tr>
+        <th>Beneficiario</th>
         <th>Monto</th>
         <th>Folio</th>
         <th>Fecha</th>
         <th>Estado</th>
-        <th>Comprobante</th>
       </tr>
+      <?php
+        foreach($arrDonacionesDigitales as $oDonacionDig){
+      ?>
       <tr>
+
+        
       
-      <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="subir-btn">Subir evidencia</button></td>
+      <tr>
+      <td><?php echo $oDonacionDig->getsNameBenefactor();?></td>
+        <td><?php echo $oDonacionDig->getnAmount();?></td>
+        <td><?php echo $oDonacionDig->getnFolio();?></td>
+        <td><?php echo $oDonacionDig->getdFechaCreacion();?></td>
+        <td><?php if($oDonacionDig->getbStatus()==0){echo "Pendiente";}?></td>
       </tr>
+      
+      <?php
+      }
+      ?>
     </table>
     </section>
     </main>
@@ -70,5 +117,10 @@ include_once("modules/aside.html"); # Aside
 
 
 <?php
+}{
+  if($bSession == false){
+    include_once("loginUrgente.php");
+  }
+}
 include_once("modules/footer.html"); # Footer y cierre de HTML
 ?>

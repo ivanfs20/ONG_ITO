@@ -161,6 +161,41 @@ class Material extends Donacion{
     return $arrMaterial;        
 }
 
+
+public function getDonacionMaterial()
+{       
+    $oAccesoDatos = new AccesoDatos();
+    $sQuery = "";
+    $arrRS = [];
+    $arrMaterial = [];
+    
+    if ($oAccesoDatos->conectar()) {       
+                                               
+                $sQuery="SELECT d.sName,d.sDescription,d.nAmount,b.sName,d.aPhoto,d.bStatus
+                FROM DonacionMaterial d 
+                INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.bStatus=0 and d.nIdUsuario=".intval($this->getnIdUsuario());
+                $arrRS=$oAccesoDatos->consultaJoin($sQuery);
+                $oAccesoDatos->desconectar();
+                if ($arrRS && count($arrRS) > 0) {
+                foreach($arrRS as $aFila){                
+                $oMaterial = new Material();                
+                //$oMaterial->setaPhoto($aFila[0]);      
+                $oMaterial->setsName($aFila[0]);
+                $oMaterial->setsDescription($aFila[1]);
+                $oMaterial->setnAmount($aFila[2]);
+                $oMaterial->setsNameBenefactor($aFila[3]);
+                $oMaterial->setaPhoto($aFila[4]);
+                $oMaterial->setbStatus($aFila[5]);
+                $arrMaterial[] = $oMaterial;
+                }
+                
+                }         
+        
+    }
+    return $arrMaterial;        
+}
+
+
 //B - DONACIONES (MATERIAL) -> UPDATE : Jesus Antonio Morales de Jesus
 public function updateMaterial($sName, $sDescription, $aPhoto, $nAmount){
     $oAccesoDatos = new AccesoDatos();

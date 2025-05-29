@@ -21,6 +21,14 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
+    public function setsNameBenefactor($sNameBenefactor){
+        return $this->sNameBenefactor=$sNameBenefactor;
+    }
+
+    public function getsNameBenefactor(){
+        return $this->sNameBenefactor;
+    }
+
 
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
@@ -44,6 +52,43 @@ class Digital extends Donacion{
         }
         return $bRet;
     }
+
+
+
+    public function getDonacionDigital()
+    {       
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = [];
+        $arrDigital = [];
+        
+        if ($oAccesoDatos->conectar()) {       
+                                                   
+                    $sQuery="SELECT b.sName, d.nAmount, d.nFolio,d.dateCreacion,d.bStatus, d.aPhoto
+                    FROM DonacionDigital d 
+                    INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.bStatus=0 and d.nIdUsuario=".intval($this->getnIdUsuario());
+                    $arrRS=$oAccesoDatos->consultaJoin($sQuery);
+                    $oAccesoDatos->desconectar();
+                    if ($arrRS && count($arrRS) > 0) {
+                    foreach($arrRS as $aFila){                
+                    $oDigital = new Digital();                
+                    //$oMaterial->setaPhoto($aFila[0]);      
+                    $oDigital->setsNameBenefactor($aFila[0]);
+                    $oDigital->setnAmount($aFila[1]);
+                    $oDigital->setnFolio($aFila[2]);
+                    $oDigital->setdFechaCreacion($aFila[3]);
+                    $oDigital->setbStatus($aFila[4]);
+                    $oDigital->setaPhoto($aFila[5]);
+                    $arrDigital[] = $oDigital;
+                    }
+                    
+                    }         
+            
+        }
+        return $arrDigital;        
+    }
+    
+
 
     //B - DONACIONES (TARJETA) -> UPDATE : Saul Lima Gonzale
     public function update(){
