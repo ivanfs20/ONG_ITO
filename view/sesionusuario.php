@@ -8,24 +8,26 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/sesionusuario.c
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+include_once("../model/Usuario.php");
 session_start();
 $bSession = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bSession = true;
     $nombre="Donador";
-    if(isset($_SESSION["nombre"])){
-        $nombre=$_SESSION["nombre"];
-    }
+
 } else {
     $oUsuario = null;
     $bSession = false;
 } 
+
+if ($oUsuario != null) {
+
 ?>
 
 
 <div class="banner">
-¡Bienvenido, <?php echo htmlspecialchars($nombre);   ?>    </div>
+¡Bienvenido, <?php echo  $oUsuario->getsNombreC();  ?>    </div>
 
     
   </header>
@@ -85,5 +87,9 @@ include_once("modules/aside.html"); # Aside
   </footer>
 
 <?php
+}{
+  include_once("loginUrgente.php");
+}
 include_once("modules/footer.html"); # Footer y cierre de HTML
+
 ?>

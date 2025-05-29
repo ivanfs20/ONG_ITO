@@ -10,6 +10,22 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 
+include_once("../model/Usuario.php");
+session_start();
+$bSession = false;
+if (isset($_SESSION['usuario'])) {
+  $oUsuario = $_SESSION["usuario"];
+  $bSession = true;
+  $nombre="Donador";
+
+} else {
+  $oUsuario = null;
+  $bSession = false;
+} 
+
+
+if ($oUsuario != null) {
+
 ?>
 
 
@@ -22,15 +38,21 @@ Mi perfil  </div>
   <div class="profile-content">
     <h2>Perfil de Usuario:</h2>
     <label for="nombre">Nombre:</label><br>
-    <input type="text" id="nombre" name="nombre"><br><br>
+    <input type="text" id="nombre" name="nombre" value='<?php echo  $oUsuario->getsNombreC();  ?>' readonly><br><br>
 
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" value='<?php echo  $oUsuario->getsEmail();  ?>' readonly><br>
   </div>
   <?php
 include_once("modules/aside.html"); # Aside
 ?>
   </div>
 <?php
+}{
+
+  if($bSession == false){
+    include_once("loginUrgente.php");
+  }
+}
 include_once("modules/footer.html"); # Footer y cierre de HTML
 ?>
