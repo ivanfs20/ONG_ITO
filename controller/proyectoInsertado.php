@@ -14,14 +14,12 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $photoContent = null; // o lanzar error si es obligatorio
     }
 
-        $idBenefactor = $_POST["id_benefactor"];
 
         $oUsuario = $_POST["id_usuario"];
         $oProyecto -> setsTitle($title);
         $oProyecto -> setsDescription($description);
         $oProyecto -> setaPhoto($photoContent);
         $oProyecto -> setnIdUsuario($oUsuario);
-        $oProyecto -> setnIdBenefactor($idBenefactor);
         
 
         $oProyecto -> create();

@@ -5,6 +5,26 @@ class Beneficiario{
     private $nIdBenefactor = 0;
     private $sName = "";
     private $sDescription = "";
+    private $nIdProyecto = 0;
+    private $sNameProyecto = "";
+
+
+    public function setnIdProyecto($nIdProyecto){
+        $this -> nIdProyecto = $nIdProyecto;
+    }
+
+    public function getnIdProyecto(){
+        return $this -> nIdProyecto;
+    }
+
+    public function getsNameProyecto(){
+        return $this -> sNameProyecto;
+    }
+
+
+    public function setsNameProyecto($sNameProyecto){
+        $this -> sNameProyecto = $sNameProyecto;
+    }
 
     public function setnIdBenefactor($nIdBenefactor){
         $this -> nIdBenefactor = $nIdBenefactor;

@@ -28,9 +28,6 @@ class Proyecto{
         $this -> nIdUsuario = $nIdUsuario;
     }
 
-    public function setnIdBenefactor($nIdBenefactor){
-        $this -> nIdBenefactor = $nIdBenefactor;
-    }
 
     public function getnIdProyecto(){
         return $this -> nIdProyecto;
@@ -52,18 +49,8 @@ class Proyecto{
         return $this -> nIdUsuario;
     }
 
-    public function getnIdBenefactor(){
-        return $this -> nIdBenefactor;
-    }
 
 
-    public function setsNameBenefactor($sNameBenefactor){
-        return $this->sNameBenefactor=$sNameBenefactor;
-    }
-
-    public function getsNameBenefactor(){
-        return $this->sNameBenefactor;
-    }
     //B-PROYECTOS (CAMPAÑAS)-> CREATE:Saul Lima Gonzalez
     public function create(){
         $oAccesoDatos = new AccesoDatos();
@@ -73,16 +60,15 @@ class Proyecto{
             empty($this->sTitle) ||
             empty($this->sDescription) ||
             empty($this->aPhoto) ||
-            $this->nIdUsuario <= 0 ||
-            $this->nIdBenefactor <= 0
+            $this->nIdUsuario <= 0 
         ) {
-            throw new Exception("message/Proyecto/Create/sTitle,sDescription,aPhoto,nIdUsuario,nIdBenefactor");
+            throw new Exception("message/Proyecto/Create/sTitle,sDescription,aPhoto,nIdUsuario");
         } else {
             $photoToBinary = addslashes($this->aPhoto);
             if ($oAccesoDatos->conectar()) {  // <-- conectar primero
-                $sQuery = "INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario)
-                           VALUES ('".$this->sTitle."', '".$this->sDescription."', '".$photoToBinary."', "
-                           .intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
+                $sQuery = "INSERT INTO Proyecto (sTitle, sDescription, aPhoto, nIdUsuario)
+                VALUES ('" . addslashes($this->sTitle) . "', '" . addslashes($this->sDescription) . "', '" . $photoToBinary . "', " . intval($this->nIdUsuario) . ")";
+     
     
                 $arrRS = $oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
@@ -110,22 +96,21 @@ class Proyecto{
             empty($this->sTitle) ||
             empty($this->sDescription) ||
             $this->nIdUsuario <= 0 ||
-            $this->nIdBenefactor <= 0 ||
             empty($this->aPhoto)
         ) {
-            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto, nIdUsuario, nIdBeneficiario");
+            throw new Exception("message/Proyecto/Update/nIdProyecto, sTitle, sDescription, aPhoto, nIdUsuario");
         }
     
         $photoToBinary = addslashes($this->aPhoto);
     
         if ($oAccesoDatos->conectar()) {
             $sQuery = "UPDATE Proyecto SET 
-                        sTitle = '" . addslashes($this->sTitle) . "',
-                        sDescription = '" . addslashes($this->sDescription) . "',
-                        aPhoto = '" . $photoToBinary . "',
-                        nIdUsuario = " . intval($this->nIdUsuario) . ",
-                        nIdBeneficiario = " . intval($this->nIdBenefactor) . "
-                       WHERE nIdProyecto = " . intval($this->nIdProyecto) . ";";
+            sTitle = '" . addslashes($this->sTitle) . "',
+            sDescription = '" . addslashes($this->sDescription) . "',
+            aPhoto = '" . $photoToBinary . "',
+            nIdUsuario = " . intval($this->nIdUsuario) . "
+           WHERE nIdProyecto = " . intval($this->nIdProyecto) . ";";
+
     
             $arrRS = $oAccesoDatos->comando($sQuery);
             $oAccesoDatos->desconectar();
@@ -206,7 +191,6 @@ class Proyecto{
                     $oProyecto->setsDescription($fila[2] ?? '');
                     $oProyecto->setaPhoto($fila[3] ?? []);
                     $oProyecto->setnIdUsuario($fila[4] ?? 0);
-                    $oProyecto->setnIdBenefactor($fila[5] ?? 0);
                 }
             }
         } catch (Exception $e) {
@@ -254,7 +238,7 @@ class Proyecto{
         $nCount = 0;
     
         if ($oAccesoDatos->conectar()) {
-            $sQuery = "SELECT p.nIdProyecto, p.sTitle, p.sDescription, p.aPhoto, p.nIdUsuario, b.sName FROM Proyecto p INNER JOIN Beneficiario b ON p.nIdBeneficiario=b.nIdBeneficiario";
+            $sQuery = "SELECT p.nIdProyecto, p.sTitle, p.sDescription, p.aPhoto, p.nIdUsuario FROM Proyecto p";
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
     
@@ -266,7 +250,6 @@ class Proyecto{
                     $oProyecto->setsDescription($aLinea[2]);
                     $oProyecto->setaPhoto($aLinea[3]);
                     $oProyecto->setnIdUsuario($aLinea[4]);
-                    $oProyecto->setsNameBenefactor($aLinea[5]);
     
                     $arrProyectos[$nCount] = $oProyecto;
                     $nCount++;

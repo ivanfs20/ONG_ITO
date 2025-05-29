@@ -8,7 +8,6 @@
         $title = $_POST["titulo"];
         $description = $_POST["descripcion"];
         $idUsuario = $_POST["id_usuario"];
-        $idBenefactor = $_POST["id_benefactor"];
 
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
                 $photoContent = file_get_contents($_FILES['foto']['tmp_name']);
@@ -21,7 +20,6 @@
         $oProyecto -> setsDescription($description);
         $oProyecto -> setaPhoto($photoContent);
         $oProyecto -> setnIdUsuario($idUsuario);
-        $oProyecto -> setnIdBenefactor($idBenefactor);
         
 
         $oProyecto -> update();

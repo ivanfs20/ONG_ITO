@@ -9,23 +9,23 @@ sDomicilio VARCHAR (50) NOT NULL,
 PRIMARY KEY (nIdUsuario)
 );
 
-CREATE TABLE Beneficiario(
-nIdBeneficiario SMALLINT NOT NULL AUTO_INCREMENT,
-sName VARCHAR (50) NOT NULL,
-sDescription VARCHAR (250) NOT NULL,
-PRIMARY KEY (nIdBeneficiario)
-);
-
 CREATE TABLE Proyecto(
 nIdProyecto SMALLINT NOT NULL AUTO_INCREMENT,
 sTitle VARCHAR (50) NOT NULL,
 sDescription VARCHAR (250) NOT NULL,
 aPhoto LONGBLOB NOT NULL,
 nIdUsuario SMALLINT NOT NULL,
-nIdBeneficiario SMALLINT NOT NULL,
 PRIMARY KEY (nIdProyecto),
-FOREIGN KEY (nIdBeneficiario) REFERENCES Beneficiario(nIdBeneficiario),
 FOREIGN KEY (nIdUsuario) REFERENCES Usuario (nIdUsuario)
+);
+
+CREATE TABLE Beneficiario(
+nIdBeneficiario SMALLINT NOT NULL AUTO_INCREMENT,
+sName VARCHAR (50) NOT NULL,
+sDescription VARCHAR (250) NOT NULL,
+nIdProyecto SMALLINT NOT NULL,
+FOREIGN KEY (nIdProyecto) REFERENCES Proyecto(nIdProyecto),
+PRIMARY KEY (nIdBeneficiario)
 );
 
 CREATE TABLE DonacionMaterial(
