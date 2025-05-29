@@ -32,11 +32,35 @@
                 </ul>
             </div>
 
+            <?php
+            require_once '../model/Usuario.php';
+            $bSession = false;
+            if (isset($_SESSION['usuario'])) {
+                $oUsuario = $_SESSION["usuario"];
+                $bSession = true;
+                if(isset($_SESSION["nombre"])){
+                    $nombre=$_SESSION["nombre"];
+                }
+            } else {
+                $oUsuario = null;
+                $bSession = false;
+            }
+            
+            
+            ?>
+
+
             <!-- Columna 4 - Suscripción -->
             <div class="footer-columna">
                 <h3 class="footer-titulo">Suscripción</h3>
-                <form class="mini-formulario">
-                    <input type="email" placeholder="Ingresa tu email">
+                <form class="mini-formulario" action="../controller/emailSuscripcion.php" method="POST">
+                <input type="email" placeholder="Ingresa tu email" required name="email">
+                    <input type="hidden"  required name="nombre" value=<?php
+                        if($bSession==true){echo $oUsuario ->getsNombreC();}else{
+                            echo "USUARIO NO REGISTRADO";
+                        }
+                    ?>
+                    >
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="formulario-texto">Recibe actualizaciones de nuestras campañas</p>
