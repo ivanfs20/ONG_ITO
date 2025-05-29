@@ -89,5 +89,5 @@ if ($oUsuario != null) {
 }{
     include_once("loginUrgente.php");
 }
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

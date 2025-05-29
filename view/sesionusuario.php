@@ -92,6 +92,6 @@ include_once("modules/aside.html"); # Aside
     include_once("loginUrgente.php");
   }
 }
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 
 ?>
