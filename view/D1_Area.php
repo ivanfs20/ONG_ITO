@@ -10,11 +10,13 @@ include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
-
+$bRes = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
+    $bRes = true;
 } else {
     $oUsuario = null;
+    $bRes = false;
 }
 
 
@@ -185,7 +187,9 @@ if ($oUsuario != null) {
 
     <?php
 } {
-    include_once("loginUrgente.php");
+    if($bRes == false){
+        include_once("loginUrgente.php");
+    }
 }
 include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

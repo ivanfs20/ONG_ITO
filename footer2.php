@@ -55,7 +55,7 @@
             <div class="footer-columna">
                 <h3 class="footer-titulo">Suscripción</h3>
                 <form class="mini-formulario" method="POST" action="controller/emailSuscripcion.php">
-                    <input type="email" placeholder="Ingresa tu email" required name="email">
+                    <input type="email" placeholder="Ingresa tu email" name="email">
                     <input type="hidden"  required name="nombre" value=<?php
                         if($bSession==true){echo $oUsuario ->getsNombreC();}else{
                             echo "USUARIO NO REGISTRADO";

@@ -116,8 +116,13 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                 }else if($nSuma<=0 and $nMaterial>0){
                     $pMaterial=100;
                 }else{
-                    $pDigital = floor((100*$nDigital)/$nSuma);
-                    $pMaterial = floor((100*$nMaterial)/$nSuma);
+                    if($nDigital==0 and $nMaterial==0){
+                        $pDigital = 0;
+                        $pMaterial = 0;                      
+                    }else{
+                        $pDigital = floor((100*$nDigital)/$nSuma);
+                        $pMaterial = floor((100*$nMaterial)/$nSuma);
+                    }
                 }
 
 
