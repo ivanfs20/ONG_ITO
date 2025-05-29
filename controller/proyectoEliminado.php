@@ -20,7 +20,21 @@
         $oProyecto -> setnIdBenefactor($idBenefactor);
         
 
-        $oProyecto -> deleteById($id);
+      //  $oProyecto -> deleteById($id);
 
-        header("Location: ../view/gestiondeproyecto.php");
+      //  header("Location: ../view/gestiondeproyecto.php");
+      
+      try {
+        $resultado = $oProyecto -> deleteById($id); // Este método debe devolver true si se insertó correctamente
+    
+        if ($resultado) {
+            header("Location: ../view/popproyecto.php?msg=borrado");
+        } else {
+            header("Location: ../view/popproyecto.php?msg=errorregistro");
+        }
+    } catch (Exception $e) {
+        error_log("Error al eliminar proyecto: " . $e->getMessage());
+        header("Location: ../view/popproyecto.php?msg=errorregistro");
+    }
+    exit();
         ?>

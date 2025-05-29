@@ -63,3 +63,34 @@ th {
     padding: 4px 10px;
     cursor: pointer;
 }
+
+
+/** ESTILO DEL BOTON */
+.boton-regresar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #F8D400;
+    color: #0B2054;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.boton-regresar:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.boton-regresar::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.boton-regresar:hover::after {
+    transform: translateX(3px);
+}

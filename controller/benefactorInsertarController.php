@@ -7,11 +7,24 @@ $descripcion=$_POST['descripcion'];
 $oBenefactor->setsName($name);
 $oBenefactor->setsDescription($descripcion);
 
-$oBenefactor->insert();
+//$oBenefactor->insert();
 
-header("Location: ../view/gestiondebenefactor.php");
+//header("Location: ../view/gestiondebenefactor.php");
 
 
+try {
+    $resultado = $oBenefactor->insert(); // Este método debe devolver true si se insertó correctamente
+
+    if ($resultado) {
+        header("Location: ../view/popbeneficiario.php?msg=agregado");
+    } else {
+        header("Location: ../view/popbeneficiario.php?msg=errorregistro");
+    }
+} catch (Exception $e) {
+    error_log("Error al registrar benefactor: " . $e->getMessage());
+    header("Location: ../view/popbeneficiario.php?msg=errorregistro");
+}
+exit();
 
 
 ?>

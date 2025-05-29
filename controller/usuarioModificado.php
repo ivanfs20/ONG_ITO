@@ -19,7 +19,21 @@
         $oUsuario -> setsRfc($rfc);  
         $oUsuario->setsDomicilio($domicilio);
 
-        $oUsuario -> update();
+      //  $oUsuario -> update();
 
-        header("Location: ../view/gestiondeusuarios.php");
+       // header("Location: ../view/gestiondeusuarios.php");
+       
+try {
+        $resultado = $oUsuario->update(); // Este método debe devolver true si se insertó correctamente
+    
+        if ($resultado) {
+            header("Location: ../view/popusuario.php?msg=modificado");
+        } else {
+            header("Location: ../view/popusuario.php?msg=errorregistro");
+        }
+    } catch (Exception $e) {
+        error_log("Error al modificar usuario: " . $e->getMessage());
+        header("Location: ../view/popusuario.php?msg=errorregistro");
+    }
+    exit();
         ?>
