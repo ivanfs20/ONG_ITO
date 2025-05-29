@@ -14,17 +14,20 @@ $bSession = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bSession = true;
+    if(isset($_SESSION["nombre"])){
+        $nombre=$_SESSION["nombre"];
+    }
 } else {
     $oUsuario = null;
     $bSession = false;
-}
+} 
 
 if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
     ?>
 
 
     <div class="banner">
-        "Bienvenido al panel de gestión, [nombre]. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras
+        "Bienvenido al panel de gestión,<?php echo htmlspecialchars($nombre)   ?>. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras
         ayuda a construir un impacto real."
     </div>
 
