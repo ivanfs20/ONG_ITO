@@ -5,6 +5,26 @@ class Beneficiario{
     private $nIdBenefactor = 0;
     private $sName = "";
     private $sDescription = "";
+    private $nIdProyecto = 0;
+    private $sNameProyecto = "";
+
+
+    public function setnIdProyecto($nIdProyecto){
+        $this -> nIdProyecto = $nIdProyecto;
+    }
+
+    public function getnIdProyecto(){
+        return $this -> nIdProyecto;
+    }
+
+    public function getsNameProyecto(){
+        return $this -> sNameProyecto;
+    }
+
+
+    public function setsNameProyecto($sNameProyecto){
+        $this -> sNameProyecto = $sNameProyecto;
+    }
 
     public function setnIdBenefactor($nIdBenefactor){
         $this -> nIdBenefactor = $nIdBenefactor;
@@ -49,6 +69,7 @@ class Beneficiario{
                         $oBenefactor -> nIdBenefactor = $fila[0];
                         $oBenefactor -> sName = $fila[1];
                         $oBenefactor -> sDescription = $fila[2];
+                        $oBenefactor -> nIdProyecto = $fila[3];
                 };
             }
         }
@@ -125,23 +146,25 @@ class Beneficiario{
 
     //B-BENEFACTOR->UPDATE :Saul ima Gonzalez
     public function update(){
-        $oAccesoDatos=new AccesoDatos();
-        $sQuery="";
-        $nAfectados=-1;
-        if ($this->nIdBenefactor<0 || $this->nIdBenefactor==0 || empty($this->sName) || empty($this->sDescription)){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $nAfectados = -1;
+        if ($this->nIdProyecto == 0 || $this->nIdBenefactor == 0 || empty($this->sName) || empty($this->sDescription)){
             throw new Exception("message/Benefactor/Update/campos nulos,vacios o invalidos");
-        }else{
-            if($oAccesoDatos->conectar()){
-               $sQuery = "UPDATE beneficiario SET                 
-                sName = '" . $this->sName . "',
-                sDescription = '" . $this->sDescription . "' 
-                 WHERE nIdBeneficiario= " . intval($this->nIdBenefactor);
-                $nAfectados=$oAccesoDatos->comando($sQuery);
+        } else {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "UPDATE beneficiario SET                 
+                    sName = '" . $this->sName . "',
+                    sDescription = '" . $this->sDescription . "',
+                    nIdProyecto = " . intval($this->nIdProyecto) . "
+                    WHERE nIdBeneficiario = " . intval($this->nIdBenefactor);
+                $nAfectados = $oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
             }
         }
         return $nAfectados;
     }
+    
 
     // B - BENEFACTOR -> READALL : Morales de Jesus Jesus Antonio
 
@@ -154,7 +177,9 @@ class Beneficiario{
         $nCount = 0;
         try {
             if ($oAccesoDatos->conectar()) {
-                $sQuery = "SELECT * FROM beneficiario";
+                $sQuery = "SELECT b.nIdBeneficiario, b.sName, b.sDescription, p.sTitle FROM beneficiario b
+                INNER JOIN proyecto p where b.nIdProyecto=p.nIdProyecto;
+                ";
                 $arrRS = $oAccesoDatos->consulta($sQuery);
                 $oAccesoDatos->desconectar();
                 
@@ -164,6 +189,7 @@ class Beneficiario{
                         $oBenefactor->setnIdBenefactor($fila[0]);
                         $oBenefactor->setsName($fila[1]);
                         $oBenefactor->setsDescription($fila[2]);
+                        $oBenefactor->setsNameProyecto($fila[3]);
                         
                         $arrBenefactores[$nCount] = $oBenefactor;
                         $nCount++;
@@ -184,11 +210,11 @@ class Beneficiario{
         $sQuery = "";
         $nAfectados = -1;
         
-        if (empty($this->sName) || empty($this->sDescription)) {
+        if (empty($this->sName) || empty($this->sDescription) || $this->nIdProyecto==0) {
             throw new Exception("message/Benefactor/datos vacios");
         } else {
             if ($oAccesoDatos->conectar()) {
-                $sQuery = "INSERT INTO beneficiario (sName, sDescription) VALUES ('".$this->sName."', '".$this->sDescription."')";
+                $sQuery = "INSERT INTO beneficiario (sName, sDescription, nIdProyecto) VALUES ('".$this->sName."', '".$this->sDescription."', '".$this->nIdProyecto."')";
                 $nAfectados = $oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
             }

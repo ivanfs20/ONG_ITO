@@ -64,9 +64,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_foto">Id Usuario:</label>
         <input name="id_usuario" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdUsuario();?> readonly>
 
-        <label for="id_foto">ID Beneficiario:</label>
-        <input name="id_benefactor" type="text"  id=" id_titulo " value=<?php echo $oProyecto->getnIdBenefactor();?> readonly>
-
 
         <div>
         <button class="button">Confirmar</button>
@@ -76,6 +73,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

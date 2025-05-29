@@ -33,7 +33,7 @@ try {
     $mail->addAddress($_POST['correo_donador'],$_POST['nombre_donador']); //Correo del usuario a quien vamos a enviar un email
     $userProfile = getenv("USERPROFILE") ?: $_SERVER['HOMEDRIVE'] . $_SERVER['HOMEPATH'];
     $downloadPath = $userProfile . "\\Downloads\\reciboDonativo_crascifs@gmail.com_carlos.pdf";
-    
+    $mail->addAttachment($downloadPath);
     $mail->isHTML(true);
     $mail->Subject = 'RECIBO DE DONATIVO'; //Asunto
     $mail->Body    = '<strong><h1>¡NUESTROS ALUMNOS AGRADECEN TU DONATIVO!</h1></strong><p>Este es un correo de validación de tu donación, porque tu tambien eres parte de la familia <strong>Buhos</strong>.</p>'; //Cuerpo

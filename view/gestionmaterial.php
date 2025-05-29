@@ -33,7 +33,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                     <th>Descripción</th>
                     <th>Estado</th>
                     <th>Imagen</th>
-                    <th>Id usuario</th>
+                    <th>Donador</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -55,7 +55,7 @@ foreach ($arrMaterial as $material){
                     <td><?php echo  $material->getsDescription(); ?></td>
                     <td>Pendiente de confirmacion</td>
                     <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del material" width="100" /></td>
-                    <td><?php echo $material->getnIdUsuario(); ?></td>
+                    <td><?php echo $material->getsNombreUser(); ?></td>
                     <td><button class="btn-eliminar">Confirmar</button></td>
                 </tr>
             </tbody>
@@ -71,6 +71,6 @@ foreach ($arrMaterial as $material){
 
 
     <?php
-    include_once("modules/footer.html"); # Footer y cierre de HTML
+    include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

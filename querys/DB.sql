@@ -9,23 +9,23 @@ sDomicilio VARCHAR (50) NOT NULL,
 PRIMARY KEY (nIdUsuario)
 );
 
-CREATE TABLE Beneficiario(
-nIdBeneficiario SMALLINT NOT NULL AUTO_INCREMENT,
-sName VARCHAR (50) NOT NULL,
-sDescription VARCHAR (250) NOT NULL,
-PRIMARY KEY (nIdBeneficiario)
-);
-
 CREATE TABLE Proyecto(
 nIdProyecto SMALLINT NOT NULL AUTO_INCREMENT,
 sTitle VARCHAR (50) NOT NULL,
 sDescription VARCHAR (250) NOT NULL,
 aPhoto LONGBLOB NOT NULL,
 nIdUsuario SMALLINT NOT NULL,
-nIdBeneficiario SMALLINT NOT NULL,
 PRIMARY KEY (nIdProyecto),
-FOREIGN KEY (nIdBeneficiario) REFERENCES Beneficiario(nIdBeneficiario),
 FOREIGN KEY (nIdUsuario) REFERENCES Usuario (nIdUsuario)
+);
+
+CREATE TABLE Beneficiario(
+nIdBeneficiario SMALLINT NOT NULL AUTO_INCREMENT,
+sName VARCHAR (50) NOT NULL,
+sDescription VARCHAR (250) NOT NULL,
+nIdProyecto SMALLINT NOT NULL,
+FOREIGN KEY (nIdProyecto) REFERENCES Proyecto(nIdProyecto),
+PRIMARY KEY (nIdBeneficiario)
 );
 
 CREATE TABLE DonacionMaterial(
@@ -92,11 +92,11 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionDigital` TO 'administrador'@'lo
 FLUSH PRIVILEGES;
 /*DBA->Alteraciones en tablas con llaves foraenas, para actualizacion y eliminacion en cascada , ejecutar unicamente esto si ya se ejecuto lo 
 de arriba si no se ha ejecutado, entonces ejecutar todo el script sin problema*/
-ALTER TABLE Proyecto 
-DROP FOREIGN KEY Proyecto_ibfk_1;
-ALTER TABLE Proyecto 
-ADD CONSTRAINT Proyecto_ibfk_1 FOREIGN KEY (nIdBeneficiario) 
-REFERENCES Beneficiario(nIdBeneficiario) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Beneficiario 
+DROP FOREIGN KEY Beneficiario_ibfk_1;
+ALTER TABLE Beneficiario 
+ADD CONSTRAINT Beneficiario_ibfk_1 FOREIGN KEY (nIdProyecto) 
+REFERENCES Beneficiario(nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE Proyecto
 DROP FOREIGN KEY Proyecto_ibfk_2;

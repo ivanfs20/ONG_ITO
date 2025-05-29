@@ -10,6 +10,8 @@ include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 require_once '../model/Proyecto.php';
+require_once '../model/Beneficiario.php';
+
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
@@ -33,8 +35,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                     <th>Descripcion</th>
                     <th>Foto</th>
                     <th>Id Administrador</th>
-                    <th>Nombre beneficiario</th>
-
 
                 </tr>
             </thead>
@@ -59,7 +59,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                         <td><?php echo $oProyect->getsDescription(); ?></td>
                         <td><img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" /></td>
                         <td><?php echo $oProyect->getnIdUsuario(); ?></td>
-                        <td><?php echo $oProyect->getnIdBenefactor(); ?></td>
                         <td>
                             <button
                                 onclick="window.location.href='proyectomodificar.php?idProyecto=<?php echo $oProyect->getnIdProyecto(); ?>'"
@@ -87,6 +86,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <?php
-    include_once("modules/footer.html"); # Footer y cierre de HTML
+    include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

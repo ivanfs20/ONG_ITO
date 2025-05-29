@@ -15,11 +15,11 @@
             <div class="footer-column">
                 <h3 class="footer-titulo">Organización</h3>
                 <ul class="footer-lista">
-                    <li><a href="../index.php">Inicio</a></li>
-                    <li><a href="campanas.php">Campañas activas</a></li>
-                    <li><a href="areasapoyo.php">Áreas de apoyo</a></li>
-                    <li><a href="transparencia.php">Transparencia</a></li>
-                    <li><a href="contacto.php">Contacto</a></li>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="view/campanas.php">Campañas activas</a></li>
+                    <li><a href="view/areasapoyo.php">Áreas de apoyo</a></li>
+                    <li><a href="view/transparencia.php">Transparencia</a></li>
+                    <li><a href="view/contacto.php">Contacto</a></li>
                 </ul>
             </div>
 
@@ -27,16 +27,41 @@
             <div class="footer-columna">
                 <h3 class="footer-titulo">Políticas</h3>
                 <ul class="footer-lista">
-                    <li><a href="privacidad.php">Política de privacidad</a></li>
-                    <li><a href="terminosycondiciones.php">Términos y condiciones</a></li>
+                    <li><a href="view/privacidad.php">Política de privacidad</a></li>
+                    <li><a href="view/terminosycondiciones.php">Términos y condiciones</a></li>
                 </ul>
             </div>
+
+
+            <?php
+            require_once 'model/Usuario.php';
+            $bSession = false;
+            if (isset($_SESSION['usuario'])) {
+                $oUsuario = $_SESSION["usuario"];
+                $bSession = true;
+                if(isset($_SESSION["nombre"])){
+                    $nombre=$_SESSION["nombre"];
+                }
+            } else {
+                $oUsuario = null;
+                $bSession = false;
+            }
+            
+            
+            ?>
+
 
             <!-- Columna 4 - Suscripción -->
             <div class="footer-columna">
                 <h3 class="footer-titulo">Suscripción</h3>
-                <form class="mini-formulario">
-                    <input type="email" placeholder="Ingresa tu email">
+                <form class="mini-formulario" method="POST" action="controller/emailSuscripcion.php">
+                    <input type="email" placeholder="Ingresa tu email" required name="email">
+                    <input type="hidden"  required name="nombre" value=<?php
+                        if($bSession==true){echo $oUsuario ->getsNombreC();}else{
+                            echo "USUARIO NO REGISTRADO";
+                        }
+                    ?>
+                    >
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="formulario-texto">Recibe actualizaciones de nuestras campañas</p>

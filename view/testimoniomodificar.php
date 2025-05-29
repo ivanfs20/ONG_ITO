@@ -38,5 +38,5 @@ include_once("modules/navbar.php");   # Navbar
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

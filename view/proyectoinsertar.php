@@ -39,8 +39,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                 <span class="texto-archivo">Subir imagen</span>
             </label>
 
-            <label for="id_benefactor">Id Beneficiario:</label>
-            <input name="id_benefactor" type="text" id="id_benefactor" required>
 
             <button type="submit" class="button">Confirmar</button>
         </form>
@@ -50,6 +48,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <?php
-    include_once("modules/footer.html"); # Footer y cierre de HTML
+    include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>
