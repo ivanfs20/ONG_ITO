@@ -80,6 +80,9 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
         <button onclick="window.location.href='proyectoinsertar.php'" class="btn-insertar">Insertar</button>
+        <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 

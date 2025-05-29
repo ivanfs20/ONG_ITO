@@ -43,6 +43,9 @@ include_once("modules/navbar.php");   # Navbar
 
       
         <button onclick="window.location.href='testimonioinsertar.php'" class="btn-insertar">Insertar</button>
+        <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 

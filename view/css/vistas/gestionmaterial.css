@@ -57,6 +57,12 @@ th {
     cursor: pointer;
 }
 
+input.input-donacion {
+    border-color: none;
+    text-align: center;
+    outline: none;     
+}
+
 /** ESTILO DEL BOTON */
 .boton-regresar {
     display: inline-flex;
