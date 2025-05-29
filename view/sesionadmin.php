@@ -58,7 +58,8 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
     <?php
 }{
-    include_once("loginUrgente.php");
-}
+    if($bSession == false){
+        include_once("loginUrgente.php");
+      }}
 include_once("modules/footer.html"); # Footer y cierre de HTML
 ?>
