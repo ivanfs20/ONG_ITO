@@ -7,6 +7,7 @@ class Proyecto{
     private $aPhoto = [];
     private $nIdUsuario = 0;
     private $nIdBenefactor = 0;
+    private $sNameBenefactor="";
 
     public function setnIdProyecto($nIdProyecto){
         $this -> nIdProyecto = $nIdProyecto;
@@ -275,6 +276,30 @@ class Proyecto{
         }
     
         return $arrProyectos;
+    }
+
+    public function readFirstFive(){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $arrRS=[];
+        $arrProyecto=[];
+        $contador=0;
+        if($oAccesoDatos->conectar()){
+            $sQuery="SELECT sTitle,sDescription,aPhoto FROM Proyecto LIMIT 5";
+            $arrRS=$oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && count($arrRS)>0){
+                foreach($arrRS as $aFila){                
+                $oProyecto=new Proyecto();
+                $oProyecto->setsTitle($aFila[0]);
+                $oProyecto->setsDescription($aFila[1]);
+                $oProyecto->setaPhoto($aFila[2]);
+                $arrProyecto[]=$oProyecto;                
+                };
+
+            }
+        }
+        return $arrProyecto;
     }
 
        
