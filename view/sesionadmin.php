@@ -27,7 +27,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <div class="banner">
-        "Bienvenido al panel de gestión,<?php echo htmlspecialchars($nombre)   ?>. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras
+        "Bienvenido al panel de gestión,<?php echo  $oUsuario->getsNombreC();  ?>. Tu labor mantiene viva la misión de esta ONG. Cada dato que administras
         ayuda a construir un impacto real."
     </div>
 
@@ -58,7 +58,8 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
     <?php
 }{
-    include_once("loginUrgente.php");
-}
+    if($bSession == false){
+        include_once("loginUrgente.php");
+      }}
 include_once("modules/footer.html"); # Footer y cierre de HTML
 ?>

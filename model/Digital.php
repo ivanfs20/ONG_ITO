@@ -214,22 +214,22 @@ public function readByTitle($sTitle){
 }
 
 //B - DONACIONES (TARJETA) -> READ ALL : Jesus Antonio Morales de Jesus
-public function getAll (){
+public function getAll() {
     $oAccesoDatos = new AccesoDatos();
     $sQuery = "";
-    $arraRs = null;
-    $oDigital = null;
+    $arrRS = null;
     $arrDigital = [];
-    $nCount = 0;
-
-    try{
-        if($oAccesoDatos->conectar()){
-            $sQuery = "SELECT * FROM DonacionDigital";
-            $arraRs = $oAccesoDatos->consulta($sQuery);
+    
+    try {
+        if($oAccesoDatos->conectar()) {
+            $sQuery = "SELECT d.*, u.sNombreC 
+                      FROM DonacionDigital d
+                      INNER JOIN Usuario u ON d.nIdUsuario = u.nIdUsuario";
+            $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
-
-            if($arraRs){
-                foreach ($arraRs as $aFila) {
+            
+            if($arrRS) {
+                foreach ($arrRS as $aFila) {
                     $oDigital = new Digital();
                     $oDigital->setnIdDonacion($aFila[0]);
                     $oDigital->setnFolio($aFila[1]);
@@ -240,18 +240,13 @@ public function getAll (){
                     $oDigital->setdFechaCreacion($aFila[6]);
                     $oDigital->setnIdUsuario($aFila[7]);
                     $oDigital->setnIdBenefactor($aFila[8]);
-                    $arrDigital[$nCount] = $oDigital;
-                    $nCount++;
+                    $arrDigital[] = $oDigital;
                 }
             }
         }
         return $arrDigital;
-    }catch(Exception $e){
-        throw new Exception("m/Digital/getAll/Error: ".$e->getMessage());
-    
-}
-
-return $arrDigital;
+    } catch(Exception $e) {
+    }
 }
 
 
