@@ -92,11 +92,11 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionDigital` TO 'administrador'@'lo
 FLUSH PRIVILEGES;
 /*DBA->Alteraciones en tablas con llaves foraenas, para actualizacion y eliminacion en cascada , ejecutar unicamente esto si ya se ejecuto lo 
 de arriba si no se ha ejecutado, entonces ejecutar todo el script sin problema*/
-ALTER TABLE Proyecto 
-DROP FOREIGN KEY Proyecto_ibfk_1;
-ALTER TABLE Proyecto 
-ADD CONSTRAINT Proyecto_ibfk_1 FOREIGN KEY (nIdBeneficiario) 
-REFERENCES Beneficiario(nIdBeneficiario) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Beneficiario 
+DROP FOREIGN KEY Beneficiario_ibfk_1;
+ALTER TABLE Beneficiario 
+ADD CONSTRAINT Beneficiario_ibfk_1 FOREIGN KEY (nIdProyecto) 
+REFERENCES Beneficiario(nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE Proyecto
 DROP FOREIGN KEY Proyecto_ibfk_2;
