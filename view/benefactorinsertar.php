@@ -32,6 +32,11 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
         <label for="id_dscripcion">Descripcion:</label>
         <input name="descripcion" type="text"  id=" id_dscripcion">
 
+
+        <label for="id_proyecto">Id Proyecto:</label>
+        <input name="id_proyecto" type="text" id="id_proyecto">
+
+
    <div>
         <input class="button"   type="submit" value="Confirmar"  />
 
@@ -41,6 +46,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

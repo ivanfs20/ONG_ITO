@@ -34,7 +34,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
             </div>
             <div class="card">
                 <img src="../view/media/pupitres.jpg" alt="Proyectos">
-                <p>Recursos resividos</p>
+                <p>Recursos recibidos</p>
                 <a href="gestionmaterial.php">Donacion Recurso →</a>
             </div>
         </div>
@@ -47,6 +47,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <?php
-    include_once("modules/footer.html"); # Footer y cierre de HTML
+    include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

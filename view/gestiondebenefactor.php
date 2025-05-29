@@ -30,6 +30,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                     <th>Id Beneficiario</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Nombre Proyecto</th>
 
                    
                 </tr>
@@ -43,6 +44,9 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
       
         <button onclick="window.location.href='benefactorinsertar.php'" class="btn-insertar">Insertar</button>
+        <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 
@@ -52,6 +56,6 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

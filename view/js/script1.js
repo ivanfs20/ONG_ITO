@@ -38,72 +38,174 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarFormulario('form-registro');
 });
 
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    const tarjetas = document.querySelectorAll('.area-card');
+    const select = document.getElementById('area-select');
+    const allProjects = document.querySelectorAll('.projects-container');
     const botonContinuar = document.querySelector('.boton-continuar');
-    let areaSeleccionada = null;
+    const botonesDonar = document.querySelectorAll('.project-button');
 
-    // seleccionamos un area para poder avanzar
-    tarjetas.forEach(tarjeta => {
-        tarjeta.addEventListener('click', function () {
+    let areaSeleccionada = '';
+    let proyectoSeleccionado = '';
 
-            tarjetas.forEach(t => {
-                t.classList.remove('seleccionada');
-                t.querySelector('.area-button').textContent = "Quiero apoyar esta area";
-            });
+    // Deshabilitamos el botón al inicio
+    botonContinuar.classList.remove('activo');
+    botonContinuar.setAttribute('disabled', 'true');
 
-            //metemos dentro del boton, es decir cambiamos el texto para que se note que fue selccionada el area 
-            this.classList.add('seleccionada');
-            const boton = this.querySelector('.area-button');
-            boton.textContent = "✓ Área Seleccionada";
-            areaSeleccionada = this.querySelector('.area-title').textContent;
+    // Mostrar proyectos por área
+    select.addEventListener('change', function () {
+        areaSeleccionada = this.value;
+        proyectoSeleccionado = ''; // reiniciamos el proyecto seleccionado
 
-            // despues de haber seleccionado el area, el boton para continuar se habilita para poder seguir con el siguiente paso
-            botonContinuar.disabled = false;
+        // Ocultar todos
+        allProjects.forEach(project => project.style.display = 'none');
+
+        // Mostrar el del área
+        const selectedContainer = document.getElementById(areaSeleccionada);
+        if (selectedContainer) {
+            selectedContainer.style.display = 'block';
+        }
+
+        // Desactivamos el botón "Continuar" (se activa solo si se da clic en "Donar")
+        botonContinuar.classList.remove('activo');
+        botonContinuar.setAttribute('disabled', 'true');
+    });
+
+    // Cuando se hace clic en un botón "Donar"
+    botonesDonar.forEach(boton => {
+        boton.addEventListener('click', function () {
+            proyectoSeleccionado = this.getAttribute('data-proyecto');
+
+            if (!areaSeleccionada || !proyectoSeleccionado) {
+                alert('Selecciona un área y un proyecto');
+                return;
+            }
+
+            // Activar botón continuar
             botonContinuar.classList.add('activo');
+            botonContinuar.removeAttribute('disabled');
         });
     });
 
-    // se debe de confirmar para avanzar, es decir primero se debe de selecconar el area para que asi se deshabilite el boton
+    // Clic en botón continuar
     botonContinuar.addEventListener('click', function (e) {
-        if (!areaSeleccionada) {
+        if (!areaSeleccionada || !proyectoSeleccionado) {
             e.preventDefault();
-            alert('Selecciona un area primero');
+            alert('Primero selecciona un proyecto dando clic en "Donar".');
             return;
         }
 
-        // redireccionamos a la pagina para el siguiente paso y por las dudas y por si lo necesitan se envia el area seleccionada
-        window.location.href = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}`;
+        // Redirección con parámetros
+        const url = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}&proyecto=${encodeURIComponent(proyectoSeleccionado)}`;
+        window.location.href = url;
     });
 });
 
 
+
 //seleccionar el tipo de recurso a donar
 // script1.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const selectDonacion = document.getElementById('tipo-donacion');
     const botonContinuar = document.getElementById('boton-continuar');
-    
+
     // Habilitar botón cuando se seleccione una opción válida
-    selectDonacion.addEventListener('change', function() {
-        if(this.value !== '') {
+    selectDonacion.addEventListener('change', function () {
+        if (this.value !== '') {
             botonContinuar.disabled = false;
         } else {
             botonContinuar.disabled = true;
         }
     });
-    
+
     // Manejar el clic del botón
-    botonContinuar.addEventListener('click', function() {
+    botonContinuar.addEventListener('click', function () {
         const valor = selectDonacion.value;
         let url = '';
-        
-        if(valor === 'dinero') {
+
+        if (valor === 'dinero') {
             url = 'D31_TipoTarjeta.php';
-        } else if(valor === 'recurso') {
+        } else if (valor === 'recurso') {
             url = 'D32_TipoRecurso.php';
         }
-        
-        if(url) window.location.href = url;
+
+        if (url) window.location.href = url;
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Elementos del DOM
+    const carruselPista = document.querySelector('.carrusel-pista');
+    const slides = document.querySelectorAll('.carrusel-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicadoresContainer = document.getElementById('indicadores');
+
+    // Variables de estado
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const slideWidth = slides[0].offsetWidth;
+
+    // Crear indicadores
+    slides.forEach((_, index) => {
+        const indicador = document.createElement('div');
+        indicador.classList.add('indicador');
+        if (index === 0) indicador.classList.add('activo');
+        indicador.addEventListener('click', () => goToSlide(index));
+        indicadoresContainer.appendChild(indicador);
+    });
+
+    // Función para actualizar la posición del carrusel
+    function updatePosition() {
+        carruselPista.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+        // Actualizar indicadores
+        document.querySelectorAll('.indicador').forEach((indicador, index) => {
+            if (index === currentIndex) {
+                indicador.classList.add('activo');
+            } else {
+                indicador.classList.remove('activo');
+            }
+        });
+
+        // Actualizar estado de los botones
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === totalSlides - 1;
+    }
+
+    // Navegación
+    function goToSlide(index) {
+        currentIndex = index;
+        updatePosition();
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+            updatePosition();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updatePosition();
+        }
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Responsive: actualizar en cambio de tamaño
+    window.addEventListener('resize', () => {
+        // Recalcular el ancho del slide
+        const newSlideWidth = slides[0].offsetWidth;
+        carruselPista.style.transform = `translateX(-${currentIndex * newSlideWidth}px)`;
+    });
+
+    // Inicializar estado de botones
+    updatePosition();
 });

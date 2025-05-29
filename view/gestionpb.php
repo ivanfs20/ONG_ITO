@@ -40,7 +40,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
             <div class="card">
                 <img src="../view/media/salon.jpg" alt="Mensajes">
                 <p></p>
-                <a href="gestiondeindicios.php">Indicios →</a>
+                <a href="gestiondetestimonio.php">Testimonios →</a>
             </div>
         </div>
 
@@ -52,6 +52,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <?php
-    include_once("modules/footer.html"); # Footer y cierre de HTML
+    include_once("modules/footer.php"); # Footer y cierre de HTML
 }
 ?>

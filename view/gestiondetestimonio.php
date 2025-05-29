@@ -43,9 +43,12 @@ include_once("modules/navbar.php");   # Navbar
 
       
         <button onclick="window.location.href='testimonioinsertar.php'" class="btn-insertar">Insertar</button>
+        <div>
+            <a href="gestionpb.php" class="boton-regresar">Regresar</a>
+        </div>
     </div>
 
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

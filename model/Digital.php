@@ -21,6 +21,14 @@ class Digital extends Donacion{
         return $this -> nFolio;
     }
 
+    public function setsNameBenefactor($sNameBenefactor){
+        return $this->sNameBenefactor=$sNameBenefactor;
+    }
+
+    public function getsNameBenefactor(){
+        return $this->sNameBenefactor;
+    }
+
 
     // B - DONACIONES (TARJETA) -> CREATE : Carlos Iván Flores Sánchez
     public function create(){
@@ -44,6 +52,43 @@ class Digital extends Donacion{
         }
         return $bRet;
     }
+
+
+
+    public function getDonacionDigital()
+    {       
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = [];
+        $arrDigital = [];
+        
+        if ($oAccesoDatos->conectar()) {       
+                                                   
+                    $sQuery="SELECT b.sName, d.nAmount, d.nFolio,d.dateCreacion,d.bStatus, d.aPhoto
+                    FROM DonacionDigital d 
+                    INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.bStatus=0 and d.nIdUsuario=".intval($this->getnIdUsuario());
+                    $arrRS=$oAccesoDatos->consultaJoin($sQuery);
+                    $oAccesoDatos->desconectar();
+                    if ($arrRS && count($arrRS) > 0) {
+                    foreach($arrRS as $aFila){                
+                    $oDigital = new Digital();                
+                    //$oMaterial->setaPhoto($aFila[0]);      
+                    $oDigital->setsNameBenefactor($aFila[0]);
+                    $oDigital->setnAmount($aFila[1]);
+                    $oDigital->setnFolio($aFila[2]);
+                    $oDigital->setdFechaCreacion($aFila[3]);
+                    $oDigital->setbStatus($aFila[4]);
+                    $oDigital->setaPhoto($aFila[5]);
+                    $arrDigital[] = $oDigital;
+                    }
+                    
+                    }         
+            
+        }
+        return $arrDigital;        
+    }
+    
+
 
     //B - DONACIONES (TARJETA) -> UPDATE : Saul Lima Gonzale
     public function update(){
@@ -90,7 +135,7 @@ class Digital extends Donacion{
     
     if ($oAccesoDatos->conectar()) {
         $sQuery = "SELECT u.sNombreC,d.nAmount,d.nFolio,d.dateCreacion, d.bStatus FROM DonacionDigital d
-                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.dateCreacion BETWEEN 
+                   INNER JOIN Usuario u ON d.nIdUsuario=u.nIdUsuario WHERE d.bStatus=1 AND d.dateCreacion BETWEEN 
                     DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE() ORDER BY d.dateCreacion DESC";
         $arrRS = $oAccesoDatos->consulta($sQuery);
         $oAccesoDatos->desconectar();
@@ -214,22 +259,22 @@ public function readByTitle($sTitle){
 }
 
 //B - DONACIONES (TARJETA) -> READ ALL : Jesus Antonio Morales de Jesus
-public function getAll (){
+public function getAll() {
     $oAccesoDatos = new AccesoDatos();
     $sQuery = "";
-    $arraRs = null;
-    $oDigital = null;
+    $arrRS = null;
     $arrDigital = [];
-    $nCount = 0;
-
-    try{
-        if($oAccesoDatos->conectar()){
-            $sQuery = "SELECT * FROM DonacionDigital";
-            $arraRs = $oAccesoDatos->consulta($sQuery);
+    
+    try {
+        if($oAccesoDatos->conectar()) {
+            $sQuery = "SELECT d.*, u.sNombreC 
+                      FROM DonacionDigital d
+                      INNER JOIN Usuario u ON d.nIdUsuario = u.nIdUsuario";
+            $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
-
-            if($arraRs){
-                foreach ($arraRs as $aFila) {
+            
+            if($arrRS) {
+                foreach ($arrRS as $aFila) {
                     $oDigital = new Digital();
                     $oDigital->setnIdDonacion($aFila[0]);
                     $oDigital->setnFolio($aFila[1]);
@@ -240,18 +285,13 @@ public function getAll (){
                     $oDigital->setdFechaCreacion($aFila[6]);
                     $oDigital->setnIdUsuario($aFila[7]);
                     $oDigital->setnIdBenefactor($aFila[8]);
-                    $arrDigital[$nCount] = $oDigital;
-                    $nCount++;
+                    $arrDigital[] = $oDigital;
                 }
             }
         }
         return $arrDigital;
-    }catch(Exception $e){
-        throw new Exception("m/Digital/getAll/Error: ".$e->getMessage());
-    
-}
-
-return $arrDigital;
+    } catch(Exception $e) {
+    }
 }
 
 

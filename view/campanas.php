@@ -20,43 +20,80 @@ $subtituloPagina = "Explora las campañas activas para apoyar la educación de c
 // Muestra el hero con los parámetros
 mostrarHero($tituloPagina, $subtituloPagina, );
 ?>
-
 <!-- Sección de campañas activas -->
-<section class="seccion-camapañas-activas">
-    <div class="campañas-contenedor">
+<section class="campanas-section">
+    <div class="container">
+        <h2 class="title-campanas">Campañas activas</h2>
 
-        <!-- Primer campaña activa y de ejemplo para los back-ends-->
-        <div class="campañas-grid">
+        <div class="carrusel-contenedor">
+            <div class="carrusel-pista">
 
-            <?php
-                include_once("../model/Proyecto.php");
-                $oProyecto = new Proyecto();
-                $arrProyectos = $oProyecto->readAll();
-                foreach($arrProyectos as $arrP){
-
-                    $imagenBinaria = $arrP->getaPhoto();
-                    $base64Image = base64_encode($imagenBinaria);
-                    $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
-            ?>
-                        <!-- Columna de Imagen -->
-                        <div class="camapñas-imagen">
-                        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
-            </div>
-            <!-- Columna de Texto -->
-            <div class="campañas-content">
-                <h2 class="campañas-titulo"><?php echo $arrP->getsTitle();?></h2>
-                <p class="campañas-texto"><?php echo $arrP -> getsDescription();?></p>
-                <a href="#" class="campañas-boton">Quiero colaborar</a>
-            </div>
 
             <?php
-                }
+            include_once("../model/Proyecto.php");
+            $oProyecto = new Proyecto();
+            $arrProyectos = $oProyecto->readAll();
+            foreach ($arrProyectos as $arrP) {
+
+                $imagenBinaria = $arrP->getaPhoto();
+                $base64Image = base64_encode($imagenBinaria);
+                $imgSrc = 'data:image/jpeg;base64,' . $base64Image;
+                ?>
+                <!-- Columna de Imagen -->
+                <div class="camapñas-imagen">
+                    <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100" />
+                </div>
+                <!-- Columna de Texto -->
+                <div class="campañas-content">
+                    <h2 class="campañas-titulo"><?php echo $arrP->getsTitle(); ?></h2>
+                    <p class="campañas-texto"><?php echo $arrP->getsDescription(); ?></p>
+                    <a href="#" class="campañas-boton">Quiero colaborar</a>
+                </div>
+
+                <?php
+            }
             ?>
 
+
+                <!-- Slide 1 -->
+                <div class="carrusel-slide">
+                    <div class="c-card c-card--solid c-card--highlight">
+                        <a href="D1_Area.php" class="c-card__link causaitem" title="El Mejor Trato">
+                        <img src="<?php echo $imgSrc; ?>" alt="Imagen del proyecto" width="100%" />                        </a>
+                        <div class="c-card__body">
+                            <a href="D1_Area.php" class="c-card__link causaitem" title="El Mejor Trato">
+                                <h3 class="c-card__titulo"><?php echo $arrP->getsTitle(); ?></h3>
+                                <p class="c-card__texto">
+                                <?php echo $arrP->getsDescription(); ?>
+                                </p>
+                            </a>
+                            <a href="D1_Area.php" class="c-btn">Donar</a>
+                        </div>
+                    </div>
+                </div>
+
+    <?php
+            }
+    ?>
+
+
+
+
+
+
+
+            </div>
+            <!-- Controles del carrusel -->
+            <div class="controls-container">
+                <button class="carrusel-btn" id="prevBtn" aria-label="Anterior">‹</button>
+                <button class="carrusel-btn" id="nextBtn" aria-label="Siguiente">›</button>
+            </div>
+
+            <!-- Indicadores de posición -->
+            <div class="indicadores" id="indicadores"></div>
         </div>
-
-    </div>
 </section>
+
 
 <!-- Sección testimonios de impacto -->
 <section class="testimonios-impacto">
@@ -133,12 +170,12 @@ mostrarHero($tituloPagina, $subtituloPagina, );
             <h2 class="iniciativa-titulo">¿Ya elegiste una causa que te inspire?</h2>
             <p class="iniciativa-subtitulo">Da clic en el botón de la campaña que más te mueva y haz tu donativo en
                 minutos.</p>
-            <a href="donar.html" class="iniciativa-boton">Ir al formulario de donacion</a>
-            <a href="donar.html" class="iniciativa-boton">Registrarme para donar</a>
+            <a href="D1_Area.php" class="iniciativa-boton">Ir al formulario de donacion</a>
+            <a href="iniciarsesion.php" class="iniciativa-boton">Registrarme para donar</a>
         </div>
     </div>
 </section>
 
 <?php
-include_once("modules/footer.html"); # Footer y cierre de HTML
+include_once("modules/footer.php"); # Footer y cierre de HTML
 ?>

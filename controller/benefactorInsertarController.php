@@ -3,11 +3,11 @@ require_once '../model/Beneficiario.php';
 $oBenefactor=new Beneficiario();
 $name=$_POST['titulo'];
 $descripcion=$_POST['descripcion'];
-
+$id_proyecto=$_POST['id_proyecto'];
 $oBenefactor->setsName($name);
 $oBenefactor->setsDescription($descripcion);
 
-//$oBenefactor->insert();
+$oBenefactor->setnIdProyecto($id_proyecto);
 
 //header("Location: ../view/gestiondebenefactor.php");
 
