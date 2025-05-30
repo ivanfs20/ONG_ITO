@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const select = document.getElementById('area-select');
     const allProjects = document.querySelectorAll('.projects-container');
     const botonContinuar = document.querySelector('.boton-continuar');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const url = `D2_Donar.php?area=${encodeURIComponent(areaSeleccionada)}&proyecto=${encodeURIComponent(proyectoSeleccionado)}`;
         window.location.href = url;
     });
-});
+});*/
 
 
 
@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const selectDonacion = document.getElementById('tipo-donacion');
     const botonContinuar = document.getElementById('boton-continuar');
+    const formDonacion=document.getElementById('formDonacion');
 
     // Habilitar botón cuando se seleccione una opción válida
     selectDonacion.addEventListener('change', function () {
@@ -126,12 +127,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let url = '';
 
         if (valor === 'dinero') {
-            url = 'D31_TipoTarjeta.php';
+            //url = 'D31_TipoTarjeta.php';
+            formDonacion.action='D31_TipoTarjeta.php';
         } else if (valor === 'recurso') {
-            url = 'D32_TipoRecurso.php';
+            //url = 'D32_TipoRecurso.php';
+            formDonacion.action='D32_TipoRecurso.php';
         }
-
-        if (url) window.location.href = url;
+        formDonacion.submit();
+        //if (url) window.location.href = url;
     });
 });
 
@@ -208,4 +211,89 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Inicializar estado de botones
     updatePosition();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const selectProyecto = document.getElementById('area-select');
+    const beneficiariosContainer = document.getElementById('beneficiarios-container');
+    const botonContinuar = document.querySelector('.boton-continuar');
+
+    let proyectoSeleccionado = '';
+
+    // Deshabilitamos el botón al inicio
+    botonContinuar.classList.remove('activo');
+    botonContinuar.setAttribute('disabled', 'true');
+
+    // Cuando se cambia el proyecto seleccionado
+    selectProyecto.addEventListener('change', function () {
+        const idProyecto = this.value;
+        proyectoSeleccionado = ''; // Reiniciamos la selección
+
+        if (idProyecto) {
+            fetch(`../controller/obtenerBeneficiariosController.php?idProyecto=${idProyecto}`)
+                .then(response => response.json())
+                .then(data => {
+                    beneficiariosContainer.innerHTML = ''; // Limpiar antes de agregar nuevos beneficiarios
+
+                    if (data.length > 0) {
+                        data.forEach(beneficiario => {
+                            // Crear elementos de forma segura
+                            const div = document.createElement('div');
+                            div.classList.add('project-item');
+
+                            const titulo = document.createElement('h3');
+                            titulo.classList.add('project-title');
+                            titulo.textContent = beneficiario.name;
+
+                            const descripcion = document.createElement('p');
+                            descripcion.classList.add('project-description');
+                            descripcion.textContent = beneficiario.description;
+
+                            const botonDonar = document.createElement('button');
+                            botonDonar.classList.add('project-button');
+                            botonDonar.setAttribute('data-beneficiario', beneficiario.name);
+                            botonDonar.textContent = 'Donar';
+
+                            // Agregar evento de clic al botón
+                            botonDonar.addEventListener('click', function () {
+                                proyectoSeleccionado = this.getAttribute('data-beneficiario');
+
+                                if (!proyectoSeleccionado) {
+                                    alert('Selecciona un beneficiario antes de continuar.');
+                                    return;
+                                }
+
+                                // Activar botón "Continuar"
+                                botonContinuar.classList.add('activo');
+                                botonContinuar.removeAttribute('disabled');
+                            });
+
+                            // Añadir elementos al div
+                            div.appendChild(titulo);
+                            div.appendChild(descripcion);
+                            div.appendChild(botonDonar);
+
+                            // Agregar div al contenedor
+                            beneficiariosContainer.appendChild(div);
+                        });
+                    } else {
+                        beneficiariosContainer.innerHTML = '<p>No hay beneficiarios para este proyecto.</p>';
+                    }
+                })
+                .catch(error => console.error('Error al obtener beneficiarios:', error));
+        }
+    });
+
+    // Redirección cuando se haga clic en "Continuar"
+    botonContinuar.addEventListener('click', function (e) {
+        if (!proyectoSeleccionado) {
+            e.preventDefault();
+            alert('Selecciona un beneficiario antes de continuar.');
+            return;
+        }
+
+        // Redirigir con parámetros
+        const url = `D2_Donar.php?beneficiario=${encodeURIComponent(proyectoSeleccionado)}`;
+        window.location.href = url;
+    });
 });
