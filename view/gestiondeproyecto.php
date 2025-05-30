@@ -7,12 +7,13 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondeproyecto.css">'; #cargamos el estilo en especifico de gestiondigital.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 require_once '../model/Proyecto.php';
 require_once '../model/Beneficiario.php';
 
 session_start();
+require_once '../navbar2.php';
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
 } else {

@@ -13,5 +13,5 @@
         <a href="transparencia.php" class="nav-link">Transparencia</a>
         <a href="D1_Area.php" class="nav-link">Donar ahora</a>
         <a href="iniciarsesion.php" class="nav-link login-link">Login</a>
-    </div>
+    </div>
 </nav>
