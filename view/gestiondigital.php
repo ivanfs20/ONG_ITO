@@ -7,11 +7,12 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/gestiondigital.css">';
 $customScript = '<script src="../view/js/script1.js"></script>';
 include_once("modules/header.html");
-include_once("modules/navbar.php");
+//include_once("modules/navbar.php");
 require_once '../model/Usuario.php';
 require_once '../model/Digital.php';
 
 session_start();
+require_once '../navbar2.php';
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
 } else {
