@@ -7,16 +7,18 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/D1_Area.css">'; #cargamos el estilo en especifico de D1_Area.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
 $bRes = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bRes = true;
+    require_once '../navbar2.php';
 } else {
     $oUsuario = null;
     $bRes = false;
+    require_once 'modules/navbar.php';
 }
 
 
