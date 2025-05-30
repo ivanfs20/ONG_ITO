@@ -71,7 +71,7 @@ CREATE TABLE Comentarios (
 
 CREATE  INDEX usuario_srolx ON Usuario (sRol ASC);
 CREATE  INDEX beneficiario_snamex ON Beneficiario (sName ASC);
-CREATE  INDEX beneficiario_nidproyectox ON Beneficiario (nIdProyecto ASC);
+CREATE  INDEX proyecto_nidbeneficiariox ON Proyecto (nIdBeneficiario ASC);
 CREATE  INDEX donacionmaterial_nidusuariox ON DonacionMaterial (nIdUsuario ASC);
 CREATE  INDEX donacionmaterial_nibeneficiariox ON DonacionMaterial (nIdBeneficiario ASC);
 CREATE  INDEX donaciondigital_nidusuariox ON DonacionDigital (nIdUsuario ASC);
@@ -96,7 +96,7 @@ ALTER TABLE Beneficiario
 DROP FOREIGN KEY Beneficiario_ibfk_1;
 ALTER TABLE Beneficiario 
 ADD CONSTRAINT Beneficiario_ibfk_1 FOREIGN KEY (nIdProyecto) 
-REFERENCES Proyecto (nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
+REFERENCES Beneficiario(nIdProyecto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE Proyecto
 DROP FOREIGN KEY Proyecto_ibfk_2;
