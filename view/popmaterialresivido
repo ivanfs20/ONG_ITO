@@ -3,16 +3,13 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 $img = "../view/media/sdislike.png"; // Default image for error
 $text = "Ocurrió un error";
 
-if ($msg === "agregado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Agregado";
-} elseif ($msg === "modificado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Modificado";
-} elseif ($msg === "borrado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Eliminado";
-}
+if ($msg === "resivido") {
+    $img = "../view/media/paceptado.png";
+    $text = "Confirmado que el material ha sido recibido.";
+} elseif ($msg === "noresivido") {
+    $img = "../view/media/pnollegado.png";
+    $text = "El material no ha sido recibido.";
+} 
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +17,7 @@ if ($msg === "agregado") {
 
 <head>
     <meta charset="UTF-8">
-    <title>PopProyecto</title>
+    <title>PopRegistrarse</title>
     <style>
         body {
             margin: 0;
@@ -35,7 +32,7 @@ if ($msg === "agregado") {
         window.addEventListener('DOMContentLoaded', function () {
             mostrarMensaje({
                 mensaje: "<?php echo addslashes($text); ?>",
-                redireccion: "gestiondeproyecto.php",
+                redireccion: "gestionmaterial.php",
                 imagen: "<?php echo $img; ?>"
             });
         });

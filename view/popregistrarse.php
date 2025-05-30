@@ -3,15 +3,18 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 $img = "../view/media/sdislike.png"; // Default image for error
 $text = "Ocurrió un error";
 
-if ($msg === "agregado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Agregado";
-} elseif ($msg === "modificado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Modificado";
-} elseif ($msg === "borrado") {
-    $img = "../view/media/slike.png";
-    $text = "Proyecto Eliminado";
+if ($msg === "mayor") {
+    $img = "../view/media/mayor.png";
+    $text = "La contraseña tiene que tener almenos 10 digitos.";
+} elseif ($msg === "mayuscula") {
+    $img = "../view/media/mayuscula.png";
+    $text = "La contraseña tiene que tener al menos una mayuscula.";
+} elseif ($msg === "iguales") {
+    $img = "../view/media/iguales.png";
+    $text = "Confirma que las contraseñas son iguales.";
+} elseif ($msg === "correo") {
+    $img = "../view/media/correo.png";
+    $text = "Que el correo ya fue utilizado";
 }
 ?>
 
@@ -20,7 +23,7 @@ if ($msg === "agregado") {
 
 <head>
     <meta charset="UTF-8">
-    <title>PopProyecto</title>
+    <title>PopRegistrarse</title>
     <style>
         body {
             margin: 0;
@@ -35,7 +38,7 @@ if ($msg === "agregado") {
         window.addEventListener('DOMContentLoaded', function () {
             mostrarMensaje({
                 mensaje: "<?php echo addslashes($text); ?>",
-                redireccion: "gestiondeproyecto.php",
+                redireccion: "iniciarsesion.php",
                 imagen: "<?php echo $img; ?>"
             });
         });
