@@ -7,19 +7,16 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/D1_Area.css">'; #cargamos el estilo en especifico de D1_Area.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-//include_once("modules/navbar.php");   # Navbar
+include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
-
 $bRes = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bRes = true;
-    require_once '../navbar2.php';
 } else {
     $oUsuario = null;
     $bRes = false;
-    include_once("modules/navbar.php");
 }
 
 
@@ -47,23 +44,23 @@ if ($oUsuario != null) {
             <h2 class="section-title">¿A qué área deseas apoyar?</h2>
             <p class="section-subtitle">Selecciona un área para ver sus proyectos disponibles</p>
 
-
-            <?php
-                include_once("../model/Proyecto.php");
-                $oProyecto = new Proyecto();
-                $arrProyecto = $oProyecto->readAll();
-            ?>
-
             <div class="area-selector">
                 <select id="area-select" class="area-dropdown">
-                <option value="" disabled selected>Selecciona un Proyecto</option>
+                    <option value="" disabled selected>Selecciona un área de apoyo</option>
                     <?php
-                        foreach($arrProyecto as $oProyect){
+                        include_once('../model/Proyecto.php');
+                        $oProyecto = new Proyecto();
+                        $arrProyectos = $oProyecto->readAll();
+                        foreach($arrProyectos as $aoProyecto){
                     ?>
-                        <option value='"<?php echo $oProyect->getnIdProyecto();?>"'><?php echo $oProyect->getsTitle();?></option>
+                    <option value='"<?php echo $aoProyecto->getnIdProyecto();?>"'><?php echo $aoProyecto->getsTitle();?></option>
                     <?php
                         }
                     ?>
+
+
+                        
+
 
                 </select>
                 <div class="selector-icon">
