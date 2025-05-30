@@ -36,21 +36,31 @@ class Material extends Donacion{
             $arrRS=null;
             $oBret=null;
             $sQuery="";
-            if(empty($this->sName) || empty($this->sDescription) || empty($this->aPhoto[0])
+            $fecha=date('Y-m-d');
+            if(empty($this->sName) || empty($this->sDescription) /*|| empty($this->aPhoto)*/
             || $this->nAmount<=0 || $this->nIdUsuario<=0 || $this->nIdBenefactor<=0){
+              echo 'Nombre '.$this->sName;
+               echo 'Descripcio '.$this->sDescription;
+                var_dump($this->aPhoto);
+                echo 'cantidad '.$this->nAmount ;
+                echo 'estado '.$this->bStatus;
+                echo 'fecha '.$fecha;
+                echo 'id_usuario '.$this->nIdUsuario;
+                echo 'beneficiario '.$this->nIdBenefactor;
                 throw new Exception("message/model/Material/campos vacios,no se puede proceder a la ejecucion");
 
             }else{
-                $photoToBinary=addslashes($this->aPhoto[0]);
-                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,nIdUsuario,nIdBeneficiario)
+                if($oAccesoDatos->conectar()){
+                $photoToBinary=addslashes($this->aPhoto);
+                $sQuery="INSERT INTO DonacionMaterial (sName,sDescription,aPhoto,nAmount,bStatus,dateCreacion,nIdUsuario,nIdBeneficiario)
                 VALUES ('".$this->sName."' , '".$this->sDescription."', '".$photoToBinary."' ,".intval($this->nAmount)."
-                ,0,".intval($this->nIdUsuario).",".intval($this->nIdBenefactor).")";
+                ,0,'".$fecha."',".intval($this->nIdUsuario).",".intval($this->nIdBenefactor).")";
                 $arrRS=$oAccesoDatos->comando($sQuery);
                 $oAccesoDatos->desconectar();
                 if ($arrRS>0){
                     $oBret=true;
              }
-                
+            };
             }
                 return $oBret;
 

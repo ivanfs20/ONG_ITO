@@ -17,7 +17,8 @@ if (empty($sName) || empty($sEmail) || empty($sPassword) || empty($sConfirm)) {
     $sError = "Llena todos los campos, no deben estar vacios";
 }
 else if($oUser->exists($sEmail)){
-    echo "El email que ingresaste ya esta dado de alta";
+    header("Location: ../view/popregistrarse.php?msg=correo");
+    //echo "El email que ingresaste ya esta dado de alta";
 }
  else if (validatePassword($sPassword, $sConfirm)) {
     if (securityPassword($sPassword)) {
@@ -41,12 +42,15 @@ else if($oUser->exists($sEmail)){
                 $sError = "Error en la conexion de la BD/" . $e->getMessage();
             }
         }else{
-            echo "La contraseña debe tener al menos una mayuscula";
+             header("Location: ../view/popregistrarse.php?msg=mayuscula");
+            //echo "La contraseña debe tener al menos una mayuscula";
         }
     } else {
-        echo "La contraseña debe tener al menos 8 caracteres";
+        header("Location: ../view/popregistrarse.php?msg=mayor");
+        //echo "La contraseña debe tener al menos 8 caracteres";
     }
 } else {
+    header("Location: ../view/popregistrarse.php?msg=diferentes");
     echo "Las contraseñas no coinciden";
 }
 

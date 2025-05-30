@@ -7,7 +7,7 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/D32_TipoRecurso.css">'; #cargamos el estilo en especifico de D1_Area.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
 $bRes = false;
@@ -15,10 +15,12 @@ $bRes = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bRes = true;
+    require_once '../navbar2.php';
 
 } else {
     $oUsuario = null;
     $bRes = false;
+    require_once 'modules/navbar.php';
 
 }
 
@@ -44,7 +46,7 @@ if ($oUsuario != null) {
     <!-- Formulario para describir la donación -->
     <section class="seccion-formulario">
         <div class="contenedor-formulario">
-            <form class="formulario-donacion" action="D42_ConfirmarRecurso.php" method="POST" > 
+            <form class="formulario-donacion" action="D42_ConfirmarRecurso.php" method="POST" enctype="multipart/form-data"> 
                 <input type="hidden" name="nbeneficiario" value="<?php echo isset($_POST['beneficiario']) ? htmlspecialchars($_POST['beneficiario']) : ''; ?>">
                   
                 <div class="grupo-formulario">

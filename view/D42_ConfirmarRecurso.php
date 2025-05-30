@@ -27,6 +27,14 @@ $nombreRecurso=$_POST['recurso'];
 $nombreBeneficiario = isset($_POST['nbeneficiario']) ? htmlspecialchars($_POST['nbeneficiario']) : '';
 $descripcionRecurso=$_POST['descripcion'];
 $cantidadRecurso=$_POST['cantidad-recurso'];
+
+
+    if (isset($_FILES["imagen-r"]) && $_FILES["imagen-r"]["error"] == 0) {
+    $rutaTemporal = $_FILES["imagen-r"]["tmp_name"];
+    $photoData = file_get_contents($rutaTemporal);
+    $photoBase64 = base64_encode($photoData);
+}
+
 if ($oUsuario != null) {
     ?>
 
@@ -55,8 +63,9 @@ if ($oUsuario != null) {
     <!-- Seccion para formulariio -->
     <div class="contenedor-formularios">
         <!-- Formulario para recurso -->
-        <form id="formulario-recurso" class="formulario-donacion" action="../controller/materialDonarController.php" method="POST">
+        <form id="formulario-recurso" class="formulario-donacion" action="../controller/materialDonarController.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
+            <input type="hidden" name="photo-data" value="<?php echo isset($photoBase64) ? $photoBase64 : ''; ?>">           
             <div class="grupo-formulario">
                 <label for="nombre-beneficiario">Beneficiario a donar:</label>
                 <input name="nombre-beneficiario" type="text" id="nombre-beneficiario"
@@ -78,18 +87,23 @@ if ($oUsuario != null) {
                 <input name="cantidad-del-recurso" type="number" id="cantidad-recurso" class="input-formulario"
                     placeholder="Ingrese la cantidad de su recurso"  value="<?php  echo $cantidadRecurso; ?>"   readonly>
             </div>
-
+    <?php if (!empty($photoBase64)) {  ?>
             <div class="grupo-formulario">
+        <label class="etiqueta">Vista previa de la imagen:</label>
+        <img src="data:image/jpeg;base64,<?php echo $photoBase64; ?>" alt="Vista previa" width="200">
+    </div>
+            <?php } ?>
+           <!-- <div class="grupo-formulario">
                 <label class="etiqueta">Imagen del recurso (opcional)</label>
                 <div class="subida-archivo">
-                    <input name="imagen-recurso" type="file" id="imagen-recurso" accept="image/*" readonly>
+                    <input name="imagen-r" type="file" id="imagen-recurso" accept="image/*" readonly>
                     <label for="imagen-recurso" class="etiqueta-archivo">
                         <span class="texto-archivo">Subir imagen</span>
                     </label>
                 </div>
-            </div>
+            </div> -->
 
-        </form>
+        <!--</form>-->
     </div>
 
 
@@ -100,9 +114,10 @@ if ($oUsuario != null) {
                 <h2 class="texto-confirmacion">¿Confirmas tu donación <?php echo $oUsuario->getsNombreC();  ?>?</h2>
 
                 <div class="controles-confirmacion">
-                    <a href="agradecimiento.php" class="boton-accion confirmar">
-                        Confirmar Donación
-                    </a>
+                    <!--<a href="agradecimiento.php" class="boton-accion confirmar">-->
+                       <button type="submit" class="boton-accion confirmar"> Confirmar Donación<button>
+                    <!--</a>-->
+
                     <a href="D1_Area.php" class="boton-accion cancelar">
                         Cancelar
                     </a>
@@ -113,7 +128,7 @@ if ($oUsuario != null) {
             </div>
         </div>
     </section>
-
+</form>
     <?php
 }{
     if($bRes == false){

@@ -97,28 +97,29 @@ class Beneficiario{
     }
 
     //B-BENEFACTOR->READ BY NAME: Saul Lima González
-    public function readByName($id,$sNombre){
+    public function readByName($sNombre){
         $oAccesoDatos=new AccesoDatos();
         $sQuery="";
         $arrRS=0;        
-        if($id<=0 || empty($sNombre)){
+        if( empty($sNombre)){
             throw new Exception ("message/Benefactor/id o nombre nulos");
         }else{
             if($oAccesoDatos->conectar()){
-                $sQuery="SELECT * FROM beneficiario WHERE nIdBeneficiario=".intval($id)."AND sName='".$sNombre."'";
+                $sQuery="SELECT * FROM beneficiario WHERE sName='".$sNombre."'";
             $arrRS=$oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
-            if($arrRS && count($arrRS)>0){
-                $fila=$arrRS[0];
-                $oBenefactor=new Beneficiario();
-                $oBenefactor->nIdBenefactor=$fila[0];
-                $oBenefactor->sName=$fila[1];
-                $oBenefactor->sDescription=$fila[2];
-
-            };
+             if ($arrRS && count($arrRS) > 0) {
+                $fila = $arrRS[0];              
+                
+                $this->nIdBenefactor = $fila[0];
+                $this->sName = $fila[1];
+                $this->sDescription = $fila[2];
+            } else {
+                $this->nIdBenefactor = 0; 
+            }
             }
             
-            return $oBenefactor;
+            //return $oBenefactor;
         }
     }
 
