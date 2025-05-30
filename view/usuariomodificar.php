@@ -48,6 +48,12 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " value="<?php  echo $oUse->getsRol(); ?>" readonly >
+        <!--
+                <select name="rol" id="id_rol" disabled>
+            <option value="<?php echo $oUse->getsRol(); ?>">
+            <?php echo $oUse->getsRol(); ?>
+            </option>
+        </select> -->
 
         <div>
         <button class="button">Confirmar</button>
