@@ -44,7 +44,9 @@ if ($oUsuario != null) {
     <!-- Formulario para describir la donación -->
     <section class="seccion-formulario">
         <div class="contenedor-formulario">
-            <form class="formulario-donacion">
+            <form class="formulario-donacion" action="D42_ConfirmarRecurso.php" method="POST" > 
+                <input type="hidden" name="nbeneficiario" value="<?php echo isset($_POST['beneficiario']) ? htmlspecialchars($_POST['beneficiario']) : ''; ?>">
+                  
                 <div class="grupo-formulario">
                     <label for="nombre-recurso" class="etiqueta">Nombre del recurso</label>
                     <input name="recurso" type="text" id="nombre-recurso" class="input-formulario"
@@ -53,7 +55,7 @@ if ($oUsuario != null) {
 
                 <div class="grupo-formulario">
                     <label for="descripcion" class="etiqueta">Descripción del recurso</label>
-                    <textarea id="descripcion" class="textarea-formulario" rows="4"
+                    <textarea id="descripcion" class="textarea-formulario" rows="4" name="descripcion"
                         placeholder="Describe las características y condición del artículo" required></textarea>
                 </div>
 
@@ -67,13 +69,13 @@ if ($oUsuario != null) {
                 <div class="grupo-formulario">
                     <label class="etiqueta">Imagen del recurso (opcional)</label>
                     <div class="contenedor-archivo">
-                        <input name="imagen-r" type="file" id="imagen-recurso" class="input-archivo" accept="image/*">
+                        <input name="imagen-r" type="file" id="imagen-recurso" class="input-archivo" accept="image/*" >
                         <label for="imagen-recurso" class="etiqueta-archivo">
                             <span class="texto-archivo">Subir imagen</span>
                         </label>
                     </div>
                 </div>
-            </form>
+            <!--</form> -->
         </div>
     </section>
 
@@ -81,15 +83,15 @@ if ($oUsuario != null) {
     <section class="seccion-continuar">
         <div class="contenedor-continuar">
             <div class="contenido-continuar">
-                <button class="boton-continuar3">
-                    <a href="D42_ConfirmarRecurso.php" class="boton-continuar3">
+                <button type="submit" class="boton-continuar3">
+                    
                         CONTINUAR
-                    </a>
+                    
                 </button>
             </div>
         </div>
     </section>
-
+</form>
 
     <?php
 }{

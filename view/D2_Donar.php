@@ -38,11 +38,17 @@ if($oUsuario!=null){
         </p>
     </div>
 </section>
-
+<?php 
+if (isset($_GET['beneficiario'])) {
+    $_POST['beneficiario'] = $_GET['beneficiario']; 
+}
+?>
 <!-- Seccióm para elegit  el tipo de recurso con el cual se va a apoyar -->
 <section class="seccion-donacion">
     <div class="contenedor-opciones">
         <h2 class="titulo-seccion">¿Qué deseas donar?</h2>
+        <form id="formDonacion" method="POST">
+        <input type="hidden" name="beneficiario" value="<?php echo isset($_POST['beneficiario']) ? htmlspecialchars($_POST['beneficiario']) : ''; ?>">
         <div class="contenedor-select">
             <select id="tipo-donacion" class="select-estilizado" required>
                 <option value="" disabled selected>Selecciona una opción</option>
@@ -67,6 +73,7 @@ if($oUsuario!=null){
         </div>
     </div>
 </section>
+</form>
 
 
 <?php

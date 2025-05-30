@@ -53,7 +53,7 @@ if ($oUsuario != null) {
                         $arrProyectos = $oProyecto->readAll();
                         foreach($arrProyectos as $aoProyecto){
                     ?>
-                    <option value='"<?php echo $aoProyecto->getnIdProyecto();?>"'><?php echo $aoProyecto->getsTitle();?></option>
+                    <option value="<?php echo $aoProyecto->getnIdProyecto();?>"><?php echo $aoProyecto->getsTitle();?></option>
                     <?php
                         }
                     ?>
@@ -68,122 +68,11 @@ if ($oUsuario != null) {
                 </div>
             </div>
 
-            <!-- Biblioteca -->
-            <div id="biblioteca" class="projects-container">
-                <div class="area-header">
-                    <h3>Biblioteca</h3>
-                    <p>Proyectos para mejorar nuestra biblioteca y recursos de estudio</p>
-                </div>
 
-                <div class="projects-list">
-                    <div class="project-item">
-                        <h3 class="project-title">Actualización de Colección Literaria</h3>
-                        <p class="project-description">Adquisición de nuevos títulos de literatura contemporánea para
-                            enriquecer nuestra impetú cultural.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-
-                    <div class="project-item">
-                        <h3 class="project-title">Area para Descansar</h3>
-                        <p class="project-description">Implementación de estaciones de descanso con colchonetas xd y acceso
-                            a cojines.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aulas inteligentes -->
-            <div id="aulas" class="projects-container">
-                <div class="area-header">
-                    <h3>Aulas Inteligentes</h3>
-                    <p>Proyectos para modernizar nuestras aulas con tecnología educativa</p>
-                </div>
-
-                <div class="projects-list">
-                    <div class="project-item">
-                        <h3 class="project-title">Modernización Aula Magna</h3>
-                        <p class="project-description">Equipamiento del aula magna con sistema de proyección y sonido
-                            para eventos académicos.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-
-                    <div class="project-item">
-                        <h3 class="project-title">Conectividad en Aulas</h3>
-                        <p class="project-description">Instalación de puntos de acceso WiFi en todas las aulas para
-                            aprendizaje interactivo.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mantenimiento -->
-            <div id="mantenimiento" class="projects-container">
-                <div class="area-header">
-                    <h3>Mantenimiento</h3>
-                    <p>Proyectos para mantener nuestro campus en óptimas condiciones</p>
-                </div>
-
-                <div class="projects-list">
-                    <div class="project-item">
-                        <h3 class="project-title">Renovación de Baños</h3>
-                        <p class="project-description">Remodelación completa de los baños de estudiantes con divisiones
-                            adecuadas.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-
-                    <div class="project-item">
-                        <h3 class="project-title">Áreas Verdes y Jardines</h3>
-                        <p class="project-description">Rehabilitación de áreas verdes con nuevo sistema de riego y
-                            mobiliario.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Laboratorios -->
-            <div id="laboratorios" class="projects-container">
-                <div class="area-header">
-                    <h3>Laboratorios</h3>
-                    <p>Proyectos para equipar nuestros laboratorios con herramientas modernas</p>
-                </div>
-
-                <div class="projects-list">
-                    <div class="project-item">
-                        <h3 class="project-title">Laboratorio de Quimica
-                        </h3>
-                        <p class="project-description">Creación de laboratorio equipado para análisis de cerveza como el
-                            quique.</p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-
-                    <div class="project-item">
-                        <h3 class="project-title">Laboratorio de Computo</h3>
-                        <p class="project-description">Equipamiento de espacio para materias que necesiten full practica.
-                        </p>
-                        <button class="project-button" data-proyecto="Proyecto Solar">
-                            Donar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
     </section>
-
-
+        <div class="project-lists">
+         <div id="beneficiarios-container" > </div></div>
     <!-- Sección de continuación -->
     <section class="seccion-continuar">
         <div class="contenedor-continuar">
