@@ -44,13 +44,24 @@ if ($oUsuario != null) {
             <h2 class="section-title">¿A qué área deseas apoyar?</h2>
             <p class="section-subtitle">Selecciona un área para ver sus proyectos disponibles</p>
 
+
+            <?php
+                include_once("../model/Proyecto.php");
+                $oProyecto = new Proyecto();
+                $arrProyecto = $oProyecto->readAll();
+            ?>
+
             <div class="area-selector">
                 <select id="area-select" class="area-dropdown">
-                    <option value="" disabled selected>Selecciona un área de apoyo</option>
-                    <option value="biblioteca">Biblioteca</option>
-                    <option value="aulas">Aulas</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                    <option value="laboratorios">Laboratorios</option>
+                <option value="" disabled selected>Selecciona un Proyecto</option>
+                    <?php
+                        foreach($arrProyecto as $oProyect){
+                    ?>
+                        <option value='"<?php echo $oProyect->getnIdProyecto();?>"'><?php echo $oProyect->getsTitle();?></option>
+                    <?php
+                        }
+                    ?>
+
                 </select>
                 <div class="selector-icon">
                     <i class="fas fa-chevron-down"></i>
