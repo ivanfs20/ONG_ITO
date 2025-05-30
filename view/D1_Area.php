@@ -47,10 +47,21 @@ if ($oUsuario != null) {
             <div class="area-selector">
                 <select id="area-select" class="area-dropdown">
                     <option value="" disabled selected>Selecciona un área de apoyo</option>
-                    <option value="biblioteca">Biblioteca</option>
-                    <option value="aulas">Aulas</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                    <option value="laboratorios">Laboratorios</option>
+                    <?php
+                        include_once('../model/Proyecto.php');
+                        $oProyecto = new Proyecto();
+                        $arrProyectos = $oProyecto->readAll();
+                        foreach($arrProyectos as $aoProyecto){
+                    ?>
+                    <option value='"<?php echo $aoProyecto->getnIdProyecto();?>"'><?php echo $aoProyecto->getsTitle();?></option>
+                    <?php
+                        }
+                    ?>
+
+
+                        
+
+
                 </select>
                 <div class="selector-icon">
                     <i class="fas fa-chevron-down"></i>

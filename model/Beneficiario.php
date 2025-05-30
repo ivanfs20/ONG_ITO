@@ -166,6 +166,42 @@ class Beneficiario{
     }
     
 
+
+    public function getAllById($id) {
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $oBenefactor = null;
+        $arrBenefactores = [];
+        $nCount = 0;
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT b.nIdBeneficiario, b.sName, b.sDescription, p.sTitle FROM beneficiario b
+                INNER JOIN proyecto p where b.nIdProyecto=p.".intval($id);
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                
+                if ($arrRS) {
+                    foreach ($arrRS as $fila) {
+                        $oBenefactor = new Beneficiario();
+                        $oBenefactor->setnIdBenefactor($fila[0]);
+                        $oBenefactor->setsName($fila[1]);
+                        $oBenefactor->setsDescription($fila[2]);
+                        $oBenefactor->setsNameProyecto($fila[3]);
+                        
+                        $arrBenefactores[$nCount] = $oBenefactor;
+                        $nCount++;
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+        
+        return $arrBenefactores;
+    }
+
+
     // B - BENEFACTOR -> READALL : Morales de Jesus Jesus Antonio
 
     public function getAll() {
