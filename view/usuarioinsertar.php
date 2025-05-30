@@ -44,7 +44,11 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 
         <label for="id_rol">Rol:</label>
         <input name="rol" type="text"  id=" id_rol " >
-
+        <!--
+        <select name="rol" id="id_rol">
+            <option value="administrador">Administrador</option>
+            <option value="donador">Donador</option>
+        </select> -->
         <div>
         <button class="button">Confirmar</button>
 
