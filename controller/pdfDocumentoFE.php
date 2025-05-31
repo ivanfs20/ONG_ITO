@@ -76,15 +76,15 @@ $pdf->Ln(10);
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Nombre:'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Nombre: '.$_POST['usuario']), 0, 0);
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Dirección:'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Dirección: '.$_POST['direccion']), 0, 0);
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Correo:'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Correo: '.$_POST['correo']), 0, 0);
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
@@ -112,7 +112,7 @@ $pdf->Ln(10);
     $pdf->Cell(0, 10, utf8_decode('------------------------------------------------------------------'), 0, 0);
 
 // Descargar el archivo
-$pdf->Output('I', 'reciboDonativo.pdf'); //se muestra y el usuario lo debe de descargar
+$pdf->Output('I', 'reciboDonativo'.trim($_POST['usuario']).'.pdf'); //se muestra y el usuario lo debe de descargar
 //$pdf->Output('D', 'reciboDonativo.pdf'); se descarga automaticamente
 
 ?>

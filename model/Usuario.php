@@ -78,7 +78,7 @@ class Usuario{
 
         if($this->sEmail=="" || $this->sPassword==""){throw new Exception("/m/Benefactor/login/sEmail&&sPassword");}else{
             if($oAccesoDatos->conectar()){
-                $sQuery = "SELECT nIdUsuario, sNombreC, sEmail, sRol FROM Usuario WHERE sEmail = '$this->sEmail' AND sPassword = '$this->sPassword'";
+                $sQuery = "SELECT nIdUsuario, sNombreC, sEmail, sRol, sDomicilio FROM Usuario WHERE sEmail = '$this->sEmail' AND sPassword = '$this->sPassword'";
                 $arrRS = $oAccesoDatos -> consulta($sQuery);
                 $oAccesoDatos -> desconectar();
                 if($arrRS != null){
@@ -86,6 +86,7 @@ class Usuario{
                     $this -> sNombreC = $arrRS[0][1];
                     $this -> sEmail = $arrRS[0][2];
                     $this -> sRol = $arrRS[0][3];
+                    $this -> sDomicilio = $arrRS[0][4];
                     $bRet = true;
                 }
             }

@@ -1,6 +1,8 @@
 <?php 
 require_once '../model/Material.php';
 require_once '../model/Beneficiario.php';
+session_start();
+$_SESSION['tipo_donacion'] = "material";
 $oMaterial=new Material();
 $oBeneficiario=new Beneficiario;
 $idDonador=$_POST['id_usuario'];
@@ -28,6 +30,7 @@ $oMaterial->setsDescription($descripcionRecurso);
 $oMaterial->setaPhoto($photo);
 $oMaterial->setnAmount(intval($cantidadRecurso));
 $oMaterial->setbStatus(0);
+date_default_timezone_set("America/Mexico_City");
 $oMaterial->setdFechaCreacion(date("Y-m-d"));
 $oMaterial->setnIdUsuario($idDonador);
 $oMaterial->setnIdBenefactor(intval($idBeneficiario));
@@ -36,7 +39,7 @@ $oMaterial->Create();
 
 
 header("Location: ../view/agradecimiento.php");
-
+exit();
 
 
 
