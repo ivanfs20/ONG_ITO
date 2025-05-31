@@ -8,7 +8,7 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/usuarioperfil.css">'; #cargamos el estilo en especifico de usuarioperfil.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 
 include_once("../model/Usuario.php");
 session_start();
@@ -17,10 +17,12 @@ if (isset($_SESSION['usuario'])) {
   $oUsuario = $_SESSION["usuario"];
   $bSession = true;
   $nombre="Donador";
+  require_once '../navbar2.php';
 
 } else {
   $oUsuario = null;
   $bSession = false;
+  require_once 'modules/navbar.php';
 } 
 
 

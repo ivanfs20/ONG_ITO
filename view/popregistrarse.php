@@ -9,12 +9,12 @@ if ($msg === "mayor") {
 } elseif ($msg === "mayuscula") {
     $img = "../view/media/mayuscula.png";
     $text = "La contraseña tiene que tener al menos una mayuscula.";
-} elseif ($msg === "iguales") {
+} elseif ($msg === "diferentes") {
     $img = "../view/media/iguales.png";
-    $text = "Confirma que las contraseñas son iguales.";
+    $text = "Las contraseñas no coinciden";
 } elseif ($msg === "correo") {
     $img = "../view/media/correo.png";
-    $text = "Que el correo ya fue utilizado";
+    $text = "Este correo ya esta siendo utilizado por otra cuenta";
 }
 ?>
 
