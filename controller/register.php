@@ -32,8 +32,7 @@ else if($oUser->exists($sEmail)){
             try {
                 $nAfectados = $oUser->register();
                 if ($nAfectados > 0) {
-                    $sMessage = "Se creo tu cuenta, ya puedes iniciar sesion";
-                    header("Location: ../view/iniciarsesion.php");
+                    header("Location: ../view/popregistrarse.php?msg=exitoso");                   
                     exit();
                 } else {
                     $sError = "No se pudo insertar en la BD, intenta de nuevo o mas tarde";

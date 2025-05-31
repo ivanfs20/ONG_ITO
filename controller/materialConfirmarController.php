@@ -8,8 +8,9 @@ $oMaterial->setbStatus(1);
 
 $oMaterial->updateToTrue();
 
-header ("Location: ../view/gestionmaterial.php");
-
+//header ("Location: ../view/gestionmaterial.php");
+header("Location: ../view/popmaterialRecibido.php?msg=recibido");
+exit();
 
 
 ?>
