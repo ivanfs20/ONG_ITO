@@ -7,14 +7,16 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/benefactormodificar.css">'; #cargamos el estilo en especifico de benefactormodificar.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 require_once ('../model/Beneficiario.php');
 session_start();
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
+    require_once '../navbar2.php';
 } else {
     $oUsuario = null;
+    require_once 'modules/navbar.php';
 }
 $id_p= $_GET["idBenefactor"];
 $oBenefactor=new Beneficiario();
