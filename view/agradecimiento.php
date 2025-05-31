@@ -31,7 +31,7 @@ if (isset($_SESSION['tipo_donacion']) && $_SESSION['tipo_donacion'] === "materia
         <p class="hero-subtitulo">Tu apoyo construye sueños, impulsa futuros y deja una huella imborrable.</p>
         <!-- #Boton para descargar el folio -->
         <div class="boton-hero">
-            <button class="boton-descargar-folio">¡Descargar guia de envio!</button>
+            <button class="boton-descargar-folio">¡Descarga tu guia de envio!</button>
         </div>
     </div>
 </section>
