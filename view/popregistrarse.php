@@ -15,6 +15,9 @@ if ($msg === "mayor") {
 } elseif ($msg === "correo") {
     $img = "../view/media/correo.png";
     $text = "Este correo ya esta siendo utilizado por otra cuenta";
+}elseif ($msg === "exitoso") {
+    $img = "../view/media/like.png";
+    $text = "Te has registrado correctamente, puedes iniciar sesion!";
 }
 ?>
 
