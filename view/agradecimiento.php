@@ -12,10 +12,32 @@ require_once '../model/Usuario.php';
 session_start();
 if (isset($_SESSION['usuario'])) {
     require_once '../navbar2.php';
+    $oUsuario=$_SESSION['usuario'];
 } else {
     
     require_once 'modules/navbar.php';
 }
+?>
+<?php
+if (isset($_SESSION['tipo_donacion']) && $_SESSION['tipo_donacion'] === "material") { ?>
+    <form id="autoForm" action="../controller/pdfDocumentoFE.php" method="POST">
+        <input type="hidden" name="usuario" value="<?php echo $oUsuario->getsNombreC(); ?>">
+        <input type="hidden" name="direccion" value="<?php echo $oUsuario->getsDomiclio(); ?>">
+        <input type="hidden" name="correo" value="<?php echo $oUsuario->getsEmail(); ?>">
+        <!-- #hero section de agradecimiento-->
+<section class="hero">
+    <div class="hero-contenido">
+        <h1 class="hero-titulo">¡Gracias por ser parte del cambio!</h1>
+        <p class="hero-subtitulo">Tu apoyo construye sueños, impulsa futuros y deja una huella imborrable.</p>
+        <!-- #Boton para descargar el folio -->
+        <div class="boton-hero">
+            <button class="boton-descargar-folio">¡Descargar guia de envio!</button>
+        </div>
+    </div>
+</section>
+    </form> 
+    <?php
+}else{
 ?>
 
 <!-- #hero section de agradecimiento-->
@@ -29,7 +51,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
     </div>
 </section>
-
+<?php } ?>
 <!-- seccion de agradecimientos futuros -->
 <section class="seccion-agradecimiento">
     <div class="agradecimiento-contenedor">

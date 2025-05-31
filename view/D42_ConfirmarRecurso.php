@@ -115,7 +115,8 @@ if ($oUsuario != null) {
 
                 <div class="controles-confirmacion">
                     <!--<a href="agradecimiento.php" class="boton-accion confirmar">-->
-                       <button type="submit" class="boton-accion confirmar"> Confirmar Donación<button>
+                       <button type="submit" class="boton-accion confirmar"> Confirmar Donación</button>
+                        
                     <!--</a>-->
 
                     <a href="D1_Area.php" class="boton-accion cancelar">
@@ -124,11 +125,11 @@ if ($oUsuario != null) {
                     <a href="D32_TipoRecurso.php" class="boton-accion regresar">
                         Regresar
                     </a>
-                </div>
+                </div>               
             </div>
         </div>
     </section>
-</form>
+    </form>
     <?php
 }{
     if($bRes == false){
