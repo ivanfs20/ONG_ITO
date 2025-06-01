@@ -9,6 +9,7 @@ $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el sc
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 //include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
+require_once '../model/Digital.php';
 session_start();
 $bRes = false;
 
@@ -21,7 +22,14 @@ if (isset($_SESSION['usuario'])) {
     $bRes = false;
     require_once 'modules/navbar.php';
 }
-
+$oDigital=new Digital();
+$beneficiario=$_POST['beneficiario'];
+date_default_timezone_set("America/Mexico_City");
+$fecha=date('Y-m-d');
+$folio=0;
+    do {
+        $folio = rand(100000, 999999); 
+    } while ($oDigital->existsFolio($folio)); 
 if($oUsuario!=null){
 ?>
 
@@ -43,6 +51,12 @@ if($oUsuario!=null){
 
 <!-- #Seccion datos de la operacion -->
 <section class="Seccion-operacion">
+    <form action="D41_ConfirmarTarjeta.php"  method="POST">
+        <input name="folio" type="hidden" id="folio"  value="<?php  echo $folio; ?>">
+        <input name="nombre" type="hidden" id="nombre"  value="<?php echo $oUsuario->getsNombreC();  ?>">
+        <input name="fecha" type="hidden" id="fecha"  value="<?php echo $fecha;  ?>">
+        <input name="beneficiario" type="hidden" id="beneficiario"  value="<?php echo $beneficiario;  ?>">
+
     <div class="contenedor-operacion">
         <div class="contenido-operacion">
             <h2 class="titulo-operacion">Monto a donar</h2>
@@ -57,15 +71,14 @@ if($oUsuario!=null){
 <section class="seccion-continuar">
     <div class="contenedor-continuar">
         <div class="contenido-continuar">
-            <button class="boton-continuar3">
-                <a href="D41_ConfirmarTarjeta.php" class="boton-continuar3">
-                    CONTINUAR
-                </a>
+            <button class="boton-continuar3" type="submit">
+                CONTINUAR
             </button>
+
         </div>
     </div>
 </section>
-
+</form>
 
 
 

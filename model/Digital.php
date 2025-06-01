@@ -37,19 +37,21 @@ class Digital extends Donacion{
         $arrRS = null;
         $sQuery = "";
 
-        if($this -> nAmount <= 0 || empty($this->aPhoto[0])  || $this -> nIdBenefactor <=0 || $this -> nIdUsuario <= 0 || empty($this -> sMethod) || empty($this -> nFolio)){throw new Exception("m/Donacion/create/nIdDonacion&&nAmount&&aPhoto&&nIdBenefactor&&nIdUsuario&&sMethod&&nFolio");}
+        if($this -> nAmount <= 0   || $this -> nIdBenefactor <=0 || $this -> nIdUsuario <= 0 || empty($this -> sMethod) || empty($this -> nFolio)){throw new Exception("m/Donacion/create/nIdDonacion&&nAmount&&aPhoto&&nIdBenefactor&&nIdUsuario&&sMethod&&nFolio");}
         else{
-            $fotoBinaria = addslashes($this->aPhoto[0]);
-            $this->dFechaCreacion=date('Y-m-d');
+            if($oAccesoDatos->conectar()){
+            //$fotoBinaria = addslashes($this->aPhoto[0]);
+            //$this->dFechaCreacion=date('Y-m-d');
             $sQuery = "INSERT INTO DonacionDigital (nFolio, sMethod, aPhoto, nAmount, bStatus,dateCreacion, nIdUsuario, nIdBeneficiario)
-            VALUES (".intval($this->nFolio).", "."'".$this->sMethod."', "."'".$fotoBinaria."', ".
-            intval($this->nAmount).", "."0, '".$this->dFechaCreacion."' ,".$this.intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
+            VALUES (".intval($this->nFolio).", "."'".$this->sMethod."', "."'".$this->aPhoto."', ".
+            intval($this->nAmount).", "."0, '".$this->dFechaCreacion."' ,".intval($this->nIdUsuario).", ".intval($this->nIdBenefactor).")";
             $arrRS = $oAccesoDatos -> comando($sQuery);
             $oAccesoDatos -> desconectar();
             if($arrRS > 0){
                 $bRet = true;
             }
-        }
+        };
+    }
         return $bRet;
     }
 
@@ -294,6 +296,22 @@ public function getAll() {
     }
 }
 
+public function existsFolio($nFolio){
+        $oAccesoDatos=new AccesoDatos();
+        $sQuery="";
+        $bandera=false;
+        $arrRS=null;
+        if($oAccesoDatos->conectar()){
+            $sQuery="SELECT * FROM DonacionDigital WHERE nFolio='".$nFolio."'";
+            $arrRS=$oAccesoDatos->consulta($sQuery);
+            $oAccesoDatos->desconectar();
+            if($arrRS && is_array($arrRS)){
+                $bandera=true;
+            }
+        }
+        return $bandera;
+    }   
 
+    
 }
 ?>

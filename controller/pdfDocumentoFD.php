@@ -1,7 +1,7 @@
 <?php
 require('../lib/fpdf/fpdf.php'); //ruta de la libreria externa para crear un pdf
 require_once '../model/Usuario.php';
-session_start();
+//session_start();
 $bSession = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
     $bSession = false;
 }
 
-if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
+//if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 25);
@@ -36,7 +36,7 @@ $pdf->Ln(10);
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(40, 10, utf8_decode('Fecha/Hora: '.$fecha), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('Fecha/Hora: '.$_POST['fecha']), 0, 0);
 
     $pdf->Ln(10);
 
@@ -61,7 +61,7 @@ $pdf->Ln(10);
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(40, 10, utf8_decode('Concepto: '.$_['beneficiario']), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('Concepto: '.$_POST['beneficiario']), 0, 0);
 
 
     $pdf->Ln(20);
@@ -120,5 +120,5 @@ $pdf->Ln(10);
 // Descargar el archivo
 $pdf->Output('I', 'reciboDonativo_'.$_POST['correo_donador'].'_'.$_POST['nombre_donador'].'pdf'); //se muestra y el usuario lo debe de descargar
 //$pdf->Output('D', 'reciboDonativo.pdf'); se descarga automaticamente
-}
+//}
 ?>

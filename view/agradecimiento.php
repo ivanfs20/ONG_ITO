@@ -37,9 +37,18 @@ if (isset($_SESSION['tipo_donacion']) && $_SESSION['tipo_donacion'] === "materia
 </section>
     </form> 
     <?php
-}else{
+}else if(isset($_SESSION['tipo_donacion']) && $_SESSION['tipo_donacion'] === "digital"){
+    date_default_timezone_set('America/Mexico_City');
+    $fecha = date("Y-m-d H:i:s");
 ?>
-
+<form id="autoForm" action="../controller/pdfDocumentoFD.php" method="POST">
+        <input type="hidden" name="nombre_donador" value="<?php echo $oUsuario->getsNombreC(); ?>">
+        <input type="hidden" name="correo_donador" value="<?php echo $oUsuario->getsEmail(); ?>">
+        <input type="hidden" name="beneficiario" value="<?php echo $_SESSION['beneficiario']; ?>">
+        <input type="hidden" name="folio" value="<?php echo $_SESSION['folio']; ?>">
+        <input type="hidden" name="amount" value="<?php echo $_SESSION['monto']; ?>">
+        <input type="hidden" name="fecha" value="<?php echo $fecha; ?>">
+        
 <!-- #hero section de agradecimiento-->
 <section class="hero">
     <div class="hero-contenido">
@@ -51,6 +60,7 @@ if (isset($_SESSION['tipo_donacion']) && $_SESSION['tipo_donacion'] === "materia
         </div>
     </div>
 </section>
+</form>
 <?php } ?>
 <!-- seccion de agradecimientos futuros -->
 <section class="seccion-agradecimiento">

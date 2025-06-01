@@ -7,7 +7,7 @@
 $customStyles = '<link rel="stylesheet" href="../view/css/vistas/D41_ConfirmarTarjeta.css">'; #cargamos el estilo en especifico de D41_ConfirmarTarjeta.php
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("modules/navbar.php");   # Navbar
+//include_once("modules/navbar.php");   # Navbar
 require_once '../model/Usuario.php';
 session_start();
 $bRes = false;
@@ -15,13 +15,19 @@ $bRes = false;
 if (isset($_SESSION['usuario'])) {
     $oUsuario = $_SESSION["usuario"];
     $bRes = true;
+    require_once '../navbar2.php';
 
 } else {
     $oUsuario = null;
     $bRes = false;
+    require_once 'modules/navbar.php';
 
 }
-
+$folio=$_POST['folio'];
+$nombreDonador=$_POST['nombre'];
+$fecha=$_POST['fecha'];
+$montoTotal=$_POST['monto-total'];
+$beneficiario=$_POST['beneficiario'];
 if($oUsuario!=null){
 ?>
 
@@ -50,28 +56,36 @@ if($oUsuario!=null){
 <!-- Seccion para formulariio -->
 <div class="contenedor-formularios">
     <!-- Formulario para dinero -->
-    <form id="formulario-dinero" class="formulario-donacion">
+    <form id="formulario-dinero" class="formulario-donacion" action="../controller/digitalDonarController.php" method="POST">
+        <input type="hidden" name="id_usuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
         <div class="grupo-formulario">
-            <label for="id-donador">Identificacion de la donacion</label>
-            <input name="id-donacion" type="text" id="id-donador" required>
+            <label for="id-donador">Numero de folio</label>
+            <input name="id-donacion" type="text" id="id-donador" value="<?php  echo $folio; ?>" required readonly>
         </div>
 
         <div class="grupo-formulario">
             <label for="nombre-donador">Nombre Donador</label>
-            <input name="nombre-del-donador" type="text" id="nombre-donador" required>
+            <input name="nombre-del-donador" type="text" id="nombre-donador" value="<?php  echo $nombreDonador; ?>" required readonly>
         </div>
 
         <div class="grupo-formulario">
             <label for="monto">Monto</label>
-            <input name="monto-total" type="number" id="monto" required>
+            <input name="monto-total" type="number" id="monto" value="<?php  echo $montoTotal; ?>" required readonly>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="beneficiario">Nombre del beneficiario</label>
+            <input name="beneficiario" type="text" id="beneficiario"  value="<?php  echo $beneficiario; ?>" required readonly>
         </div>
 
         <div class="grupo-formulario">
             <label for="fecha">Fecha</label>
-            <input name="fecha-donacion" type="date" id="fecha" required>
+            <input name="fecha-donacion" type="text" id="fecha" value="<?php  echo $fecha; ?>" required readonly>
         </div>
 
-    </form>
+        
+
+   
 </div>
 
 
@@ -82,9 +96,10 @@ if($oUsuario!=null){
             <h2 class="texto-confirmacion">¿Confirmas tu donación?</h2>
 
             <div class="controles-confirmacion">
-                <a href="agradecimiento.php" class="boton-accion confirmar">
+                <button type="submit" class="boton-accion confirmar">
                     Confirmar Donación
-                </a>
+                </button>
+</form>
                 <a href="cancelacion.php" class="boton-accion cancelar">
                     Cancelar
                 </a>
