@@ -14,7 +14,7 @@
 <nav class="navbar">
     <div class="navbar-logo">
         <span class="logo-line1">DONATIVOS</span>
-        <span class="logo-line2">ITORIZADA</span>
+        <span class="logo-line2">ITORIZABA</span>
     </div>
 
     <div class="nav-links">
