@@ -21,7 +21,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
 ?>
 
 <div class="header">
-        Gestion de Beneficiario
+        Gesti&oacute;n de Beneficiario
     </div>
 
     <div class="table-container">
@@ -30,7 +30,7 @@ if($oUsuario!=null && $oUsuario->getsRol()=="administrador"){
                 <tr>
                     <th>Id Beneficiario</th>
                     <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Descripci&oacute;n</th>
                     <th>Nombre Proyecto</th>
 
                    

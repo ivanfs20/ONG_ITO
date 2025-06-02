@@ -22,11 +22,11 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <div class="banner">
-        Gestion de Proyectos y Beneficiario
+        Gesti&oacute;n de Proyectos y Beneficiario
     </div>
 
     <div class="container">
-        <h2>Administracion de Areas</h2>
+        <h2>Administraci&oacute;n de &Aacute;reas</h2>
         <div class="cards">
             <div class="card">
                 <img src="../view/media/pupitres.jpg" alt="Donaciones">

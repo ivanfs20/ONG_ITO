@@ -22,7 +22,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
     <div class="banner">
-        Gestion de Donaciones
+        Gesti&oacute;n de Donaciones
     </div>
 
     <div class="container">

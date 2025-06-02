@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
 ?>
 
 <div class="header">
-        Gestion de Testimonio
+        Gesti&oacute;n de Testimonio
     </div>
 
     <div class="table-container">
