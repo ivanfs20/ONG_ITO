@@ -34,8 +34,8 @@ if ($oUsuario != null) {
     
   </header>
 
-  <button class="donate-btn">¡Donar!</button>
-
+ <!-- <button class="donate-btn">¡Donar!</button> 
+-->
   <main class="main-container">
 
     <?php
