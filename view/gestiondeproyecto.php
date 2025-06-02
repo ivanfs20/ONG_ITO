@@ -24,7 +24,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
     ?>
 
     <div class="header">
-        Gestion de Proyecto
+        Gesti&oacute;n de Proyecto
     </div>
 
     <div class="table-container">
@@ -33,7 +33,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                 <tr>
                     <th>Id Proyecto</th>
                     <th>Titulo</th>
-                    <th>Descripcion</th>
+                    <th>Descripci&oacute;n</th>
                     <th>Foto</th>
                     <th>Id Administrador</th>
 

@@ -21,7 +21,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
     ?>
 
     <div class="header">
-        Gestion de Usuarios
+        Gesti&oacute;n de Usuarios
     </div>
 
     <div class="table-container">
