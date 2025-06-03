@@ -68,7 +68,7 @@ class Digital extends Donacion{
                                                    
                     $sQuery="SELECT b.sName, d.nAmount, d.nFolio,d.dateCreacion,d.bStatus, d.aPhoto
                     FROM DonacionDigital d 
-                    INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.bStatus=0 and d.nIdUsuario=".intval($this->getnIdUsuario());
+                    INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE  d.nIdUsuario=".intval($this->getnIdUsuario());
                     $arrRS=$oAccesoDatos->consultaJoin($sQuery);
                     $oAccesoDatos->desconectar();
                     if ($arrRS && count($arrRS) > 0) {
