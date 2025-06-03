@@ -58,9 +58,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                 <td><?php echo htmlspecialchars($nombreUsuario); ?></td>
                 <td>
                     <button onclick="window.location.href='testimoniomodificar.php?id=<?php echo $oComentario->getNidComentario(); ?>'" 
-                            class="btn-modificar">Modificar</button>
-                    <button onclick="window.location.href='testimonioeliminar.php?id=<?php echo $oComentario->getNidComentario(); ?>'" 
-                            class="btn-eliminar">Eliminar</button>
+                            class="btn-modificar">Confirmar</button>
                 </td>
             </tr>
             <?php
@@ -68,7 +66,6 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
             ?>
         </tbody>
     </table>
-    <button onclick="window.location.href='testimonioinsertar.php'" class="btn-insertar">Insertar</button>
     <div class="action-buttons">
         
         <a href="gestionpb.php" class="boton-regresar">Regresar</a>
