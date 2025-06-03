@@ -88,6 +88,8 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON `Beneficiario` TO 'administrador'@'local
 GRANT SELECT, INSERT, DELETE, UPDATE ON `Proyecto` TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionMaterial` TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, DELETE, UPDATE ON `DonacionDigital` TO 'administrador'@'localhost';
+GRANT SELECT, INSERT, DELETE, UPDATE ON `Comentarios` TO 'administrador'@'localhost';
+
 
 FLUSH PRIVILEGES;
 /*DBA->Alteraciones en tablas con llaves foraenas, para actualizacion y eliminacion en cascada , ejecutar unicamente esto si ya se ejecuto lo 
