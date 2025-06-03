@@ -166,6 +166,15 @@
     border-radius: 4px;
   }
   
+  .test-btn
+  {
+    background-color: yellow;
+    color: black;
+    border: 1px solid #999;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
 
   /** ESTILO DEL BOTON */
 .boton-regresar {

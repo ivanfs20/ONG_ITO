@@ -77,12 +77,19 @@ include_once("modules/aside.html"); # Aside
         <td><?php echo $oDonacionMat->getsNameBenefactor();?></td>
         <td><img src="<?php echo $imgSrc; ?>" alt="Imagen de la donación" width="100" /></td>
         <td><?php if($oDonacionMat->getbStatus()==0){echo "Pendiente";}?></td>
+       
       </tr>
 
       <?php
       }
       ?>
     </table>
+    <label for="testm">Ingresar Testimonio:</label><br>
+    <textarea type="text" id="testmaterial" name="testmaterial" ></textarea>
+    <button class="test-btn">Enviar</button>
+    
+    <br><br>
+
 
 
     <h3>Donaciones de Depósito:</h3>
@@ -112,7 +119,14 @@ include_once("modules/aside.html"); # Aside
       <?php
       }
       ?>
+      
     </table>
+    <label for="testd">Ingresar Testimonio:</label><br>
+    <textarea type="text" id="testdigital" name="testdigital" ></textarea>
+    <button class="test-btn">Enviar</button>
+    
+    <br><br>
+
     </section>
     </main>
 

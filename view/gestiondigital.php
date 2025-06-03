@@ -28,7 +28,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
     ?>
 
     <div class="header">
-        Gestión de Donaciones Digitales
+        Gestión de Donaciones Bancarias
     </div>
 
     <div class="table-container">
