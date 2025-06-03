@@ -5,18 +5,25 @@
  *           los usuarios y insitarlos a donar
  * Autor: Edwin Ariel Ramos Alvarez
  *************************************************************/
-$customStyles = '<link rel="stylesheet" href="view/css/vistas/landingpage.css">'; #cargamos el estilo en especifico de la landing page
-$customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
-include_once("view/modules/header.html");  # Incluye <head> y apertura de <body>
-include_once("navbar2.php");   # Navbar
-include_once("view/modules/hero.php"); // Incluye la función
+$customStyles = '<link rel="stylesheet" href="css/vistas/landingpage.css">'; #cargamos el estilo en especifico de la landing page
+$customScript = '<script src="js/script1.js"></script>'; #cargamos el script
+include_once("modules/header.html");  # Incluye <head> y apertura de <body>
+//include_once("../navbar2.php");   # Navbar
+include_once("modules/hero.php"); // Incluye la función
+require_once '../model/Usuario.php';
+session_start();
+
+
+if (isset($_SESSION['usuario'])) {
+    require_once '../navbar2.php';
+}
 
 // Define las variables para personalizar el hero
 $tituloPagina = "Ayuda a transformar el futuro de cientos de estudiantes del ITOrizaba";
 $subtituloPagina = "Cada peso cuenta. Dona hoy y forma parte del cambio.";
 $botonHero = [
     'texto' => "¡Quiero donar ahora!",
-    'url' => "view/D1_Area.php"
+    'url' => "D1_Area.php"
 ];
 
 // Muestra el hero con los parámetros
@@ -28,7 +35,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
         <div class="por-que-grid">
             <!-- Columna de Imagen -->
             <div class="por-que-imagen">
-                <img src="view/media/porque.jpg" alt="Estudiantes en laboratorio">
+                <img src="media/porque.jpg" alt="Estudiantes en laboratorio">
             </div>
 
             <!-- Columna de Texto -->
@@ -54,7 +61,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
             </div>
 
             <div class="evidencia-tabla material">
-                <?php require_once 'controller/materialIndexController.php'; ?>
+                <?php require_once '../controller/materialIndexDosController.php'; ?>
             </div>
         </div>
 
@@ -76,7 +83,7 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
                         </tr>
                     </thead>
                     <tbody>
-                      <?php require_once 'controller/digitalIndexController.php'; ?>
+                      <?php require_once '../controller/digitalIndexDosController.php'; ?>
                     </tbody>
                 </table>
             </div>
@@ -100,9 +107,9 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
 
 
             <?php
-                include_once("model/Digital.php");
-                include_once("model/Material.php");
-                include_once("model/Usuario.php");
+                include_once("../model/Digital.php");
+                include_once("../model/Material.php");
+                include_once("../model/Usuario.php");
                 $oDonacionMaterial = new Material();
                 $oDonacionDigital = new Digital();
                 $oUsuariosActivosDonadores = new Usuario();
@@ -171,11 +178,11 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
         <div class="collab-content">
             <h2 class="colaboracion-titulo">Colabora con donativos</h2>
             <p class="colaboracion-subtitulo">ITOrizaba, ayudar es crecer<br>y crecer es vivir.</p>
-            <a href="view/D1_Area.php" class="colaboracion-boton">Quiero colaborar</a>
+            <a href="D1_Area.php" class="colaboracion-boton">Quiero colaborar</a>
         </div>
     </div>
 </section>
 
 <?php
-include_once("footer2.php"); # Footer y cierre de HTML
+include_once("../footer2.php"); # Footer y cierre de HTML
 ?>
