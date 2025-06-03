@@ -157,7 +157,7 @@ class Comentarios {
         $nCount = 0;
         
         if ($oAccesoDatos->conectar()) {
-            $sQuery = "SELECT * FROM Comentarios";
+            $sQuery = "SELECT * FROM Comentarios where bStatus=0";
             
             $arrRS = $oAccesoDatos->consulta($sQuery);
             $oAccesoDatos->desconectar();
