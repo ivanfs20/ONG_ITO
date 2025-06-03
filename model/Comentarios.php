@@ -6,6 +6,15 @@ class Comentarios {
     private $sComentario = "";
     private $bStatus = 0;
     private $nIdUsuario = 0;
+    private $sNombreUsuario = "";
+
+    public function setsNombreUsuario($sNombreUsuario){
+        $this->sNombreUsuario = $sNombreUsuario;
+    }
+
+    public function getsNombreUsuario(){
+        return $this->sNombreUsuario;
+    }
 
     public function setNidComentario($nIdComentario) {
         $this->nIdComentario = $nIdComentario;
@@ -142,7 +151,7 @@ class Comentarios {
     }
 
     // READ ALL - Obtener todos los comentarios
-    public static function getAll() {
+    public function getAll() {
         $oAccesoDatos = new AccesoDatos();
         $arrComentarios = array();
         $nCount = 0;
@@ -169,6 +178,33 @@ class Comentarios {
         
         return $arrComentarios;
     }
+
+
+        // READ ALL - Obtener todos los comentarios
+        public function getAllUsuarioValidado() {
+            $oAccesoDatos = new AccesoDatos();
+            $arrComentarios = array();
+            $nCount = 0;
+            
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT c.sComentario, u.sNombreC  FROM Comentarios c INNER JOIN Usuario u ON c.nIdUsuario=u.nIdUsuario where c.bStatus=1";
+                
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                
+                if ($arrRS && count($arrRS) > 0) {
+                    foreach ($arrRS as $aLinea) {
+                        $oComentario = new Comentarios();
+                        $oComentario->setSComentario($aLinea[0]);
+                        $oComentario->setsNombreUsuario($aLinea[1]);
+                        $arrComentarios[$nCount] = $oComentario;
+                        $nCount++;
+                    }
+                }
+            }
+            
+            return $arrComentarios;
+        }
 
     // Obtener comentarios por usuario
     public static function getByUsuario($nIdUsuario) {

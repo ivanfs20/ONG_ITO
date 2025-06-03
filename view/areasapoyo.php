@@ -136,17 +136,28 @@ mostrarHero($tituloPagina, $subtituloPagina, );
     <div class="mini-testimonios-contenedor">
         <h2 class="mini-testimonios-titulo">Testimonios de impacto</h2>
 
-        <!-- Testimonio 1 -->
-        <p class="mini-testimonio-frase">“La beca que recibí me permitió terminar mi carrera. Hoy soy el primero de mi
-            familia en lograrlo.”</p>
-        <p class="mini-testimonio-persona">-Sofia Camacho</p>
-        <small>Estudiante de Ing.Electronica</small>
 
-        <!-- Testimonio 2 -->
-        <p class="mini-testimonio-frase">“Gracias a las donaciones, ahora puedo tomar mis practicas en tiempo y forma en
-            los laboratorios.”</p>
-        <p class="mini-testimonio-persona">-Saul Hernandez</p>
-        <small>Estudiante de Ing.Electronica</small>
+        <?php
+            include_once("../model/Comentarios.php");
+            $oComentarios = new Comentarios();
+            $arrComentarios = $oComentarios->getAllUsuarioValidado();
+            foreach($arrComentarios as $oComentario){
+        ?>
+
+
+        <!-- Testimonio 1 -->
+        <p class="mini-testimonio-frase">
+            <?php
+                echo $oComentario->getSComentario();
+            ?>
+        </p>
+        <p class="mini-testimonio-persona">-<?php
+                echo $oComentario->getsNombreUsuario();
+            ?></p>
+
+        <?php
+            }
+        ?>
 
     </div>
 </section>
