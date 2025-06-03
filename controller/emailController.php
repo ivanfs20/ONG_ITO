@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -16,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
 if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 
 
-require '../lib/vendor/autoload.php';
+    
 
 $mail = new PHPMailer(true);
 
@@ -44,4 +45,19 @@ try {
     echo "❌ Error al enviar el correo: {$mail->ErrorInfo}";
 }
 }
+?>
+
+<?php 
+require_once '../model/Digital.php';
+$oDigital=new Digital();
+$id=$_POST["id"];
+
+$oDigital->setnIdDonacion($id);
+$oDigital->setbStatus(1);
+
+$oDigital->updateToTrue();
+
+//header ("Location: ../view/gestionmaterial.php");
+header("Location: ../view/popmaterialRecibido.php?msg=recibido");
+exit();
 ?>

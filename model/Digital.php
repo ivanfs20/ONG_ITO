@@ -312,6 +312,25 @@ public function existsFolio($nFolio){
         return $bandera;
     }   
 
+    public function updateToTrue(){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $nAfectados=-1;
+        if ($this->nIdDonacion<0 || $this->nIdDonacion==0 || $this->bStatus==null) {
+            throw new Exception("Digital/updateDigital: Campos vacíos o nulos");
+        }    
     
+        if ($oAccesoDatos->conectar()) {        
+            $sQuery = "UPDATE DonacionDigital 
+                       SET bStatus =1                       
+                       WHERE nIdDonacion = ".intval($this->nIdDonacion);
+            
+            $nAfectados = $oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+        }
+    
+        return $nAfectados;
+    }
+
 }
 ?>
