@@ -8,7 +8,18 @@ $customStyles = '<link rel="stylesheet" href="../view/css/vistas/testimoniomodif
 $customScript = '<script src="../view/js/script1.js"></script>'; #cargamos el script
 include_once("modules/header.html");  # Incluye <head> y apertura de <body>
 include_once("modules/navbar.php");   # Navbar
+include_once '../model/Comentarios.php';
+include_once '../model/Usuario.php';
 
+$id = $_GET["id"];
+$nom = $_GET["nom"] ?? null;
+$oComen = new Comentarios();
+$oComentario = $oComen->getById($id);
+
+// Obtener el nombre del usuario
+$oUsuario = new Usuario();
+$usuario = $oUsuario->readById($oComentario->getNidUsuario());
+$nombreUsuario = $usuario ? $usuario->getsNombreC() : "Desconocido";
 ?>
 
 
@@ -16,26 +27,22 @@ include_once("modules/navbar.php");   # Navbar
 
 <div class="container">
    
-
     <form>
              
-    <label for="id_testimonio">Id Testimonio:</label>
-        <input name="id_testimonio" type="text" id="id_testimonio" >
+        <label for="id_testimonio">Id Testimonio:</label>
+        <input name="id_testimonio" type="text" id="id_testimonio" value="<?php echo $oComentario->getNidComentario(); ?>" readonly>
 
         <label for="testimonio">Testimonio:</label>
-        <input name="testimonio" type="text"  id=" testimonio ">
+        <input name="testimonio" type="text" id="testimonio" value="<?php echo htmlspecialchars($oComentario->getSComentario()); ?>">
 
-        <label for="id_nombre">Nombre:</label>
-        <input name="id_nombre" type="text"  id=" id_nombre">
+        <label for="nombre_usuario">Nombre:</label>
+        <input name="nombre_usuario" type="text" id="nombre_usuario" value="<?php echo htmlspecialchars($nombreUsuario); ?>">
 
-        <label for="id_carrera">Carrera:</label>
-        <input name="id_carrera" type="text"  id=" id_carrera">
-   <div>
-        <button class="button">Confirmar</button>
-
+        <div>
+            <button class="button">Confirmar</button>
+        </div>
+    </form>
 </div>
-       
-
 
 <?php
 include_once("modules/footer.php"); # Footer y cierre de HTML

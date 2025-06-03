@@ -1,5 +1,5 @@
 <?php
-/*************************************************************/
+/*/
 /* Archivo:  gestiondigital.php
  * Objetivo: Tabla donaciones digitales
  * Autor: Uriel Vallejo Xicalhua
@@ -41,7 +41,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                     <th>Folio</th>
                     <th>Fecha</th>
                     <th>Estado</th>
-                    <th>Comprobante</th>
+                    
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -56,11 +56,11 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                     }
                     $nombreDonador = $usuariosCache[$idDonador];
                     
-                    $comprobanteBinario = $oDonacion->getaPhoto();
-                    $base64Comprobante = base64_encode($comprobanteBinario);
-                    $comprobanteSrc = 'data:image/jpeg;base64,' . $base64Comprobante;
+                    //$comprobanteBinario = $oDonacion->getaPhoto();
+                    //$base64Comprobante = base64_encode($comprobanteBinario);
+                    //$comprobanteSrc = 'data:image/jpeg;base64,' . $base64Comprobante;
                     
-                    $estado = $oDonacion->getbStatus() == 0 ? 'Confirmado' : 'Pendiente';
+                    $estado = $oDonacion->getbStatus() == 1 ? 'Confirmado' : 'Pendiente';
                     $fecha = date('d/m/Y', strtotime($oDonacion->getdFechaCreacion()));
                     ?>
                     <tr>
@@ -70,14 +70,15 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                         <td><?php echo $oDonacion->getnFolio(); ?></td>
                         <td><?php echo $fecha; ?></td>
                         <td class="<?php echo strtolower($estado); ?>"><?php echo $estado; ?></td>
+                       
                         <td>
-                            <img src="<?php echo $comprobanteSrc; ?>" alt="Comprobante" width="80" 
-                                 onclick="mostrarComprobante('<?php echo $comprobanteSrc; ?>')"
-                                 class="comprobante-thumbnail">
-                        </td>
-                        <td>
-                                <button onclick="" 
+                            <form action="../controller/emailController.php" method="post">
+                            <input type="hidden" name="correo_donador" value="<?php echo $tempUsuario->getsEmail();  ?>">
+                            <input type="hidden" name="nombre_donador" value="<?php echo $tempUsuario->getsNombreC();  ?>">
+                            <input type="hidden" name="id" value="<?php echo $oDonacion->getnIdDonacion(); ?>">
+                                <button 
                                         class="btn-confirmar">Confirmar</button>
+                            </form>
                         </td>
                     </tr>
                     <?php
