@@ -184,5 +184,5 @@ mostrarHero($tituloPagina, $subtituloPagina, $botonHero);
 </section>
 
 <?php
-include_once("../footer2.php"); # Footer y cierre de HTML
+include_once("../footer3.php"); # Footer y cierre de HTML
 ?>
