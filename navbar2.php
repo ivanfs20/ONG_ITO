@@ -14,7 +14,7 @@
 <nav class="navbar">
     <div class="navbar-logo">
         <span class="logo-line1">DONATIVOS</span>
-        <span class="logo-line2">ITORIZADA</span>
+        <span class="logo-line2">ITORIZABA</span>
     </div>
 
     <div class="nav-links">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="nav-links">
-           
+        <a href="index.php" class="nav-link">Inicio</a> 
         <a href="campanas.php" class="nav-link">Campañas</a>   
         <a href="areasapoyo.php" class="nav-link">Áreas de trabajo</a>
          <a href="transparencia.php" class="nav-link">Transparencia</a>    

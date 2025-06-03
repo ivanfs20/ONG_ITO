@@ -65,9 +65,9 @@ if (isset($_SESSION['usuario'])) {
     <div class="tarjeta">
         <h3>Redes sociales:</h3>
         <ul>
-            <li>📘 Sitio web: <a href="http://orizaba.tecnm.mx/itocc/">Pagina oficial</a></li>
-            <li>📘 Facebook: [NombreDeUsuario o enlace futuro]</li>
-            <li>📸 Instagram: [NombreDeUsuario o enlace futuro]</li>
+            <li>📘 Sitio web: <a href="http://orizaba.tecnm.mx/web/">Pagina oficial</a></li>
+            <li>📘 Facebook: <a href="https://www.facebook.com/tecorizaba?rdid=SO7DWy0wx9sH6XyM&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15hDJswd8c%2F#">TECNM - Orizaba</a></li>
+            <li>📸 Instagram: <a href="https://www.instagram.com/cesaito.2325/?igsh=bWVtNTVob3hpZ2I5#">Comite Estudiantil</a></li>
             <li>📱 WhatsApp: <a href="https://wa.me/52272XXXXXXX">https://wa.me/52272XXXXXXX</a></li>
         </ul>
     </div>

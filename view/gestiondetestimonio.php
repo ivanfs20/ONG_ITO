@@ -27,8 +27,10 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
 ?>
 
 <div class="header">
-    Gestión de Testimonios
-</div>
+
+        Gesti&oacute;n de Testimonio
+    </div>
+
 
 <div class="table-container">
     <table>
