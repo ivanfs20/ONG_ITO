@@ -27,7 +27,7 @@
                     header("Location: ../view/sesionadmin.php");
                     exit();
                 }else{
-                    header("Location: ../view/sesionusuario.php"); //Corregir y redireccionar a sesionUsuario.php
+                    header("Location: ../view/sesionusuario.php"); 
                     exit();
                 }
 
