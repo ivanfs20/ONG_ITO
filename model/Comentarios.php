@@ -236,5 +236,23 @@ class Comentarios {
         
         return $arrComentarios;
     }
+
+    public function updateToTrue(){
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $nAfectados=-1;   
+    
+        if ($oAccesoDatos->conectar()) {        
+            $sQuery = "UPDATE comentarios 
+                       SET bStatus =1                       
+                       WHERE nIdComentario = ".intval($this->nIdComentario);
+            
+            $nAfectados = $oAccesoDatos->comando($sQuery);
+            $oAccesoDatos->desconectar();
+        }
+    
+        return $nAfectados;
+    }
+
 }
 ?>
