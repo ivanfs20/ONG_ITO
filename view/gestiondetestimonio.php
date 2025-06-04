@@ -57,7 +57,7 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                 <td><?php echo htmlspecialchars($oComentario->getSComentario()); ?></td>
                 <td><?php echo htmlspecialchars($nombreUsuario); ?></td>
                 <td>
-                    <button onclick="window.location.href='testimoniomodificar.php?id=<?php echo $oComentario->getNidComentario(); ?>'" 
+                    <button onclick="window.location.href='../controller/testimonioController.php?id=<?php echo $oComentario->getNidComentario(); ?>'" 
                             class="btn-modificar">Confirmar</button>
                 </td>
             </tr>

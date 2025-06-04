@@ -89,9 +89,20 @@ include_once("modules/aside.html"); # Aside
       }
       ?>
     </table>
-    <label for="testm">Ingresar Testimonio:</label><br>
-    <textarea type="text" id="testmaterial" name="testmaterial" ></textarea>
-    <button class="test-btn">Enviar</button>
+    <!--<label for="testm">Ingresar Testimonio:</label><br>
+    <textarea type="text" id="testmaterial" name="testmaterial" ></textarea>-->
+
+    <form action="../controller/comentarioControler.php" method="post">
+      <input type="hidden" name="nIdUsuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
+      <label for="testdigital">Ingresar Testimonio:</label><br>
+      <textarea id="testdigital" name="testimonio" style="width: 300px; height: 150px; resize: none;"></textarea><br>
+      <button class="test-btn" type="submit">Enviar</button>
+    </form>
+
+
+    <!--<button class="test-btn">
+      Enviar
+    </button>-->
     
     <br><br>
 
@@ -132,10 +143,17 @@ include_once("modules/aside.html"); # Aside
       ?>
       
     </table>
-    <label for="testd">Ingresar Testimonio:</label><br>
+    <!--<label for="testd">Ingresar Testimonio:</label><br>
     <textarea id="testdigital" name="testdigital" 
           style="width: 300px; height: 150px; resize: none;"></textarea>
-    <button class="test-btn">Enviar</button>
+    <button class="test-btn">Enviar</button>-->
+
+    <form action="../controller/comentarioControler.php" method="post">
+      <input type="hidden" name="nIdUsuario" value="<?php echo $oUsuario->getnIdUsuario(); ?>">
+      <label for="testdigital">Ingresar Testimonio:</label><br>
+      <textarea id="testdigital" name="testimonio" style="width: 300px; height: 150px; resize: none;"></textarea><br>
+      <button class="test-btn" type="submit">Enviar</button>
+    </form>
     
     <br><br>
 
