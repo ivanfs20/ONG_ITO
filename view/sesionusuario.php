@@ -60,7 +60,7 @@ $contador=1;
         <div>
           <h3><?php echo $contador.'.-'.$project->getsTitle();  ?></h3>
           <p><?php echo $project->getsDescription(); ?></p>
-          <button class="donate-btn" onclick="window.location.href='campanas.php'">Ver campaña solidaria</button>
+          <button class="donate-btn" onclick="window.location.href='campanas.php'">Ver m&aacute;s</button>
         </div>
       </div>
   <?php   $contador++; } ?>

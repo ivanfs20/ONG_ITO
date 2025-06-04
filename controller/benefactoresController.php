@@ -19,7 +19,7 @@
                 <p class="area-texto">
                 <?php echo $benefactor -> getsDescription() ; ?>
                 </p>
-                <a href="campanas.php" class="area-boton">Ver campañas similares</a>
+                <a href="campanas.php" class="area-boton">Ver m&aacute;s</a>
             </div>
         </div>
 <?php
