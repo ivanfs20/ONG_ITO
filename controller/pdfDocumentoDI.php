@@ -91,8 +91,13 @@ $pdf->Ln(10);
     //Numero de operación o referencia bancaria
     $pdf->Cell(40,10,utf8_decode('Numero de operación o referencia bancaria: 1-4468005'));
     $pdf->Ln(7);
+
+    include_once("../model/Beneficiario.php");
+    $oBeneficiario = new Beneficiario();
+    $oBeneficiarioRecuperado = $oBeneficiario->getAllByIdBeneficiario($_POST['beneficiario']);
+    $sNombreBeneficiario = $oBeneficiarioRecuperado->getsName();
     //Concepto
-    $pdf->Cell(40,10,utf8_decode('Concepto: '.$_POST['beneficiario']));
+    $pdf->Cell(40,10,utf8_decode('Concepto: '.$sNombreBeneficiario));
     $pdf->Ln(16);
 
 
@@ -110,9 +115,13 @@ $pdf->Ln(10);
     $pdf->Cell(0,10,utf8_decode('Carlos Iván Flores Sánchez'),0,1, 'C');
     $pdf->Ln(7);
 
+    $filename = '../documents/reciboDonativo_' . $_POST['nombre_donador'].'_'.$_POST['folio']. '.pdf';
+    $pdf->Output('F', $filename); //lo descarga en el servidor y no lo muestra
+    header("Location: ../view/popdigitalPDF.php?msg=descargado");
+    exit();
 
 // Descargar el archivo
-$pdf->Output('I', 'reciboDonativo.pdf'); //se muestra y el usuario lo debe de descargar
+//$pdf->Output('D',$filename); //se muestra y el usuario lo debe de descargar
 //$pdf->Output('D', 'reciboDonativo.pdf'); se descarga automaticamente
 }
 ?>

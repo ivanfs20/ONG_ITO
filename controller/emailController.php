@@ -1,5 +1,22 @@
-<?php
-require __DIR__ . '/../vendor/autoload.php';
+
+
+<?php 
+require_once '../model/Digital.php';
+$oDigital=new Digital();
+$id=$_POST["id"];
+
+$oDigital->setnIdDonacion($id);
+$oDigital->setbStatus(1);
+
+$oDigital->updateToTrue();
+
+//header ("Location: ../view/gestionmaterial.php");
+//header("Location: ../view/popmaterialRecibido.php?msg=recibido");
+//exit();
+?>
+
+    <?php
+require '../lib/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -33,31 +50,22 @@ try {
     $mail->setFrom('donativositorizaba@gmail.com', 'ADMINISTRADOR'); //Correo de ONG
     $mail->addAddress($_POST['correo_donador'],$_POST['nombre_donador']); //Correo del usuario a quien vamos a enviar un email
     $userProfile = getenv("USERPROFILE") ?: $_SERVER['HOMEDRIVE'] . $_SERVER['HOMEPATH'];
-    $downloadPath = $userProfile . "\\Downloads\\reciboDonativo_crascifs@gmail.com_carlos.pdf";
-    $mail->addAttachment($downloadPath);
+    $downloadPath = $userProfile . "\\Downloads\\../documents/reciboDonativo_".$_POST['nombre_donador'].".pdf";
+    $mail->addAttachment("../documents/reciboDonativo_".$_POST['nombre_donador']."_".$_POST['folio'].".pdf");
     $mail->isHTML(true);
     $mail->Subject = 'RECIBO DE DONATIVO'; //Asunto
     $mail->Body    = '<strong><h1>¡NUESTROS ALUMNOS AGRADECEN TU DONATIVO!</h1></strong><p>Este es un correo de validación de tu donación, porque tu tambien eres parte de la familia <strong>Buhos</strong>.</p>'; //Cuerpo
 
     $mail->send();
-    header("Location: ../view/gestiondigital.php");
+    header("Location: ../view/popemail.php?msg=enviado");
 } catch (Exception $e) {
     echo "❌ Error al enviar el correo: {$mail->ErrorInfo}";
+    header("Location: ../view/popemail.php?msg=no enviado");
+
 }
 }
 ?>
 
-<?php 
-require_once '../model/Digital.php';
-$oDigital=new Digital();
-$id=$_POST["id"];
 
-$oDigital->setnIdDonacion($id);
-$oDigital->setbStatus(1);
-
-$oDigital->updateToTrue();
-
-//header ("Location: ../view/gestionmaterial.php");
-header("Location: ../view/popmaterialRecibido.php?msg=recibido");
-exit();
-?>
+</body>
+</html>

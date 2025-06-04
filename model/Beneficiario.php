@@ -168,6 +168,36 @@ class Beneficiario{
     
 
 
+    public function getAllByIdBeneficiario($id) {
+        $oAccesoDatos = new AccesoDatos();
+        $sQuery = "";
+        $arrRS = null;
+        $oBenefactor = null;
+        $nCount = 0;
+        try {
+            if ($oAccesoDatos->conectar()) {
+                $sQuery = "SELECT sName FROM beneficiario 
+                 where nIdBeneficiario=".intval($id);
+                $arrRS = $oAccesoDatos->consulta($sQuery);
+                $oAccesoDatos->desconectar();
+                
+                if ($arrRS) {
+                    foreach ($arrRS as $fila) {
+                        $oBenefactor = new Beneficiario();
+                        $oBenefactor->setsName($fila[0]);
+                        
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+        
+        return $oBenefactor;
+    }
+
+
+
     public function getAllById($id) {
         $oAccesoDatos = new AccesoDatos();
         $sQuery = "";
