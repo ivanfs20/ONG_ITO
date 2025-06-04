@@ -183,7 +183,7 @@ public function getDonacionMaterial()
                                                
                 $sQuery="SELECT d.sName,d.sDescription,d.nAmount,b.sName,d.aPhoto,d.bStatus
                 FROM DonacionMaterial d 
-                INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE d.bStatus=0 and d.nIdUsuario=".intval($this->getnIdUsuario());
+                INNER JOIN Beneficiario b ON d.nIdBeneficiario=b.nIdBeneficiario WHERE  d.nIdUsuario=".intval($this->getnIdUsuario());
                 $arrRS=$oAccesoDatos->consultaJoin($sQuery);
                 $oAccesoDatos->desconectar();
                 if ($arrRS && count($arrRS) > 0) {

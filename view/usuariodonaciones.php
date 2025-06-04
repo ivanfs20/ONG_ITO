@@ -76,7 +76,12 @@ include_once("modules/aside.html"); # Aside
         <td><?php echo $oDonacionMat->getnAmount();?></td>
         <td><?php echo $oDonacionMat->getsNameBenefactor();?></td>
         <td><img src="<?php echo $imgSrc; ?>" alt="Imagen de la donación" width="100" /></td>
-        <td><?php if($oDonacionMat->getbStatus()==0){echo "Pendiente";}?></td>
+        <td><?php if($oDonacionMat->getbStatus()==0){
+          echo "Pendiente";
+          }else{
+            echo "Confirmado";
+          }
+          ?></td>
       </tr>
 
       <?php
@@ -106,7 +111,13 @@ include_once("modules/aside.html"); # Aside
         <td><?php echo $oDonacionDig->getnAmount();?></td>
         <td><?php echo $oDonacionDig->getnFolio();?></td>
         <td><?php echo $oDonacionDig->getdFechaCreacion();?></td>
-        <td><?php if($oDonacionDig->getbStatus()==0){echo "Pendiente";}?></td>
+        <td><?php if($oDonacionDig->getbStatus()==0){
+          echo "Pendiente";
+          }else{
+            echo "Confirmado";
+          }
+          
+          ?></td>
       </tr>
       
       <?php
