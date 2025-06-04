@@ -1,19 +1,6 @@
 
 
-<?php 
-require_once '../model/Digital.php';
-$oDigital=new Digital();
-$id=$_POST["id"];
 
-$oDigital->setnIdDonacion($id);
-$oDigital->setbStatus(1);
-
-$oDigital->updateToTrue();
-
-//header ("Location: ../view/gestionmaterial.php");
-//header("Location: ../view/popmaterialRecibido.php?msg=recibido");
-//exit();
-?>
 
     <?php
 require '../lib/vendor/autoload.php';

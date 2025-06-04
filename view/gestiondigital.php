@@ -71,46 +71,65 @@ if ($oUsuario != null && $oUsuario->getsRol() == "administrador") {
                         <td><?php echo $fecha; ?></td>
                         <td class="<?php echo strtolower($estado); ?>"><?php echo $estado; ?></td>
                        
-                        <td>
+                        <?php
+                            if($oDonacion->getbStatus()==0){
 
-
-
-                            <form action="../controller/emailController.php" method="post">
-
-                            <input type="hidden" name="correo_donador" value="<?php echo $tempUsuario->getsEmail();  ?>">
-                            <input type="hidden" name="nombre_donador" value="<?php echo $tempUsuario->getsNombreC();  ?>">                            
-                            <input type="hidden" name="domicilio_donador" value="<?php echo $tempUsuario->getsDomiclio();  ?>">
-                            <input type="hidden" name="folio" value="<?php echo $oDonacion->getnFolio(); ?>">
-                            <input type="hidden" name="amount" value="<?php echo $oDonacion->getnAmount(); ?>">
-
-                            <input type="hidden" name="metodo_pago" value="Deposito Bancario">
-                            <input type="hidden" name="beneficiario" value="<?php echo $oDonacion->getnIdBenefactor();?>">
-
-                            
-                            <input type="hidden" name="rfc_donador" value="<?php echo $tempUsuario->getsRfc();  ?>">
+                                ?>
+                            <td>
+                            <form action="../controller/confirmarDonacion.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $oDonacion->getnIdDonacion();  ?>">
 
-                            <button 
-                                        class="btn-confirmar">ENVIAR EMAIL</button>
+<button 
+class="btn-confirmar">CONFIRMAR</button>
                             </form>
+                            </td>
+                                <?php
+                            }else{
+                        ?>
+                       <td>
 
-                            <form action="../controller/pdfDocumentoDI.php" method="post">
-                            <input type="hidden" name="correo_donador" value="<?php echo $tempUsuario->getsEmail();  ?>">
-                            <input type="hidden" name="nombre_donador" value="<?php echo $tempUsuario->getsNombreC();  ?>">                            
-                            <input type="hidden" name="domicilio_donador" value="<?php echo $tempUsuario->getsDomiclio();  ?>">
-                            <input type="hidden" name="folio" value="<?php echo $oDonacion->getnFolio(); ?>">
-                            <input type="hidden" name="amount" value="<?php echo $oDonacion->getnAmount(); ?>">
 
-                            <input type="hidden" name="metodo_pago" value="Deposito Bancario">
-                            <input type="hidden" name="beneficiario" value="<?php echo $oDonacion->getnIdBenefactor();?>">
 
-                            
-                            <input type="hidden" name="rfc_donador" value="<?php echo $tempUsuario->getsRfc();  ?>">
-                            <input type="hidden" name="id" value="<?php echo $oDonacion->getnIdDonacion();  ?>">
-                            
-                            <button 
-                            class="btn-confirmar">DESCARGAR PDF</button>
-                            </form>
+<form action="../controller/emailController.php" method="post">
+
+<input type="hidden" name="correo_donador" value="<?php echo $tempUsuario->getsEmail();  ?>">
+<input type="hidden" name="nombre_donador" value="<?php echo $tempUsuario->getsNombreC();  ?>">                            
+<input type="hidden" name="domicilio_donador" value="<?php echo $tempUsuario->getsDomiclio();  ?>">
+<input type="hidden" name="folio" value="<?php echo $oDonacion->getnFolio(); ?>">
+<input type="hidden" name="amount" value="<?php echo $oDonacion->getnAmount(); ?>">
+
+<input type="hidden" name="metodo_pago" value="Deposito Bancario">
+<input type="hidden" name="beneficiario" value="<?php echo $oDonacion->getnIdBenefactor();?>">
+
+
+<input type="hidden" name="rfc_donador" value="<?php echo $tempUsuario->getsRfc();  ?>">
+<input type="hidden" name="id" value="<?php echo $oDonacion->getnIdDonacion();  ?>">
+
+<button 
+            class="btn-confirmar">ENVIAR EMAIL</button>
+</form>
+
+<form action="../controller/pdfDocumentoDI.php" method="post">
+<input type="hidden" name="correo_donador" value="<?php echo $tempUsuario->getsEmail();  ?>">
+<input type="hidden" name="nombre_donador" value="<?php echo $tempUsuario->getsNombreC();  ?>">                            
+<input type="hidden" name="domicilio_donador" value="<?php echo $tempUsuario->getsDomiclio();  ?>">
+<input type="hidden" name="folio" value="<?php echo $oDonacion->getnFolio(); ?>">
+<input type="hidden" name="amount" value="<?php echo $oDonacion->getnAmount(); ?>">
+
+<input type="hidden" name="metodo_pago" value="Deposito Bancario">
+<input type="hidden" name="beneficiario" value="<?php echo $oDonacion->getnIdBenefactor();?>">
+
+
+<input type="hidden" name="rfc_donador" value="<?php echo $tempUsuario->getsRfc();  ?>">
+<input type="hidden" name="id" value="<?php echo $oDonacion->getnIdDonacion();  ?>">
+
+<button 
+class="btn-confirmar">DESCARGAR PDF</button>
+</form>
+                        <?php
+                            }
+                        ?>
+
                         </td>
                     </tr>
                     <?php
