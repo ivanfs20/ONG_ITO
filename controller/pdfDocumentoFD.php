@@ -19,12 +19,12 @@ $pdf->SetTextColor(0, 33, 71);
 $pdf->Ln(10);
 
 // --- Encabezado ONG -> TITULO
-    $pdf->Cell(40, 10, utf8_decode('DONATIVOS'), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('DONATIVOS'), 0, 0); //Titulo de la ONG
     $pdf->Cell(15, 10, '', 0, 0);
     $pdf->SetTextColor(255, 221, 0);
-    $pdf->Cell(100,10,utf8_decode('ITORIZABA'),0,0);
+    $pdf->Cell(100,10,utf8_decode('ITORIZABA'),0,0); //Titulo de la ONG
 
-    $pdf->Image('../view/media/imagen_logo.png', 140, 10, 70);
+    $pdf->Image('../view/media/imagen_logo.png', 140, 10, 70); //Imagen-Logo de la ONG
     $pdf->Ln(20);
 
     //--FOLIO -> Titulo
@@ -46,7 +46,7 @@ $pdf->Ln(10);
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(40, 10, utf8_decode('Numero de cuenta: 1-4468005'), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('Numero de cuenta: 1-4468005'), 0, 0); //Referencia bancaria
 
     $pdf->Ln(10);
 
@@ -56,7 +56,7 @@ $pdf->Ln(10);
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(40, 10, utf8_decode('Beneficiario: TECNOLOGICO NACIONAL DE MEXICO/I.T. ORIZABA'), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('Beneficiario: TECNOLOGICO NACIONAL DE MEXICO/I.T. ORIZABA'), 0, 0); //Nombre de la institución
 
     $pdf->Ln(10);
 

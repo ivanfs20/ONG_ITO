@@ -8,12 +8,12 @@ $pdf->SetTextColor(0, 33, 71);
 $pdf->Ln(10);
 
 // --- Encabezado ONG -> TITULO
-    $pdf->Cell(40, 10, utf8_decode('DONATIVOS'), 0, 0);
+    $pdf->Cell(40, 10, utf8_decode('DONATIVOS'), 0, 0); //Titulo de la ONG
     $pdf->Cell(15, 10, '', 0, 0);
     $pdf->SetTextColor(255, 221, 0);
-    $pdf->Cell(50,10,utf8_decode('ITORIZABA'),0,0);
+    $pdf->Cell(50,10,utf8_decode('ITORIZABA'),0,0); //Titulo de la ONG
 
-    $pdf->Image('../view/media/imagen_logo.png', 140, 10, 70);
+    $pdf->Image('../view/media/imagen_logo.png', 140, 10, 70); //Imagen-Logo de la ONG
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 40);
@@ -42,15 +42,15 @@ $pdf->Ln(10);
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Nombre: INSTITUTO TECNOLOGICO DE ORIZABA'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Nombre: INSTITUTO TECNOLOGICO DE ORIZABA'), 0, 0); //Nombre de la institución
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Dirección: Oriente 9, 94320 Orizaba, Veracruz-llave · 11 km'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Dirección: Oriente 9, 94320 Orizaba, Veracruz-llave · 11 km'), 0, 0); //Dirección de la ONG
 
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 15);
-    $pdf->Cell(0, 10, utf8_decode('Tel: (272) 725-7056'), 0, 0);
+    $pdf->Cell(0, 10, utf8_decode('Tel: (272) 725-7056'), 0, 0); //Numero telefonico de la ONG
 
 
     $pdf->Ln(10);

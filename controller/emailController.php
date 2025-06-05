@@ -34,7 +34,7 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
-    $mail->setFrom('donativositorizaba@gmail.com', 'ADMINISTRADOR'); //Correo de ONG
+    $mail->setFrom('donativositorizaba@gmail.com', 'ADMINISTRADOR'); //Correo de ONG y nombre del administrador
     $mail->addAddress($_POST['correo_donador'],$_POST['nombre_donador']); //Correo del usuario a quien vamos a enviar un email
     $userProfile = getenv("USERPROFILE") ?: $_SERVER['HOMEDRIVE'] . $_SERVER['HOMEPATH'];
     $downloadPath = $userProfile . "\\Downloads\\../documents/reciboDonativo_".$_POST['nombre_donador'].".pdf";
